@@ -12,12 +12,14 @@ import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
 
-public class MainMenuPanel extends JPanel {
+public class MainMenuPanel extends JPanel 
+{
 
 	/**
 	 * Create the panel.
 	 */
-	public MainMenuPanel() {
+	public MainMenuPanel() 
+	{
 		setBackground(new Color(176, 224, 230));
 		setLayout(null);
 		
