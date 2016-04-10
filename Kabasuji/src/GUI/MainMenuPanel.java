@@ -19,6 +19,7 @@ public class MainMenuPanel extends JPanel {
 	 */
 	public MainMenuPanel() {
 		setBackground(new Color(176, 224, 230));
+		this.setSize(800, 800);
 		setLayout(null);
 		
 		JPanel panel = new JPanel();
