@@ -48,7 +48,7 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		add(button);
 		
 		JPanel boardPanel = new JPanel();
-		boardPanel.setBounds(99, 325, 602, 378);
+		boardPanel.setBounds(99, 325, 600, 300);
 		add(boardPanel);
 		boardPanel.setLayout(null);
 		
