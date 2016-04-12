@@ -15,11 +15,12 @@ import javax.swing.JLabel;
 public class BuilderLevelTypeSelect extends JPanel
 {
 	private JPanel contentPane;
-
+	KabasujiBuilderFrame kFrame;
 	
 	
-	public BuilderLevelTypeSelect() 
+	public BuilderLevelTypeSelect(KabasujiBuilderFrame frame) 
 	{
+		kFrame = frame;
 		setBackground(new Color(176, 224, 230));
 		this.setSize(800, 800);
 		setLayout(null);

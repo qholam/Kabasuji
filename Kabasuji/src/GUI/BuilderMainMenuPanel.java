@@ -21,23 +21,23 @@ import javax.swing.JLabel;
 public class BuilderMainMenuPanel extends JPanel
 {
 
-	KabasujiFrame kFrame;
+	KabasujiBuilderFrame kFrame;
 
 	/**
 	 * Create the frame.
 	 */
-	public BuilderMainMenuPanel(KabasujiFrame frame) 
+	public BuilderMainMenuPanel(KabasujiBuilderFrame frame) 
 	{
-		
+		kFrame = frame;
 		setBackground(Color.GRAY);
-		this.setSize(800, 800);
+		this.setSize(1200, 800);
 		setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel.setBackground(new Color(255, 165, 0));
 		panel.setForeground(Color.WHITE);
-		panel.setBounds(0, 0, 800, 167);
+		panel.setBounds(0, 0, 1200, 167);
 		add(panel);
 		
 		
@@ -52,7 +52,7 @@ public class BuilderMainMenuPanel extends JPanel
 		button_4.setForeground(Color.YELLOW);
 		button_4.setFont(new Font("Dialog", Font.PLAIN, 34));
 		button_4.setBackground(new Color(255, 153, 0));
-		button_4.setBounds(309, 238, 265, 90);
+		button_4.setBounds(467, 238, 265, 90);
 		add(button_4);
 		
 		Button button_6 = new Button("Saved Levels");
@@ -63,7 +63,7 @@ public class BuilderMainMenuPanel extends JPanel
 		button_6.setForeground(Color.YELLOW);
 		button_6.setFont(new Font("Dialog", Font.PLAIN, 25));
 		button_6.setBackground(new Color(255, 153, 0));
-		button_6.setBounds(309, 368, 265, 90);
+		button_6.setBounds(467, 368, 265, 90);
 		add(button_6);
 	}
 }	
