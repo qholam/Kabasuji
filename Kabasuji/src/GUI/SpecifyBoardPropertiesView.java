@@ -21,12 +21,14 @@ public class SpecifyBoardPropertiesView extends JPanel {
 	private JTextField txtEnterWidthmax;
 	private JTextField txtEnterHeightmax;
 	KabasujiFrame kf;
+	Board board;
 
 	/**
 	 * Create the panel.
 	 */
 	public SpecifyBoardPropertiesView(KabasujiFrame frame) {
 		this.kf = frame;
+		board = new Board();
 		
 		setBackground(Color.GRAY);
 		this.setSize(800, 800);
@@ -57,14 +59,21 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		mainMenuButton.setBounds(562, 221, 177, 44);
 		add(mainMenuButton);
 		
+		//panel to hold the board
 		JPanel boardPanel = new JPanel();
+		boardPanel.setBackground(Color.LIGHT_GRAY);
 		boardPanel.setBounds(99, 325, 600, 300);
 		add(boardPanel);
 		boardPanel.setLayout(null);
 		
-		JLabel lblBoardGoesHere = new JLabel("Board Goes Here");
-		lblBoardGoesHere.setBounds(260, 182, 81, 14);
+		//TO BE DELETED
+		JLabel lblBoardGoesHere = new JLabel("BOARD GOES HERE");
+		lblBoardGoesHere.setBounds(242, 120, 116, 60);
 		boardPanel.add(lblBoardGoesHere);
+		lblBoardGoesHere.setBackground(Color.LIGHT_GRAY);
+		
+		//add board
+		boardPanel.add(board);
 		
 		txtEnterWidthmax = new JTextField();
 		txtEnterWidthmax.setHorizontalAlignment(SwingConstants.CENTER);
