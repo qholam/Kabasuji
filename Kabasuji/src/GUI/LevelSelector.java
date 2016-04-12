@@ -10,11 +10,13 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 public class LevelSelector extends JPanel {
+	KabasujiFrame kFrame;
 
 	/**
 	 * Create the panel.
 	 */
-	public LevelSelector() {
+	public LevelSelector(KabasujiFrame frame) {
+		kFrame = frame;
 		setLayout(null);
 		setBackground(new Color(176, 224, 230));
 		setBounds(100, 100, 900, 900);
@@ -132,6 +134,11 @@ public class LevelSelector extends JPanel {
 		btnMainMenu.setBounds(30, 60, 117, 29);
 		btnMainMenu.setForeground(new Color(255, 165, 0));
 		btnMainMenu.setBackground(new Color(255, 165, 0));
+		btnMainMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.MainMenu);
+			}
+		});
 		add(btnMainMenu);
 		
 		JLabel lblSelectLevel = new JLabel("Select Level");

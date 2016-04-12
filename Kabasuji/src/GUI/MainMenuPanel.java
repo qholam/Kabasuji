@@ -44,7 +44,7 @@ public class MainMenuPanel extends JPanel
 		Button button = new Button("View Levels");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				//TO ADD
+				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.LevelSelect);
 			}
 		});
 		button.setFont(new Font("Dialog", Font.PLAIN, 49));

@@ -12,6 +12,7 @@ public class KabasujiFrame extends JFrame {
 	final String SplashScreen = "SplashScreen";
 	final String MainMenu = "MainMenu";
 	final String Puzzle1 = "Puzzle1";
+	final String LevelSelect = "LevelSelect";
 
 	private JPanel contentPane;
 
@@ -52,6 +53,10 @@ public class KabasujiFrame extends JFrame {
 		PuzzleLevelPanel puzzle1 = new PuzzleLevelPanel(this);
 		mainMenu.setBounds(0, 0, 800, 800);
 		contentPane.add(puzzle1, Puzzle1);
+		
+		LevelSelector levelSelect = new LevelSelector(this);
+		levelSelect.setBounds(0, 0, 800, 800);
+		contentPane.add(levelSelect, LevelSelect);
 		
 		splash.displaySplashScreen();
 	}
