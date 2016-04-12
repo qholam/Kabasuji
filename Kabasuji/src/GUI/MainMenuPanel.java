@@ -57,6 +57,7 @@ public class MainMenuPanel extends JPanel
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.Puzzle1);
+				repaint();
 			}
 		});
 		button_1.setForeground(Color.YELLOW);
