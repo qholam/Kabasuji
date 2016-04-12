@@ -42,6 +42,11 @@ public class MainMenuPanel extends JPanel
 		panel.add(lblKabasuji);
 		
 		Button button = new Button("View Levels");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				//TO ADD
+			}
+		});
 		button.setFont(new Font("Dialog", Font.PLAIN, 49));
 		button.setForeground(new Color(255, 255, 0));
 		button.setBackground(new Color(255, 165, 0));
@@ -61,6 +66,11 @@ public class MainMenuPanel extends JPanel
 		add(button_1);
 		
 		Button button_2 = new Button("Reset Score");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				//TO ADD
+			}
+		});
 		button_2.setForeground(Color.YELLOW);
 		button_2.setFont(new Font("Dialog", Font.PLAIN, 49));
 		button_2.setBackground(new Color(255, 165, 0));
