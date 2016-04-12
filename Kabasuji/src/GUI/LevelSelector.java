@@ -25,6 +25,11 @@ public class LevelSelector extends JPanel {
 		puzzleLevel1.setBounds(180, 200, 60, 50);
 		puzzleLevel1.setForeground(new Color(255, 165, 0));
 		puzzleLevel1.setBackground(new Color(255, 165, 0));
+		puzzleLevel1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.Puzzle1);
+			}
+		});
 		add(puzzleLevel1);
 		
 		JLabel lblKabasuji = new JLabel("Kabasuji");
