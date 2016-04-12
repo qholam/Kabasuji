@@ -11,15 +11,19 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
+import java.awt.CardLayout;
 
 public class MainMenuPanel extends JPanel 
 {
+	KabasujiFrame kFrame;
 
 	/**
 	 * Create the panel.
 	 */
-	public MainMenuPanel() 
+	public MainMenuPanel(KabasujiFrame frame) 
 	{
+		kFrame = frame;
+		
 		setBackground(Color.GRAY);
 		this.setSize(800, 800);
 		setLayout(null);
@@ -45,6 +49,11 @@ public class MainMenuPanel extends JPanel
 		add(button);
 		
 		Button button_1 = new Button("Play");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				kFrame.getCardLayout().show(kFrame.getContentPane(), "Puzzle1");
+			}
+		});
 		button_1.setForeground(Color.YELLOW);
 		button_1.setFont(new Font("Dialog", Font.PLAIN, 49));
 		button_1.setBackground(new Color(255, 165, 0));

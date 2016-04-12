@@ -37,7 +37,22 @@ public class KabasujiFrame extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new CardLayout(0, 0));
+		CardLayout cardLayout = new CardLayout(0, 0);
+		contentPane.setLayout(cardLayout);
+		
+		MainMenuPanel mainMenu = new MainMenuPanel(this);
+		mainMenu.setBounds(0, 0, 800, 800);
+		contentPane.add(mainMenu, "MainMenu");
+		
+		PuzzleLevelPanel puzzle1 = new PuzzleLevelPanel(this);
+		mainMenu.setBounds(0, 0, 800, 800);
+		contentPane.add(puzzle1, "Puzzle1");
+		
+		cardLayout.show(contentPane, "MainMenu");
+	}
+	
+	public CardLayout getCardLayout() {
+		return (CardLayout)contentPane.getLayout();
 	}
 
 }
