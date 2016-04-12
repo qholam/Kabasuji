@@ -20,7 +20,7 @@ public class MainMenuPanel extends JPanel
 	 */
 	public MainMenuPanel() 
 	{
-		setBackground(new Color(176, 224, 230));
+		setBackground(Color.GRAY);
 		this.setSize(800, 800);
 		setLayout(null);
 		
