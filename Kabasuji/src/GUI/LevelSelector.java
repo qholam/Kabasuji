@@ -62,7 +62,6 @@ public class LevelSelector extends JPanel {
 		JButton releaseLevel1 = new JButton("1");
 		releaseLevel1.setBounds(120, 364, 60, 50);
 		releaseLevel1.setForeground(new Color(255, 165, 0));
-		releaseLevel1.setBackground(new Color(255, 165, 0));
 		add(releaseLevel1);
 		
 		JButton releaseLevel2 = new JButton("2");
