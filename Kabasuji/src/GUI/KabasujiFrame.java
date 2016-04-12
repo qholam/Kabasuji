@@ -9,6 +9,9 @@ import javax.swing.border.EmptyBorder;
 import java.awt.CardLayout;
 
 public class KabasujiFrame extends JFrame {
+	final String SplashScreen = "SplashScreen";
+	final String MainMenu = "MainMenu";
+	final String Puzzle1 = "Puzzle1";
 
 	private JPanel contentPane;
 
@@ -40,15 +43,19 @@ public class KabasujiFrame extends JFrame {
 		CardLayout cardLayout = new CardLayout(0, 0);
 		contentPane.setLayout(cardLayout);
 		
+		SplashScreen splash = new SplashScreen(this);
+		splash.setBounds(0, 0, 800, 800);
+		contentPane.add(splash, "SplashScreen");
+		
 		MainMenuPanel mainMenu = new MainMenuPanel(this);
 		mainMenu.setBounds(0, 0, 800, 800);
-		contentPane.add(mainMenu, "MainMenu");
+		contentPane.add(mainMenu, MainMenu);
 		
 		PuzzleLevelPanel puzzle1 = new PuzzleLevelPanel(this);
 		mainMenu.setBounds(0, 0, 800, 800);
-		contentPane.add(puzzle1, "Puzzle1");
+		contentPane.add(puzzle1, Puzzle1);
 		
-		cardLayout.show(contentPane, "MainMenu");
+		splash.displaySplashScreen();
 	}
 	
 	public CardLayout getCardLayout() {

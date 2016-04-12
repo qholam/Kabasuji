@@ -52,7 +52,7 @@ public class PuzzleLevelPanel extends JPanel {
 		btnMenu.setBounds(650, 25, 100, 100);
 		btnMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				kFrame.getCardLayout().show(kFrame.getContentPane(), "MainMenu");
+				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.MainMenu);
 			}
 		});
 		add(btnMenu);
