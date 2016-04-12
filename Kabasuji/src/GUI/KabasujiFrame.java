@@ -44,8 +44,6 @@ public class KabasujiFrame extends JFrame {
 		contentPane.setLayout(cardLayout);
 		
 		SplashScreen splash = new SplashScreen(this);
-		splash.setBounds(0, 0, 800, 800);
-		contentPane.add(splash, "SplashScreen");
 		
 		MainMenuPanel mainMenu = new MainMenuPanel(this);
 		mainMenu.setBounds(0, 0, 800, 800);
