@@ -7,6 +7,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.JTextPane;
+import javax.swing.JLabel;
+import java.awt.Label;
 
 /**
  * @author Quoc HoLam
@@ -14,9 +19,9 @@ import javax.swing.border.EmptyBorder;
  */
 public class SplashScreen extends JFrame {
 	private JPanel contentPane;
-	private JTextField txtSplashTest;
 	private JTextField txtSplashScreen;
 	KabasujiFrame kf;
+	private JTextField txtKabasuji;
 	
 	/**
 	 * Create the panel.
@@ -27,14 +32,26 @@ public class SplashScreen extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 800, 800);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
-		txtSplashTest = new JTextField();
-		txtSplashTest.setText("Splash Test");
-		contentPane.add(txtSplashTest, BorderLayout.CENTER);
-		txtSplashTest.setColumns(10);
+		txtKabasuji = new JTextField();
+		txtKabasuji.setForeground(Color.YELLOW);
+		txtKabasuji.setFont(new Font("Elephant", Font.PLAIN, 99));
+		txtKabasuji.setHorizontalAlignment(SwingConstants.CENTER);
+		txtKabasuji.setText("Kabasuji");
+		txtKabasuji.setBounds(0, 0, 784, 167);
+		txtKabasuji.setBackground(new Color(255, 165, 0));
+		contentPane.add(txtKabasuji);
+		txtKabasuji.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("<html>Team Odius:<br>Quoc HoLam<br>Calvin Chen<br>Richard Hayes<br>Nicholas Hollan<br>LilyAnne Lewis</html>");
+		lblNewLabel.setFont(new Font("Elephant", Font.PLAIN, 50));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(182, 134, 419, 492);
+		contentPane.add(lblNewLabel);
 	}
 	
 	public void displaySplashScreen(){
@@ -50,5 +67,4 @@ public class SplashScreen extends JFrame {
 		this.setVisible(false);
 		kf.getCardLayout().show(kf.getContentPane(), kf.MainMenu);
 	}
-	
 }
