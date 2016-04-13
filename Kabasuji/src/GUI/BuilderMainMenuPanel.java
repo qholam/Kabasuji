@@ -53,6 +53,11 @@ public class BuilderMainMenuPanel extends JPanel
 		button_4.setFont(new Font("Dialog", Font.PLAIN, 34));
 		button_4.setBackground(new Color(255, 153, 0));
 		button_4.setBounds(467, 238, 265, 90);
+		button_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.BuilderLevelTypeSelect);
+			}
+		});
 		add(button_4);
 		
 		Button button_6 = new Button("Saved Levels");

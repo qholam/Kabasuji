@@ -13,6 +13,8 @@ public class KabasujiBuilderFrame extends JFrame {
 	final String BuilderMainMenu = "BuilderMainMenu";
 	final String Puzzle1 = "Puzzle1";
 	final String BuilderLevelTypeSelect = "BuilderLevelTypeSelect";
+	final String SpecifyBoardProperties = "SpecifyBoardProperties";
+	final String BuilderPuzzleLevel = "BuilderPuzzleLevel";
 
 	private JPanel contentPane;
 
@@ -53,6 +55,14 @@ public class KabasujiBuilderFrame extends JFrame {
 		BuilderLevelTypeSelect levelTypeSelect = new BuilderLevelTypeSelect(this);
 		levelTypeSelect.setBounds(0, 0, 1200, 800);
 		contentPane.add(levelTypeSelect, BuilderLevelTypeSelect);
+		
+		SpecifyBoardPropertiesView specifyBoard = new SpecifyBoardPropertiesView(this);
+		specifyBoard.setBounds(0, 0, 1200, 800);
+		contentPane.add(specifyBoard, SpecifyBoardProperties);
+		
+		BuilderPuzzleLevel puzzleLevel = new BuilderPuzzleLevel(this);
+		puzzleLevel.setBounds(0, 0, 1200, 800);
+		contentPane.add(puzzleLevel, BuilderPuzzleLevel);
 		
 		splash.displaySplashScreen();
 	}

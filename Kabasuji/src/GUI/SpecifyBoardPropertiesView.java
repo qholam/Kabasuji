@@ -20,25 +20,26 @@ import java.awt.event.ActionEvent;
 public class SpecifyBoardPropertiesView extends JPanel {
 	private JTextField txtEnterWidthmax;
 	private JTextField txtEnterHeightmax;
-	KabasujiFrame kf;
+	KabasujiBuilderFrame kFrame;
 	Board board;
 
 	/**
 	 * Create the panel.
 	 */
-	public SpecifyBoardPropertiesView(KabasujiFrame frame) {
-		this.kf = frame;
+	public SpecifyBoardPropertiesView(KabasujiBuilderFrame frame) {
+		kFrame = frame;
 		board = new Board();
+		board.setLocation(0, 0);
 		
 		setBackground(Color.GRAY);
-		this.setSize(800, 800);
+		setBounds(0, 0, 1200, 800);
 		setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel.setBackground(new Color(255, 165, 0));
 		panel.setForeground(Color.WHITE);
-		panel.setBounds(0, 0, 800, 167);
+		panel.setBounds(0, 0, 1200, 167);
 		add(panel);
 		
 		JLabel lblKabasuji = new JLabel("Board Specifications");
@@ -49,20 +50,20 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		
 		Button mainMenuButton = new Button("Main Menu");
 		mainMenuButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//TO DO
+			public void actionPerformed(ActionEvent ae) {
+				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.BuilderMainMenu);
 			}
 		});
 		mainMenuButton.setForeground(Color.YELLOW);
 		mainMenuButton.setFont(new Font("Elephant", Font.PLAIN, 30));
 		mainMenuButton.setBackground(new Color(255, 165, 0));
-		mainMenuButton.setBounds(562, 221, 177, 44);
+		mainMenuButton.setBounds(763, 221, 177, 44);
 		add(mainMenuButton);
 		
 		//panel to hold the board
 		JPanel boardPanel = new JPanel();
 		boardPanel.setBackground(Color.LIGHT_GRAY);
-		boardPanel.setBounds(99, 325, 600, 300);
+		boardPanel.setBounds(300, 325, 600, 300);
 		add(boardPanel);
 		boardPanel.setLayout(null);
 		
@@ -78,7 +79,7 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		txtEnterWidthmax = new JTextField();
 		txtEnterWidthmax.setHorizontalAlignment(SwingConstants.CENTER);
 		txtEnterWidthmax.setText("Enter Width(Max 12)");
-		txtEnterWidthmax.setBounds(35, 235, 112, 27);
+		txtEnterWidthmax.setBounds(236, 235, 112, 27);
 		add(txtEnterWidthmax);
 		txtEnterWidthmax.setColumns(10);
 		
@@ -86,20 +87,20 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		txtEnterHeightmax.setHorizontalAlignment(SwingConstants.CENTER);
 		txtEnterHeightmax.setText("Enter Height(Max 12)");
 		txtEnterHeightmax.setColumns(10);
-		txtEnterHeightmax.setBounds(168, 235, 112, 27);
+		txtEnterHeightmax.setBounds(369, 235, 112, 27);
 		add(txtEnterHeightmax);
 		
 		//button which will take user to the view to edit the level
 		Button nextButton = new Button("Next");
 		nextButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//TO DO
+			public void actionPerformed(ActionEvent ae) {
+				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.BuilderPuzzleLevel);
 			}
 		});
 		nextButton.setForeground(Color.YELLOW);
 		nextButton.setFont(new Font("Elephant", Font.PLAIN, 30));
 		nextButton.setBackground(new Color(255, 165, 0));
-		nextButton.setBounds(608, 746, 131, 44);
+		nextButton.setBounds(809, 646, 131, 44);
 		add(nextButton);	
 	}
 }

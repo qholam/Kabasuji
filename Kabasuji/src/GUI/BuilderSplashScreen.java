@@ -42,7 +42,7 @@ public class BuilderSplashScreen extends JFrame {
 		JLabel lblNewLabel = new JLabel("<html>Team Odius:<br>Quoc HoLam<br>Calvin Chen<br>Richard Hayes<br>Nicholas Hollan<br>LilyAnne Lewis</html>");
 		lblNewLabel.setFont(new Font("Elephant", Font.PLAIN, 50));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(185, 194, 419, 492);
+		lblNewLabel.setBounds(382, 194, 419, 492);
 		contentPane.add(lblNewLabel);
 		
 		label = new Label("Kabasuji");
@@ -50,7 +50,7 @@ public class BuilderSplashScreen extends JFrame {
 		label.setFont(new Font("Elephant", Font.PLAIN, 90));
 		label.setAlignment(Label.CENTER);
 		label.setBackground(new Color(255, 165, 0));
-		label.setBounds(0, 0, 784, 161);
+		label.setBounds(0, 0, 1184, 161);
 		contentPane.add(label);
 	}
 	
