@@ -1,5 +1,5 @@
 package entity;
 
-public class Piece {
+public class Piece{
 
 }
