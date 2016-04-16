@@ -17,6 +17,9 @@ public class Piece{
 	private final int maxHeight = 6;
 	
 	//TODO what should be added in parameters to specify shape of piece
+	/**
+	 * Constructor to create a piece
+	 */
 	public Piece(){
 		//create the grid of maxWidth and maxHeight
 		shapeGrid = new PieceTile[maxWidth][maxHeight];
