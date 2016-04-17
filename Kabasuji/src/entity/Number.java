@@ -15,11 +15,15 @@ public class Number {
 	 * @param c
 	 * @throws Exception 
 	 */
-	public Number(int n, String c) throws Exception{
+	public Number(int n, String c){
 		//makes sure that the 
-		if(n > maxNumber || n < minNumber){
-			throw new Exception("number must be between " + maxNumber + " and " + minNumber + ", inclusive");
+		try{
+			if(n > maxNumber || n < minNumber)
+				throw new Exception("number must be between " + maxNumber + " and " + minNumber + ", inclusive");
+		} catch(Exception e) {
+			
 		}
+		
 		
 		number = n;
 		color = c;

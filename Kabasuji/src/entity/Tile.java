@@ -13,6 +13,28 @@ public abstract class Tile {
 	}
 	
 	/**
+	 * Override of equals, sees if two tiles are equal
+	 * @return Boolean true if both pieces tiles are equal
+	 */
+	@Override
+	public boolean equals(Object obj){
+		boolean equals = true;
+		Tile other;
+		
+		if(!(obj instanceof Tile))
+			//if obj isn't of type Tile then they cannot be equal
+			equals = false;
+		else{
+			//cast to Tile
+			other = (Tile) obj;
+			
+			equals = this.toString().equals(other.toString()) && this.row == other.getRow() && this.col == other.getCol();
+		}
+		
+		return equals;
+	}
+	
+	/**
 	 * Provides information on the type of the tile. 
 	 * To be overridden in subclasses
 	 * @return String
