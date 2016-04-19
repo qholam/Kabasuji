@@ -1,10 +1,10 @@
 package entity;
 /**
- * @author Tommy
+ * @author Quoc HoLam
  * Abstract class which defines the behaviors of a tile
  */
 public abstract class Tile {
-	//position of tile on the shape grid of a Piece, if applicable
+	//Position of tile on the board, if applicable. A -1 indicates the the Tile is not on the board
 	int row, col;
 	
 	public Tile(int row,int col){

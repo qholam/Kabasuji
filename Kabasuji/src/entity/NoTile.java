@@ -4,8 +4,7 @@ package entity;
  * @author Quoc HoLam
  *
  */
-public class NoTile extends BoardTile{
-
+public class NoTile extends BoardTile{	
 	/**
 	 * Constructs a no tile on the board. This tile cannot have a piece cover it
 	 * @param row

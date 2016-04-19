@@ -16,58 +16,58 @@ public class TestPiece extends TestCase{
 	
 	public void setUp(){
 		p = new Piece();
-		p.addTile(new PieceTile(0,2));
-		p.addTile(new PieceTile(1,2)); 
-		p.addTile(new PieceTile(2,2));
-		p.addTile(new PieceTile(3,2));
-		p.addTile(new PieceTile(4,2));
-		p.addTile(new PieceTile(3,1));
-		p.addTile(new PieceTile(3,3));
+		p.addTile(new PieceTile(), 0, 2); 
+		p.addTile(new PieceTile(), 1, 2); 
+		p.addTile(new PieceTile(), 2, 2);
+		p.addTile(new PieceTile(), 3, 2);
+		p.addTile(new PieceTile(), 4, 2);
+		p.addTile(new PieceTile(), 3, 1);
+		p.addTile(new PieceTile(), 3, 3);
 		
 		p1 = new Piece();
-		p1.addTile(new PieceTile(0,2));
-		p1.addTile(new PieceTile(1,2));
-		p1.addTile(new PieceTile(2,2));
-		p1.addTile(new PieceTile(3,2));
-		p1.addTile(new PieceTile(4,2));
-		p1.addTile(new PieceTile(3,1));
-		p1.addTile(new PieceTile(3,3));
+		p1.addTile(new PieceTile(), 0, 2);
+		p1.addTile(new PieceTile(), 1, 2);
+		p1.addTile(new PieceTile(), 2, 2);
+		p1.addTile(new PieceTile(), 3, 2);
+		p1.addTile(new PieceTile(), 4, 2);
+		p1.addTile(new PieceTile(), 3, 1);
+		p1.addTile(new PieceTile(), 3, 3);
 		
 		cw = new Piece();
-		cw.addTile(new PieceTile(1,2));
-		cw.addTile(new PieceTile(2,2));
-		cw.addTile(new PieceTile(3,2));
-		cw.addTile(new PieceTile(2,1));
-		cw.addTile(new PieceTile(2,3));
-		cw.addTile(new PieceTile(2,4));
-		cw.addTile(new PieceTile(2,5));
+		cw.addTile(new PieceTile(), 1, 2);
+		cw.addTile(new PieceTile(), 2, 2);
+		cw.addTile(new PieceTile(), 3, 2);
+		cw.addTile(new PieceTile(), 2, 1);
+		cw.addTile(new PieceTile(), 2, 3);
+		cw.addTile(new PieceTile(), 2, 4);
+		cw.addTile(new PieceTile(), 2, 5);
 		
 		ccw = new Piece();
-		ccw.addTile(new PieceTile(2, 3));
-		ccw.addTile(new PieceTile(3, 3));
-		ccw.addTile(new PieceTile(4, 3));
-		ccw.addTile(new PieceTile(3, 0));
-		ccw.addTile(new PieceTile(3, 1));
-		ccw.addTile(new PieceTile(3, 2));
-		ccw.addTile(new PieceTile(3, 4));
+		ccw.addTile(new PieceTile(), 2, 3);
+		ccw.addTile(new PieceTile(), 3, 3);
+		ccw.addTile(new PieceTile(), 4, 3);
+		ccw.addTile(new PieceTile(), 3, 0);
+		ccw.addTile(new PieceTile(), 3, 1);
+		ccw.addTile(new PieceTile(), 3, 2);
+		ccw.addTile(new PieceTile(), 3, 4);
 		
 		v = new Piece();
-		v.addTile(new PieceTile(1,2));
-		v.addTile(new PieceTile(2,2));
-		v.addTile(new PieceTile(3,2));
-		v.addTile(new PieceTile(4,2));
-		v.addTile(new PieceTile(5,2));
-		v.addTile(new PieceTile(2,1));
-		v.addTile(new PieceTile(2,3));
+		v.addTile(new PieceTile(), 1, 2);
+		v.addTile(new PieceTile(), 2, 2);
+		v.addTile(new PieceTile(), 3, 2);
+		v.addTile(new PieceTile(), 4, 2);
+		v.addTile(new PieceTile(), 5, 2);
+		v.addTile(new PieceTile(), 2, 1);
+		v.addTile(new PieceTile(), 2, 3);
 		
 		h = new Piece();
-		h.addTile(new PieceTile(0,3));
-		h.addTile(new PieceTile(1,3));
-		h.addTile(new PieceTile(2,3));
-		h.addTile(new PieceTile(3,3));
-		h.addTile(new PieceTile(4,3));
-		h.addTile(new PieceTile(3,2));
-		h.addTile(new PieceTile(3,4));
+		h.addTile(new PieceTile(), 0, 3);
+		h.addTile(new PieceTile(), 1, 3);
+		h.addTile(new PieceTile(), 2, 3);
+		h.addTile(new PieceTile(), 3, 3);
+		h.addTile(new PieceTile(), 4, 3);
+		h.addTile(new PieceTile(), 3, 2);
+		h.addTile(new PieceTile(), 3, 4);
 	}
 	/**
 	 * Test equals method

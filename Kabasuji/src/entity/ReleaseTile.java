@@ -1,5 +1,9 @@
 package entity;
-
+/**
+ * represents a tile on the release board
+ * @author Quoc HoLam
+ *
+ */
 public class ReleaseTile extends Tile{
 	Number num;
 	

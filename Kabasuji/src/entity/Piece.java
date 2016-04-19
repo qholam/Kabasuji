@@ -20,8 +20,9 @@ public class Piece{
 	 * Default constructor to create a piece. To be used for method testing
 	 */
 	public Piece(){
-		//create the grid of maxWidth and maxHeight
+		//create the grid of maxWidth and maxHeight, intially empty
 		shapeGrid = new PieceTile[maxHeight][maxWidth];
+
 		//Piece initially not on a board;
 		rowPos = -1;
 		colPos = -1;
@@ -47,18 +48,16 @@ public class Piece{
 				if(arr[i][j])
 					shapeGrid[i][j] = new PieceTile(i, j);
 			}
-		}
-		
+		}	
 	}
 	
 	/**
 	 * Add given {@link PieceTile} to the (row,col) specified by the {@link PieceTile}
 	 * @param PieceTile PieceTile to add
+	 * @param int row of shapeGrid to add {@link PieceTile} to
+	 * @param int col of shapeGrid to add {@link PieceTile} to
 	 */
-	public void addTile(PieceTile p){
-		int row = p.getRow();
-		int col = p.getCol(); 
-		
+	public void addTile(PieceTile p, int row, int col){
 		this.shapeGrid[row][col] = p;
 	}
 	
@@ -86,11 +85,22 @@ public class Piece{
 		
 		for (int i = 0; i < h; i++) {
 	        for (int j = 0; j < w; j++) {
-	            arr[i][j] = this.shapeGrid[w - j - 1][i];
-	            //update the row and col of the piece
+	        	//row and col of the tile [i][j] in the array to keep track of it position on the board
+	        	int row = -1;
+	        	int col = -1;
+	        	if(this.shapeGrid[i][j] != null){
+	        		row = this.shapeGrid[i][j].getRow();
+	        		col = this.shapeGrid[i][j].getCol(); 
+	        	} 
+	        	//Tile to be placed in row i col j of the new shapeGrid
+	        	PieceTile tile = this.shapeGrid[w - j - 1][i];
+	        	
+	            arr[i][j] = tile;
+	            
+	            //update the row and col of the PieceTile on the board
 	            if(arr[i][j] != null){
-		            arr[i][j].setRow(i);
-		            arr[i][j].setCol(j);
+		            arr[i][j].setRow(row);
+		            arr[i][j].setCol(col);
 	            }
 	        }
 	    }
@@ -110,11 +120,21 @@ public class Piece{
 		
 		for (int i = 0; i < h; i++) {
 	        for (int j = 0; j < w; j++) {
-	            arr[i][j] = this.shapeGrid[j][h - i - 1];
+	        	//row and col of the tile [i][j] in the array to keep track of it position on the board
+	        	int row = -1;
+	        	int col = -1;
+	        	if(this.shapeGrid[i][j] != null){
+	        		row = this.shapeGrid[i][j].getRow();
+	        		col = this.shapeGrid[i][j].getCol(); 
+	        	} 
+	        	//Tile to be placed in row i col j of the new shapeGrid
+	        	PieceTile tile = this.shapeGrid[j][h - i - 1];
+	        	
+	            arr[i][j] = tile;
 	            //update the row and col of the piece
 	            if(arr[i][j] != null){
-		            arr[i][j].setRow(i);
-		            arr[i][j].setCol(j);
+		            arr[i][j].setRow(row);
+		            arr[i][j].setCol(col);
 	            }
 	        }
 	    }
@@ -133,11 +153,21 @@ public class Piece{
 		PieceTile[][] arr = new PieceTile[h][w];
 	    for (int i = 0; i < h; i++) {
 	        for (int j = 0; j < w; j++) {
-	            arr[i][j] = this.shapeGrid[h - i - 1][j];
+	        	//row and col of the tile [i][j] in the array to keep track of it position on the board
+	        	int row = -1;
+	        	int col = -1;
+	        	if(this.shapeGrid[i][j] != null){
+	        		row = this.shapeGrid[i][j].getRow();
+	        		col = this.shapeGrid[i][j].getCol(); 
+	        	}
+	        	//Tile to be placed in row i col j of the new shapeGrid
+	        	PieceTile tile = this.shapeGrid[h - i - 1][j];
+	        	
+	            arr[i][j] = tile; 
 	            //update the row and col of the piece
 	            if(arr[i][j] != null){
-		            arr[i][j].setRow(i);
-		            arr[i][j].setCol(j);
+		            arr[i][j].setRow(row);
+		            arr[i][j].setCol(col);
 	            }
 	        }
 	    }
@@ -156,11 +186,21 @@ public class Piece{
 		PieceTile[][] arr = new PieceTile[h][w];
 	    for (int i = 0; i < h; i++) {
 	        for (int j = 0; j < w; j++) {
-	            arr[i][j] = this.shapeGrid[i][w - j - 1];
+	        	//row and col of the tile [i][j] in the array to keep track of it position on the board
+	        	int row = -1;
+	        	int col = -1;
+	        	if(this.shapeGrid[i][j] != null){
+	        		row = this.shapeGrid[i][j].getRow();
+	        		col = this.shapeGrid[i][j].getCol(); 
+	        	}
+	        	//Tile to be placed in row i col j of the new shapeGrid
+	        	PieceTile tile = this.shapeGrid[i][w - j - 1]; 
+	        	
+	            arr[i][j] = tile;
 	            //update the row and col of the piece
 	            if(arr[i][j] != null){
-		            arr[i][j].setRow(i);
-		            arr[i][j].setCol(j);
+		            arr[i][j].setRow(row);
+		            arr[i][j].setCol(col);
 	            }
 	        }
 	    }
