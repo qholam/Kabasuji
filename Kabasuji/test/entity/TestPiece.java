@@ -96,7 +96,6 @@ public class TestPiece extends TestCase{
 	 * Test the method that flips a {@link Piece} vertically
 	 */
 	public void testVertical(){
-		//TODO
 		p.verticalFlip();
 		assertEquals(v, p);
 	}
@@ -105,7 +104,6 @@ public class TestPiece extends TestCase{
 	 * Test the method that flips a {@link Piece} horizontally
 	 */
 	public void testHorizontal(){
-		//TODO
 		p.horizontalFlip();
 		assertEquals(h, p);
 	}
