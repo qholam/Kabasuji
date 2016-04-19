@@ -5,7 +5,7 @@ import junit.framework.TestCase;
 public class TestPiece extends TestCase{
 	//Original piece
 	Piece p, p1;
-	//Original piece rotated clockwise
+	//Original piece rotated clockwise 
 	Piece cw;
 	//Original piece rotated counterclockwise
 	Piece ccw;
@@ -17,7 +17,7 @@ public class TestPiece extends TestCase{
 	public void setUp(){
 		p = new Piece();
 		p.addTile(new PieceTile(0,2));
-		p.addTile(new PieceTile(1,2));
+		p.addTile(new PieceTile(1,2)); 
 		p.addTile(new PieceTile(2,2));
 		p.addTile(new PieceTile(3,2));
 		p.addTile(new PieceTile(4,2));

@@ -9,8 +9,8 @@ package entity;
 public class Piece{
 	//grid of all the PieceTiles that this Piece is made of
 	PieceTile[][] shapeGrid;
-	//NOT SURE WHAT THIS IS
-	Tile origin;
+	//The (row, col) of the upper-left hand corner of the shapeGrid of the Piece on the board, if applicable
+	int rowPos, colPos;
 	
 	//parameters of class
 	private final int maxWidth = 6;
@@ -22,6 +22,9 @@ public class Piece{
 	public Piece(){
 		//create the grid of maxWidth and maxHeight
 		shapeGrid = new PieceTile[maxHeight][maxWidth];
+		//Piece initially not on a board;
+		rowPos = -1;
+		colPos = -1;
 		
 	}
 	
@@ -54,7 +57,7 @@ public class Piece{
 	 */
 	public void addTile(PieceTile p){
 		int row = p.getRow();
-		int col = p.getCol();
+		int col = p.getCol(); 
 		
 		this.shapeGrid[row][col] = p;
 	}

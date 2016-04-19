@@ -4,7 +4,7 @@ package entity;
  * Abstract class which defines the behaviors of a tile
  */
 public abstract class Tile {
-	//position of tile on the board, if applicable
+	//position of tile on the shape grid of a Piece, if applicable
 	int row, col;
 	
 	public Tile(int row,int col){

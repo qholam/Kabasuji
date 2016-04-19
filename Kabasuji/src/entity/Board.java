@@ -2,7 +2,7 @@ package entity;
 
 import java.util.ArrayList;
 
-public class Board {
+public class Board { 
 	
 	// All pieces on board
 	ArrayList<Piece> pieces;
