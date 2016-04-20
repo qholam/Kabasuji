@@ -1,7 +1,7 @@
 package entity;
 /**
  * @author Quoc HoLam
- * Abstract class which defines the behaviors of a tile
+ * Abstract class which defines the behaviors of a tile.
  */
 public abstract class Tile {
 	//Position of tile on the board, if applicable. A -1 indicates the the Tile is not on the board
@@ -13,8 +13,8 @@ public abstract class Tile {
 	}
 	
 	/**
-	 * Override of equals, sees if two tiles are equal
-	 * @return Boolean true if both pieces tiles are equal
+	 * Override of equals, sees if two tiles are equal.
+	 * @return Boolean true if both pieces tiles are equal.
 	 */
 	@Override
 	public boolean equals(Object obj){
@@ -36,20 +36,37 @@ public abstract class Tile {
 	
 	/**
 	 * Provides information on the type of the tile. 
-	 * To be overridden in subclasses
+	 * To be overridden in subclasses.
 	 * @return String
 	 */
 	public abstract String toString();
 	
+	/**
+	 * Get row position of tile on the board.
+	 * @return int Row position of tile on board. -1 is returned if the tile is currently not on the board.
+	 */
 	public int getRow() {
 		return row;
 	}
+	/**
+	 * Set the row of a tile.
+	 * @param row New row of tile.
+	 */
 	public void setRow(int row) {
 		this.row = row;
 	}
+	
+	/**
+	 * Get column position of tile on the board.
+	 * @return int Column position of tile on board. -1 is returned if the tile is currently not on the board.
+	 */
 	public int getCol() {
 		return col;
 	}
+	/**
+	 * Set the column of a tile.
+	 * @param row New column of tile.
+	 */
 	public void setCol(int col) {
 		this.col = col;
 	}

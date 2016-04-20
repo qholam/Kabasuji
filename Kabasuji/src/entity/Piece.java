@@ -1,8 +1,8 @@
 package entity;
 /**
- * Representation of a piece
- * Pieces consists of either PieceTile or nulls(indicating that there is no tile there)
- * NOTE: no testing has been done
+ * Representation of a piece.
+ * Pieces consists of either PieceTile or nulls(indicating that there is no tile there).
+ * NOTE: no testing has been done.
  * @author Quoc HoLam
  *
  */
@@ -17,7 +17,7 @@ public class Piece{
 	private final int maxHeight = 6;
 
 	/**
-	 * Default constructor to create a piece. To be used for method testing
+	 * Default constructor to create a piece. To be used for method testing.
 	 */
 	public Piece(){
 		//create the grid of maxWidth and maxHeight, intially empty
@@ -31,8 +31,8 @@ public class Piece{
 	
 	/**
 	 * Construct to create a piece, that allows for specification of piece shape.
-	 * @param arr 2-D boolean array to specify the desired shape of the piece
-	 * @throws Exception Throws exception if the dimensions of the 2d boolean array doesnt not match that of the piece's
+	 * @param arr 2-D boolean array to specify the desired shape of the piece.
+	 * @throws Exception Throws exception if the dimensions of the 2d boolean array doesnt not match that of the piece's.
 	 */
 	public Piece(boolean[][] arr) throws Exception{
 		//make sure the given 2d array has the same dimensions as a piece
@@ -52,18 +52,18 @@ public class Piece{
 	}
 	
 	/**
-	 * Add given {@link PieceTile} to the (row,col) specified by the {@link PieceTile}
-	 * @param PieceTile PieceTile to add
-	 * @param int row of shapeGrid to add {@link PieceTile} to
-	 * @param int col of shapeGrid to add {@link PieceTile} to
+	 * Add given {@link PieceTile} to the (row,col) specified by the {@link PieceTile}.
+	 * @param PieceTile PieceTile to add.
+	 * @param int row of shapeGrid to add {@link PieceTile} to.
+	 * @param int col of shapeGrid to add {@link PieceTile} to.
 	 */
 	public void addTile(PieceTile p, int row, int col){
 		this.shapeGrid[row][col] = p;
 	}
 	
 	/**
-	 * Method to check if a given 2-d boolean array will result in a valid piece
-	 * @param arr Given 2-d boolean array that specifies properties of a piece
+	 * Method to check if a given 2-d boolean array will result in a valid piece.
+	 * @param arr Given 2-d boolean array that specifies properties of a piece.
 	 */
 	public boolean isValid(boolean[][] arr){
 		boolean valid = true;
@@ -74,9 +74,8 @@ public class Piece{
 	}
 	
 	/**
-	 * Rotates a piece clockwise, a piece is mutated rather than having a new instance be made
-	 * @param PieceTile[][] array of {@link PieceTile}
-	 * @return PieceTile[][] returns the given array after rotating it clockwise
+	 * Rotates a piece clockwise, a piece is mutated rather than having a new instance be made.
+	 * @return PieceTile[][] returns the given array after rotating it clockwise.
 	 */
 	public void rotateClockwise(){
 		int w = this.shapeGrid.length;
@@ -109,9 +108,8 @@ public class Piece{
 	}
 	
 	/**
-	 * Rotates a piece counterclockwise, a piece is mutated rather than having a new instance be made
-	 * @param PieceTile[][] array of {@link PieceTile}
-	 * @return PieceTile[][] returns the given array after rotating it counterclockwise
+	 * Rotates a piece counterclockwise, a piece is mutated rather than having a new instance be made.
+	 * @return PieceTile[][] returns the given array after rotating it counterclockwise.
 	 */
 	public void rotateCounterclockwise(){
 		int w = this.maxWidth;
@@ -143,9 +141,8 @@ public class Piece{
 	}
 	
 	/**
-	 * Vertically flips an array
-	 * @param PieceTile[][] array of {@link PieceTile}
-	 * @return PieceTile[][] returns the given array after flipping it vertically
+	 * Vertically flips an array.
+	 * @return PieceTile[][] returns the given array after flipping it vertically.
 	 */
 	public void verticalFlip(){
 		int w = this.maxWidth;
@@ -176,9 +173,8 @@ public class Piece{
 	}
 	
 	/**
-	 * Horizontally flips an array
-	 * @param PieceTile[][] array of {@link PieceTile}
-	 * @return PieceTile[][] returns the given array after flipping it horizontally
+	 * Horizontally flips an array.
+	 * @return PieceTile[][] returns the given array after flipping it horizontally.
 	 */
 	public void horizontalFlip(){
 		int w = this.shapeGrid.length;
@@ -209,8 +205,8 @@ public class Piece{
 	}
 	
 	/**
-	 * Make a string representation of this Piece
-	 * @return String string representation of this piece
+	 * Make a string representation of this Piece.
+	 * @return String string representation of this piece.
 	 */
 	@Override
 	public String toString(){
@@ -231,9 +227,9 @@ public class Piece{
 	}
 	
 	/**
-	 * Override of equals, used to test the methods that mutate the piece
-	 * @param Piece Other Piece to compare this Piece to
-	 * @return Boolean true if both pieces are equal
+	 * Override of equals, used to test the methods that mutate the piece.
+	 * @param Piece Other Piece to compare this Piece to.
+	 * @return Boolean true if both pieces are equal.
 	 */
 	@Override
 	public boolean equals(Object obj){
@@ -263,6 +259,22 @@ public class Piece{
 		}
 		
 		return equals;
+	}
+	
+	/**
+	 * Update the row position of the upperleft hand corner of a piece relative to the board.
+	 * @param int New row.
+	 */
+	public void setRowPos(int n){
+		this.rowPos = n;
+	}
+	
+	/**
+	 * Update the col position of the upperleft hand corner of a piece relative to the board.
+	 * @param int New col.
+	 */
+	public void seColPos(int n){
+		this.colPos = n;
 	}
 	
 }

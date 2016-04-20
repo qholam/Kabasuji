@@ -6,9 +6,9 @@ package entity;
  */
 public class NoTile extends BoardTile{	
 	/**
-	 * Constructs a no tile on the board. This tile cannot have a piece cover it
-	 * @param row
-	 * @param col
+	 * Constructor to create NoTile with given specifications. 
+	 * @param row Row position of tile on board.
+	 * @param col Column position of tile on board.
 	 */
 	public NoTile(int row, int col) {
 		super(row, col);
