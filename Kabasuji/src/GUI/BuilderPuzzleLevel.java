@@ -31,7 +31,7 @@ public class BuilderPuzzleLevel extends JPanel {
 		board.setBounds(25, 400, 600, 300);
 		add(board);
 		
-		Bullpen bullPen = new Bullpen();
+		BullpenView bullPen = new BullpenView();
 		bullPen.setBounds(25, 25, 600, 300);
 		add(bullPen);
 		
