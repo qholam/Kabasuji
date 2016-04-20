@@ -3,12 +3,12 @@ package GUI;
 import javax.swing.JPanel;
 import java.awt.Color;
 
-public class Board extends JPanel {
+public class BoardPanel extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public Board() {
+	public BoardPanel() {
 		setBackground(Color.WHITE);
 		setLayout(null);
 		setBounds(0, 0, 600, 300);

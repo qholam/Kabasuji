@@ -21,14 +21,14 @@ public class SpecifyBoardPropertiesView extends JPanel {
 	private JTextField txtEnterWidthmax;
 	private JTextField txtEnterHeightmax;
 	KabasujiBuilderFrame kFrame;
-	Board board;
+	BoardPanel board;
 
 	/**
 	 * Create the panel.
 	 */
 	public SpecifyBoardPropertiesView(KabasujiBuilderFrame frame) {
 		kFrame = frame;
-		board = new Board();
+		board = new BoardPanel();
 		board.setLocation(0, 0);
 		
 		setBackground(Color.GRAY);

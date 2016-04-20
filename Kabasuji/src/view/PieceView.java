@@ -1,5 +1,9 @@
 package view;
 
-public class PieceView {
+import javax.swing.JPanel;
+
+public class PieceView extends JPanel {
+	public PieceView() {
+	}
 
 }
