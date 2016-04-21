@@ -12,6 +12,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+import entity.Bullpen;
+
 public class PuzzleLevelPanel extends JPanel {
 	
 	KabasujiFrame kFrame;
@@ -30,7 +32,7 @@ public class PuzzleLevelPanel extends JPanel {
 		board.setBounds(25, 400, 600, 300);
 		add(board);
 		
-		Bullpen bullPen = new Bullpen();
+		BullpenView bullPen = new BullpenView(new Bullpen());
 		bullPen.setBounds(25, 25, 600, 300);
 		add(bullPen);
 		

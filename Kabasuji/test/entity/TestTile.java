@@ -1,5 +1,7 @@
 package entity;
 
+import java.awt.Color;
+
 import junit.framework.TestCase;
 
 public class TestTile extends TestCase{
@@ -18,7 +20,7 @@ public class TestTile extends TestCase{
 		n2 = new NoTile(0,1);
 		p = new PieceTile(0,0);
 		l = new LightningTile(0,0);
-		r = new ReleaseTile(0,0, new Number(1, "Red"));
+		r = new ReleaseTile(0,0, new Number(1, Color.RED));
 	}
 	
 	/**

@@ -3,6 +3,7 @@ package view;
 import javax.swing.JPanel;
 
 import entity.Piece;
+import entity.PieceTile;
 
 public class PieceView extends JPanel {
 	//Piece that this view represents

@@ -11,6 +11,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import entity.Bullpen;
+
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
@@ -31,7 +34,7 @@ public class BuilderPuzzleLevel extends JPanel {
 		board.setBounds(25, 400, 600, 300);
 		add(board);
 		
-		BullpenView bullPen = new BullpenView();
+		BullpenView bullPen = new BullpenView(new Bullpen());
 		bullPen.setBounds(25, 25, 600, 300);
 		add(bullPen);
 		
