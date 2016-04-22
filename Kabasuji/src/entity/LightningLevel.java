@@ -30,8 +30,31 @@ public class LightningLevel extends Level{
 	 * @return boolean determining if the level has been won
 	 */
 	public boolean hasWon(){
-		return false;
+		int notCovered = 0;
+		int numRows = board.numRows;
+		int numColumns = board.numColumns;
 		
+		for (int r = 0; r < numRows; r++) {
+			for (int c = 0; c < numColumns; c++) {
+				if (!board.boardGrid[r][c].isCovered){
+					notCovered++;
+				}
+			}
+		}
+		
+		//If time is out and there are 12 or less not covered, game is won. 
+		if (timeRemaining == 0){
+			if (notCovered <= 12){
+				return true;
+			}
+		}
+		//There is time left, but all the tiles are covered.
+		if (timeRemaining > 0){
+			if (notCovered == 0){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	/** 

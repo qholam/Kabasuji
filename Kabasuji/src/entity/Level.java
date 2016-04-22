@@ -33,7 +33,7 @@ public class Level {
 	
 	/**
 	 * Checks whether or not the level is unlocked.
-	 * @return the isUnlocked
+	 * @return Boolean isUnlocked
 	 */
 	public boolean isUnlocked() {
 		return isUnlocked;
@@ -41,7 +41,7 @@ public class Level {
 
 	/**
 	 * Gets the board that this level is played on.
-	 * @return the board
+	 * @return Board the board
 	 */
 	public Board getBoard() {
 		return board;
@@ -57,7 +57,7 @@ public class Level {
 
 	/**
 	 * Gets the level number that this level is.
-	 * @return the levelNum
+	 * @return levelNum the the level number.
 	 */
 	public int getLevelNum() {
 		return levelNum;
