@@ -88,11 +88,18 @@ public class Bullpen {
 	}
 	
 	/**
-	 * Decrase quantity of given Piece(if it is in the Bullpen) by one
+	 * Decrease quantity of given Piece(if it is in the Bullpen) by one.
 	 * @param p Given piece to update quanitity for
 	 */
 	public void decreaseQuanity(Piece p){
 		if(piecesInfo.containsKey(p))
 			piecesInfo.put(p, piecesInfo.get(p) - 1);
+	}
+
+	/**
+	 * Checks the number of pieces left.
+	 */
+	public int getNumPieces(){
+		return piecesInfo.size();
 	}
 }

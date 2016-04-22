@@ -29,6 +29,17 @@ public class PuzzleLevel extends Level {
 	 * @return boolean determining if the level has been won
 	 */
 	public boolean hasWon(){
+		//if the bullpen is empty in puzzle level, then all pieces have been placed.
+		if (this.bullpen.getNumPieces() == 0){
+			return true;
+		}
+		//if no moves remaining, check how many pieces are left in bullpen. If 2 or less, conditions fulfilled to win puzzle level.
+		if (movesRemaining == 0){
+			if (this.bullpen.getNumPieces() <= 2){
+				return true;
+			}
+		}
+		//level has not been won
 		return false;
 		
 	}
