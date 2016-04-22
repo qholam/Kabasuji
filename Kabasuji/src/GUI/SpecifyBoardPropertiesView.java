@@ -6,6 +6,10 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
+
+import entity.Board;
+import entity.Level;
+
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
@@ -22,13 +26,14 @@ public class SpecifyBoardPropertiesView extends JPanel {
 	private JTextField txtEnterHeightmax;
 	KabasujiBuilderFrame kFrame;
 	BoardPanel board;
+	int width,height;
 
 	/**
 	 * Create the panel.
 	 */
 	public SpecifyBoardPropertiesView(KabasujiBuilderFrame frame) {
 		kFrame = frame;
-		board = new BoardPanel();
+		board = new BoardPanel(new Board(null, height, width));
 		board.setLocation(0, 0);
 		
 		setBackground(Color.GRAY);

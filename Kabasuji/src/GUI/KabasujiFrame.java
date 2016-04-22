@@ -6,6 +6,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import entity.Board;
+import entity.Bullpen;
+import entity.Level;
+import entity.LightningLevel;
+import entity.PuzzleLevel;
+
 import java.awt.CardLayout;
 
 public class KabasujiFrame extends JFrame {
@@ -50,7 +56,7 @@ public class KabasujiFrame extends JFrame {
 		mainMenu.setBounds(0, 0, 800, 800);
 		contentPane.add(mainMenu, MainMenu);
 		
-		PuzzleLevelPanel puzzle1 = new PuzzleLevelPanel(this);
+		LevelPanel puzzle1 = new LevelPanel(this,(Level) new PuzzleLevel(20, new Board(null, 10, 10), new Bullpen(), true, 1, 0));
 		mainMenu.setBounds(0, 0, 800, 800);
 		contentPane.add(puzzle1, Puzzle1);
 		

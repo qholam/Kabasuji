@@ -21,7 +21,7 @@ public class Bullpen {
 		pieces = new ArrayList<Piece>();
 		piecesInfo = new HashMap<Piece, Integer>();
 	}
-	
+
 	/**
 	 * Constructor to create a Bullpen filled with the given pieces.
 	 * @param p the pieces to add to the Bullpen
@@ -72,5 +72,27 @@ public class Bullpen {
 		if(!pieces.contains(selectedPiece))
 			this.selectedPiece = selectedPiece;
 	}
-
+	
+	/**
+	 * @return the pieces
+	 */
+	public ArrayList<Piece> getPieces() {
+		return pieces;
+	}
+	
+	/**
+	 * @return the piecesInfo
+	 */
+	public HashMap<Piece, Integer> getPiecesInfo() {
+		return piecesInfo;
+	}
+	
+	/**
+	 * Decrase quantity of given Piece(if it is in the Bullpen) by one
+	 * @param p Given piece to update quanitity for
+	 */
+	public void decreaseQuanity(Piece p){
+		if(piecesInfo.containsKey(p))
+			piecesInfo.put(p, piecesInfo.get(p) - 1);
+	}
 }

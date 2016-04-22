@@ -8,11 +8,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.CardLayout;
 
+import GUI.BullpenView;
 import GUI.KabasujiFrame;
 import GUI.LevelSelector;
 import GUI.MainMenuPanel;
-import GUI.PuzzleLevelPanel;
+import GUI.LevelPanel;
 import GUI.SplashScreen;
+import entity.Bullpen;
 import entity.Piece;
 import view.PieceView;
 

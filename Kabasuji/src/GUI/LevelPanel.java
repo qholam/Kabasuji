@@ -12,27 +12,33 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+import entity.Board;
 import entity.Bullpen;
+import entity.Level;
+import entity.LightningLevel;
+import entity.PuzzleLevel;
 
-public class PuzzleLevelPanel extends JPanel {
-	
+public class LevelPanel extends JPanel {
 	KabasujiFrame kFrame;
+	//the level that this panel represnets
+	Level level;
 
 	/**
 	 * Create the panel.
 	 */
-	public PuzzleLevelPanel(KabasujiFrame frame) {
+	public LevelPanel(KabasujiFrame frame, Level l) {
 		kFrame = frame;
+		level = l;
 		
 		setBackground(Color.GRAY);
 		setLayout(null);
 		setBounds(0, 0, 800, 800);
 		
-		BoardPanel board = new BoardPanel();
+		BoardPanel board = new BoardPanel(l.getBoard());
 		board.setBounds(25, 400, 600, 300);
 		add(board);
 		
-		BullpenView bullPen = new BullpenView(new Bullpen());
+		BullpenView bullPen = new BullpenView(l.getBullpen());
 		bullPen.setBounds(25, 25, 600, 300);
 		add(bullPen);
 		
@@ -44,7 +50,14 @@ public class PuzzleLevelPanel extends JPanel {
 		btnNewButton_1.setBounds(650, 600, 100, 100);
 		add(btnNewButton_1);
 		
-		JLabel lblNewLabel = new JLabel("MOVES: 0");
+		//Change here(condensed all level view into one)
+		JLabel lblNewLabel;
+		if(l instanceof PuzzleLevel)
+			lblNewLabel = new JLabel("MOVES LEFT: " + ((PuzzleLevel) l).getMovesRemaining());
+		else if( l instanceof LightningLevel)
+			lblNewLabel = new JLabel("Time Left: " + ((LightningLevel) l).getTimeRemaining());
+		else
+			lblNewLabel = new JLabel("Moves: 0");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 28));
 		lblNewLabel.setBounds(25, 336, 600, 57);

@@ -30,7 +30,7 @@ public class BuilderPuzzleLevel extends JPanel {
 		setLayout(null);
 		setBounds(0, 0, 1200, 800);
 		
-		BoardPanel board = new BoardPanel();
+		BoardPanel board = new BoardPanel(null);
 		board.setBounds(25, 400, 600, 300);
 		add(board);
 		

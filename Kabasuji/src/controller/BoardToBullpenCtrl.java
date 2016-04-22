@@ -10,7 +10,7 @@ import entity.Board;
 import entity.Bullpen;
 import entity.KabasujiGame;
 
-public class BaordToBullpenCtrl 
+public class BoardToBullpenCtrl 
 {
 	KabasujiGame theGame;
 	Board theBoard;

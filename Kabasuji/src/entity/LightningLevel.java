@@ -4,20 +4,20 @@ import move.IMove;
 
 public class LightningLevel extends Level{
 
-	int movesRemaining;
+	int timeRemaining;
 	
 	/**
-	 * constructor for a LightningLevel
-	 * @param movesRemaining
+	 * constructor for a puzzle level
+	 * @param timeRemaining
 	 * @param board
 	 * @param bullpen
 	 * @param isUnlocked
 	 * @param levelNum
 	 * @param stars
 	 */
-	public LightningLevel(int movesRemaining, Board board,Bullpen bullpen, boolean isUnlocked, int levelNum, int stars){
-		super(board, bullpen, isUnlocked, movesRemaining, movesRemaining);
-		this.movesRemaining = movesRemaining;
+	public LightningLevel(int timeRemaining, Board board,Bullpen bullpen, boolean isUnlocked, int levelNum, int stars){
+		super(board, bullpen, isUnlocked, stars, stars);
+		this.timeRemaining = timeRemaining;
 	}
 	
 	/**
@@ -34,7 +34,15 @@ public class LightningLevel extends Level{
 	 * @return boolean determining if the move was made
 	 */
 	public boolean doMove(IMove move){
+		
+		
 		return false;
 	}
-	
+
+	/**
+	 * @return timeRemaining
+	 */
+	public int getTimeRemaining(){
+		return this.timeRemaining;
+	}	
 }

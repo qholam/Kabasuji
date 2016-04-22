@@ -3,21 +3,20 @@ package entity;
 import move.IMove;
 
 public class PuzzleLevel extends Level {
-	
-	int timeRemaining;
+	int movesRemaining;
 	
 	/**
-	 * constructor for a puzzle level
-	 * @param timeRemaining
+	 * constructor for a LightningLevel
+	 * @param movesRemaining
 	 * @param board
 	 * @param bullpen
 	 * @param isUnlocked
 	 * @param levelNum
 	 * @param stars
 	 */
-	public PuzzleLevel(int timeRemaining, Board board,Bullpen bullpen, boolean isUnlocked, int levelNum, int stars){
-		super(board, bullpen, isUnlocked, stars, stars);
-		this.timeRemaining = timeRemaining;
+	public PuzzleLevel(int movesRemaining, Board board,Bullpen bullpen, boolean isUnlocked, int levelNum, int stars){
+		super(board, bullpen, isUnlocked, movesRemaining, movesRemaining);
+		this.movesRemaining = movesRemaining;
 	}
 	
 	/**
@@ -34,9 +33,13 @@ public class PuzzleLevel extends Level {
 	 * @return boolean determining if the move was made
 	 */
 	public boolean doMove(IMove move){
-		
-		
 		return false;
 	}
-
+	
+	/**
+	 * @return movesRemaining
+	 */
+	public int getMovesRemaining(){
+		return this.movesRemaining;
+	}
 }

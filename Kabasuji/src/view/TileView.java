@@ -29,12 +29,6 @@ public class TileView extends JPanel{
 		setLayout(null);
 		
 		tile = t;
-		
-		//check if tile is null(this only occurs when in a Piece)
-		if(tile == null)
-			setBackground(Color.WHITE);
-		else
-			setBackground(tile.getColor());
 	}
 	
 	/**

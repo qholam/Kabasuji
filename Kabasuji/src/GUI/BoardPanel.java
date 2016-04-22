@@ -1,14 +1,21 @@
 package GUI;
 
 import javax.swing.JPanel;
+
+import entity.Board;
+
 import java.awt.Color;
 
 public class BoardPanel extends JPanel {
-
+	//Board that this panel represents
+	Board board;
+	
 	/**
 	 * Create the panel.
 	 */
-	public BoardPanel() {
+	public BoardPanel(Board b) {
+		board = b;
+		
 		setBackground(Color.WHITE);
 		setLayout(null);
 		setBounds(0, 0, 600, 300);

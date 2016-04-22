@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 
@@ -31,5 +32,18 @@ public class PieceView extends JPanel {
 				add(tilesView[i][j]);
 			}
 		}	
+		
+		
 	}
+	
+	/**
+	 * Properly update the displayed info on this {@link Piece}
+	 */
+	@Override
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+
+		
+	}
+
 }

@@ -27,6 +27,41 @@ public class Level {
 	}
 	
 	/**
+	 * @return the isUnlocked
+	 */
+	public boolean isUnlocked() {
+		return isUnlocked;
+	}
+
+	/**
+	 * @return the board
+	 */
+	public Board getBoard() {
+		return board;
+	}
+
+	/**
+	 * @return the bullpen
+	 */
+	public Bullpen getBullpen() {
+		return bullpen;
+	}
+
+	/**
+	 * @return the levelNum
+	 */
+	public int getLevelNum() {
+		return levelNum;
+	}
+
+	/**
+	 * @return the stars
+	 */
+	public int getStars() {
+		return stars;
+	}
+
+	/**
 	 * 
 	 * @return boolean determining if the level has been won
 	 */
