@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 
@@ -24,7 +25,6 @@ public class PieceView extends JPanel {
 		Tile[][] g = p.getShapeGrid();
 		
 		setLayout(new GridLayout(p.getMaxHeight(), p.getMaxWidth(), 0, 0));
-		
 		tilesView = new TileView[p.getMaxHeight()][p.getMaxWidth()];
 		for(int i = 0; i < p.getMaxHeight(); i++){
 			for(int j = 0; j < p.getMaxWidth(); j++){

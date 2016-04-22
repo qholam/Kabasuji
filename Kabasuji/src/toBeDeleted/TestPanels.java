@@ -16,7 +16,9 @@ import GUI.LevelPanel;
 import GUI.SplashScreen;
 import entity.Bullpen;
 import entity.Piece;
+import entity.PieceTile;
 import view.PieceView;
+import view.TileView;
 
 /**
  * Was having issues viewing a JPanel with the built in windowbuilder(no logic such as for loops were being ran)
@@ -45,6 +47,15 @@ public class TestPanels extends JFrame{
 	 * Create the frame.
 	 */
 	public TestPanels() {
+		Piece p = new Piece();
+		p.addTile(new PieceTile(), 0, 2); 
+		p.addTile(new PieceTile(), 1, 2); 
+		p.addTile(new PieceTile(), 2, 2);
+		p.addTile(new PieceTile(), 3, 2);
+		p.addTile(new PieceTile(), 4, 2);
+		p.addTile(new PieceTile(), 3, 1);
+		p.addTile(new PieceTile(), 3, 3);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 800, 800);
 		contentPane = new JPanel();
@@ -53,7 +64,7 @@ public class TestPanels extends JFrame{
 		CardLayout cardLayout = new CardLayout(0, 0);
 		contentPane.setLayout(cardLayout);
 		
-		PieceView test = new PieceView(new Piece());
+		PieceView test = new PieceView(p);
 		contentPane.add(test, "test");
 		
 		

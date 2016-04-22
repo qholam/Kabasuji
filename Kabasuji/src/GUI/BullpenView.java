@@ -11,7 +11,9 @@ import controller.RotateCounterClockwiseCtrl;
 import controller.VerticalFlipCtrl;
 import entity.Bullpen;
 import entity.Piece;
+import entity.PieceTile;
 import view.PieceView;
+import view.TileView;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -28,9 +30,10 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.layout.FormSpecs;
 import java.awt.GridBagLayout;
+import java.awt.BorderLayout;
 
 public class BullpenView extends JPanel {
-	//bullpen that this view representes
+	//bullpen that this view represents
 	Bullpen bullpen;
 	//Views of a piece contained by this Bullpen
 	PieceView[] pieces;
