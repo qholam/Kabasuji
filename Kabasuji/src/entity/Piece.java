@@ -270,6 +270,20 @@ public class Piece{
 	}
 	
 	/**
+	 * @return the maxWidth
+	 */
+	public int getMaxWidth() {
+		return this.maxWidth;
+	}
+
+	/**
+	 * @return the maxHeight
+	 */
+	public int getMaxHeight() {
+		return this.maxHeight;
+	}
+
+	/**
 	 * Update the col position of the upperleft hand corner of a piece relative to the board.
 	 * @param int New col.
 	 */
@@ -277,4 +291,10 @@ public class Piece{
 		this.colPos = n;
 	}
 	
+	/**
+	 * @return the shapeGrid
+	 */
+	public PieceTile[][] getShapeGrid() {
+		return this.shapeGrid;
+	}
 }

@@ -8,9 +8,9 @@ package entity;
  *
  */
 public class TileType {
-	static final String lightningTile = "l";
-	static final String boardTile = "b";
-	static final String noTile = "n";
-	static final String releaseTile = "r";
-	static final String pieceTile = "p";
+	public static final String lightningTile = "l";
+	public static final String boardTile = "b";
+	public static final String noTile = "n";
+	public static final String releaseTile = "r";
+	public static final String pieceTile = "p";
 }

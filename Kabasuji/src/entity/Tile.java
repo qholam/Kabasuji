@@ -1,4 +1,7 @@
 package entity;
+
+import java.awt.Color;
+
 /**
  * @author Quoc HoLam
  * Abstract class which defines the behaviors of a tile.
@@ -69,5 +72,20 @@ public abstract class Tile {
 	 */
 	public void setCol(int col) {
 		this.col = col;
+	}
+	
+	/**
+	 * Get the background color of the tile based on the type of the tile
+	 */
+	public Color getColor(){
+		switch(this.toString()){
+		case TileType.noTile:
+			return Color.WHITE;
+		case TileType.pieceTile:
+			return Color.ORANGE;
+		default:
+			//default color for all board tiles(including lightning and release)
+			return Color.LIGHT_GRAY;
+		}
 	}
 }

@@ -1,19 +1,35 @@
 package view;
 
+import java.awt.Graphics;
+import java.awt.GridLayout;
+
 import javax.swing.JPanel;
 
 import entity.Piece;
 import entity.PieceTile;
+import entity.Tile;
+import javax.swing.JLabel;
 
 public class PieceView extends JPanel {
 	//Piece that this view represents
 	Piece piece;
+	//Tileviews contained by this pieceview
+	TileView[][] tilesView;
 	
 	public PieceView(Piece p) {
-		piece = p;
+		super();
 		
-		this.setSize(100, 100);
-		setLayout(null);
+		piece = p;
+		Tile[][] g = p.getShapeGrid();
+		
+		setLayout(new GridLayout(p.getMaxHeight(), p.getMaxWidth(), 0, 0));
+		
+		tilesView = new TileView[p.getMaxHeight()][p.getMaxWidth()];
+		for(int i = 0; i < p.getMaxHeight(); i++){
+			for(int j = 0; j < p.getMaxWidth(); j++){
+				tilesView[i][j] = new TileView(g[i][j]);
+				add(tilesView[i][j]);
+			}
+		}	
 	}
-
 }
