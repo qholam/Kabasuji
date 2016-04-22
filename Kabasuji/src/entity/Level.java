@@ -2,6 +2,11 @@ package entity;
 
 import move.IMove;
 
+/**
+ * Represents shared aspects of the different levels
+ * @author Calvin
+ *
+ */
 public class Level {
 	
 	boolean isUnlocked;
@@ -11,12 +16,12 @@ public class Level {
 	int stars;
 	
 	/**
-	 * constructor for creating a level
-	 * @param board
-	 * @param bullpen
-	 * @param isUnlocked
-	 * @param levelNum
-	 * @param stars
+	 * constructor for creating a level.
+	 * @param board The board on which the level is played on.
+	 * @param bullpen Bullpen where the piece tiles will come from.
+	 * @param isUnlocked Boolean that determines if the level is unlocked.
+	 * @param levelNum Int the level number that this is.
+	 * @param stars The number of stars that the player has earned on this level.
 	 */
 	public Level(Board board,Bullpen bullpen, boolean isUnlocked, int levelNum, int stars){
 		this.board = board;
@@ -27,6 +32,7 @@ public class Level {
 	}
 	
 	/**
+	 * Checks whether or not the level is unlocked.
 	 * @return the isUnlocked
 	 */
 	public boolean isUnlocked() {
@@ -34,6 +40,7 @@ public class Level {
 	}
 
 	/**
+	 * Gets the board that this level is played on.
 	 * @return the board
 	 */
 	public Board getBoard() {
@@ -41,6 +48,7 @@ public class Level {
 	}
 
 	/**
+	 * Gets the bullpen that this level is played on.
 	 * @return the bullpen
 	 */
 	public Bullpen getBullpen() {
@@ -48,6 +56,7 @@ public class Level {
 	}
 
 	/**
+	 * Gets the level number that this level is.
 	 * @return the levelNum
 	 */
 	public int getLevelNum() {
@@ -55,6 +64,7 @@ public class Level {
 	}
 
 	/**
+	 * Gets the number of stars that has been achieved.
 	 * @return the stars
 	 */
 	public int getStars() {
@@ -62,21 +72,18 @@ public class Level {
 	}
 
 	/**
-	 * 
+	 * Checks whether or not the level has been won.
 	 * @return boolean determining if the level has been won
 	 */
 	public boolean hasWon(){
 		return false;
-		
 	}
 	
 	/** 
-	 * 
+	 * Checks if move has been made.
 	 * @return boolean determining if the move was made
 	 */
 	public boolean doMove(IMove move){
-		
-		
 		return false;
 	}
 }
