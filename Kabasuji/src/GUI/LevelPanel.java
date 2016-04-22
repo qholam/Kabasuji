@@ -31,7 +31,7 @@ public class LevelPanel extends JPanel {
 		level = l;
 		
 		setBackground(Color.GRAY);
-		setLayout(null);
+		setLayout(null); 
 		setBounds(0, 0, 800, 800);
 		
 		BoardPanel board = new BoardPanel(l.getBoard());

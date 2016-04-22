@@ -22,7 +22,7 @@ public class PuzzleLevel extends Level {
 	public PuzzleLevel(int movesRemaining, Board board,Bullpen bullpen, boolean isUnlocked, int levelNum, int stars){
 		super(board, bullpen, isUnlocked, movesRemaining, movesRemaining);
 		this.movesRemaining = movesRemaining;
-	}
+	} 
 	
 	/**
 	 * Checks whether or not the level has been won.

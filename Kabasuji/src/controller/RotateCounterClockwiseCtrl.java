@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import GUI.BullpenView;
 import entity.Bullpen;
 import entity.Piece;
+import view.PieceView;
 
 public class RotateCounterClockwiseCtrl implements ActionListener{
 	BullpenView bpview;
@@ -15,21 +16,25 @@ public class RotateCounterClockwiseCtrl implements ActionListener{
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) { 
 		//Get the bullpen represented by the given bullpen view
 		Bullpen bp = bpview.getBullpen();
-				
-		//get the current selected piece in the bullpen
-		Piece p = bp.getSelectedPiece();
-				
+		
+		//get the current selected pieceview in the bullpen
+		PieceView pv = bpview.getSelected();
+		
 		//check if nothing is selected
-		if(p == null)
+		if(pv == null)
 			return;
-				
+		
+		//get the piece
+		Piece p = pv.getPiece();
+		
 		//rotate the seleced piece clockwise
 		p.rotateCounterclockwise();
-				
-		//TODO: update the bullpenview somehow	
+		
+		//repaint the piece view
+		pv.repaint();
 	}
 
 }

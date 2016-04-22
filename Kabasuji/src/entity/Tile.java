@@ -79,12 +79,11 @@ public abstract class Tile {
 	 */
 	public Color getColor(){
 		switch(this.toString()){
-		case TileType.noTile:
-			return Color.WHITE;
 		case TileType.pieceTile:
 			return Color.ORANGE;
 		default:
 			//default color for all board tiles(including lightning and release)
+			//NoTile is not visible so it does not matter what color it is
 			return Color.LIGHT_GRAY;
 		}
 	}

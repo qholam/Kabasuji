@@ -64,7 +64,7 @@ public class TestPanels extends JFrame{
 		CardLayout cardLayout = new CardLayout(0, 0);
 		contentPane.setLayout(cardLayout);
 		
-		PieceView test = new PieceView(p);
+		BullpenView test = new BullpenView(new Bullpen()); 
 		contentPane.add(test, "test");
 		
 		

@@ -45,4 +45,15 @@ public class TestTile extends TestCase{
 		//tiles are not equal if they have same type, but not same (row,col)
 		assertFalse(n1.equals(n2));
 	}
+	
+	/**
+	 * Test method to get the color of the subclasses of {@link Tile}
+	 */
+	public void testColor(){
+		assertEquals(b1.getColor(), Color.LIGHT_GRAY);
+		assertEquals(l.getColor(), Color.LIGHT_GRAY);
+		assertEquals(r.getColor(), Color.LIGHT_GRAY);
+		assertEquals(p.getColor(), Color.ORANGE);
+		assertEquals(n1.getColor(), Color.WHITE);
+	}
 }

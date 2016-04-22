@@ -14,7 +14,7 @@ public class Bullpen {
 	/**
 	 * Constructor to create an empty Bullpen.
 	 */
-	public Bullpen(){
+	public Bullpen(){ 
 		//initially no piece is selected
 		selectedPiece = null;
 		//no pieces are on the board

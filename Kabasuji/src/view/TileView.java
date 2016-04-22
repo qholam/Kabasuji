@@ -3,6 +3,7 @@ package view;
 import javax.swing.JPanel;
 
 import entity.BoardTile;
+import entity.NoTile;
 import entity.PieceTile;
 import entity.Tile;
 import entity.TileType;
@@ -24,8 +25,8 @@ public class TileView extends JPanel{
 	public TileView(Tile t){
 		super();
 		
-		//TODO set a proper size based on the grids of a board
-		setSize(100,100);
+		//TODO set a proper size based on the grids of a board 
+		setSize(100,100); 
 		setLayout(null);
 		
 		tile = t;
@@ -37,14 +38,21 @@ public class TileView extends JPanel{
 	@Override
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		
-		//check if tile is null(this only occurs when in a Piece)
-		if(tile == null)
-			setBackground(Color.WHITE);
-		else
-			setBackground(tile.getColor());
-	}
 
+		//check if tile is null or  a noTile, if so set it to not be visible(not implemented)
+		//NEEDS TO LOOK INTO
+		//the current color for notiles/null is black, there were issues with the call to repaint
+		//when the tiles were set to not be visible.
+		if(tile == null || tile.toString().equals(TileType.noTile))
+			setBackground(Color.BLACK);
+			//setVisible(false);
+		else{
+			//setVisible(true);
+			setBackground(tile.getColor());
+		}
+
+	}
+ 
 	/**
 	 * @return the tile
 	 */
