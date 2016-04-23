@@ -8,13 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import entity.Board;
-import entity.Level;
-
-import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import java.awt.Button;
-import java.awt.Label;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 /**
@@ -22,6 +18,10 @@ import java.awt.event.ActionEvent;
  * Gui for the designer to specify the shape and size of the board
  */
 public class SpecifyBoardPropertiesView extends JPanel {
+	/**
+	 * Auto-generate by Eclipse to suppress a warning
+	 */
+	private static final long serialVersionUID = 7244704783204845445L;
 	private JTextField txtEnterWidthmax;
 	private JTextField txtEnterHeightmax;
 	KabasujiBuilderFrame kFrame;

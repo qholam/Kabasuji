@@ -1,19 +1,23 @@
 package view;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
 import entity.Piece;
-import entity.PieceTile;
 import entity.Tile;
-import javax.swing.JLabel;
-
+/**
+ * View for a piece
+ * @author Quoc HoLam
+ *
+ */
 public class PieceView extends JPanel {
+	/**
+	 * Auto-generate by Eclipse to suppress a warning
+	 */
+	private static final long serialVersionUID = 7304415273821237640L;
+	
 	//Piece that this view represents
 	Piece piece;
 	//Tileviews contained by this pieceview
@@ -33,7 +37,7 @@ public class PieceView extends JPanel {
 				add(tilesView[i][j]);
 			}
 		}	 
-	}
+	} 
 	
 	/**
 	 * Properly update the displayed info on this {@link Piece}
@@ -42,7 +46,7 @@ public class PieceView extends JPanel {
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		Tile[][] grid = piece.getShapeGrid();
-
+		
 		for(int i = 0; i < tilesView.length; i++){
 			for(int j = 0; j < tilesView[i].length; j++){
 				tilesView[i][j].setTile(grid[i][j]);
@@ -59,5 +63,6 @@ public class PieceView extends JPanel {
 
 	public void setPiecce(Piece p){
 		piece = p;
+		repaint();
 	}
 }

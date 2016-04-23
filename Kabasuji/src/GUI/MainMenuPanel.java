@@ -8,14 +8,16 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
-import java.awt.CardLayout;
 
 public class MainMenuPanel extends JPanel 
 {
-	KabasujiFrame kFrame;
+	/**
+	 * Auto-generate by Eclipse to suppress a warning
+	 */
+	private static final long serialVersionUID = -7680580324316157014L;
+	KabasujiFrame kFrame; 
 
 	/**
 	 * Create the panel.

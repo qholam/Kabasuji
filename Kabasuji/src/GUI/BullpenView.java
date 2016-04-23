@@ -11,43 +11,28 @@ import controller.RotateClockwiseCtrl;
 import controller.RotateCounterClockwiseCtrl;
 import controller.VerticalFlipCtrl;
 import entity.Bullpen;
-import entity.KabasujiGame;
 import entity.Piece;
 import entity.PieceTile;
 import view.PieceView;
-import view.TileView;
-
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Dimension;
 
-import javax.swing.JLabel;
-import javax.swing.JScrollBar;
-import java.awt.Label;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.layout.FormSpecs;
-import java.awt.GridBagLayout;
-import java.awt.BorderLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 public class BullpenView extends JPanel {
+	/**
+	 * Auto-generate by Eclipse to suppress a warning
+	 */
+	private static final long serialVersionUID = -8191499983721942807L;
+	
 	//bullpen that this view represents
 	Bullpen bullpen;
 	//Views of a piece contained by this Bullpen
 	PieceView[] pieces;
 	//the current selected pieceview 
 	PieceView selected;
-	
+	Piece p;
 	public void setSelected(PieceView p){
 		selected = p;
 	}
@@ -71,9 +56,10 @@ public class BullpenView extends JPanel {
 		setBounds(0, 0, 600, 300);
 		setBackground(new Color(255, 165, 0));
 
-		JPanel scrollPanel = new JPanel(new GridLayout(1, 0, 10, 0));
+		JPanel scrollPanel = new JPanel();
 		
 		JScrollPane scrollPane = new JScrollPane(scrollPanel);
+		scrollPanel.setLayout(null);
 		
 		scrollPane.setBounds(10, 10, 580, 240);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -81,7 +67,13 @@ public class BullpenView extends JPanel {
 		
 		//USED TO TEST, will be removed
 		for(int i = 0; i < 3; i++){ 
-			Piece p = new Piece();
+			JPanel pieceContainer = new JPanel(new GridLayout(1,0));
+			pieceContainer.setBackground(Color.BLUE);
+			//not to sure on the math here, it just works
+			pieceContainer.setBounds(10 + i * 200, 10, 200, 200);
+			
+			
+			p = new Piece();
 			p.addTile(new PieceTile(), 0, 2); 
 			p.addTile(new PieceTile(), 1, 2); 
 			p.addTile(new PieceTile(), 2, 2);
@@ -91,7 +83,8 @@ public class BullpenView extends JPanel {
 			p.addTile(new PieceTile(), 3, 3);
 			pieces[i] = new PieceView(p);
 			pieces[i].addMouseListener(new PieceInBullpenCtrl(this, pieces[i]));
-            scrollPanel.add(pieces[i]);
+			pieceContainer.add(pieces[i]);
+            scrollPanel.add(pieceContainer);
             scrollPanel.setPreferredSize(new Dimension(240 * scrollPanel.getComponents().length, 0));  
 		}
 
@@ -116,6 +109,14 @@ public class BullpenView extends JPanel {
 		btnNewButton_3.addActionListener(new VerticalFlipCtrl(this));
 		panel.add(btnNewButton_3); 
 
+	}
+	
+	/**
+	 * Properly update the displayed info on this {@link Bullpen}
+	 */
+	@Override 
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
 	}
 	
 	/**

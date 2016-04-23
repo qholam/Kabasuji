@@ -4,10 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import GUI.BullpenView;
-import entity.Bullpen;
 import entity.Piece;
 import view.PieceView;
-
+/**
+ * Controller to handle the event that a piece is selected and asked to be flipped vertically in the bullpen
+ * @author Quoc HoLam
+ *
+ */
 public class VerticalFlipCtrl implements ActionListener{
 	BullpenView bpview;
 	
@@ -17,9 +20,6 @@ public class VerticalFlipCtrl implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) { 
-		//Get the bullpen represented by the given bullpen view
-		Bullpen bp = bpview.getBullpen();
-		
 		//get the current selected pieceview in the bullpen
 		PieceView pv = bpview.getSelected();
 		

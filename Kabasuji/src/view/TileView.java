@@ -2,19 +2,21 @@ package view;
 
 import javax.swing.JPanel;
 
-import entity.BoardTile;
-import entity.NoTile;
-import entity.PieceTile;
 import entity.Tile;
 import entity.TileType;
 
 import java.awt.Graphics;
-import java.awt.Color;
 /**
  * @author Quoc HoLam
  * View for Tiles
  */
+
 public class TileView extends JPanel{
+	/**
+	 * Auto-generate by Eclipse to suppress a warning
+	 */
+	private static final long serialVersionUID = 4176891530644715173L;
+	
 	//Tile that this view represents
 	Tile tile;
 
@@ -26,11 +28,11 @@ public class TileView extends JPanel{
 		super();
 		
 		//TODO set a proper size based on the grids of a board 
-		setSize(100,100); 
+		setSize(100,100);
 		setLayout(null);
 		
 		tile = t;
-	}
+	} 
 	
 	/**
 	 * Properly update the displayed info on this {@link Tile}
@@ -40,15 +42,16 @@ public class TileView extends JPanel{
 		super.paintComponent(g);
 
 		//check if tile is null or  a noTile, if so set it to not be visible(not implemented)
-		//NEEDS TO LOOK INTO
-		//the current color for notiles/null is black, there were issues with the call to repaint
+		//NEEDS TO LOOK INTO(get the setVisble function calls to work)
+		//the current color for notiles/null is the default color of a jpanel(technically invisble), there were issues with the call to repaint
 		//when the tiles were set to not be visible.
-		if(tile == null || tile.toString().equals(TileType.noTile))
-			setBackground(Color.BLACK);
+		if(tile == null || tile.toString().equals(TileType.noTile)){
+			setBackground(new JPanel().getBackground());
 			//setVisible(false);
+		}
 		else{
-			//setVisible(true);
 			setBackground(tile.getColor());
+			setVisible(true);
 		}
 
 	}

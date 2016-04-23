@@ -6,19 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.CardLayout;
-
 import GUI.BullpenView;
-import GUI.KabasujiFrame;
-import GUI.LevelSelector;
-import GUI.MainMenuPanel;
-import GUI.LevelPanel;
-import GUI.SplashScreen;
 import entity.Bullpen;
 import entity.Piece;
 import entity.PieceTile;
-import view.PieceView;
-import view.TileView;
 
 /**
  * Was having issues viewing a JPanel with the built in windowbuilder(no logic such as for loops were being ran)
@@ -28,6 +19,8 @@ import view.TileView;
  *
  */
 public class TestPanels extends JFrame{
+	private static final long serialVersionUID = 3385126210753078474L;
+	
 	private JPanel contentPane;
 	
 	public static void main(String[] args) {
@@ -68,6 +61,6 @@ public class TestPanels extends JFrame{
 		contentPane.add(test, "test");
 		
 		
-		cardLayout.show(contentPane, "test");
+		cardLayout.show(contentPane, "test"); 
 	}
 }

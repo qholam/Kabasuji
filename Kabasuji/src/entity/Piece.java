@@ -103,7 +103,7 @@ public class Piece{
 	            }
 	        }
 	    }
-		
+		 
 		this.shapeGrid = arr;
 	}
 	
