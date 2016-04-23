@@ -3,6 +3,10 @@ package GUI;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
+
 import javax.swing.ScrollPaneConstants;
 
 import controller.HorizontalFlipCtrl;
@@ -21,6 +25,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 
 public class BullpenView extends JPanel {
+	int x,y;
 	/**
 	 * Auto-generate by Eclipse to suppress a warning
 	 */
@@ -33,6 +38,9 @@ public class BullpenView extends JPanel {
 	//the current selected pieceview 
 	PieceView selected;
 	Piece p;
+	public PieceView[] getPieces(){
+		return pieces;
+	}
 	public void setSelected(PieceView p){
 		selected = p;
 	}
@@ -51,7 +59,6 @@ public class BullpenView extends JPanel {
 		//ArrayList<Piece> p = b.getPieces();
 		//possibly need to know the quantity of each piece left
 		//HashMap<Piece, Integer> pleft = b.getPiecesInfo();
-		
 		setLayout(null);
 		setBounds(0, 0, 600, 300);
 		setBackground(new Color(255, 165, 0));
@@ -67,8 +74,7 @@ public class BullpenView extends JPanel {
 		
 		//USED TO TEST, will be removed
 		for(int i = 0; i < 3; i++){ 
-			JPanel pieceContainer = new JPanel(new GridLayout(1,0));
-			pieceContainer.setBackground(Color.BLUE);
+			final JPanel pieceContainer = new JPanel(new GridLayout(1,0));
 			//not to sure on the math here, it just works
 			pieceContainer.setBounds(10 + i * 200, 10, 200, 200);
 			
@@ -110,6 +116,8 @@ public class BullpenView extends JPanel {
 		panel.add(btnNewButton_3); 
 
 	}
+	
+	
 	
 	/**
 	 * Properly update the displayed info on this {@link Bullpen}

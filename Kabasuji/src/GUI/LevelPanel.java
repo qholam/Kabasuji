@@ -7,6 +7,9 @@ import java.awt.GridLayout;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -17,8 +20,10 @@ import entity.Bullpen;
 import entity.Level;
 import entity.LightningLevel;
 import entity.PuzzleLevel;
+import view.PieceView;
 
 public class LevelPanel extends JPanel {
+	int x,y;
 	KabasujiFrame kFrame;
 	//the level that this panel represnets
 	Level level;
@@ -88,6 +93,5 @@ public class LevelPanel extends JPanel {
 		JLabel lblNewLabel_3 = new JLabel("STAR");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel_3);
-
 	}
 }

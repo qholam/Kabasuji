@@ -10,6 +10,7 @@ import GUI.BullpenView;
 import entity.Bullpen;
 import entity.Piece;
 import entity.PieceTile;
+import view.PieceView;
 
 /**
  * Was having issues viewing a JPanel with the built in windowbuilder(no logic such as for loops were being ran)
@@ -57,7 +58,7 @@ public class TestPanels extends JFrame{
 		CardLayout cardLayout = new CardLayout(0, 0);
 		contentPane.setLayout(cardLayout);
 		
-		BullpenView test = new BullpenView(new Bullpen()); 
+		PieceView test = new PieceView(p); 
 		contentPane.add(test, "test");
 		
 		

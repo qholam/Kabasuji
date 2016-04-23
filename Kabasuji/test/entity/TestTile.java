@@ -54,6 +54,5 @@ public class TestTile extends TestCase{
 		assertEquals(l.getColor(), Color.LIGHT_GRAY);
 		assertEquals(r.getColor(), Color.LIGHT_GRAY);
 		assertEquals(p.getColor(), Color.ORANGE);
-		assertEquals(n1.getColor(), Color.WHITE);
 	}
 }
