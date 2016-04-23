@@ -1,5 +1,6 @@
 package move;
 
-public class BullpenToLightningBoardMove {
+public class BullpenToLightningBoardMove 
+{
 
 }

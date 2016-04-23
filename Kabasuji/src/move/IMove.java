@@ -1,9 +1,11 @@
 package move;
 
+import entity.KabasujiGame;
+
 public interface IMove {
 	
-	public boolean doMove();
-	public boolean isValid();
 	public boolean undo();
+	boolean doMove();
+	boolean isValid();
 
 }

@@ -1,5 +1,6 @@
 package move;
 
-public class BoardToBullpenMove {
+public class BoardToBullpenMove 
+{
 
 }
