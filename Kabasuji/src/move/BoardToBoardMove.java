@@ -30,6 +30,7 @@ public class BoardToBoardMove implements IMove
 	{
 		this.board = board;
 		this.pieceBeingDragged = pieceBeingDragged;
+		this.level = level;
 	}
 
 	/**
