@@ -8,7 +8,7 @@ import move.IMove;
  *
  */
 public class PuzzleLevel extends Level {
-	int movesRemaining;
+	private int movesRemaining;
 	
 	/**
 	 * constructor for a LightningLevel
@@ -19,7 +19,7 @@ public class PuzzleLevel extends Level {
 	 * @param levelNum Int the level number that this is.
 	 * @param stars The number of stars that the player has earned on this level.
 	 */
-	public PuzzleLevel(int movesRemaining, Board board,Bullpen bullpen, boolean isUnlocked, int levelNum, int stars){
+	public PuzzleLevel(int movesRemaining, Board board, Bullpen bullpen, boolean isUnlocked, int levelNum, int stars){
 		super(board, bullpen, isUnlocked, movesRemaining, movesRemaining);
 		this.movesRemaining = movesRemaining;
 	} 
@@ -49,7 +49,12 @@ public class PuzzleLevel extends Level {
 	 * @return boolean determining if the move was made
 	 */
 	public boolean doMove(IMove move){
-		return move.doMove();
+		boolean valid = false;
+		if (move.doMove()){
+			movesRemaining = movesRemaining - 1;
+			valid = true;
+		}
+		return valid;
 	}
 	
 	/**

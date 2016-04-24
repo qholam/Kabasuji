@@ -8,7 +8,7 @@ public class Number {
 	Color color;
 	
 	//parameters for this class
-	private final int maxNumber = 6;
+	private final int maxNumber = 6; 
 	private final int minNumber = 1;
 	/**
 	 * 
@@ -27,5 +27,21 @@ public class Number {
 		
 		number = n;
 		color = c;
+	}
+	
+	/**
+	 * Gets the number associated with the tile.
+	 * @return int the number associated with the tile.
+	 */
+	public int getNum(){
+		return this.number;
+	}
+	
+	/** 
+	 * Gets the color associated with the tile.
+	 * @return Color Gets the color associated with the tile.
+	 */
+	public Color getColor(){
+		return this.color;
 	}
 }

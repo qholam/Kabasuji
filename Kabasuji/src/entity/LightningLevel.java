@@ -8,8 +8,7 @@ import move.IMove;
  *
  */
 public class LightningLevel extends Level{
-
-	int timeRemaining;
+	private int timeRemaining;
 	
 	/**
 	 * constructor for a puzzle level
@@ -62,7 +61,11 @@ public class LightningLevel extends Level{
 	 * @return boolean determining if the move was made
 	 */
 	public boolean doMove(IMove move){
-		return move.doMove();
+		boolean valid = false;
+		if (move.doMove()){
+			valid = true;
+		}
+		return valid;
 	}
 
 	/**

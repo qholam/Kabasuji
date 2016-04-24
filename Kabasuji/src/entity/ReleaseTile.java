@@ -4,7 +4,7 @@ package entity;
  * @author Quoc HoLam
  *
  */
-public class ReleaseTile extends Tile{
+public class ReleaseTile extends BoardTile{
 	Number num;
 	/**
 	 * Constructor to create ReleaseTile with given specifications. 
@@ -21,6 +21,14 @@ public class ReleaseTile extends Tile{
 	@Override
 	public String toString() {
 		return TileType.releaseTile;
+	}
+	
+	/**
+	 * Gets the Number of the release tile.
+	 * @return Number the number of this tile.
+	 */
+	public Number getNumber(){
+		return this.num;
 	}
 
 }

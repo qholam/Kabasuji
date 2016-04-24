@@ -12,7 +12,7 @@ public class TestPiece extends TestCase{
 	//Original piece flipped vertically
 	Piece v;
 	//Original piece flipped horizontally
-	Piece h;
+	Piece h; 
 	
 	public void setUp(){
 		p = new Piece();
