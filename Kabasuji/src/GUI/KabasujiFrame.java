@@ -23,7 +23,7 @@ public class KabasujiFrame extends JFrame {
 	final String LevelSelect = "LevelSelect";
 
 	private JPanel contentPane;
-
+	PieceContainer container;
 	/**
 	 * Launch the application.
 	 */
@@ -44,6 +44,8 @@ public class KabasujiFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public KabasujiFrame() {
+		container = new PieceContainer();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 800, 800);
 		contentPane = new JPanel();
@@ -85,5 +87,8 @@ public class KabasujiFrame extends JFrame {
 	public CardLayout getCardLayout() {
 		return (CardLayout)contentPane.getLayout();
 	}
-
+	
+	public PieceContainer getPieceContainer(){
+		return container;
+	}
 }

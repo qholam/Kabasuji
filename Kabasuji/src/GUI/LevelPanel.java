@@ -21,6 +21,8 @@ import entity.Board;
 import entity.Bullpen;
 import entity.Level;
 import entity.LightningLevel;
+import entity.Piece;
+import entity.PieceTile;
 import entity.PuzzleLevel;
 import entity.ReleaseLevel;
 import view.PieceView;
@@ -36,11 +38,27 @@ public class LevelPanel extends JPanel{
 	JLabel infoLabel;
 	BullpenView bullpen;
 	BoardPanel board;
-
+	
+	PieceContainer container;
+Piece p;
+PieceView pv;
 	/**
 	 * Create the panel.
 	 */
 	public LevelPanel(KabasujiFrame frame, Level l) {
+		p = new Piece();
+		p.addTile(new PieceTile(), 0, 2); 
+		p.addTile(new PieceTile(), 1, 2); 
+		p.addTile(new PieceTile(), 2, 2);
+		p.addTile(new PieceTile(), 3, 2);
+		p.addTile(new PieceTile(), 4, 2);
+		p.addTile(new PieceTile(), 3, 1);
+		p.addTile(new PieceTile(), 3, 3);
+		pv = new PieceView(p);
+		pv.setBounds(0, 0, 100, 100);
+		pv.setVisible(false);
+		add(pv);
+		container = frame.getPieceContainer();
 		kFrame = frame;
 		level = l;
 		
@@ -133,27 +151,33 @@ public class LevelPanel extends JPanel{
 	
 	int x,y;
 	public void handleDrag(final JPanel panel, LevelPanel l){
+		
+		
 	    panel.addMouseListener(new MouseAdapter() {
 	    	int xx,yy;
 	    	
 	        @Override
 	        public void mousePressed(MouseEvent me) {
-	        	xx = panel.getX();
-	        	yy = panel.getY();
+	        	xx = pv.getX();
+	        	yy = pv.getY();
 	             x = me.getX();
 	             y = me.getY();
+	             pv.setVisible(true);
 	        }
 	        
 	        @Override
 	        public void mouseReleased(MouseEvent me){
 	        	 panel.setLocation(xx, yy);
+	        	 pv.setVisible(false);
 	        }
 	    });
 	    panel.addMouseMotionListener(new MouseMotionAdapter() {
 	        @Override
 	        public void mouseDragged(MouseEvent me) {
-	            me.translatePoint(me.getComponent().getLocation().x-x, me.getComponent().getLocation().y-y);
-	            panel.setLocation(me.getX(), me.getY());
+	        	if(pv.isVisible()){
+	            //me.translatePoint(me.getComponent().getLocation().x-x, me.getComponent().getLocation().y-y);
+	            pv.setLocation(me.getX(), me.getY());
+	        	}
 	        }
 	    });
 	}
