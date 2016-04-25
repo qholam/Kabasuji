@@ -37,8 +37,6 @@ public class PieceContainer extends JPanel{
 	
 	public void setAnchortile(TileView t){
 		anchorTile = t;
-		int r = ((PieceTile) t.getTile()).getPieceGridRow();
-		int c = ((PieceTile) t.getTile()).getPieceGridCol();
 	}
 	
 	public TileView getAnchorTile(){

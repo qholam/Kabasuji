@@ -11,6 +11,7 @@ public class Piece{
 	//grid of all the PieceTiles that this Piece is made of
 	PieceTile[][] pieceGrid;
 	//The (row, col) of the upper-left hand corner of the pieceGrid of the Piece on the board, if applicable
+	//this may be helpful when adding a piece to the board through a drag
 	int rowPos, colPos;
 	
 	//parameters of class
