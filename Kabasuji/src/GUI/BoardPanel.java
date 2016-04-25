@@ -42,6 +42,7 @@ public class BoardPanel extends JPanel {
 				panel.add(new TileView(b.getGrid()[r][c]));
 			}
 		}
+		setOpaque(true);
 		
 	}
 }

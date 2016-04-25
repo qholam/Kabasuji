@@ -16,6 +16,7 @@ import GUI.LevelPanel;
 import GUI.PieceContainer;
 import entity.Bullpen;
 import entity.Piece;
+import entity.PieceTile;
 import entity.Tile;
 import entity.TileType;
 import view.PieceView;
@@ -107,11 +108,22 @@ public class DragCtrl {
 	        public void mouseDragged(MouseEvent me) {
 	        	//check if container is currently being used
 	        	if(container.isVisible()){
+	        		tv = container.getAnchorTile();
+	        		
 	        		//get the position on the mouse on the level panel
 	        		Point point = l.getMousePosition();
 	        		
-	        		//crazy math but it works, this center the mouse on top of the anchoring piece while being dragged
-		        	point.translate(-(tv.getX()/2 + tv.getHeight()/4), -(tv.getY()/2 + tv.getWidth()/4));
+	        		//Some crazy math to calculate the offest, but it works.
+	        		//width of a tile in the container
+	        		int cw = container.getWidth()/6;
+	        		//height of a tile in the container
+	        		int ch = container.getHeight()/6;
+	        		//calculate offset to have mouse hoover over the anchor tile
+	        		int dx = cw * ((PieceTile) tv.getTile()).getPieceGridCol() + cw/2;
+	        		int dy = ch * ((PieceTile) tv.getTile()).getPieceGridRow() + ch/2;
+	        		
+	        		//account for the offest and set the point
+	        		point.translate(-dx, -dy);
 		            container.setLocation(point);
 	        	}
 	        }

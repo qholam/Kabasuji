@@ -32,7 +32,7 @@ public class TileView extends JPanel{
 		super();
 		
 		//TODO set a proper size based on the grids of a board 
-		setSize(100,100);
+		setSize(40,23);
 		setLayout(null);
 		
 		tile = t;
