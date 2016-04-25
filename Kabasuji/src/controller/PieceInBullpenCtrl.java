@@ -42,7 +42,6 @@ public class PieceInBullpenCtrl implements MouseListener, MouseMotionListener{
 				return;
 			}
 			else{
-				System.out.println(t.toString());
 				bv.setSelected(pv);
 			}
 		}

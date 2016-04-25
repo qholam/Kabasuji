@@ -7,7 +7,9 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 
 import entity.Piece;
+import entity.PieceTile;
 import view.PieceView;
+import view.TileView;
 
 /**
  * A container for dragged pieces
@@ -17,6 +19,8 @@ import view.PieceView;
 public class PieceContainer extends JPanel{
 	//The piece being dragged, if applicable
 	PieceView draggedPiece;
+	//the tile that the mouse is hovering over during a drag
+	TileView anchorTile;
 	
 	public PieceContainer() {
 		super();
@@ -29,6 +33,16 @@ public class PieceContainer extends JPanel{
 	
 	public void setDraggingPiece(Piece p){
 		draggedPiece.setPiece(p);
+	}
+	
+	public void setAnchortile(TileView t){
+		anchorTile = t;
+		int r = ((PieceTile) t.getTile()).getPieceGridRow();
+		int c = ((PieceTile) t.getTile()).getPieceGridCol();
+	}
+	
+	public TileView getAnchorTile(){
+		return anchorTile;
 	}
 	
 	public PieceView getPieceView(){

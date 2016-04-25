@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -27,7 +29,10 @@ import entity.Piece;
 import entity.PieceTile;
 import entity.PuzzleLevel;
 import entity.ReleaseLevel;
+import entity.Tile;
+import entity.TileType;
 import view.PieceView;
+import view.TileView;
 
 public class LevelPanel extends JPanel{
 	KabasujiFrame kFrame;
@@ -66,6 +71,7 @@ public class LevelPanel extends JPanel{
 		
 		bullpen = new BullpenView(l.getBullpen());
 		bullpen.setBounds(25, 25, 600, 300);
+		//add adapter to each piece in bullpen to handle a drag within the level panel
 		for(int i = 0; i < bullpen.getBullpen().getPieces().size(); i++){
 			this.handleDrag(bullpen.getPieceViews().get(i), this);
 		}
@@ -140,9 +146,16 @@ public class LevelPanel extends JPanel{
 	}
 	
 	/**
-	 * Handles the event when a piece is being dragged
+	 * Handles the event when a piece is being dragged.
+	 * For some reason if these mouse adapters are added any where
+	 * but this class, it will not work. 
+	 * As of now this method assumes that the given JPanel is a PiceView.
 	 * @param panel Given panel to handle a drag event for
+	 * @param l The given LevelPanel for which the drag will take place in
 	 */
+	TileView tv;
+	Tile t;
+	Point point;
 	public void handleDrag(final JPanel panel, final LevelPanel l){
 		//TODO add some sort of anchoring point to make the drag more visually appealing 
 	    panel.addMouseListener(new MouseAdapter() {	    	
@@ -151,13 +164,20 @@ public class LevelPanel extends JPanel{
 	        @Override
 	        public void mousePressed(MouseEvent me) {
 		    	Piece p = pv.getPiece();
-	        	
-	        	container.setDraggingPiece(p);
-	        	container.repaint();
-	        	Point point = l.getMousePosition();
-	        	point.translate(-container.getHeight()/2, -container.getWidth()/2);
-	            container.setLocation(point);
-	            container.setVisible(true);
+	        	Component c = pv.getComponentAt(me.getPoint());
+	        	if(c instanceof TileView){
+	        		tv = (TileView) c;
+	        		t = tv.getTile();
+	        		
+	        		//ensures that drag is only initiated when player click on piece and not its container
+	        		if(t != null && !t.toString().equals(TileType.noTile)){
+	        			container.setAnchortile(tv); 
+	        			point = tv.getLocation();
+	        			container.setDraggingPiece(p);
+	    	            container.setLocation(point);
+	    	            container.setVisible(true);
+	        		}
+	        	}
 	        }
 	        
 	        @Override
@@ -171,15 +191,12 @@ public class LevelPanel extends JPanel{
 	        public void mouseDragged(MouseEvent me) {
 	        	if(container.isVisible()){
 	        		Point point = l.getMousePosition();
-		        	point.translate(-container.getHeight()/2, -container.getWidth()/2);
+	        		//crazy math but it works
+		        	point.translate(-(tv.getX()/2 + tv.getHeight()/4), -(tv.getY()/2 + tv.getWidth()/4));
 		            container.setLocation(point);
 	        	}
 	        }
 	    });
-	}
-	
-	public PieceContainer getPieceContainer(){
-		return container;
 	}
 }
 

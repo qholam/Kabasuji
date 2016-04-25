@@ -5,12 +5,18 @@ package entity;
  *
  */
 public class PieceTile extends Tile {
+	//used to track a a piece tiles position within its piece grid container.
+	int rowInPieceContainer, colInPieceContainer;
+	
 	/**
 	 * Default constructor to create a piece tile that is initially not on the board.
 	 */
 	public PieceTile(){
 		//PieceTile initially not on the board
 		super(-1,-1);
+		
+		rowInPieceContainer = -1;
+		colInPieceContainer = -1;
 	}
 	
 	/**
@@ -20,6 +26,25 @@ public class PieceTile extends Tile {
 	 */
 	public PieceTile(int row, int col){
 		super(row,col);
+		
+		rowInPieceContainer = -1;
+		colInPieceContainer = -1;
+	}
+
+	public void setPieceGridRow(int r){
+		rowInPieceContainer = r;
+	}
+	
+	public void setPieceGridCol(int c){
+		colInPieceContainer = c;
+	}
+	
+	public int getPieceGridRow(){
+		return rowInPieceContainer;
+	}
+	
+	public int getPieceGridCol(){
+		return colInPieceContainer;
 	}
 
 	@Override

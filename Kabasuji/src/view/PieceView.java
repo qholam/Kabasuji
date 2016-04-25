@@ -27,7 +27,7 @@ public class PieceView extends JPanel {
 		super();
 		
 		piece = p;
-		Tile[][] g = p.getShapeGrid(); 
+		Tile[][] g = p.getpieceGrid(); 
 		
 		setLayout(new GridLayout(p.getMaxHeight(), p.getMaxWidth(), 0, 0));
 		tilesView = new TileView[p.getMaxHeight()][p.getMaxWidth()];
@@ -45,7 +45,7 @@ public class PieceView extends JPanel {
 	@Override 
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		Tile[][] grid = piece.getShapeGrid();
+		Tile[][] grid = piece.getpieceGrid();
 		
 		for(int i = 0; i < tilesView.length; i++){
 			for(int j = 0; j < tilesView[i].length; j++){
