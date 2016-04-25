@@ -49,11 +49,16 @@ public class TileView extends JPanel{
 		//NEEDS TO LOOK INTO(get the setVisble function calls to work)
 		//the current color for notiles/null is the default color of a jpanel(technically invisble), there were issues with the call to repaint
 		//when the tiles were set to not be visible.
-		if(tile == null || tile.toString().equals(TileType.noTile)){
+		if(tile == null){
 			setBackground(new JPanel().getBackground());
 			setBorder(new LineBorder(new Color(0, 0, 0), 0));
 			setOpaque(false);
 			//setVisible(false);
+		}
+		else if (tile.toString().equals(TileType.noTile)) {
+			setBackground(new JPanel().getBackground());
+			setBorder(new LineBorder(new Color(0, 0, 0), 1));
+			setOpaque(true);
 		}
 		else{
 			setBackground(tile.getColor());

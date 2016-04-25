@@ -33,6 +33,30 @@ public class Board {
 		}
 	}
 	
+	/** Getter for number of rows in this board.
+	 * 
+	 * @return The number of rows in this board.
+	 */
+	public int getNumRows() {
+		return numRows;
+	}
+	
+	/** Getter for number of columns in this board.
+	 * 
+	 * @return The number of columns in this board.
+	 */
+	public int getNumColumns() {
+		return numColumns;
+	}
+	
+	/** Getter for the board grid used in this board.
+	 * 
+	 * @return The board grid of tiles used in this board.
+	 */
+	public BoardTile[][] getGrid() {
+		return boardGrid;
+	}
+	
 	/** Adds a piece to the board ... ?
 	 * @param p The piece to add to the board
 	 */
