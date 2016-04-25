@@ -1,4 +1,5 @@
 package entity;
+
 /**
  * Representation of a piece.
  * Pieces consists of either PieceTile or nulls(indicating that there is no tile there).
@@ -22,7 +23,7 @@ public class Piece{
 	public Piece(){
 		//create the grid of maxWidth and maxHeight, intially empty
 		shapeGrid = new PieceTile[maxHeight][maxWidth];
-
+		
 		//Piece initially not on a board;
 		rowPos = -1;
 		colPos = -1;

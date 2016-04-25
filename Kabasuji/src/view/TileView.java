@@ -6,6 +6,10 @@ import entity.Tile;
 import entity.TileType;
 
 import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 /**
  * @author Quoc HoLam
  * View for Tiles
@@ -47,10 +51,12 @@ public class TileView extends JPanel{
 		//when the tiles were set to not be visible.
 		if(tile == null || tile.toString().equals(TileType.noTile)){
 			setBackground(new JPanel().getBackground());
+			setBorder(new LineBorder(new Color(0, 0, 0), 0));
 			//setVisible(false);
 		}
 		else{
 			setBackground(tile.getColor());
+			setBorder(new LineBorder(new Color(0, 0, 0), 1));
 			setVisible(true);
 		}
 

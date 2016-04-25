@@ -3,6 +3,9 @@ package entity;
 import move.IMove;
 
 public class ReleaseLevel extends Level {
+	//number of moves done
+	int numMoves;
+	
 	/**
 	 * constructor for creating a Releaselevel
 	 * @param board
@@ -13,6 +16,7 @@ public class ReleaseLevel extends Level {
 	 */
 	public ReleaseLevel(Board board,Bullpen bullpen, boolean isUnlocked, int levelNum, int stars){
 		super(board, bullpen, isUnlocked, stars, stars);
+		numMoves = 0;
 	}
 	
 	/**
@@ -30,5 +34,13 @@ public class ReleaseLevel extends Level {
 	 */
 	public boolean doMove(IMove move){
 		return false;
+	}
+	
+	/**
+	 * get the number of moves
+	 * @return int The number of moves
+	 */
+	public int getNumMoves(){
+		return numMoves;
 	}
 }

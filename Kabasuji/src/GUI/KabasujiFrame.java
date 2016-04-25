@@ -10,6 +10,8 @@ import entity.Board;
 import entity.Bullpen;
 import entity.Level;
 import entity.LightningLevel;
+import entity.Piece;
+import entity.PieceTile;
 import entity.PuzzleLevel;
 
 import java.awt.CardLayout;
@@ -56,7 +58,20 @@ public class KabasujiFrame extends JFrame {
 		mainMenu.setBounds(0, 0, 800, 800);
 		contentPane.add(mainMenu, MainMenu);
 		
-		LevelPanel puzzle1 = new LevelPanel(this,(Level) new PuzzleLevel(20, new Board(null, 10, 10), new Bullpen(), true, 1, 0));
+		//to be remove this bullpen ws made for testing
+		Bullpen b = new Bullpen();
+		for(int i = 0; i < 6; i++){
+			Piece p = new Piece();
+			p.addTile(new PieceTile(), 0, 2); 
+			p.addTile(new PieceTile(), 1, 2); 
+			p.addTile(new PieceTile(), 2, 2);
+			p.addTile(new PieceTile(), 3, 2);
+			p.addTile(new PieceTile(), 4, 2);
+			p.addTile(new PieceTile(), 3, 1);
+			p.addTile(new PieceTile(), 3, 3);
+			b.addPiece(p);
+		}
+		LevelPanel puzzle1 = new LevelPanel(this,(Level) new PuzzleLevel(20, new Board(null, 10, 10), b, true, 1, 0));
 		mainMenu.setBounds(0, 0, 800, 800);
 		contentPane.add(puzzle1, Puzzle1);
 		
