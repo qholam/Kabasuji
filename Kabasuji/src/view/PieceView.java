@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 
@@ -36,7 +37,9 @@ public class PieceView extends JPanel {
 				tilesView[i][j] = new TileView(g[i][j]);
 				add(tilesView[i][j]);
 			}
-		}	 
+		}	
+		
+		this.setOpaque(false);
 	} 
 	
 	/**

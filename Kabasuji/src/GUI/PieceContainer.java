@@ -29,6 +29,7 @@ public class PieceContainer extends JPanel{
 		setLayout(new GridLayout(1,0));
 		setBounds(0,0,100,100);
 		add(draggedPiece);
+		setOpaque(false);
 	}
 	
 	public void setDraggingPiece(Piece p){

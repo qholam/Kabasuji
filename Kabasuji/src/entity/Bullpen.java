@@ -36,6 +36,14 @@ public class Bullpen {
 	}
 	
 	/**
+	 * method to get the quantity of a given piece
+	 * @param piece Given piece
+	 */
+	public int getQuantity(Piece p){
+		return piecesInfo.get(p);
+	}
+	
+	/**
 	 * Method to easily add only one of a Piece to the Bullpen.
 	 * @param Piece Given Piece to add
 	 */
@@ -91,9 +99,9 @@ public class Bullpen {
 	 * Decrease quantity of given Piece(if it is in the Bullpen) by one.
 	 * @param p Given piece to update quanitity for
 	 */
-	public void decreaseQuanity(Piece p){
+	public void changeQuanity(Piece p, int dx){
 		if(piecesInfo.containsKey(p))
-			piecesInfo.put(p, piecesInfo.get(p) - 1);
+			piecesInfo.put(p, piecesInfo.get(p) + dx);
 	}
 
 	/**

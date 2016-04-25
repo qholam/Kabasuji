@@ -33,6 +33,10 @@ import entity.Tile;
 import entity.TileType;
 import view.PieceView;
 import view.TileView;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class LevelPanel extends JPanel{
 	KabasujiFrame kFrame;
@@ -176,14 +180,21 @@ public class LevelPanel extends JPanel{
 	        			container.setDraggingPiece(p);
 	    	            container.setLocation(point);
 	    	            container.setVisible(true);
+	    	            //update quantity of piece
+	    	            Bullpen bp = bullpen.getBullpen();
+	    	            bp.changeQuanity(p, -1);
 	        		}
 	        	}
 	        }
 	        
 	        @Override
 	        public void mouseReleased(MouseEvent me){
+	        	 Piece p = pv.getPiece();
 	        	 container.setLocation(0, 0);
 	        	 container.setVisible(false);
+	        	 Bullpen bp = bullpen.getBullpen();
+	        	 bp.changeQuanity(p, 1);
+	        	 bullpen.repaint();
 	        }
 	    });
 	    panel.addMouseMotionListener(new MouseMotionAdapter() {

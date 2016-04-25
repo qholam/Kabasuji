@@ -52,12 +52,14 @@ public class TileView extends JPanel{
 		if(tile == null || tile.toString().equals(TileType.noTile)){
 			setBackground(new JPanel().getBackground());
 			setBorder(new LineBorder(new Color(0, 0, 0), 0));
+			setOpaque(false);
 			//setVisible(false);
 		}
 		else{
 			setBackground(tile.getColor());
 			setBorder(new LineBorder(new Color(0, 0, 0), 1));
-			setVisible(true);
+			setOpaque(true);
+			//setVisible(true);
 		}
 
 	}
