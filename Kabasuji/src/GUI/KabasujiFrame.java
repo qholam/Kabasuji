@@ -24,21 +24,6 @@ public class KabasujiFrame extends JFrame {
 
 	private JPanel contentPane;
 	PieceContainer container;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					KabasujiFrame frame = new KabasujiFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -60,7 +45,7 @@ public class KabasujiFrame extends JFrame {
 		mainMenu.setBounds(0, 0, 800, 800);
 		contentPane.add(mainMenu, MainMenu);
 		
-		//to be remove this bullpen ws made for testing
+		//to be remove this bullpen was made for testing
 		Bullpen b = new Bullpen();
 		for(int i = 0; i < 6; i++){
 			Piece p = new Piece();
@@ -69,8 +54,9 @@ public class KabasujiFrame extends JFrame {
 			p.addTile(new PieceTile(), 2, 2);
 			p.addTile(new PieceTile(), 3, 2);
 			p.addTile(new PieceTile(), 4, 2);
-			p.addTile(new PieceTile(), 3, 1);
-			p.addTile(new PieceTile(), 3, 3);
+			p.addTile(new PieceTile(), 5, 2);
+			p.addTile(new PieceTile(), 5-i, 1);
+			p.addTile(new PieceTile(), 5-i, 3);
 			b.addPiece(p);
 		}
 		LevelPanel puzzle1 = new LevelPanel(this,(Level) new PuzzleLevel(20, new Board(null, 10, 10), b, true, 1, 0));

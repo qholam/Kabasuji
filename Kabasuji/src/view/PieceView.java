@@ -61,7 +61,7 @@ public class PieceView extends JPanel {
 		return piece;
 	}
 
-	public void setPiecce(Piece p){
+	public void setPiece(Piece p){
 		piece = p;
 		repaint();
 	}

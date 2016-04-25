@@ -28,7 +28,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 
 public class BullpenView extends JPanel {
-	int x,y;
 	/**
 	 * Auto-generate by Eclipse to suppress a warning
 	 */
@@ -39,7 +38,7 @@ public class BullpenView extends JPanel {
 	//Views of a piece contained by this Bullpen
 	ArrayList<PieceView> pieces;
 	//containers for the pieces in a bullpen(is this necessary to keep track of?)
-	ArrayList<JPanel> pieceContainers;
+	//ArrayList<JPanel> pieceContainers;
 	
 	//the current selected pieceview 
 	PieceView selected;
@@ -50,8 +49,8 @@ public class BullpenView extends JPanel {
 	 */
 	public BullpenView(Bullpen b) {
 		pieces = new ArrayList<PieceView>();
-		pieceContainers = new ArrayList<JPanel>();
-		
+		//pieceContainers = new ArrayList<JPanel>();
+		selected = new PieceView(new Piece());
 		//get bullpen and pieces
 		this.bullpen = b;
 		//ArrayList<Piece> p = b.getPieces();
@@ -72,20 +71,22 @@ public class BullpenView extends JPanel {
 		
 		//USED TO TEST, will be removed
 		for(int i = 0; i < b.getPieces().size(); i++){ 
-			JPanel pieceContainer = new JPanel(new GridLayout(1,0));
+			//JPanel pieceContainer = new JPanel(new GridLayout(1,0));
 			
 			//is it needed to keep track of this?
-			pieceContainers.add(pieceContainer);
+			//pieceContainers.add(pieceContainer);
 			
 			//not to sure on the math here, it just works
-			pieceContainer.setBounds(10 + i * 200, 10, 200, 200);
+			//pieceContainer.setBounds(10 + i * 200, 10, 200, 200);
 			
 			PieceView p = new PieceView(b.getPieces().get(i));
 			p.addMouseListener(new PieceInBullpenCtrl(this, p));
 			pieces.add(p);
-			pieceContainer.add(pieces.get(i));
-            scrollPanel.add(pieceContainer);
-            scrollPanel.setPreferredSize(new Dimension(240 * scrollPanel.getComponents().length, 0));  
+			pieces.get(i).setBounds(10 + i * 200, 10, 200, 200);
+			//pieceContainer.add(pieces.get(i));
+            //scrollPanel.add(pieceContainer);
+			scrollPanel.add(pieces.get(i));
+            scrollPanel.setPreferredSize(new Dimension(200 * scrollPanel.getComponents().length, 0));  
 		}
 
 		JPanel panel = new JPanel();
@@ -122,7 +123,7 @@ public class BullpenView extends JPanel {
 		
 		ArrayList<Piece> p = bullpen.getPieces();
 		for(int i = 0; i < p.size(); i++){
-			pieces.get(i).setPiecce(p.get(i));
+			pieces.get(i).setPiece(p.get(i));
 		}
 	}
 	
@@ -133,7 +134,7 @@ public class BullpenView extends JPanel {
 		return bullpen;
 	}
 	
-	public ArrayList<PieceView> getPieces(){
+	public ArrayList<PieceView> getPieceViews(){
 		return pieces;
 	}
 	
@@ -145,7 +146,7 @@ public class BullpenView extends JPanel {
 		return selected;
 	}
 	
-	public ArrayList<JPanel> getPieceContainers(){
-		return pieceContainers;
-	}
+	//public ArrayList<JPanel> getPieceContainers(){
+	//	return pieceContainers;
+	//}
 }

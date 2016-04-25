@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -17,6 +18,7 @@ import java.awt.Graphics;
 
 import javax.swing.SwingConstants;
 
+import controller.PieceInBullpenCtrl;
 import entity.Board;
 import entity.Bullpen;
 import entity.Level;
@@ -40,25 +42,13 @@ public class LevelPanel extends JPanel{
 	BoardPanel board;
 	
 	PieceContainer container;
-Piece p;
-PieceView pv;
 	/**
 	 * Create the panel.
 	 */
 	public LevelPanel(KabasujiFrame frame, Level l) {
-		p = new Piece();
-		p.addTile(new PieceTile(), 0, 2); 
-		p.addTile(new PieceTile(), 1, 2); 
-		p.addTile(new PieceTile(), 2, 2);
-		p.addTile(new PieceTile(), 3, 2);
-		p.addTile(new PieceTile(), 4, 2);
-		p.addTile(new PieceTile(), 3, 1);
-		p.addTile(new PieceTile(), 3, 3);
-		pv = new PieceView(p);
-		pv.setBounds(0, 0, 100, 100);
-		pv.setVisible(false);
-		add(pv);
 		container = frame.getPieceContainer();
+		container.setVisible(false);
+		add(container);
 		kFrame = frame;
 		level = l;
 		
@@ -77,7 +67,7 @@ PieceView pv;
 		bullpen = new BullpenView(l.getBullpen());
 		bullpen.setBounds(25, 25, 600, 300);
 		for(int i = 0; i < bullpen.getBullpen().getPieces().size(); i++){
-			this.handleDrag(bullpen.getPieces().get(i), this);
+			this.handleDrag(bullpen.getPieceViews().get(i), this);
 		}
 		add(bullpen);
 		
@@ -149,38 +139,49 @@ PieceView pv;
 			infoLabel = new JLabel("Moves: " + ((ReleaseLevel) level).getNumMoves());
 	}
 	
-	int x,y;
-	public void handleDrag(final JPanel panel, LevelPanel l){
-		
-		
-	    panel.addMouseListener(new MouseAdapter() {
-	    	int xx,yy;
+	/**
+	 * Handles the event when a piece is being dragged
+	 * @param panel Given panel to handle a drag event for
+	 */
+	public void handleDrag(final JPanel panel, final LevelPanel l){
+		//TODO add some sort of anchoring point to make the drag more visually appealing 
+	    panel.addMouseListener(new MouseAdapter() {	    	
+	    	PieceView pv = (PieceView) panel;
 	    	
 	        @Override
 	        public void mousePressed(MouseEvent me) {
-	        	xx = pv.getX();
-	        	yy = pv.getY();
-	             x = me.getX();
-	             y = me.getY();
-	             pv.setVisible(true);
+		    	Piece p = pv.getPiece();
+	        	
+	        	container.setDraggingPiece(p);
+	        	container.repaint();
+	        	Point point = l.getMousePosition();
+	        	point.translate(-container.getHeight()/2, -container.getWidth()/2);
+	            container.setLocation(point);
+	            container.setVisible(true);
 	        }
 	        
 	        @Override
 	        public void mouseReleased(MouseEvent me){
-	        	 panel.setLocation(xx, yy);
-	        	 pv.setVisible(false);
+	        	 container.setLocation(0, 0);
+	        	 container.setVisible(false);
 	        }
 	    });
 	    panel.addMouseMotionListener(new MouseMotionAdapter() {
 	        @Override
 	        public void mouseDragged(MouseEvent me) {
-	        	if(pv.isVisible()){
-	            //me.translatePoint(me.getComponent().getLocation().x-x, me.getComponent().getLocation().y-y);
-	            pv.setLocation(me.getX(), me.getY());
+	        	if(container.isVisible()){
+	        		Point point = l.getMousePosition();
+		        	point.translate(-container.getHeight()/2, -container.getWidth()/2);
+		            container.setLocation(point);
 	        	}
 	        }
 	    });
 	}
+	
+	public PieceContainer getPieceContainer(){
+		return container;
+	}
 }
+
 
 

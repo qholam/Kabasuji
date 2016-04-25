@@ -38,7 +38,7 @@ public class RotateClockwiseCtrl implements ActionListener{
 		p.rotateClockwise();
 		
 		//repaint the piece view
-		pv.repaint();
+		pv.setPiece(p);
 	}
 
 }
