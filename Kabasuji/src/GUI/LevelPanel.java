@@ -20,6 +20,7 @@ import java.awt.Graphics;
 
 import javax.swing.SwingConstants;
 
+import controller.DragCtrl;
 import controller.PieceInBullpenCtrl;
 import entity.Board;
 import entity.Bullpen;
@@ -77,7 +78,7 @@ public class LevelPanel extends JPanel{
 		bullpen.setBounds(25, 25, 600, 300);
 		//add adapter to each piece in bullpen to handle a drag within the level panel
 		for(int i = 0; i < bullpen.getBullpen().getPieces().size(); i++){
-			this.handleDrag(bullpen.getPieceViews().get(i), this);
+			new DragCtrl().handleDrag(bullpen.getPieceViews().get(i), this);
 		}
 		add(bullpen);
 		
@@ -149,65 +150,12 @@ public class LevelPanel extends JPanel{
 			infoLabel = new JLabel("Moves: " + ((ReleaseLevel) level).getNumMoves());
 	}
 	
-	/**
-	 * Handles the event when a piece is being dragged.
-	 * For some reason if these mouse adapters are added any where
-	 * but this class, it will not work. 
-	 * As of now this method assumes that the given JPanel is a PiceView.
-	 * @param panel Given panel to handle a drag event for
-	 * @param l The given LevelPanel for which the drag will take place in
-	 */
-	TileView tv;
-	Tile t;
-	Point point;
-	public void handleDrag(final JPanel panel, final LevelPanel l){
-		//TODO add some sort of anchoring point to make the drag more visually appealing 
-	    panel.addMouseListener(new MouseAdapter() {	    	
-	    	PieceView pv = (PieceView) panel;
-	    	
-	        @Override
-	        public void mousePressed(MouseEvent me) {
-		    	Piece p = pv.getPiece();
-	        	Component c = pv.getComponentAt(me.getPoint());
-	        	if(c instanceof TileView){
-	        		tv = (TileView) c;
-	        		t = tv.getTile();
-	        		
-	        		//ensures that drag is only initiated when player click on piece and not its container
-	        		if(t != null && !t.toString().equals(TileType.noTile)){
-	        			container.setAnchortile(tv); 
-	        			point = tv.getLocation();
-	        			container.setDraggingPiece(p);
-	    	            container.setLocation(point);
-	    	            container.setVisible(true);
-	    	            //update quantity of piece
-	    	            Bullpen bp = bullpen.getBullpen();
-	    	            bp.changeQuanity(p, -1);
-	        		}
-	        	}
-	        }
-	        
-	        @Override
-	        public void mouseReleased(MouseEvent me){
-	        	 Piece p = pv.getPiece();
-	        	 container.setLocation(0, 0);
-	        	 container.setVisible(false);
-	        	 Bullpen bp = bullpen.getBullpen();
-	        	 bp.changeQuanity(p, 1);
-	        	 bullpen.repaint();
-	        }
-	    });
-	    panel.addMouseMotionListener(new MouseMotionAdapter() {
-	        @Override
-	        public void mouseDragged(MouseEvent me) {
-	        	if(container.isVisible()){
-	        		Point point = l.getMousePosition();
-	        		//crazy math but it works
-		        	point.translate(-(tv.getX()/2 + tv.getHeight()/4), -(tv.getY()/2 + tv.getWidth()/4));
-		            container.setLocation(point);
-	        	}
-	        }
-	    });
+	public PieceContainer getPieceContainer(){
+		return container;
+	}
+	
+	public BullpenView getBullpenView(){
+		return bullpen;
 	}
 }
 

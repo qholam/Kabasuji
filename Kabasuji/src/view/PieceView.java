@@ -39,6 +39,7 @@ public class PieceView extends JPanel {
 			}
 		}	
 		
+		//The panel holding the piece should not be visible.
 		this.setOpaque(false);
 	} 
 	

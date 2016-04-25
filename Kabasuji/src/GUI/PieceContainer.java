@@ -29,6 +29,8 @@ public class PieceContainer extends JPanel{
 		setLayout(new GridLayout(1,0));
 		setBounds(0,0,100,100);
 		add(draggedPiece);
+		
+		//The panel holding the piece should not be visible.
 		setOpaque(false);
 	}
 	
