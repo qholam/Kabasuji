@@ -26,7 +26,7 @@ public class BoardPanel extends JPanel {
 	 */
 	public BoardPanel(Board b) {
 		board = b;
-		tileViews = new TileView[b.getNumRows()][b.getNumColumns()];
+		tileViews = new TileView[b.getNumColumns()][b.getNumRows()];
 		
 		setBackground(Color.WHITE);
 		setLayout(null);
@@ -40,9 +40,9 @@ public class BoardPanel extends JPanel {
 		//panel.setBounds(10, 10, 28*b.getNumColumns(), 28*b.getNumRows());
 		
 		for (int r = 0; r < b.getNumRows(); r++) {
-			for (int c = 0; c < b.getNumRows(); c++) {
-				tileViews[r][c] = new TileView(b.getGrid()[r][c]);
-				panel.add(tileViews[r][c]);
+			for (int c = 0; c < b.getNumColumns(); c++) {
+				tileViews[c][r] = new TileView(b.getGrid()[c][r]);
+				panel.add(tileViews[c][r]);
 			}
 		}
 		setOpaque(true);

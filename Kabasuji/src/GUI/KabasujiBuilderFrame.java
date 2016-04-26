@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import entity.Board;
+import entity.Level;
+
 import java.awt.CardLayout;
 
 public class KabasujiBuilderFrame extends JFrame {
@@ -17,6 +21,9 @@ public class KabasujiBuilderFrame extends JFrame {
 	final String BuilderPuzzleLevel = "BuilderPuzzleLevel";
 
 	private JPanel contentPane;
+	
+	Board workingBoard;
+	BuilderLevel workingLevel;
 
 	/**
 	 * Launch the application.
@@ -60,15 +67,21 @@ public class KabasujiBuilderFrame extends JFrame {
 		specifyBoard.setBounds(0, 0, 1200, 800);
 		contentPane.add(specifyBoard, SpecifyBoardProperties);
 		
-		BuilderPuzzleLevel puzzleLevel = new BuilderPuzzleLevel(this);
-		puzzleLevel.setBounds(0, 0, 1200, 800);
-		contentPane.add(puzzleLevel, BuilderPuzzleLevel);
+		workingLevel = new BuilderPuzzleLevel(this);
+		workingLevel.setBounds(0, 0, 1200, 800);
+		contentPane.add(workingLevel, BuilderPuzzleLevel);
 		
 		splash.displaySplashScreen();
 	}
 	
 	public CardLayout getCardLayout() {
 		return (CardLayout)contentPane.getLayout();
+	}
+	
+	void setWorkingBoard(Board b) {
+		workingBoard = b;
+		workingLevel.setBoard(b);
+		workingLevel.repaint();
 	}
 
 }

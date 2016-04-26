@@ -13,6 +13,8 @@ import javax.swing.JTextField;
 import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.GridLayout;
+import javax.swing.JButton;
 /**
  * @author Quoc HoLam
  * Gui for the designer to specify the shape and size of the board
@@ -26,15 +28,20 @@ public class SpecifyBoardPropertiesView extends JPanel {
 	private JTextField txtEnterHeightmax;
 	KabasujiBuilderFrame kFrame;
 	BoardPanel board;
+	JPanel boardContainer;
 	int width,height;
+	int widthMax;
+	int heightMax;
 
 	/**
 	 * Create the panel.
 	 */
 	public SpecifyBoardPropertiesView(KabasujiBuilderFrame frame) {
 		kFrame = frame;
-		board = new BoardPanel(new Board(null, height, width));
-		board.setLocation(0, 0);
+		width = 12;
+		height = 12;
+		widthMax = 12;
+		heightMax = 12;
 		
 		setBackground(Color.GRAY);
 		setBounds(0, 0, 1200, 800);
@@ -65,40 +72,23 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		mainMenuButton.setBounds(763, 221, 177, 44);
 		add(mainMenuButton);
 		
-		//panel to hold the board
-		JPanel boardPanel = new JPanel();
-		boardPanel.setBackground(Color.LIGHT_GRAY);
-		boardPanel.setBounds(300, 325, 600, 300);
-		add(boardPanel);
-		boardPanel.setLayout(null);
-		
-		//TO BE DELETED
-		JLabel lblBoardGoesHere = new JLabel("BOARD GOES HERE");
-		lblBoardGoesHere.setBounds(242, 120, 116, 60);
-		boardPanel.add(lblBoardGoesHere);
-		lblBoardGoesHere.setBackground(Color.LIGHT_GRAY);
-		
-		//add board
-		boardPanel.add(board);
-		
-		txtEnterWidthmax = new JTextField();
+		txtEnterWidthmax = new JTextField("" + width);
 		txtEnterWidthmax.setHorizontalAlignment(SwingConstants.CENTER);
-		txtEnterWidthmax.setText("Enter Width(Max 12)");
 		txtEnterWidthmax.setBounds(236, 235, 112, 27);
 		add(txtEnterWidthmax);
 		txtEnterWidthmax.setColumns(10);
 		
-		txtEnterHeightmax = new JTextField();
+		txtEnterHeightmax = new JTextField("" + height);
 		txtEnterHeightmax.setHorizontalAlignment(SwingConstants.CENTER);
-		txtEnterHeightmax.setText("Enter Height(Max 12)");
 		txtEnterHeightmax.setColumns(10);
-		txtEnterHeightmax.setBounds(369, 235, 112, 27);
+		txtEnterHeightmax.setBounds(236, 273, 112, 27);
 		add(txtEnterHeightmax);
 		
 		//button which will take user to the view to edit the level
 		Button nextButton = new Button("Next");
 		nextButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
+				kFrame.setWorkingBoard(board.getBoard());
 				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.BuilderPuzzleLevel);
 			}
 		});
@@ -107,5 +97,81 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		nextButton.setBackground(new Color(255, 165, 0));
 		nextButton.setBounds(809, 646, 131, 44);
 		add(nextButton);	
+		
+		boardContainer = new JPanel();
+		boardContainer.setBounds(300, 325, 600, 300);
+		add(boardContainer);
+		boardContainer.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		board = new BoardPanel(new Board(null, width, height));
+		boardContainer.add(board);
+		
+		JButton btnUpdateSize = new JButton("UPDATE SIZE");
+		btnUpdateSize.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				updateBoard();
+			}
+		});
+		btnUpdateSize.setBounds(358, 254, 112, 23);
+		add(btnUpdateSize);
+		
+		JLabel lblNewLabel = new JLabel("Width (Max " + widthMax + ")");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel.setBounds(86, 233, 140, 27);
+		add(lblNewLabel);
+		
+		JLabel lblHeightmax = new JLabel("Height (Max " + heightMax + ")");
+		lblHeightmax.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblHeightmax.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblHeightmax.setBounds(86, 273, 140, 27);
+		add(lblHeightmax);
+	}
+	
+	boolean updateHeight() {
+		String s = txtEnterHeightmax.getText();
+		int newHeight;
+		try {
+			newHeight = Integer.parseInt(s);
+		}
+		catch (NumberFormatException e) {
+		     return false;
+		}
+		if (newHeight < 1 || newHeight > heightMax) {
+			return false;
+		}
+		
+		height = newHeight;
+		return true;
+	}
+	
+	boolean updateWidth() {
+		String s = txtEnterWidthmax.getText();
+		int newWidth;
+		try {
+			newWidth = Integer.parseInt(s);
+		}
+		catch (NumberFormatException e) {
+		     return false;
+		}
+		if (newWidth < 1 || newWidth > widthMax) {
+			return false;
+		}
+		
+		width = newWidth;
+		return true;
+	}
+	
+	void updateBoard() {
+		updateWidth();
+		updateHeight();
+		txtEnterWidthmax.setText("" + width);
+		txtEnterHeightmax.setText("" + height);
+		
+		boardContainer.remove(board);
+		board = new BoardPanel(new Board(null, width, height));
+		boardContainer.add(board);
+		boardContainer.repaint();
+		
 	}
 }

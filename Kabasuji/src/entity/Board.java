@@ -24,11 +24,11 @@ public class Board {
 		this.level = level;
 		this.numRows = numRows;
 		this.numColumns = numColumns;
-		boardGrid = new BoardTile[numRows][numColumns];
+		boardGrid = new BoardTile[numColumns][numRows];
 		
 		for (int r = 0; r < this.numRows; r++) {
 			for (int c = 0; c < this.numColumns; c++) {
-				boardGrid[r][c] = new NoTile(r, c);
+				boardGrid[c][r] = new NoTile(r, c);
 			}
 		}
 	}

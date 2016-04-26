@@ -12,13 +12,17 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+import entity.Board;
 import entity.Bullpen;
 
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
-public class BuilderPuzzleLevel extends JPanel {
+public class BuilderPuzzleLevel extends BuilderLevel {
 	KabasujiBuilderFrame kFrame;
+	
+	BoardPanel boardPanel;
+	Board board;
 	
 	/**
 	 * Create the panel.
@@ -30,9 +34,9 @@ public class BuilderPuzzleLevel extends JPanel {
 		setLayout(null);
 		setBounds(0, 0, 1200, 800);
 		
-		BoardPanel board = new BoardPanel(null);
-		board.setBounds(25, 400, 600, 300);
-		add(board);
+		boardPanel = new BoardPanel(new Board(null, 12, 12));
+		boardPanel.setBounds(25, 400, 600, 300);
+		add(boardPanel);
 		
 		BullpenView bullPen = new BullpenView(new Bullpen());
 		bullPen.setBounds(25, 25, 600, 300);
@@ -112,5 +116,13 @@ public class BuilderPuzzleLevel extends JPanel {
 		});
 		add(button_4);
 
+	}
+	
+	void setBoard(Board b) {
+		remove(boardPanel);
+		boardPanel = new BoardPanel(b);
+		boardPanel.setBounds(25, 400, 600, 300);
+		add(boardPanel);
+		boardPanel.repaint();
 	}
 }
