@@ -1,3 +1,4 @@
+
 package GUI;
 
 import javax.swing.JPanel;
@@ -96,8 +97,9 @@ public class LevelPanel extends JPanel{
 			//controller to handle the dragging
 			new DragCtrl().handleDrag(bullpen.getPieceViews().get(i), this);
 		}
-		//add controllers to handle dragging a piece over the components within the bullpen
+		//add controllers to handle dragging a piece over the components within the bullpen, this makes the drag smoother
 		for(Component c :bullpen.getComponents()){
+			//some components have components inside
 			for(Component cc: ((Container) c).getComponents()){
 				cc.addMouseMotionListener(new MouseMoveCtrl(this));
 				cc.addMouseListener(new MouseMoveCtrl(this));
@@ -113,6 +115,7 @@ public class LevelPanel extends JPanel{
 			}
 		});
 		trashBtn.setBounds(650, 600, 100, 100);
+		//this makes the drag smoother
 		trashBtn.addMouseMotionListener(new MouseMoveCtrl(this));
 		trashBtn.addMouseListener(new MouseMoveCtrl(this));
 		add(trashBtn);
@@ -136,6 +139,7 @@ public class LevelPanel extends JPanel{
 				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.MainMenu);
 			}
 		});
+		//this makes the drag smoother
 		btnMenu.addMouseMotionListener(new MouseMoveCtrl(this));
 		btnMenu.addMouseListener(new MouseMoveCtrl(this));
 		add(btnMenu);
@@ -157,7 +161,7 @@ public class LevelPanel extends JPanel{
 		star1.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(star1);
 		
-		//handles the dragging of an object
+		//handles the dragging of an object, this makes the drag smoother
 		this.addMouseMotionListener(new MouseMoveCtrl(this));
 		this.addMouseListener(new MouseMoveCtrl(this));
 	}

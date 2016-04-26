@@ -69,7 +69,6 @@ public class BullpenView extends JPanel {
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		add(scrollPane);
 		
-		//USED TO TEST, will be removed
 		for(int i = 0; i < b.getPieces().size(); i++){ 
 			//JPanel pieceContainer = new JPanel(new GridLayout(1,0));
 			

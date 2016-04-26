@@ -3,6 +3,7 @@ package GUI;
 import javax.swing.JPanel;
 
 import entity.Board;
+import view.TileView;
 
 public abstract class BuilderLevel extends JPanel {
 
@@ -16,5 +17,11 @@ public abstract class BuilderLevel extends JPanel {
 	void setBoard(Board b) {
 		
 	}
+
+	public abstract BullpenView getBullpenView();
+
+	public abstract  PieceContainer getPieceContainer();
+
+	public abstract BoardPanel getBoardPanel();
 
 }

@@ -24,6 +24,7 @@ public class KabasujiBuilderFrame extends JFrame {
 	
 	Board workingBoard;
 	BuilderLevel workingLevel;
+	PieceContainer container;
 
 	/**
 	 * Launch the application.
@@ -45,6 +46,8 @@ public class KabasujiBuilderFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public KabasujiBuilderFrame() {
+		container = new PieceContainer();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1200, 800);
 		contentPane = new JPanel();
@@ -84,4 +87,7 @@ public class KabasujiBuilderFrame extends JFrame {
 		workingLevel.repaint();
 	}
 
+	public PieceContainer getPieceContainer(){
+		return container;
+	}
 }
