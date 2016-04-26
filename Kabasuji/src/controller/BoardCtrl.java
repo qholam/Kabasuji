@@ -7,6 +7,11 @@ import entity.Board;
 import entity.KabasujiGame;
 import view.PieceView;
 
+/**
+ * Drag Pieces inside the board.
+ * @author LilyAnne
+ *
+ */
 public class BoardCtrl
 {
 	KabasujiGame theGame;

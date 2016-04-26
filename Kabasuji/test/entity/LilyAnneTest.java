@@ -13,6 +13,11 @@ import junit.framework.TestCase;
 import move.IMove;
 import view.PieceView;
 
+/**
+ * Extra Test Cases.
+ * @author LilyAnne
+ *
+ */
 public class LilyAnneTest extends TestCase 
 {
 	Bullpen pen;
@@ -25,6 +30,7 @@ public class LilyAnneTest extends TestCase
 	KabasujiFrame frame;
 	Level l;
 	Board board;
+	Button inputTest;
 	
 	LevelSelector ls;
 
@@ -93,6 +99,8 @@ public class LilyAnneTest extends TestCase
 	public void testLevelSelector()
 	{
 		//ls = new LevelSelector(frame);
+		//ls.getComponentAt(p)
+		
 	}
 
 }

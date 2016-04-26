@@ -7,7 +7,11 @@ import entity.Bullpen;
 import entity.KabasujiGame;
 import entity.Piece;
 import move.IMove;
-
+/**
+ * Delete a Move.
+ * @author LilyAnne
+ *
+ */
 public class DeleteMoveCtrl 
 {
 	KabasujiGame theGame;

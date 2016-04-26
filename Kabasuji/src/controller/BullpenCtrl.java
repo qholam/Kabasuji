@@ -8,6 +8,12 @@ import entity.Board;
 import entity.Bullpen;
 import entity.KabasujiGame;
 
+
+/**
+ * Move Pieces within the BullPen
+ * @author LilyAnne
+ *
+ */
 public class BullpenCtrl {
 		KabasujiGame theGame;
 		Bullpen theBullpen;
