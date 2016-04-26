@@ -7,6 +7,7 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.JPanel;
 
+import GUI.BuilderLevel;
 import GUI.LevelPanel;
 import GUI.PieceContainer;
 import entity.Bullpen;
@@ -16,22 +17,34 @@ import entity.PieceTile;
 import view.TileView;
 
 public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
-	LevelPanel l;
+	JPanel l;
 	PieceContainer container;
 	
-	public MouseMoveCtrl(LevelPanel l){
+	public MouseMoveCtrl(JPanel l){
 		this.l = l;
-		container = l.getPieceContainer();
+		if(l instanceof LevelPanel)
+			container = ((LevelPanel) l).getPieceContainer();
+		else
+			container = ((BuilderLevel) l).getPieceContainer();
 	}
 	
 	@Override
     public void mouseMoved(MouseEvent me) {
     	TileView tv;
+ 
     	//check if container is currently being used
     	if(container.isVisible()){
-    		l.getBoardPanel().setRepaintInvalid();
-    		
-    		l.setIgnoreRepaint(true);
+    		//this prevents flickering when dragging a piece over the board
+    		if(l instanceof LevelPanel){
+	    		((LevelPanel) l).getBoardPanel().setRepaintInvalid();
+	    		
+	    		((LevelPanel) l).setIgnoreRepaint(true);
+    		}
+    		else{
+    			((BuilderLevel) l).getBoardPanel().setRepaintInvalid();
+	    		
+	    		((BuilderLevel) l).setIgnoreRepaint(true);
+    		}
     		tv = container.getAnchorTile();
     		
     		//get the position on the mouse on the level panel
@@ -87,15 +100,34 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		if(container.isVisible()){
-			//get the piece being dragged
-			Piece dragged = container.getPieceView().getPiece();
-			
-			//added it back to the bullpen by updating pieces quantity
-			Bullpen bp = l.getBullpenView().getBullpen();
-	    	bp.changeQuanity(dragged, 1);
-	    	l.getBullpenView().repaint();
-	    	
-	    	container.setVisible(false);
+			if(l instanceof LevelPanel){
+				//allow board to be rapainted again
+				((LevelPanel) l).getBoardPanel().setRepaintInvalid();
+				
+				//get the piece being dragged
+				Piece dragged = container.getPieceView().getPiece();
+				
+				//added it back to the bullpen by updating pieces quantity
+				Bullpen bp = ((LevelPanel) l).getBullpenView().getBullpen();
+		    	bp.changeQuanity(dragged, 1);
+		    	((LevelPanel) l).getBullpenView().repaint();
+		    	
+		    	container.setVisible(false);
+			}
+			else{
+				//allow board to be rapainted again
+				((BuilderLevel) l).getBoardPanel().setRepaintInvalid();
+				
+				//get the piece being dragged
+				Piece dragged = container.getPieceView().getPiece();
+				
+				//added it back to the bullpen by updating pieces quantity
+				Bullpen bp = ((BuilderLevel) l).getBullpenView().getBullpen();
+		    	bp.changeQuanity(dragged, 1);
+		    	((BuilderLevel) l).getBullpenView().repaint();
+		    	
+		    	container.setVisible(false);
+			}
 		}
 		
 	}

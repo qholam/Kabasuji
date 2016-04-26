@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import GUI.BoardPanel;
-import GUI.BuilderLevel;
+import GUI.BuilderPuzzleLevel;
 import GUI.BullpenView;
 import GUI.LevelPanel;
 import GUI.PieceContainer;
@@ -30,7 +30,7 @@ import view.TileView;
  * @author Quoc HoLam
  *
  */
-public class DragCtrl {
+public class BuilderDragCtrl {
 	/**
 	 * Handles the event when a piece is being dragged.
 	 * For some reason if these mouse adapters are added any where
@@ -46,34 +46,21 @@ public class DragCtrl {
 	Tile t;
 	//used to keep track of the mouse position
 	Point point;
-	public void handleDrag(final PieceView panel, final JPanel l){
+	public void handleDrag(final PieceView panel, final BuilderPuzzleLevel builderPuzzleLevel){
 	    panel.addMouseListener(new MouseAdapter() {
 	    	//cast given panel to be a PieceView and represented piece
 	    	PieceView pv = panel;
 	    	Piece p = pv.getPiece();
 	    	//get the bullpenview
-	    	BullpenView bullpen;
-	    	PieceContainer container;
-	    	
+	    	BullpenView bullpen = builderPuzzleLevel.getBullpenView();
+	    	//get container
+	    	PieceContainer container = builderPuzzleLevel.getPieceContainer();
 	    	
 	    	@Override
 	        public void mouseClicked(MouseEvent me) {
 	    		//checks that it is a left mouse press,if not do nothing
 	    		if(!SwingUtilities.isLeftMouseButton(me) )
 	    			return;
-	    		
-	    		if(l instanceof LevelPanel){
-			    	//get the bullpenview
-			    	bullpen = ((LevelPanel) l).getBullpenView();
-			    	//get container
-			    	container = ((LevelPanel) l).getPieceContainer();
-		    	}
-		    	else{
-		    		//get the bullpenview
-			    	bullpen = ((BuilderLevel) l).getBullpenView();
-			    	//get container
-			    	container = ((BuilderLevel) l).getPieceContainer();
-		    	}
 	    		
 	    		if(!container.isVisible()){
 		    		//get the component that was clicked on within the panel
@@ -109,18 +96,12 @@ public class DragCtrl {
 		        	else{//another piece is currently being dragged, release it first
 		        		//get the piece being dragged
 		    			Piece dragged = container.getPieceView().getPiece();
-		    			Bullpen bp;
+		    			
 		    			//added it back to the bullpen by updating pieces quantity
-		    			if(l instanceof LevelPanel){
-			    			bp = ((LevelPanel) l).getBullpenView().getBullpen();
-			    	    	bp.changeQuanity(dragged, 1);
-			    	    	((LevelPanel) l).getBullpenView().repaint();
-		    			}
-		    			else{
-		    				bp = ((BuilderLevel) l).getBullpenView().getBullpen();
-			    	    	bp.changeQuanity(dragged, 1);
-			    	    	((BuilderLevel) l).getBullpenView().repaint();
-		    			}
+		    			Bullpen bp = builderPuzzleLevel.getBullpenView().getBullpen();
+		    	    	bp.changeQuanity(dragged, 1);
+		    	    	builderPuzzleLevel.getBullpenView().repaint();
+		    	    	
 		    	    	container.setVisible(false);
 		        	}
 	    		}

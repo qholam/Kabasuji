@@ -5,6 +5,9 @@ import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -12,8 +15,12 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+import controller.DragCtrl;
+import controller.MouseMoveCtrl;
 import entity.Board;
 import entity.Bullpen;
+import entity.Piece;
+import entity.PieceTile;
 
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
@@ -23,11 +30,16 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 	
 	BoardPanel boardPanel;
 	Board board;
+	BullpenView  bullpen;
+	PieceContainer container;
 	
 	/**
 	 * Create the panel.
 	 */
 	public BuilderPuzzleLevel(KabasujiBuilderFrame frame) {
+		container = frame.getPieceContainer();
+		container.setVisible(false);
+		add(container);
 		kFrame = frame;
 		
 		setBackground(Color.GRAY);
@@ -38,9 +50,42 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		boardPanel.setBounds(25, 400, 600, 300);
 		add(boardPanel);
 		
-		BullpenView bullPen = new BullpenView(new Bullpen());
-		bullPen.setBounds(25, 25, 600, 300);
-		add(bullPen);
+		Bullpen b = new Bullpen();
+		//test pieces
+		for(int i = 0; i < 6; i++){
+			Piece p = new Piece();
+			p.addTile(new PieceTile(), 0, 2); 
+			p.addTile(new PieceTile(), 1, 2); 
+			p.addTile(new PieceTile(), 2, 2);
+			p.addTile(new PieceTile(), 3, 2);
+			p.addTile(new PieceTile(), 4, 2);
+			p.addTile(new PieceTile(), 5, 2);
+			p.addTile(new PieceTile(), 5-i, 1);
+			p.addTile(new PieceTile(), 5-i, 3);
+			b.addPiece(p);
+		}
+		bullpen = new BullpenView(b);
+		bullpen.setBounds(25, 25, 600, 300);
+		//add controllers to handle dragging
+		for(int i = 0; i < bullpen.getBullpen().getPieces().size(); i++){
+			//add controllers to handle dragging a piece over other pieces
+			bullpen.getPieceViews().get(i).addMouseMotionListener(new MouseMoveCtrl(this));
+			bullpen.getPieceViews().get(i).addMouseListener(new MouseMoveCtrl(this));
+			
+			//controller to handle the dragging
+			new DragCtrl().handleDrag(bullpen.getPieceViews().get(i), this);
+		}
+		//add controllers to handle dragging a piece over the components within the bullpen, this makes the drag smoother
+		for(Component c :bullpen.getComponents()){
+			//some components have components inside
+			for(Component cc: ((Container) c).getComponents()){
+				cc.addMouseMotionListener(new MouseMoveCtrl(this));
+				cc.addMouseListener(new MouseMoveCtrl(this));
+			}
+			c.addMouseMotionListener(new MouseMoveCtrl(this));
+			c.addMouseListener(new MouseMoveCtrl(this));
+		}
+		add(bullpen);
 		
 		JButton btnNewButton_1 = new JButton("TRASH");
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -48,6 +93,8 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 			}
 		});
 		btnNewButton_1.setBounds(650, 600, 100, 100);
+		btnNewButton_1.addMouseMotionListener(new MouseMoveCtrl(this));
+		btnNewButton_1.addMouseListener(new MouseMoveCtrl(this));
 		add(btnNewButton_1);
 		
 		JLabel lblNewLabel = new JLabel("ALLOWED MOVES: 0");
@@ -58,19 +105,27 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		
 		JButton btnMenu = new JButton("SAVE");
 		btnMenu.setBounds(650, 25, 100, 75);
+		btnMenu.addMouseMotionListener(new MouseMoveCtrl(this));
+		btnMenu.addMouseListener(new MouseMoveCtrl(this));
 		add(btnMenu);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(775, 25, 400, 675);
 		add(panel);
 		panel.setLayout(new GridLayout(1, 1, 0, 0));
+		panel.addMouseMotionListener(new MouseMoveCtrl(this));
+		panel.addMouseListener(new MouseMoveCtrl(this));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		panel.add(scrollPane);
+		scrollPane.addMouseMotionListener(new MouseMoveCtrl(this));
+		scrollPane.addMouseListener(new MouseMoveCtrl(this));
 		
 		JButton btnUndo = new JButton("UNDO");
 		btnUndo.setBounds(25, 366, 89, 23);
+		btnUndo.addMouseMotionListener(new MouseMoveCtrl(this));
+		btnUndo.addMouseListener(new MouseMoveCtrl(this));
 		add(btnUndo);
 		
 		JButton button = new JButton("REDO");
@@ -79,6 +134,8 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 			}
 		});
 		button.setBounds(124, 366, 89, 23);
+		button.addMouseMotionListener(new MouseMoveCtrl(this));
+		button.addMouseListener(new MouseMoveCtrl(this));
 		add(button);
 		
 		JButton button_1 = new JButton("+");
@@ -88,6 +145,8 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		});
 		button_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		button_1.setBounds(635, 336, 50, 23);
+		button_1.addMouseMotionListener(new MouseMoveCtrl(this));
+		button_1.addMouseListener(new MouseMoveCtrl(this));
 		add(button_1);
 		
 		JButton button_2 = new JButton("-");
@@ -97,6 +156,8 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		});
 		button_2.setFont(new Font("Tahoma", Font.BOLD, 11));
 		button_2.setBounds(635, 370, 50, 23);
+		button_2.addMouseMotionListener(new MouseMoveCtrl(this));
+		button_2.addMouseListener(new MouseMoveCtrl(this));
 		add(button_2);
 		
 		JButton button_3 = new JButton("RESET");
@@ -105,6 +166,8 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 			}
 		});
 		button_3.setBounds(650, 111, 100, 75);
+		button_3.addMouseMotionListener(new MouseMoveCtrl(this));
+		button_3.addMouseListener(new MouseMoveCtrl(this));
 		add(button_3);
 		
 		JButton button_4 = new JButton("EXIT");
@@ -114,8 +177,14 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.BuilderMainMenu);
 			}
 		});
+		button_4.addMouseMotionListener(new MouseMoveCtrl(this));
+		button_4.addMouseListener(new MouseMoveCtrl(this));
 		add(button_4);
 
+		
+		//handles the moving of a piece
+		this.addMouseMotionListener(new MouseMoveCtrl(this));
+		this.addMouseListener(new MouseMoveCtrl(this));
 	}
 	
 	void setBoard(Board b) {
@@ -125,4 +194,17 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		add(boardPanel);
 		boardPanel.repaint();
 	}
+	
+	public PieceContainer getPieceContainer(){
+		return container;
+	}
+	
+	public BullpenView getBullpenView(){
+		return bullpen;
+	}
+	
+	public BoardPanel getBoardPanel(){
+		return boardPanel;
+	}
+	
 }
