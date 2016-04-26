@@ -27,9 +27,7 @@ public class LilyAnneTest extends TestCase
 	Board board;
 	
 	LevelSelector ls;
-	
 
-	
 	public void setUp()
 	{
 		pen = new Bullpen();
@@ -86,15 +84,15 @@ public class LilyAnneTest extends TestCase
 	
 	public void testLevelPanel()
 	{
-		l = new Level(board, pen, true, 1, 0);		
-		level = new LevelPanel(frame, l);
-		board = new Board(l, 6, 6);
+		//l = new Level(board, pen, true, 1, 0);		
+		//level = new LevelPanel(frame, l);
+		//board = new Board(l, 6, 6);
 		
 	}
 	
 	public void testLevelSelector()
 	{
-		ls = new LevelSelector(frame);
+		//ls = new LevelSelector(frame);
 	}
 
 }
