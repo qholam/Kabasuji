@@ -13,6 +13,7 @@ import entity.LightningLevel;
 import entity.Piece;
 import entity.PieceTile;
 import entity.PuzzleLevel;
+import serializers.Deserializer;
 
 import java.awt.CardLayout;
 
@@ -29,6 +30,7 @@ public class KabasujiFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public KabasujiFrame() {
+		Deserializer deserializer =  new Deserializer();
 		container = new PieceContainer();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,20 +48,7 @@ public class KabasujiFrame extends JFrame {
 		contentPane.add(mainMenu, MainMenu);
 		
 		//to be remove this bullpen was made for testing
-		Bullpen b = new Bullpen();
-		for(int i = 0; i < 6; i++){
-			Piece p = new Piece();
-			p.addTile(new PieceTile(), 0, 2); 
-			p.addTile(new PieceTile(), 1, 2); 
-			p.addTile(new PieceTile(), 2, 2);
-			p.addTile(new PieceTile(), 3, 2);
-			p.addTile(new PieceTile(), 4, 2);
-			p.addTile(new PieceTile(), 5, 2);
-			p.addTile(new PieceTile(), 5-i, 1);
-			p.addTile(new PieceTile(), 5-i, 3);
-			b.addPiece(p);
-		}
-		LevelPanel puzzle1 = new LevelPanel(this,(Level) new PuzzleLevel(20, new Board(null, 10, 10), b, true, 1, 0));
+		LevelPanel puzzle1 = new LevelPanel(this, deserializer.deserialzePuzzleLevel(1));
 		mainMenu.setBounds(0, 0, 800, 800);
 		contentPane.add(puzzle1, Puzzle1);
 		

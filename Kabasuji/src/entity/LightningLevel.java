@@ -20,7 +20,7 @@ public class LightningLevel extends Level{
 	 * @param stars The number of stars that the player has earned on this level.
 	 */
 	public LightningLevel(int timeRemaining, Board board,Bullpen bullpen, boolean isUnlocked, int levelNum, int stars){
-		super(board, bullpen, isUnlocked, stars, stars);
+		super(board, bullpen, isUnlocked, levelNum, stars);
 		this.timeRemaining = timeRemaining;
 	}
 	
@@ -32,10 +32,11 @@ public class LightningLevel extends Level{
 		int notCovered = 0;
 		int numRows = board.getRows();
 		int numColumns = board.getColumns();
+		BoardTile[][] boardGrid = board.boardGrid;
 		
-		for (int r = 0; r < numRows; r++) {
-			for (int c = 0; c < numColumns; c++) {
-				if (!board.boardGrid[r][c].isCovered){
+		for (int c = 0; c < numColumns; c++) {
+			for (int r = 0; r < numRows; r++) {
+				if (!boardGrid[c][r].isCovered()){
 					notCovered++;
 				}
 			}
@@ -75,4 +76,12 @@ public class LightningLevel extends Level{
 	public int getTimeRemaining(){
 		return this.timeRemaining;
 	}	
+	
+	/**
+	 * Will be useful when naming save level .txt files
+	 */
+	@Override
+	public String toString(){
+		return "Lightning" + this.levelNum;
+	}
 }

@@ -1,11 +1,17 @@
 package entity;
 
+import java.awt.Button;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.MouseEvent;
 
 import GUI.BullpenView;
+import GUI.KabasujiFrame;
+import GUI.LevelPanel;
+import GUI.LevelSelector;
 import junit.framework.TestCase;
 import move.IMove;
+import view.PieceView;
 
 public class LilyAnneTest extends TestCase 
 {
@@ -14,7 +20,14 @@ public class LilyAnneTest extends TestCase
 	Piece piece2;
 	Piece piece3;
 	BullpenView b;
+	PieceView pv, pv1, vcw, vccw, vv, vh;
+	LevelPanel level;
+	KabasujiFrame frame;
+	Level l;
+	Board board;
 	
+	LevelSelector ls;
+
 	public void setUp()
 	{
 		pen = new Bullpen();
@@ -45,17 +58,13 @@ public class LilyAnneTest extends TestCase
 		piece3.addTile(new PieceTile(), 2, 4);
 		piece3.addTile(new PieceTile(), 2, 5);
 		
+		
 		b = new BullpenView(pen);
+		frame = new KabasujiFrame();
+		
+		
 	}
 	
-	public void testPiecesInPen()
-	{
-		pen.addPiece(piece1);
-		
-		pen.addPiece(piece2);
-		
-		pen.addPiece(piece3);
-	}
 	/**
 	 * Checks that correct number of Pieces added to the Bullpen is correct
 	 */
@@ -68,19 +77,22 @@ public class LilyAnneTest extends TestCase
 		pen.addPiece(piece2, 3);
 		totalOfSamePiece = pen.getQuantity(piece2);
 		assertEquals(totalOfSamePiece, 3);
+		
+		b.setSelected(pv1);
+		assertEquals(b.getSelected(), pv1);
 	}
 	
-	public void testDragPiece()
+	public void testLevelPanel()
 	{
-
-	}
-	
-	public void testFlipPiece()
-	{
+		//l = new Level(board, pen, true, 1, 0);		
+		//level = new LevelPanel(frame, l);
+		//board = new Board(l, 6, 6);
 		
 	}
 	
-	public void testRotatePiece()
+	public void testLevelSelector()
 	{
+		//ls = new LevelSelector(frame);
 	}
+
 }

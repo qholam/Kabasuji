@@ -1,5 +1,7 @@
 package entity;
 
+import java.io.Serializable;
+
 /**
  * Representation of a piece.
  * Pieces consists of either PieceTile or nulls(indicating that there is no tile there).
@@ -7,7 +9,7 @@ package entity;
  * @author Quoc HoLam
  *
  */
-public class Piece{
+public class Piece  implements Serializable{
 	//grid of all the PieceTiles that this Piece is made of
 	PieceTile[][] pieceGrid;
 	//The (row, col) of the upper-left hand corner of the pieceGrid of the Piece on the board, if applicable

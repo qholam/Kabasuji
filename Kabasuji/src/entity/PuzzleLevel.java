@@ -20,7 +20,7 @@ public class PuzzleLevel extends Level {
 	 * @param stars The number of stars that the player has earned on this level.
 	 */
 	public PuzzleLevel(int movesRemaining, Board board, Bullpen bullpen, boolean isUnlocked, int levelNum, int stars){
-		super(board, bullpen, isUnlocked, movesRemaining, movesRemaining);
+		super(board, bullpen, isUnlocked, levelNum, stars);
 		this.movesRemaining = movesRemaining;
 	} 
 	
@@ -63,5 +63,13 @@ public class PuzzleLevel extends Level {
 	 */
 	public int getMovesRemaining(){
 		return this.movesRemaining;
+	}
+	
+	/**
+	 * Will be useful when naming save level .txt files
+	 */
+	@Override
+	public String toString(){
+		return "Puzzle" + this.levelNum;
 	}
 }
