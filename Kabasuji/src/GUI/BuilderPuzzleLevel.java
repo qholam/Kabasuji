@@ -73,7 +73,8 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 			bullpen.getPieceViews().get(i).addMouseListener(new MouseMoveCtrl(this));
 			
 			//controller to handle the dragging
-			new DragCtrl().handleDrag(bullpen.getPieceViews().get(i), this);
+			bullpen.getPieceViews().get(i).addMouseListener(new DragCtrl(bullpen.getPieceViews().get(i), this));
+			//new DragCtrl().handleDrag(bullpen.getPieceViews().get(i), this); 
 		}
 		//add controllers to handle dragging a piece over the components within the bullpen, this makes the drag smoother
 		for(Component c :bullpen.getComponents()){
