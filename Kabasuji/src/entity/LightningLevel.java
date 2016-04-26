@@ -30,8 +30,8 @@ public class LightningLevel extends Level{
 	 */
 	public boolean hasWon(){
 		int notCovered = 0;
-		int numRows = board.numRows;
-		int numColumns = board.numColumns;
+		int numRows = board.getRows();
+		int numColumns = board.getColumns();
 		
 		for (int r = 0; r < numRows; r++) {
 			for (int c = 0; c < numColumns; c++) {

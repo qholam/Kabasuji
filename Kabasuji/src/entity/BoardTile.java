@@ -41,4 +41,12 @@ public class BoardTile extends Tile{
 	public void uncover(){
 		isCovered = false;
 	}
+	
+	/**
+	 * Checks if boardtile is covered.
+	 * @return boolean true if covered
+	 */
+	public boolean isCovered(){
+		return this.isCovered;
+	}
 }

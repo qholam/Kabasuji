@@ -69,4 +69,19 @@ public class Board {
 		return level;
 	}
 
+	/**
+	 * Gets the number of rows on the board.
+	 * @return int number of rows on board.
+	 */
+	public int getRows(){
+		return this.numRows;
+	}
+	
+	/**
+	 * Gets the number of columns on the board.
+	 * @return int number of columns on board.
+	 */
+	public int getColumns(){
+		return this.numColumns;
+	}
 }

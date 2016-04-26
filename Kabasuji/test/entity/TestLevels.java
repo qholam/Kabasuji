@@ -87,8 +87,9 @@ public class TestLevels extends TestCase {
 		assertEquals(release.hasWon(), false);
 		
 		for (int i = 0; i < 6; i++){
-			releaseBoard.boardGrid[i][0] = new ReleaseTile(1, 0, new Number(i + 1, Color.red));
+			releaseBoard.boardGrid[i][0] = new ReleaseTile(i, 0, new Number(i + 1, Color.red));
 		}
+		
 		BullpenToReleaseBoardMove BRM = new BullpenToReleaseBoardMove(releaseBoard, piece, release, bullpen);
 		assertEquals(release.doMove(BRM), true);
 		assertEquals(release.hasWon(), true);
