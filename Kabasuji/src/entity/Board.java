@@ -24,11 +24,11 @@ public class Board {
 		this.level = level;
 		this.numRows = numRows;
 		this.numColumns = numColumns;
-		boardGrid = new BoardTile[numRows][numColumns];
+		boardGrid = new BoardTile[numColumns][numRows];
 		
 		for (int r = 0; r < this.numRows; r++) {
 			for (int c = 0; c < this.numColumns; c++) {
-				boardGrid[r][c] = new NoTile(r, c);
+				boardGrid[c][r] = new NoTile(r, c);
 			}
 		}
 	}
@@ -69,4 +69,19 @@ public class Board {
 		return level;
 	}
 
+	/**
+	 * Gets the number of rows on the board.
+	 * @return int number of rows on board.
+	 */
+	public int getRows(){
+		return this.numRows;
+	}
+	
+	/**
+	 * Gets the number of columns on the board.
+	 * @return int number of columns on board.
+	 */
+	public int getColumns(){
+		return this.numColumns;
+	}
 }
