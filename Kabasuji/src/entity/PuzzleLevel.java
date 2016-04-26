@@ -64,4 +64,12 @@ public class PuzzleLevel extends Level {
 	public int getMovesRemaining(){
 		return this.movesRemaining;
 	}
+	
+	/**
+	 * Will be useful when naming save level .txt files
+	 */
+	@Override
+	public String toString(){
+		return "Puzzle" + this.levelNum;
+	}
 }

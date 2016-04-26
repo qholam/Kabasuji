@@ -75,4 +75,12 @@ public class LightningLevel extends Level{
 	public int getTimeRemaining(){
 		return this.timeRemaining;
 	}	
+	
+	/**
+	 * Will be useful when naming save level .txt files
+	 */
+	@Override
+	public String toString(){
+		return "Lightning" + this.levelNum;
+	}
 }

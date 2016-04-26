@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import entity.Board;
 import entity.Bullpen;
 import entity.Piece;
+import entity.PieceTile;
 import entity.Tile;
 import entity.TileType;
 import view.PieceView;
