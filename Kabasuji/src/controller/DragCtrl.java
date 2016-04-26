@@ -105,10 +105,10 @@ public class DragCtrl {
 		    	            Bullpen bp = bullpen.getBullpen();
 		    	            bp.changeQuanity(p, -1);
 		        		}
-		        	}
+		        	}  
 		        	else{//another piece is currently being dragged, release it first
 		        		//get the piece being dragged
-		    			Piece dragged = container.getPieceView().getPiece();
+		    			Piece dragged = container.getDraggingPiece().getPiece();
 		    			Bullpen bp;
 		    			//added it back to the bullpen by updating pieces quantity
 		    			if(l instanceof LevelPanel){

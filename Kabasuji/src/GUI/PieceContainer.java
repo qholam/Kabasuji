@@ -62,11 +62,4 @@ public class PieceContainer extends JPanel{
 		return anchorTile;
 	}
 	
-	/**
-	 * get view of piece being dragged.
-	 * @return PieceView View of the piece being dragged.
-	 */
-	public PieceView getPieceView(){
-		return draggedPiece;
-	}
 }

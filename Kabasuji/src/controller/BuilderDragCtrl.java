@@ -95,7 +95,7 @@ public class BuilderDragCtrl {
 		        	}
 		        	else{//another piece is currently being dragged, release it first
 		        		//get the piece being dragged
-		    			Piece dragged = container.getPieceView().getPiece();
+		    			Piece dragged = container.getDraggingPiece().getPiece();
 		    			
 		    			//added it back to the bullpen by updating pieces quantity
 		    			Bullpen bp = builderPuzzleLevel.getBullpenView().getBullpen();

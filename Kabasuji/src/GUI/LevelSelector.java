@@ -32,7 +32,7 @@ public class LevelSelector extends JPanel {
 			public void actionPerformed(ActionEvent ae) {
 				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.Puzzle1);
 			}
-		}); 
+		});  
 		add(puzzleLevel1);
 
 		JLabel lblKabasuji = new JLabel("Kabasuji");

@@ -29,9 +29,9 @@ public class KabasujiFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public KabasujiFrame() {
+	public KabasujiFrame() { 
 		Deserializer deserializer =  new Deserializer();
-		container = new PieceContainer();
+		container = new PieceContainer(); 
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 800, 800);

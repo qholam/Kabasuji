@@ -15,7 +15,7 @@ public class Board implements Serializable{
 	int numRows;
 	// The number of columns of tiles on this board
 	int numColumns;
-	
+	 
 	/** Constructor requires level reference and size specifications (rows and columns) 
 	 *  @param level The level to which this board belongs
 	 *  @param numRows The number of rows of tiles this board should have

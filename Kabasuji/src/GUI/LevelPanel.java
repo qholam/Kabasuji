@@ -49,7 +49,7 @@ public class LevelPanel extends JPanel{
 	//the level that this panel represents
 	Level level;
 	//booleans to keep track if the stars achieved
-	boolean oneStar, twoStar, threeStar;
+	boolean oneStar, twoStar, threeStar; 
 	
 	JLabel star1, star2, star3;
 	JLabel infoLabel;
@@ -58,7 +58,7 @@ public class LevelPanel extends JPanel{
 	
 	PieceContainer container;
 	/**
-	 * Create the panel.
+	 * Create the panel. 
 	 */
 	public LevelPanel(KabasujiFrame frame, Level l) {	
 		container = frame.getPieceContainer();

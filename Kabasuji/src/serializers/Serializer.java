@@ -11,7 +11,7 @@ import entity.PieceTile;
 import entity.PuzzleLevel;
 
 public class Serializer {
-		//testing saving of the first level7
+		//testing saving of the first level
 		public static void main(String[] args){
 			Bullpen b = new Bullpen();
 			for(int i = 0; i < 6; i++){
@@ -25,7 +25,7 @@ public class Serializer {
 				p.addTile(new PieceTile(), 5-i, 1);
 				p.addTile(new PieceTile(), 5-i, 3);
 				b.addPiece(p);
-			}
+			} 
 			Level l = (Level) new PuzzleLevel(20, new Board(null, 10, 10), b, true, 1, 0);
 			new Serializer().serializeLevel(l);
 			
