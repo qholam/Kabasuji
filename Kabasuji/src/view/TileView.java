@@ -23,6 +23,9 @@ public class TileView extends JPanel{
 	
 	//Tile that this view represents
 	Tile tile;
+	
+	//boolean to determine repaint(need for smooth drag)
+	Boolean repaint = true;
 
 	/**
 	 * Constructor for TileView
@@ -30,6 +33,7 @@ public class TileView extends JPanel{
 	 */
 	public TileView(Tile t){
 		super();
+		repaint = true;
 		
 		//TODO set a proper size based on the grids of a board 
 		setSize(40,23);
@@ -68,7 +72,29 @@ public class TileView extends JPanel{
 		}
 
 	}
+	
+	@Override
+	public void repaint(){
+		if(repaint != null && repaint)
+			super.repaint();
+	}
+	
+	/**
+	 * this is needed to prevent flickering when dragging inside the board.
+	 * TODO: find another way to prevent this flickering
+	 */
+	public void setRepaintInvalid(){
+		repaint = false;
+	}
  
+	/**
+	 * this is needed to prevent flickering when dragging inside the board.
+	 * TODO: find another way to prevent this flickering
+	 */
+	public void setRepaintValid(){
+		repaint = true;
+	}
+	
 	/**
 	 * @return the tile
 	 */

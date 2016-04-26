@@ -11,6 +11,7 @@ import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JPanel;
 
+import GUI.BoardPanel;
 import GUI.BullpenView;
 import GUI.LevelPanel;
 import GUI.PieceContainer;
@@ -43,10 +44,10 @@ public class DragCtrl {
 	Tile t;
 	//used to keep track of the mouse position
 	Point point;
-	public void handleDrag(final JPanel panel, final LevelPanel l){
+	public void handleDrag(final PieceView panel, final LevelPanel l){
 	    panel.addMouseListener(new MouseAdapter() {
 	    	//cast given panel to be a PieceView and represented piece
-	    	PieceView pv = (PieceView) panel;
+	    	PieceView pv = panel;
 	    	Piece p = pv.getPiece();
 	    	//get the bullpenview
 	    	BullpenView bullpen = l.getBullpenView();
@@ -108,6 +109,9 @@ public class DragCtrl {
 	        public void mouseDragged(MouseEvent me) {
 	        	//check if container is currently being used
 	        	if(container.isVisible()){
+	        		l.getBoardPanel().setRepaintInvalid();
+	        		
+	        		l.setIgnoreRepaint(true);
 	        		tv = container.getAnchorTile();
 	        		
 	        		//get the position on the mouse on the level panel

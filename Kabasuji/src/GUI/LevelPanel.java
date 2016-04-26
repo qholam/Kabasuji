@@ -71,6 +71,17 @@ public class LevelPanel extends JPanel{
 		setBounds(0, 0, 800, 800);
 		
 		board = new BoardPanel(l.getBoard());
+		board.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				System.out.println("release");
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e){
+				
+			}
+		});
 		board.setBounds(25, 400, 600, 300);
 		add(board);
 		
@@ -156,6 +167,10 @@ public class LevelPanel extends JPanel{
 	
 	public BullpenView getBullpenView(){
 		return bullpen;
+	}
+	
+	public BoardPanel getBoardPanel(){
+		return board;
 	}
 }
 
