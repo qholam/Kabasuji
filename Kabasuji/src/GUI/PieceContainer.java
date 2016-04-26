@@ -38,6 +38,10 @@ public class PieceContainer extends JPanel{
 		draggedPiece.setPiece(p);
 	}
 	
+	public PieceView getDraggingPiece(){
+		return draggedPiece;
+	}
+	
 	public void setAnchortile(TileView t){
 		anchorTile = t;
 	}

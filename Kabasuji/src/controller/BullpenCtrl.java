@@ -8,13 +8,13 @@ import entity.KabasujiGame;
 
 public class BullpenCtrl {
 		KabasujiGame theGame;
-		Bullpen pen;
+		Bullpen theBullpen;
 		PieceView srcPiece;
 		
-		public void BoardtoBullpenCtrl(KabasujiGame theGame, Board theBoard, Bullpen pen, PieceView srcPiece)
+		public void BoardtoBullpenCtrl(KabasujiGame theGame, Board theBoard, Bullpen theBullpen, PieceView srcPiece)
 		{
 			this.theGame = theGame;
-			this.pen = pen;
+			this.theBullpen = theBullpen;
 			this.srcPiece = srcPiece;
 		}
 		
