@@ -24,7 +24,7 @@ public class TestLevels extends TestCase {
 	Level level;
 	
 	public void setUp(){
-		movesRemaining = 1;
+		movesRemaining = 1; 
 		timeRemaining = 5;
 		levelNum = 1;
 		stars = 0;
