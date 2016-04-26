@@ -31,7 +31,7 @@ public class PieceInBullpenCtrl implements MouseListener, MouseMotionListener{
 		bv = b;
 		pv = p;
 	}
-	
+	 
 	@Override
     public void mousePressed(MouseEvent me) {
 		if(SwingUtilities.isRightMouseButton(me)){

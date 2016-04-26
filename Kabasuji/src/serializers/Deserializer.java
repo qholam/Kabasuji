@@ -15,7 +15,7 @@ import entity.ReleaseLevel;
  * @author Quoc HoLam
  *
  */
-public class Deserializer {
+public class Deserializer { 
 	
 	/**
 	 * Retrieve a {@link ReleaseLevel} from file
@@ -28,7 +28,7 @@ public class Deserializer {
 
 		try { 
 
-			FileInputStream fin = new FileInputStream("src/savedLevels/Release" + index);
+			FileInputStream fin = new FileInputStream("Kabasuji/src/savedLevels/Release" + index);
 			ObjectInputStream ois = new ObjectInputStream(fin);
 			level = (ReleaseLevel) ois.readObject();
 			ois.close();

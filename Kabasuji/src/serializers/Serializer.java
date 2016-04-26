@@ -9,7 +9,11 @@ import entity.Level;
 import entity.Piece;
 import entity.PieceTile;
 import entity.PuzzleLevel;
-
+/**
+ * Writes state of object into a stream of bytes
+ * @author Quoc HoLam
+ *
+ */
 public class Serializer {
 		//testing saving of the first level
 		public static void main(String[] args){
@@ -34,7 +38,7 @@ public class Serializer {
 	
 		public void serializeLevel(Level l){ 
 		   try{  
-			FileOutputStream fout = new FileOutputStream("src/savedLevels/" + l.toString());
+			FileOutputStream fout = new FileOutputStream("Kabasuji/src/savedLevels/" + l.toString());
 			ObjectOutputStream oos = new ObjectOutputStream(fout);   
 			oos.writeObject(l);
 			oos.close();
