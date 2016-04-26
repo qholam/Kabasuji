@@ -24,6 +24,8 @@ public class BoardCtrl
 	public void mousePressed (MouseEvent me)
 	{
 		PieceContainer container = theGame.getContainer();
+		PieceView pieceDragging = container.getDraggingPiece();
+		
 		
 		
 
