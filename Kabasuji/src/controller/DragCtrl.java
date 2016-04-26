@@ -35,7 +35,7 @@ public class DragCtrl {
 	 * Handles the event when a piece is being dragged.
 	 * For some reason if these mouse adapters are added any where
 	 * but this class, it will not work. 
-	 * As of now this method assumes that the given JPanel is a PiceView.
+	 * As of now this method assumes that the given JPanel is a PieceView.
 	 * There are currently graphical issues when dragging a piece over another
 	 * piece in the bullpen.
 	 * @param panel Given panel to handle a drag event for
