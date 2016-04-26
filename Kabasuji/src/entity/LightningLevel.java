@@ -32,10 +32,11 @@ public class LightningLevel extends Level{
 		int notCovered = 0;
 		int numRows = board.getRows();
 		int numColumns = board.getColumns();
+		BoardTile[][] boardGrid = board.boardGrid;
 		
-		for (int r = 0; r < numRows; r++) {
-			for (int c = 0; c < numColumns; c++) {
-				if (!board.boardGrid[r][c].isCovered){
+		for (int c = 0; c < numColumns; c++) {
+			for (int r = 0; r < numRows; r++) {
+				if (!boardGrid[c][r].isCovered()){
 					notCovered++;
 				}
 			}

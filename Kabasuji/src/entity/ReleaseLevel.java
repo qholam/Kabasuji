@@ -22,7 +22,7 @@ public class ReleaseLevel extends Level {
 	 * @param stars
 	 */
 	public ReleaseLevel(Board board,Bullpen bullpen, boolean isUnlocked, int levelNum, int stars){
-		super(board, bullpen, isUnlocked, stars, stars);
+		super(board, bullpen, isUnlocked, levelNum, stars);
 		numMoves = 0;
 	}
 	
@@ -50,8 +50,8 @@ public class ReleaseLevel extends Level {
 				}
 			}
 		
-		for (int i = 0; i < numRows; i++){
-			for (int a = 0; a < numColumns; a++){
+		for (int i = 0; i < numColumns; i++){
+			for (int a = 0; a < numRows; a++){
 				if (board.boardGrid[i][a] instanceof ReleaseTile){
 					if (board.boardGrid[i][a].isCovered()){
 						release = (ReleaseTile) board.boardGrid[i][a];

@@ -76,9 +76,9 @@ public class TestLevels extends TestCase {
 		//move piece to board
 		BullpenToLightningBoardMove BLM = new BullpenToLightningBoardMove(lightningBoard, piece, lightning, bullpen);
 		assertEquals(lightning.doMove(BLM), true);
-		assertEquals(lightning.getTimeRemaining(), 5);
+		assertEquals(lightning.getTimeRemaining(), 5); 
 		
-	}
+	} 
 	
 	/**
 	 * Test Release methods.
@@ -87,11 +87,12 @@ public class TestLevels extends TestCase {
 		assertEquals(release.hasWon(), false);
 		
 		for (int i = 0; i < 6; i++){
-			releaseBoard.boardGrid[i][0] = new ReleaseTile(i, 0, new Number(i + 1, Color.red));
+			releaseBoard.boardGrid[0][i] = new ReleaseTile(i, 0, new Number(i + 1, Color.red));
 		}
 		
 		BullpenToReleaseBoardMove BRM = new BullpenToReleaseBoardMove(releaseBoard, piece, release, bullpen);
 		assertEquals(release.doMove(BRM), true);
+		assertEquals(release.getNumMoves(), 1);
 		assertEquals(release.hasWon(), true);
 	}
 	
@@ -107,4 +108,13 @@ public class TestLevels extends TestCase {
 		assertEquals(level.getBoard(), board);
 	}
 
+	/**
+	 * Test toString methods for all levels
+	 */
+	public void testToString(){
+		assertEquals(puzzle.toString(), "Puzzle1");
+		assertEquals(lightning.toString(), "Lightning1");
+		assertEquals(release.toString(), "Release1");
+		
+	}
 }
