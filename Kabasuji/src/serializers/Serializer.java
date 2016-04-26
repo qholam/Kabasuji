@@ -7,9 +7,8 @@ import entity.Level;
 
 public class Serializer {
 	   public void serializeLevel(Level l){ 
-		   try{
-			   
-			FileOutputStream fout = new FileOutputStream();
+		   try{  
+			FileOutputStream fout = new FileOutputStream("src/savedLevels/" + l.toString());
 			ObjectOutputStream oos = new ObjectOutputStream(fout);   
 			oos.writeObject(l);
 			oos.close();
