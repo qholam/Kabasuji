@@ -60,13 +60,10 @@ public class LilyAnneTest extends TestCase
 		piece3.addTile(new PieceTile(), 2, 4);
 		piece3.addTile(new PieceTile(), 2, 5);
 		
-		board = new Board(l, 6, 6);
+		
 		b = new BullpenView(pen);
 		frame = new KabasujiFrame();
-		l = new Level(board, pen, true, 1, 0);		
-		level = new LevelPanel(frame, l);
 		
-		//ls = new LevelSelector(frame);
 		
 	}
 	
@@ -85,6 +82,19 @@ public class LilyAnneTest extends TestCase
 		
 		b.setSelected(pv1);
 		assertEquals(b.getSelected(), pv1);
+	}
+	
+	public void testLevelPanel()
+	{
+		l = new Level(board, pen, true, 1, 0);		
+		level = new LevelPanel(frame, l);
+		board = new Board(l, 6, 6);
+		
+	}
+	
+	public void testLevelSelector()
+	{
+		ls = new LevelSelector(frame);
 	}
 
 }
