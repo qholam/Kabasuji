@@ -1,5 +1,7 @@
 package entity;
 
+import java.io.Serializable;
+
 import move.IMove;
 
 /**
@@ -7,7 +9,7 @@ import move.IMove;
  * @author Calvin
  *
  */
-public class Level {
+public class Level implements Serializable{
 	
 	boolean isUnlocked;
 	Board board;

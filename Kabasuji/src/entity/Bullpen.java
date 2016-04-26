@@ -1,9 +1,10 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Bullpen {
+public class Bullpen implements Serializable {
 	//the current selected piece inside the bullpen, null if nothing is selected
 	Piece selectedPiece;
 	//Array list to hold all the piece on the bullpen

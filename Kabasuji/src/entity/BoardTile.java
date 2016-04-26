@@ -1,5 +1,7 @@
 package entity;
 
+import java.io.Serializable;
+
 /**
  * Represent a tile on the board.
  * @author Quoc HoLam

@@ -20,7 +20,7 @@ public class PuzzleLevel extends Level {
 	 * @param stars The number of stars that the player has earned on this level.
 	 */
 	public PuzzleLevel(int movesRemaining, Board board, Bullpen bullpen, boolean isUnlocked, int levelNum, int stars){
-		super(board, bullpen, isUnlocked, movesRemaining, movesRemaining);
+		super(board, bullpen, isUnlocked, levelNum, stars);
 		this.movesRemaining = movesRemaining;
 	} 
 	

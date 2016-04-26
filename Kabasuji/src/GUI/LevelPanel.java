@@ -36,6 +36,7 @@ import entity.PuzzleLevel;
 import entity.ReleaseLevel;
 import entity.Tile;
 import entity.TileType;
+import serializers.Deserializer;
 import view.PieceView;
 import view.TileView;
 import java.awt.event.KeyAdapter;
@@ -59,14 +60,14 @@ public class LevelPanel extends JPanel{
 	/**
 	 * Create the panel.
 	 */
-	public LevelPanel(KabasujiFrame frame, Level l) {
+	public LevelPanel(KabasujiFrame frame, Level l) {	
 		container = frame.getPieceContainer();
 		container.setVisible(false);
 		add(container);
 		kFrame = frame;
 		level = l;
 		
-		oneStar = false;
+		oneStar = false; 
 		twoStar = false;
 		threeStar = false;
 		
