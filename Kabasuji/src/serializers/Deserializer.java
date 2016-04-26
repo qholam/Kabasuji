@@ -12,7 +12,7 @@ public class Deserializer {
 		 
 		   try{
 			    
-			   FileInputStream fin = new FileInputStream("src/nut/test2");
+			   FileInputStream fin = new FileInputStream();
 			   ObjectInputStream ois = new ObjectInputStream(fin);
 			   level = (Level) ois.readObject();
 			   ois.close();

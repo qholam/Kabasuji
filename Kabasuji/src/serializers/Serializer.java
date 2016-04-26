@@ -9,7 +9,7 @@ public class Serializer {
 	   public void serializeLevel(Level l){ 
 		   try{
 			   
-			FileOutputStream fout = new FileOutputStream("src/nut/test2");
+			FileOutputStream fout = new FileOutputStream();
 			ObjectOutputStream oos = new ObjectOutputStream(fout);   
 			oos.writeObject(l);
 			oos.close();
