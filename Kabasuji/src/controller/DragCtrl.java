@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import GUI.BoardPanel;
 import GUI.BullpenView;
@@ -56,38 +57,60 @@ public class DragCtrl {
 	    	
 	    	@Override
 	        public void mousePressed(MouseEvent me) {
-	    		//get the component that was clicked on within the panel
-	        	Component c = pv.getComponentAt(me.getPoint());
-	        	
-	        	//check if the component is a tile view
-	        	if(c instanceof TileView){
-	        		//cast to TileView and get the represented tile
-	        		tv = (TileView) c;
-	        		t = tv.getTile();
-	        		
-	        		//ensures that drag is only initiated when player click on piece and not its container
-	        		if(t != null && !t.toString().equals(TileType.noTile)){
-	        			//set the tile that was clicked on to be the anchor for this drag
-	        			container.setAnchortile(tv); 
-	        			
-	        			//get the location of the tile, set the piece to be dragged, and have its initial location be the point in which the mouse was clicked
-	        			//this is still jittery
-	        			point = tv.getLocation();
-	        			container.setDraggingPiece(p);
-	    	            container.setLocation(point);
-	    	            
-	    	            //container is visible when being used(there might be a better way to do this)
-	    	            container.setVisible(true);
-	    	            
-	    	            //update quantity of piece
-	    	            Bullpen bp = bullpen.getBullpen();
-	    	            bp.changeQuanity(p, -1);
-	        		}
-	        	}
+	    		//checks that it is a left mouse press,if not do nothing
+	    		if(!SwingUtilities.isLeftMouseButton(me) )
+	    			return;
+	    		
+	    		if(!container.isVisible()){
+		    		//get the component that was clicked on within the panel
+		        	Component c = pv.getComponentAt(me.getPoint());
+		        	
+		        	//check if the component is a tile view
+		        	if(c instanceof TileView){
+		        		//cast to TileView and get the represented tile
+		        		tv = (TileView) c;
+		        		t = tv.getTile();
+		        		
+		        		//ensures that drag is only initiated when player click on piece and not its container
+		        		if(t != null && !t.toString().equals(TileType.noTile)){
+		        			//set the tile that was clicked on to be the anchor for this drag
+		        			container.setAnchortile(tv); 
+		        			//set the source
+		        			container.setSource(panel);
+		        			
+		        			//get the location of the tile, set the piece to be dragged, and have its initial location be the point in which the mouse was clicked
+		        			//this is still jittery
+		        			point = tv.getLocation();
+		        			container.setDraggingPiece(p);
+		    	            container.setLocation(point);
+		    	            
+		    	            //container is visible when being used(there might be a better way to do this)
+		    	            container.setVisible(true);
+		    	            
+		    	            //update quantity of piece
+		    	            Bullpen bp = bullpen.getBullpen();
+		    	            bp.changeQuanity(p, -1);
+		        		}
+		        	}
+		        	else{//another piece is currently being dragged, release it first
+		        		//get the piece being dragged
+		    			Piece dragged = container.getPieceView().getPiece();
+		    			
+		    			//added it back to the bullpen by updating pieces quantity
+		    			Bullpen bp = l.getBullpenView().getBullpen();
+		    	    	bp.changeQuanity(dragged, 1);
+		    	    	l.getBullpenView().repaint();
+		    	    	
+		    	    	container.setVisible(false);
+		        	}
+	    		}
 	        }
-	        
+	        /**
 	        @Override
 	        public void mouseReleased(MouseEvent me){
+	        	//set repaint on board valid again
+	        	l.getBoardPanel().setRepaintValid();
+	        	
 	        	//return container to its original position(is this needed?)
 	        	container.setLocation(0, 0);
 	        	 
@@ -99,6 +122,7 @@ public class DragCtrl {
 	        	bp.changeQuanity(p, 1);
 	        	bullpen.repaint();
 	        }
+	        */
 	    });
 	    
 	    panel.addMouseMotionListener(new MouseMotionAdapter() {
@@ -106,7 +130,7 @@ public class DragCtrl {
 	    	PieceContainer container = l.getPieceContainer();
 	    	
 	        @Override
-	        public void mouseDragged(MouseEvent me) {
+	        public void mouseMoved(MouseEvent me) {
 	        	//check if container is currently being used
 	        	if(container.isVisible()){
 	        		l.getBoardPanel().setRepaintInvalid();

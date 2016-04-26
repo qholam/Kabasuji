@@ -7,11 +7,13 @@ import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Container;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
@@ -21,6 +23,7 @@ import java.awt.Graphics;
 import javax.swing.SwingConstants;
 
 import controller.DragCtrl;
+import controller.MouseMoveCtrl;
 import controller.PieceInBullpenCtrl;
 import entity.Board;
 import entity.Bullpen;
@@ -71,16 +74,13 @@ public class LevelPanel extends JPanel{
 		setBounds(0, 0, 800, 800);
 		
 		board = new BoardPanel(l.getBoard());
-		board.addMouseListener(new MouseAdapter() {
+		
+		board.addMouseMotionListener(new MouseMoveCtrl(this));
+		board.addMouseListener(new MouseAdapter(){
 			@Override
-			public void mouseReleased(MouseEvent e) {
-				System.out.println("release");
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent e){
-				
-			}
+	        public void mouseClicked(MouseEvent me){
+	        	System.out.println("hi");
+	        }
 		});
 		board.setBounds(25, 400, 600, 300);
 		add(board);
@@ -89,7 +89,21 @@ public class LevelPanel extends JPanel{
 		bullpen.setBounds(25, 25, 600, 300);
 		//add adapter to each piece in bullpen to handle a drag within the level panel
 		for(int i = 0; i < bullpen.getBullpen().getPieces().size(); i++){
+			//add controllers to handle dragging a piece over other pieces
+			bullpen.getPieceViews().get(i).addMouseMotionListener(new MouseMoveCtrl(this));
+			bullpen.getPieceViews().get(i).addMouseListener(new MouseMoveCtrl(this));
+			
+			//controller to handle the dragging
 			new DragCtrl().handleDrag(bullpen.getPieceViews().get(i), this);
+		}
+		//add controllers to handle dragging a piece over the components within the bullpen
+		for(Component c :bullpen.getComponents()){
+			for(Component cc: ((Container) c).getComponents()){
+				cc.addMouseMotionListener(new MouseMoveCtrl(this));
+				cc.addMouseListener(new MouseMoveCtrl(this));
+			}
+			c.addMouseMotionListener(new MouseMoveCtrl(this));
+			c.addMouseListener(new MouseMoveCtrl(this));
 		}
 		add(bullpen);
 		
@@ -99,6 +113,8 @@ public class LevelPanel extends JPanel{
 			}
 		});
 		trashBtn.setBounds(650, 600, 100, 100);
+		trashBtn.addMouseMotionListener(new MouseMoveCtrl(this));
+		trashBtn.addMouseListener(new MouseMoveCtrl(this));
 		add(trashBtn);
 		
 		//Change here(condensed all level view into one)
@@ -120,6 +136,8 @@ public class LevelPanel extends JPanel{
 				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.MainMenu);
 			}
 		});
+		btnMenu.addMouseMotionListener(new MouseMoveCtrl(this));
+		btnMenu.addMouseListener(new MouseMoveCtrl(this));
 		add(btnMenu);
 		
 		JPanel panel = new JPanel();
@@ -138,6 +156,10 @@ public class LevelPanel extends JPanel{
 		star1 = new JLabel("---");
 		star1.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(star1);
+		
+		//handles the dragging of an object
+		this.addMouseMotionListener(new MouseMoveCtrl(this));
+		this.addMouseListener(new MouseMoveCtrl(this));
 	}
 	
 	@Override

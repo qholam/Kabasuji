@@ -21,17 +21,28 @@ public class PieceContainer extends JPanel{
 	PieceView draggedPiece;
 	//the tile that the mouse is hovering over during a drag
 	TileView anchorTile;
+	//source of the drag
+	JPanel source;
 	
 	public PieceContainer() {
 		super();
 		
+		source = null;
 		draggedPiece = new PieceView(new Piece());
 		setLayout(new GridLayout(1,0));
-		setBounds(0,0,335,170);
+		setBounds(0,0,350,170);
 		add(draggedPiece);
 		
 		//The panel holding the piece should not be visible.
 		setOpaque(false);
+	}
+	
+	public void setSource(JPanel source){
+		this.source = source;
+	}
+	
+	public JPanel getSource(){
+		return source;
 	}
 	
 	public void setDraggingPiece(Piece p){
@@ -46,6 +57,10 @@ public class PieceContainer extends JPanel{
 		return anchorTile;
 	}
 	
+	/**
+	 * get view of piece being dragged.
+	 * @return PieceView View of the piece being dragged.
+	 */
 	public PieceView getPieceView(){
 		return draggedPiece;
 	}

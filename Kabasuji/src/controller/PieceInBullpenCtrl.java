@@ -9,6 +9,7 @@ import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseMotionListener;
 
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import GUI.BullpenView;
 import GUI.KabasujiFrame;
@@ -33,16 +34,18 @@ public class PieceInBullpenCtrl implements MouseListener, MouseMotionListener{
 	
 	@Override
     public void mousePressed(MouseEvent me) {
-		Component c = pv.getComponentAt(me.getPoint());
-		
-		//more accurate clicking, piece is only selected if user clicks on a tile that is not null or a notile
-		if(c instanceof TileView){
-			Tile t = ((TileView) c).getTile();
-			if(t == null || t.toString().equals(TileType.noTile)){
-				return;
-			}
-			else{
-				bv.setSelected(pv);
+		if(SwingUtilities.isRightMouseButton(me)){
+			Component c = pv.getComponentAt(me.getPoint());
+			
+			//more accurate clicking, piece is only selected if user clicks on a tile that is not null or a notile
+			if(c instanceof TileView){
+				Tile t = ((TileView) c).getTile();
+				if(t == null || t.toString().equals(TileType.noTile)){
+					return;
+				}
+				else{
+					bv.setSelected(pv);
+				}
 			}
 		}
     }
