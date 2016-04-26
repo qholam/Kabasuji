@@ -64,5 +64,9 @@ public class Board {
 		// TODO
 		return false;
 	}
+	
+	public Level getLevel(){
+		return level;
+	}
 
 }

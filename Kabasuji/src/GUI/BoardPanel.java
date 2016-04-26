@@ -19,12 +19,14 @@ import java.awt.GridLayout;
 public class BoardPanel extends JPanel {
 	//Board that this panel represents
 	Board board;
-	
+	//Tiles vies on the board
+	TileView[][] tileViews;
 	/**
 	 * Create the panel.
 	 */
 	public BoardPanel(Board b) {
 		board = b;
+		tileViews = new TileView[b.getNumRows()][b.getNumColumns()];
 		
 		setBackground(Color.WHITE);
 		setLayout(null);
@@ -39,10 +41,42 @@ public class BoardPanel extends JPanel {
 		
 		for (int r = 0; r < b.getNumRows(); r++) {
 			for (int c = 0; c < b.getNumRows(); c++) {
-				panel.add(new TileView(b.getGrid()[r][c]));
+				tileViews[r][c] = new TileView(b.getGrid()[r][c]);
+				panel.add(tileViews[r][c]);
 			}
 		}
 		setOpaque(true);
-		
+	}
+	
+	public Board getBoard(){
+		return board;
+	}
+	
+	public TileView[][] getTileViews(){
+		return tileViews;
+	}
+	
+	/**
+	 * this is needed to prevent flickering when dragging inside the board.
+	 * TODO: find another way to prevent this flickering
+	 */
+	public void setRepaintInvalid(){
+		for (int r = 0; r < board.getNumRows(); r++) {
+			for (int c = 0; c < board.getNumRows(); c++) {
+				tileViews[r][c].setRepaintInvalid();
+			}
+		}
+	}
+	
+	/**
+	 * this is needed to prevent flickering when dragging inside the board.
+	 * TODO: find another way to prevent this flickering
+	 */
+	public void setRepaintValid(){
+		for (int r = 0; r < board.getNumRows(); r++) {
+			for (int c = 0; c < board.getNumRows(); c++) {
+				tileViews[r][c].setRepaintValid();
+			}
+		}
 	}
 }
