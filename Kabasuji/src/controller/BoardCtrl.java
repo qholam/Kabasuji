@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.event.MouseEvent;
 
+import GUI.PieceContainer;
 import entity.Board;
 import entity.KabasujiGame;
 import view.PieceView;
@@ -22,6 +23,9 @@ public class BoardCtrl
 	
 	public void mousePressed (MouseEvent me)
 	{
+		PieceContainer container = theGame.getContainer();
+		
+		
 
 		//Invalid selection
 		if (srcPiece.getPiece() == null) 
