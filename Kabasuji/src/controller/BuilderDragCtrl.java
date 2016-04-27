@@ -7,19 +7,14 @@ import java.awt.Component;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
 
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import GUI.BoardPanel;
 import GUI.BuilderPuzzleLevel;
 import GUI.BullpenView;
-import GUI.LevelPanel;
 import GUI.PieceContainer;
 import entity.Bullpen;
 import entity.Piece;
-import entity.PieceTile;
 import entity.Tile;
 import entity.TileType;
 import view.PieceView;

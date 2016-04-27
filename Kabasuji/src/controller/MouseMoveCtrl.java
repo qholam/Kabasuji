@@ -12,7 +12,6 @@ import GUI.BuilderLevel;
 import GUI.LevelPanel;
 import GUI.PieceContainer;
 import entity.Bullpen;
-import entity.Level;
 import entity.Piece;
 import entity.PieceTile;
 import view.TileView;

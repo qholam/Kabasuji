@@ -3,7 +3,6 @@ package controller;
 import view.PieceView;
 import java.awt.event.MouseEvent;
 
-import GUI.PieceContainer;
 import entity.Board;
 import entity.Bullpen;
 import entity.KabasujiGame;
@@ -28,8 +27,8 @@ public class BullpenCtrl {
 		
 		public void mousePressed (MouseEvent me)
 		{
-			PieceContainer container = theGame.getContainer();
-			PieceView pieceDragging = container.getDraggingPiece();
+			//PieceContainer container = theGame.getContainer();
+			//PieceView pieceDragging = container.getDraggingPiece();
 					
 			//Invalid selection
 			if (srcPiece.getPiece() == null) 

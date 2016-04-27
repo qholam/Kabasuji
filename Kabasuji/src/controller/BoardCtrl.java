@@ -5,20 +5,14 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import GUI.BoardPanel;
-import GUI.BuilderLevel;
 import GUI.LevelPanel;
 import GUI.PieceContainer;
-import entity.Board;
 import entity.BoardTile;
 import entity.Bullpen;
-import entity.KabasujiGame;
-import entity.Level;
 import entity.NoTile;
 import entity.Piece;
 import entity.PieceTile;
-import entity.PuzzleLevel;
 import entity.Tile;
-import view.PieceView;
 import view.TileView;
 
 /**
@@ -45,7 +39,7 @@ public class BoardCtrl implements MouseListener{
 		
 		//is anything being dragged? if not then see if there is a piece to remove there
 		if(!container.isVisible()){
-			Level l = levelPanel.getLevel();
+			//Level l = levelPanel.getLevel();
 			//can only be removed from board if it is puzzle level
 			//if(l instanceof PuzzleLevel){
 				Component c = boardPanel.getBoardTilePanel().getComponentAt(me.getPoint());
