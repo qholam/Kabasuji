@@ -111,11 +111,6 @@ public class PieceCtrl implements MouseListener, MouseMotionListener{
 	}
 	
 	@Override
-	public void mouseReleased(MouseEvent me) {
-
-	}
-	
-	@Override
 	public void mouseMoved(MouseEvent me) {
     	if(container.isVisible()){ 
     		if(l instanceof LevelPanel){
@@ -138,6 +133,12 @@ public class PieceCtrl implements MouseListener, MouseMotionListener{
     		if(point != null)
     			container.setLocation(point);
     	}
+	}
+	
+	
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
 	}
 	
 	@Override
