@@ -120,6 +120,13 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		panel.add(scrollPane);
+		
+		JPanel panel_1 = new JPanel();
+		scrollPane.setViewportView(panel_1);
+		panel_1.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		EditorPanel editorPanel = new EditorPanel(kFrame);
+		panel_1.add(editorPanel);
 		scrollPane.addMouseMotionListener(new MouseMoveCtrl(this));
 		scrollPane.addMouseListener(new MouseMoveCtrl(this));
 		
@@ -207,5 +214,4 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 	public BoardPanel getBoardPanel(){
 		return boardPanel;
 	}
-	
 }

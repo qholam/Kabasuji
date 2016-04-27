@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 
 import entity.Board;
 import entity.Level;
+import entity.Piece;
+import entity.PieceTile;
 
 import java.awt.CardLayout;
 
@@ -25,6 +27,8 @@ public class KabasujiBuilderFrame extends JFrame {
 	Board workingBoard;
 	BuilderLevel workingLevel;
 	PieceContainer container;
+	
+	Piece[] pieces = new Piece[35];
 
 	/**
 	 * Launch the application.
@@ -47,6 +51,8 @@ public class KabasujiBuilderFrame extends JFrame {
 	 */
 	public KabasujiBuilderFrame() {
 		container = new PieceContainer();
+		
+		initPieces();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1200, 800);
@@ -89,5 +95,309 @@ public class KabasujiBuilderFrame extends JFrame {
 
 	public PieceContainer getPieceContainer(){
 		return container;
+	}
+	
+	/** Initializes all 35 Kabasuji Pieces from hardcoded int arrays.*/
+	void initPieces() {
+		/** Create all 35 Kabasuji Hexominos */ 
+		pieces[0] = createPiece(new int[]{
+				1, 0, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0
+				});
+		pieces[1] = createPiece(new int[]{
+				1, 1, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[2] = createPiece(new int[]{
+				0, 1, 0, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				1, 1, 0, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[3] = createPiece(new int[]{
+				0, 1, 0, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				0, 1, 1, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[4] = createPiece(new int[]{
+				0, 0, 1, 1, 0, 0,
+				1, 1, 1, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[5] = createPiece(new int[]{
+				1, 1, 1, 0, 0, 0,
+				0, 0, 1, 1, 1, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[6] = createPiece(new int[]{
+				0, 1, 0, 0, 0, 0,
+				1, 1, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[7] = createPiece(new int[]{
+				0, 1, 0, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				1, 1, 0, 0, 0, 0,
+				1, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[8] = createPiece(new int[]{
+				1, 1, 0, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				0, 1, 1, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[9] = createPiece(new int[]{
+				1, 1, 1, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[10] = createPiece(new int[]{
+				0, 0, 1, 0, 0, 0,
+				0, 0, 1, 0, 0, 0,
+				0, 0, 1, 0, 0, 0,
+				1, 1, 1, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[11] = createPiece(new int[]{
+				1, 1, 0, 0, 0, 0,
+				1, 1, 0, 0, 0, 0,
+				1, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[12] = createPiece(new int[]{
+				0, 1, 1, 0, 0, 0,
+				1, 1, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[13] = createPiece(new int[]{
+				0, 0, 1, 0, 0, 0,
+				0, 1, 1, 0, 0, 0,
+				1, 1, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[14] = createPiece(new int[]{
+				1, 0, 0, 0, 0, 0,
+				1, 1, 0, 0, 0, 0,
+				1, 1, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[15] = createPiece(new int[]{
+				0, 1, 0, 0, 0, 0,
+				1, 1, 1, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[16] = createPiece(new int[]{
+				1, 0, 0, 0, 0, 0,
+				1, 1, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				1, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[17] = createPiece(new int[]{
+				1, 0, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				1, 1, 1, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[18] = createPiece(new int[]{
+				1, 1, 1, 0, 0, 0,
+				0, 0, 1, 0, 0, 0,
+				0, 0, 1, 1, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[19] = createPiece(new int[]{
+				0, 1, 1, 1, 0, 0,
+				1, 1, 1, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[20] = createPiece(new int[]{
+				0, 0, 1, 0, 0, 0,
+				1, 1, 1, 0, 0, 0,
+				1, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[21] = createPiece(new int[]{
+				0, 1, 0, 0, 0, 0,
+				1, 1, 1, 0, 0, 0,
+				1, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[22] = createPiece(new int[]{
+				1, 1, 0, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				1, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[23] = createPiece(new int[]{
+				0, 1, 0, 0, 0, 0,
+				1, 1, 1, 0, 0, 0,
+				1, 0, 1, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[24] = createPiece(new int[]{
+				1, 1, 1, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				1, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[25] = createPiece(new int[]{
+				1, 0, 0, 0, 0, 0,
+				1, 1, 0, 0, 0, 0,
+				1, 1, 1, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[26] = createPiece(new int[]{
+				1, 1, 0, 0, 0, 0,
+				0, 1, 1, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[27] = createPiece(new int[]{
+				0, 0, 1, 0, 0, 0,
+				0, 0, 1, 0, 0, 0,
+				1, 1, 1, 0, 0, 0,
+				0, 0, 1, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[28] = createPiece(new int[]{
+				1, 0, 1, 1, 0, 0,
+				1, 1, 1, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[29] = createPiece(new int[]{
+				0, 0, 1, 0, 0, 0,
+				1, 1, 1, 0, 0, 0,
+				1, 0, 1, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[30] = createPiece(new int[]{
+				1, 0, 0, 0, 0, 0,
+				1, 1, 1, 0, 0, 0,
+				1, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[31] = createPiece(new int[]{
+				0, 1, 0, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				1, 1, 1, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[32] = createPiece(new int[]{
+				1, 0, 0, 0, 0, 0,
+				1, 1, 1, 1, 0, 0,
+				0, 0, 1, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[33] = createPiece(new int[]{
+				0, 1, 0, 0, 0, 0,
+				1, 1, 1, 1, 0, 0,
+				0, 0, 1, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[34] = createPiece(new int[]{
+				0, 0, 1, 0, 0, 0,
+				0, 1, 1, 1, 0, 0,
+				1, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+	}
+	
+	/** Creates a new piece as defined by an int array.
+	 * (Mainly meant for use by initPieces method).
+	 * @param tileIntArray An array of ints that defines the shape of a piece in 0s and 1s.
+	 * @return The new piece created by this function.
+	 */
+	Piece createPiece(int[] tileIntArray) {
+		Piece p = new Piece();
+		int num = 0;
+		for (int a = 0; a < 6; a++) {
+			for (int b = 0; b < 6; b++) {
+				if (tileIntArray[num] == 1) {
+					p.addTile(new PieceTile(), b, a);
+				}
+				num++;
+			}
+		}
+		return p;
 	}
 }
