@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JButton;
+
 import GUI.BullpenView;
 import GUI.KabasujiFrame;
 import GUI.LevelPanel;
@@ -98,8 +100,9 @@ public class LilyAnneTest extends TestCase
 	
 	public void testLevelSelector()
 	{
-		//ls = new LevelSelector(frame);
-		//ls.getComponentAt(p)
+		ls = new LevelSelector(frame);
+		Component c = ls.getComponentAt(130, 210);
+		assertTrue(c instanceof JButton);
 		
 	}
 
