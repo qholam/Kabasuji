@@ -1,6 +1,7 @@
 package entity;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 import junit.framework.TestCase;
 
@@ -17,10 +18,11 @@ public class TestEntity extends TestCase {
 	ReleaseTile releaseTile;
 	PieceTile pieceTile;
 	PieceTile pieceTile1;
-	Piece piece;
-	Piece piece1;
+	Piece piece, piece1, piece2, piece3, piece4;
+	boolean[][] pieceArray;
+	ArrayList<PieceTile> pieceTileArray;
 	
-	public void setUp(){
+	public void setUp() throws Exception{
 		tileType = new TileType();
 		//tile1 = new Tile(5, 2);
 		//tile2 = new Tile(5, 2);
@@ -28,8 +30,18 @@ public class TestEntity extends TestCase {
 		releaseTile = new ReleaseTile(5, 2, number);
 		pieceTile = new PieceTile();
 		pieceTile1 = new PieceTile(10, 20);
-		Piece piece = new Piece();
-		Piece piece1 = new Piece(piece);
+		piece = new Piece();
+		piece1 = new Piece(piece);
+		pieceArray = new boolean[6][6];
+		piece2 = new Piece(pieceArray);
+		piece3 = new Piece(piece2);
+		
+		/**
+		piece4 = new Piece();
+		piece4.pieceTiles.add(pieceTile);
+		pieceTileArray = new ArrayList<PieceTile>();
+		pieceTileArray.add(pieceTile);
+		**/
 	}
 	
 	/**
@@ -71,7 +83,19 @@ public class TestEntity extends TestCase {
 	}
 	
 	public void testPiece(){
-		
+		assertEquals(piece, piece1);
+		assertEquals(piece2, piece3);
+		piece1.setRowPos(30);
+		assertEquals(piece1.getRowPos(), 30);
+		piece1.setColPos(20);
+		assertEquals(piece1.getColPos(), 20);
+		//assertEquals(piece4.getPieceTiles(), pieceTileArray);
 	}
+	
+	public void testNumber(){
+		assertEquals(number.getNum(), 2);
+		assertEquals(number.getColor(), Color.red);
+	}
+	
 	
 }
