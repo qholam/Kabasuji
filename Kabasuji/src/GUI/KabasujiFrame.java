@@ -26,7 +26,7 @@ public class KabasujiFrame extends JFrame {
 	public final static int tileHeight = 24;
 	
 	private JPanel contentPane;
-	PieceContainer container; 
+	PieceContainer container;
 	static Piece[] pieces = new Piece[35];
 
 	/**
