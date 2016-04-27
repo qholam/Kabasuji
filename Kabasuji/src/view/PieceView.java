@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 
@@ -35,12 +36,14 @@ public class PieceView extends JPanel {
 		for(int i = 0; i < p.getMaxHeight(); i++){
 			for(int j = 0; j < p.getMaxWidth(); j++){
 				tilesView[j][i] = new TileView(g[j][i]);
+				/* RICHARDCHANGE tilesView[j][i].setVisible(false); */
 				add(tilesView[j][i]);
 			}
-		}	
+		}
 		
 		//The panel holding the piece should not be visible.
 		this.setOpaque(false);
+		setPreferredSize(new Dimension(144, 144));
 	} 
 	
 	/**
@@ -49,13 +52,27 @@ public class PieceView extends JPanel {
 	@Override 
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
+		
+		/* RICHARDCHANGE Comment out this method of drawing */
 		Tile[][] grid = piece.getpieceGrid();
 		
 		for(int i = 0; i < tilesView.length; i++){
 			for(int j = 0; j < tilesView[i].length; j++){
 				tilesView[j][i].setTile(grid[j][i]);
 			}
-		}	
+		}
+		
+		/* RICHARDCHANGE Use this to draw instead */
+		for (int i = 0; i < 6; i++) {
+			for (int j = 0; j < 6; j++) {
+				if (piece.getpieceGrid()[j][i] != null) {
+					g.setColor(Color.orange);
+					g.fillRect (24*j, 24*i, 24, 24);
+					g.setColor(Color.black);
+					g.drawRect (24*j, 24*i, 24, 24);
+				}
+			}
+		}
 	}
 
 	/**

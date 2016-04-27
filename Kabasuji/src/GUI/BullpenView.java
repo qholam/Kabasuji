@@ -81,7 +81,8 @@ public class BullpenView extends JPanel {
 			PieceView p = new PieceView(b.getPieces().get(i));
 			p.addMouseListener(new PieceInBullpenCtrl(this, p));
 			pieces.add(p);
-			pieces.get(i).setBounds(10 + i * 200, 10, 200, 200);
+			//pieces.get(i).setBounds(10 + i * 200, 10, 200, 200);
+			pieces.get(i).setBounds(10 + i * 200, 10, 144, 144);
 			//pieceContainer.add(pieces.get(i));
             //scrollPanel.add(pieceContainer);
 			scrollPanel.add(pieces.get(i));

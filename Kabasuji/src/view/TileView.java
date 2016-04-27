@@ -10,6 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
+import java.awt.Dimension;
 /**
  * @author Quoc HoLam
  * View for Tiles
@@ -36,7 +37,7 @@ public class TileView extends JPanel{
 		repaint = true;
 		
 		//TODO set a proper size based on the grids of a board 
-		setSize(40,23);
+		setPreferredSize(new Dimension(24,24));
 		setLayout(null);
 		
 		tile = t;
