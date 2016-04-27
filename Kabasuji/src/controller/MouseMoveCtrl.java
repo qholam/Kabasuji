@@ -48,7 +48,6 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
     		
     		//set the anchor and source of the drag 
     		tv = container.getAnchorTile();
-    		container.setSource(l);
     		
     		//get the position on the mouse on the level panel
     		Point point = l.getMousePosition();
@@ -105,7 +104,7 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
 		if(container.isVisible()){
 			if(l instanceof LevelPanel){
 				//if source is board it cannot be dropped anywhere else but the board
-				if(container.getSource() instanceof BoardPanel){
+				if(container.getSource() instanceof BoardPanel || container.getSource() instanceof BuilderLevel){
 					return;
 				}
 				//allow board to be rapainted again
@@ -123,7 +122,7 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
 			}
 			else{
 				//if source is board it cannot be dropped anywhere else but the board
-				if(container.getSource() instanceof BoardPanel){
+				if(container.getSource() instanceof BoardPanel){  
 					return;
 				}
 				

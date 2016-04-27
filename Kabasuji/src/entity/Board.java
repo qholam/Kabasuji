@@ -67,28 +67,21 @@ public class Board implements Serializable{
 	 * @param col The column in which the upper left hand tile of the piece grid will be placed
 	 */
 	public boolean addPiece(Piece piece, int row, int col) {
-		//create a copy of the piece
-		//Piece p = new Piece(piece);
+		boolean added = true;
+		
+		//get piece
 		Piece p = piece;
 		
-		//Ensure that the given row and column will be within bounds
-		//TODO finish this
-		if(row < 0 || row >= this.numRows || col < 0 || col >= this.numColumns)
-			//return false;
-		//Ensure that piece will fit on the board
-		if(row+p.getMaxWidth() >= this.numRows || col+p.getMaxHeight() >= this.numColumns)
-			//return false;
+		//check for invalid row and column
+		if(row < 0 || col < 0)
+			return false;
 		
-		//Check if piece can be legally placed based on the logistics of the level type
-		if(level instanceof PuzzleLevel){
-			//there can be no overlapping of pieces on the board
-			for(int i = row; i < row + p.getMaxWidth(); i++){
-				for(int j = col; i < col + p.getMaxHeight(); j++){
-					if(boardGrid[j][i] == null || boardGrid[j][i].isCovered()) 
-							return false;
-				}
+		//get piece tiles of the given piece and ensure each tile can be placed
+		ArrayList<PieceTile> pieceTiles = piece.getPieceTiles();
+		for(PieceTile pt: pieceTiles){
+			if(row + pt.getPieceGridRow() >= this.numRows || col + pt.getPieceGridCol() >= this.numColumns){
+				return false;
 			}
-			System.out.println("true meet");
 		}
 		
 		//add piece to board
@@ -115,7 +108,7 @@ public class Board implements Serializable{
 		p.setRowPos(row);
 		pieces.add(p);
 		
-		return true;
+		return added;
 	}
 	
 	/**

@@ -103,12 +103,16 @@ public class LevelPanel extends JPanel{
 			}
 			c.addMouseMotionListener(new MouseMoveCtrl(this));
 			c.addMouseListener(new MouseMoveCtrl(this));
-		}
+		} 
 		add(bullpen);
 		
 		JButton trashBtn = new JButton("TRASH");
 		trashBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				boolean b = container.isVisible();
+				if(!b){
+					
+				}
 			}
 		});
 		trashBtn.setBounds(650, 600, 100, 100);
@@ -133,7 +137,9 @@ public class LevelPanel extends JPanel{
 		btnMenu.setBounds(650, 25, 100, 100);
 		btnMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.MainMenu);
+				boolean b = container.isVisible();
+				if(!b)
+					kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.MainMenu);
 			}
 		});
 		//this makes the drag smoother
