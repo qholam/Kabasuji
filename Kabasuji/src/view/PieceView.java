@@ -39,7 +39,7 @@ public class PieceView extends JPanel {
 		for(int i = 0; i < p.getMaxHeight(); i++){
 			for(int j = 0; j < p.getMaxWidth(); j++){
 				tilesView[j][i] = new TileView(g[j][i]);
-				tilesView[j][i].setVisible(false);
+				//tilesView[j][i].setVisible(false);
 				add(tilesView[j][i]);
 			}
 		}	
@@ -64,7 +64,7 @@ public class PieceView extends JPanel {
 			}
 		}	
 		
-		
+		/**
 		for(int i = 0; i < tilesView.length; i++){
 			for(int j = 0; j < tilesView[i].length; j++){
 				if(piece.getpieceGrid()[j][i] != null){
@@ -76,7 +76,7 @@ public class PieceView extends JPanel {
 					g.drawRect(tw*j, th*i, tw, th);
 				}
 			}
-		}
+		}*/
 		
 	}
 
