@@ -2,12 +2,12 @@ package entity;
 
 import java.awt.Color;
 import java.io.Serializable;
-
+ 
 /**
  * @author Quoc HoLam
  * Abstract class which defines the behaviors of a tile.
  */
-public abstract class Tile  implements Serializable{
+public abstract class Tile implements Serializable{
 	//Position of tile on the board, if applicable. A -1 indicates the the Tile is not on the board
 	int row, col;
 	

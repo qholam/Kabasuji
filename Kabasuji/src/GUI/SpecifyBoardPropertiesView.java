@@ -99,7 +99,7 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		add(nextButton);	
 		
 		boardContainer = new JPanel();
-		boardContainer.setBounds(300, 325, 600, 300);
+		boardContainer.setBounds(300, 325, 308, 308);
 		add(boardContainer);
 		boardContainer.setLayout(new GridLayout(0, 1, 0, 0));
 		
