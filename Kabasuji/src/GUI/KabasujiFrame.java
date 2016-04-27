@@ -25,11 +25,55 @@ public class KabasujiFrame extends JFrame {
 
 	private JPanel contentPane;
 	PieceContainer container;
+	Piece[] pieces = new Piece[35];
 
 	/**
 	 * Create the frame.
 	 */
-	public KabasujiFrame() { 
+	public KabasujiFrame() {
+		
+		/** Create all 35 Kabasuji Hexominos */
+		pieces[1] = createPiece(new int[]{
+				1, 0, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0
+				});
+		pieces[2] = createPiece(new int[]{
+				1, 1, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[3] = createPiece(new int[]{
+				0, 1, 0, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				1, 1, 0, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[4] = createPiece(new int[]{
+				0, 1, 0, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				0, 1, 1, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				0, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		pieces[5] = createPiece(new int[]{
+				0, 0, 1, 1, 0, 0,
+				1, 1, 1, 0, 0, 0,
+				1, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0
+				});
+		
 		Deserializer deserializer =  new Deserializer();
 		container = new PieceContainer(); 
 		
@@ -65,5 +109,26 @@ public class KabasujiFrame extends JFrame {
 	
 	public PieceContainer getPieceContainer(){
 		return container;
+	}
+	
+	Piece createPiece(int[] tileIntArray) {
+		Piece p = new Piece();
+		int num = 0;
+		for (int a = 0; a < 6; a++) {
+			for (int b = 0; b < 6; b++) {
+				if (tileIntArray[num] == 1) {
+					p.addTile(new PieceTile(), b, a);
+					System.out.print(1);
+				}
+				else {
+					System.out.print(" ");
+				}
+				
+				num++;
+			}
+			System.out.println("");
+		}
+		System.out.println("------");
+		return new Piece();
 	}
 }
