@@ -79,7 +79,7 @@ public class LevelPanel extends JPanel{
 		board = new BoardPanel(l.getBoard());
 		board.addMouseMotionListener(new MouseMoveCtrl(this));
 		board.addMouseListener(new BoardCtrl(board, this));
-		board.setBounds(25, 400, 600, 300);
+		board.setBounds(25, 400, 308, 308);
 		add(board);
 		
 		bullpen = new BullpenView(l.getBullpen()); 

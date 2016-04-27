@@ -36,7 +36,7 @@ public class PieceView extends JPanel {
 		for(int i = 0; i < p.getMaxHeight(); i++){
 			for(int j = 0; j < p.getMaxWidth(); j++){
 				tilesView[j][i] = new TileView(g[j][i]);
-				/* RICHARDCHANGE tilesView[j][i].setVisible(false); */
+				tilesView[j][i].setVisible(false);
 				add(tilesView[j][i]);
 			}
 		}
@@ -53,16 +53,16 @@ public class PieceView extends JPanel {
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
-		/* RICHARDCHANGE Comment out this method of drawing */
+		/* RICHARDCHANGE Comment out this method of drawing 
 		Tile[][] grid = piece.getpieceGrid();
 		
 		for(int i = 0; i < tilesView.length; i++){
 			for(int j = 0; j < tilesView[i].length; j++){
 				tilesView[j][i].setTile(grid[j][i]);
 			}
-		}
+		} */
 		
-		/* RICHARDCHANGE Use this to draw instead
+		// RICHARDCHANGE Use this to draw instead
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
 				if (piece.getpieceGrid()[j][i] != null) {
@@ -72,7 +72,7 @@ public class PieceView extends JPanel {
 					g.drawRect (24*j, 24*i, 24, 24);
 				}
 			}
-		}*/
+		}
 	}
 
 	/**

@@ -26,7 +26,7 @@ public class EditorPanel extends JPanel {
 		for (int i = 0; i < kFrame.pieces.length; i++) {
 			pieces[i] = new PieceView(kFrame.pieces[i]);
 			add(pieces[i]);
-			setPreferredSize(new Dimension(getComponents().length, 3 * getComponents().length));
+			setPreferredSize(new Dimension(100, 100 * getComponents().length));
 		}
 	}
 

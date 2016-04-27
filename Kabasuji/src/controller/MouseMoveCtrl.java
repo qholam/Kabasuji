@@ -37,15 +37,15 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
     		//this prevents flickering when dragging a piece over the board 
     		if(l instanceof LevelPanel){
     			/* RICHARDCHANGE comment these out */
-	    		((LevelPanel) l).getBoardPanel().setRepaintInvalid();
+	    		//((LevelPanel) l).getBoardPanel().setRepaintInvalid();
 	    		((LevelPanel) l).getBullpenView().setSelected(null);
-	    		((LevelPanel) l).setIgnoreRepaint(true);
+	    		//((LevelPanel) l).setIgnoreRepaint(true);
     		}
     		else{
     			/* RICHARDCHANGE comment these out */
-    			((BuilderLevel) l).getBoardPanel().setRepaintInvalid();
+    			//((BuilderLevel) l).getBoardPanel().setRepaintInvalid();
     			((BuilderLevel) l).getBullpenView().setSelected(null);
-	    		((BuilderLevel) l).setIgnoreRepaint(true);
+	    		//((BuilderLevel) l).setIgnoreRepaint(true);
     		}
     		
     		//set the anchor and source of the drag 
