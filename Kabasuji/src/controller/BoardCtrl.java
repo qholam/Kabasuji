@@ -39,7 +39,7 @@ public class BoardCtrl implements MouseListener{
 	}
 	
 	@Override
-	public void mousePressed (MouseEvent me){
+	public void mouseClicked (MouseEvent me){
 		//this determines the amount to change the quantity of the pice by
 		int pieceQty = 1;
 		
@@ -53,24 +53,25 @@ public class BoardCtrl implements MouseListener{
 					TileView tv = (TileView) c;
 					Tile t = tv.getTile();
 					
-					//ensure the tile clicked on was a board tile
-					if(!(t instanceof BoardTile) || t instanceof NoTile){
-						//do nothing if it is not a boardtile
-						return;
-					}
-					
-					//check if the board tile clicked on was covered, if so get the piece there
-					BoardTile bt = (BoardTile) t;
-					if(bt.isCovered()){
+					//check if tile clicked was a piece tile
+					if(t instanceof PieceTile){
+						PieceTile bt = (PieceTile) t;
+						
 						//get the row and column of the click
 						int row = bt.getRow();
 						int col = bt.getCol();
 						
+						//test some shit
+						PieceTile pt = new PieceTile();
+						pt.setPieceGridCol(bt.getPieceGridCol());
+						pt.setPieceGridRow(bt.getPieceGridRow());
+						
 						//remove the piece there
 						Piece removed = boardPanel.getBoard().removePieceAt(row, col);
 						
-						//set container visible again and add removed piece to it
+						//set container visible again and add removed piece to it, be sure to set anchor and source
 						container.setDraggingPiece(removed);
+						container.setAnchortile(new TileView(removed.getpieceGrid()[col - removed.getColPos()][row - removed.getRowPos()]));
 						container.setSource(boardPanel);
 						container.setVisible(true);
 					}
@@ -139,7 +140,7 @@ public class BoardCtrl implements MouseListener{
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
+	public void mousePressed(MouseEvent e) {
 		
 		
 	}

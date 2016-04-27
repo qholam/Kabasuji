@@ -35,7 +35,7 @@ public class BoardPanel extends JPanel {
 		setBackground(Color.WHITE);
 		setLayout(null);
 		setBounds(0, 0, 600, 300);
-		setBackground(new Color(255, 165, 0));  
+		setBackground(new Color(255, 165, 0));   
 		
 		boardTilePanel = new JPanel();
 		add(boardTilePanel);
@@ -57,7 +57,15 @@ public class BoardPanel extends JPanel {
 		super.paintComponent(g);
 		for (int r = 0; r < board.getNumRows(); r++) {
 			for (int c = 0; c < board.getNumColumns(); c++) {
-				tileViews[c][r].setTile(board.getGrid()[c][r]);;
+				if(board.getGrid()[c][r].isCovered()){
+					PieceTile p = new PieceTile();
+					p.setCol(c);
+					p.setRow(r);
+					tileViews[c][r].setTile(p);
+				}
+				else{
+					tileViews[c][r].setTile(board.getGrid()[c][r]);
+				}
 			}
 		}
 	}

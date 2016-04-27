@@ -66,7 +66,7 @@ public class DragCtrl implements MouseListener, MouseMotionListener{
 	} 
 	
     public void mouseClicked(MouseEvent me) {
-		//checks that it is a left mouse press,if not do nothing
+		//checks that it is a left mouse press,if not do nothing 
 		if(!SwingUtilities.isLeftMouseButton(me) )
 			return; 
 		

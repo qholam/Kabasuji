@@ -330,6 +330,14 @@ public class Piece  implements Serializable{
 		this.colPos = n;
 	}
 	
+	public int getColPos(){
+		return colPos;
+	}
+	
+	public int getRowPos(){
+		return rowPos;
+	}
+	
 	/**
 	 * @return the pieceGrid
 	 */
