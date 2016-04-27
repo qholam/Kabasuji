@@ -56,7 +56,7 @@ public class BoardCtrl implements MouseListener{
 						int col = bt.getCol();
 						
 						//test some shit
-						PieceTile pt = new PieceTile();
+						PieceTile pt = new PieceTile(); 
 						pt.setPieceGridCol(bt.getPieceGridCol());
 						pt.setPieceGridRow(bt.getPieceGridRow());
 						
