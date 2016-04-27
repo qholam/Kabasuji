@@ -62,7 +62,7 @@ public class PieceView extends JPanel {
 			}
 		}
 		
-		/* RICHARDCHANGE Use this to draw instead */
+		/* RICHARDCHANGE Use this to draw instead
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
 				if (piece.getpieceGrid()[j][i] != null) {
@@ -72,7 +72,7 @@ public class PieceView extends JPanel {
 					g.drawRect (24*j, 24*i, 24, 24);
 				}
 			}
-		}
+		}*/
 	}
 
 	/**
