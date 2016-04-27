@@ -92,7 +92,13 @@ public class KabasujiFrame extends JFrame {
 		contentPane.add(mainMenu, MainMenu);
 		
 		//to be remove this bullpen was made for testing
-		LevelPanel puzzle1 = new LevelPanel(this, deserializer.deserialzePuzzleLevel(1));
+		Bullpen bp = new Bullpen();
+		for (int i = 1; i <= 5; i++) {
+			bp.addPiece(pieces[i]);
+		}
+		Level l = new PuzzleLevel(10, new Board(null, 10, 10), bp, true, 1, 0);
+		//LevelPanel puzzle1 = new LevelPanel(this, deserializer.deserialzePuzzleLevel(1));
+		LevelPanel puzzle1 = new LevelPanel(this, l);
 		mainMenu.setBounds(0, 0, 800, 800);
 		contentPane.add(puzzle1, Puzzle1);
 		
@@ -129,6 +135,6 @@ public class KabasujiFrame extends JFrame {
 			System.out.println("");
 		}
 		System.out.println("------");
-		return new Piece();
+		return p;
 	}
 }
