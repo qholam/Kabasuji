@@ -1,18 +1,17 @@
 package entity;
 
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 import GUI.BullpenView;
+import GUI.KabasujiBuilderFrame;
 import GUI.KabasujiFrame;
-import GUI.LevelPanel;
 import GUI.LevelSelector;
+import GUI.SpecifyBoardPropertiesView;
 import junit.framework.TestCase;
-import move.IMove;
 import view.PieceView;
 
 /**
@@ -28,12 +27,12 @@ public class LilyAnneTest extends TestCase
 	Piece piece3;
 	BullpenView b;
 	PieceView pv, pv1, vcw, vccw, vv, vh;
-	LevelPanel level;
-	KabasujiFrame frame;
-	Level l;
-	Board board;
-	Button inputTest;
 	
+	
+	KabasujiFrame frame;
+	KabasujiBuilderFrame bFrame;
+	Board board;
+	SpecifyBoardPropertiesView sbpv;
 	LevelSelector ls;
 
 	public void setUp()
@@ -69,6 +68,7 @@ public class LilyAnneTest extends TestCase
 		
 		b = new BullpenView(pen);
 		frame = new KabasujiFrame();
+		bFrame = new KabasujiBuilderFrame();
 		
 		
 	}
@@ -90,19 +90,24 @@ public class LilyAnneTest extends TestCase
 		assertEquals(b.getSelected(), pv1);
 	}
 	
-	public void testLevelPanel()
+	public void testSpecifyBoardPropertiesView()
 	{
-		//l = new Level(board, pen, true, 1, 0);		
-		//level = new LevelPanel(frame, l);
-		//board = new Board(l, 6, 6);
-		
+		sbpv = new SpecifyBoardPropertiesView(bFrame);
 	}
 	
 	public void testLevelSelector()
 	{
 		ls = new LevelSelector(frame);
 		Component c = ls.getComponentAt(130, 210);
+		Color color = new Color(255, 165, 0);
+		Color buttonColor = c.getForeground();
+		
 		assertTrue(c instanceof JButton);
+		assertEquals(buttonColor, color);
+		
+		Component c2 = ls.getComponentAt(7, 1);
+		
+		assertTrue(c2 instanceof JLabel);
 		
 	}
 
