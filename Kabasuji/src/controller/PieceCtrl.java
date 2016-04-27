@@ -37,57 +37,37 @@ public class PieceCtrl implements MouseListener, MouseMotionListener{
 			container = ((BuilderLevel) l).getPieceContainer();
 	} 
 	
-    public void mouseClicked(MouseEvent e) {
-		
-    }
-
 	@Override
-	public void mouseDragged(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+    public void mouseClicked(MouseEvent me) {
+		if(!SwingUtilities.isLeftMouseButton(me) )
+			return; 
 		
-	}
-
-
-	@Override
-	public void mouseMoved(MouseEvent me) {
-    	if(container.isVisible()){ 
-    		if(l instanceof LevelPanel){
-	    		((LevelPanel) l).getBoardPanel().setRepaintInvalid();
-	    		((LevelPanel) l).getBullpenView().setSelected(null);
-	    		((LevelPanel) l).setIgnoreRepaint(true);
-    		}
-    		else{
-    			((BuilderLevel) l).getBoardPanel().setRepaintInvalid();
-    			((BuilderLevel) l).getBullpenView().setSelected(null);
-	    		((BuilderLevel) l).setIgnoreRepaint(true);
-    		}
-    		tv = container.getAnchorTile();
-    		Point point = l.getMousePosition();
-    		int cw = container.getWidth()/6;
-    		int ch = container.getHeight()/6;
-    		int dx = cw * ((PieceTile) tv.getTile()).getPieceGridCol() + cw/2;
-    		int dy = ch * ((PieceTile) tv.getTile()).getPieceGridRow() + ch/2;
-    		point.translate(-dx, -dy);
-    		if(point != null)
-    			container.setLocation(point);
+		if(l instanceof LevelPanel){
+	    	bullpen = ((LevelPanel) l).getBullpenView();
+	    	container = ((LevelPanel) l).getPieceContainer();
     	}
-	}
-
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
+    	else{
+	    	bullpen = ((BuilderLevel) l).getBullpenView();
+	    	container = ((BuilderLevel) l).getPieceContainer();
+    	}
 		
-	}
-
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
+		if(!container.isVisible()){
+        	Component c = pv.getComponentAt(me.getPoint());
+        	if(c instanceof TileView){
+        		tv = (TileView) c;
+        		Tile t = tv.getTile();
+        		if(t != null && !t.toString().equals(TileType.noTile)){
+        			container.setAnchortile(tv);
+        			container.setSource(pv);
+        			point = tv.getLocation();
+        			container.setDraggingPiece(pv.getPiece());
+    	            container.setLocation(point);
+    	            container.setVisible(true);
+        		}
+        	}  
+		}
+    }
+	
 	@Override
 	public void mousePressed(MouseEvent me) {
 		if(!SwingUtilities.isLeftMouseButton(me) )
@@ -134,31 +114,49 @@ public class PieceCtrl implements MouseListener, MouseMotionListener{
     	    	container.setVisible(false);
         	}
 		}
-		
 	}
-
-
+	
 	@Override
 	public void mouseReleased(MouseEvent me) {
-		if(l instanceof LevelPanel){
-	    	bullpen = ((LevelPanel) l).getBullpenView();
-	    	container = ((LevelPanel) l).getPieceContainer();
+    	if(container.isVisible()){ 
+    		if(l instanceof LevelPanel){
+	    		((LevelPanel) l).getBoardPanel().setRepaintInvalid();
+	    		((LevelPanel) l).getBullpenView().setSelected(null);
+	    		((LevelPanel) l).setIgnoreRepaint(true);
+    		}
+    		else{
+    			((BuilderLevel) l).getBoardPanel().setRepaintInvalid();
+    			((BuilderLevel) l).getBullpenView().setSelected(null);
+	    		((BuilderLevel) l).setIgnoreRepaint(true);
+    		}
+    		tv = container.getAnchorTile();
+    		Point point = l.getMousePosition();
+    		int cw = container.getWidth()/6;
+    		int ch = container.getHeight()/6;
+    		int dx = cw * ((PieceTile) tv.getTile()).getPieceGridCol() + cw/2;
+    		int dy = ch * ((PieceTile) tv.getTile()).getPieceGridRow() + ch/2;
+    		point.translate(-dx, -dy);
+    		if(point != null)
+    			container.setLocation(point);
     	}
-    	else{
-	    	bullpen = ((BuilderLevel) l).getBullpenView();
-	    	container = ((BuilderLevel) l).getPieceContainer();
-    	}
-		
-		Component c = pv.getComponentAt(me.getPoint());
-		if(c instanceof TileView){
-			Tile t = ((TileView) c).getTile();
-			if(t == null || t.toString().equals(TileType.noTile)){
-				return;
-			}
-			else{
-				bullpen.setSelected(pv);
-			}
-		}
-		
+	}
+	
+	@Override
+	public void mouseMoved(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+	}
+	
+	@Override
+	public void mouseDragged(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub	
+	}
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub	
 	}
 }
