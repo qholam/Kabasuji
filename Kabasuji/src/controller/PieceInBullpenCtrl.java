@@ -60,7 +60,8 @@ public class PieceInBullpenCtrl implements MouseListener, MouseMotionListener{
 
 	@Override
     public void mouseReleased(MouseEvent me){
-
+		bv.setRepaintValid();
+		pv.setRepaintValid();
     }
 	
 	@Override

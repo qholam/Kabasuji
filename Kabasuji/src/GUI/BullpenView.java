@@ -44,6 +44,8 @@ public class BullpenView extends JPanel {
 	PieceView selected;
 	Piece p;
 	
+	Boolean repaint = true;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -81,8 +83,7 @@ public class BullpenView extends JPanel {
 			PieceView p = new PieceView(b.getPieces().get(i));
 			p.addMouseListener(new PieceInBullpenCtrl(this, p));
 			pieces.add(p);
-			//pieces.get(i).setBounds(10 + i * 200, 10, 200, 200);
-			pieces.get(i).setBounds(10 + i * 200, 10, 144, 144);
+			pieces.get(i).setBounds(10 + i * 200, 10, 6 * KabasujiFrame.tileWidth, 6 * KabasujiFrame.tileHeight);
 			//pieceContainer.add(pieces.get(i));
             //scrollPanel.add(pieceContainer);
 			scrollPanel.add(pieces.get(i));
@@ -95,19 +96,19 @@ public class BullpenView extends JPanel {
 		panel.setLayout(new GridLayout(1, 4, 0, 0));
 		
 		JButton btnNewButton = new JButton("Rotate Clockwise");
-		btnNewButton.addActionListener(new RotateClockwiseCtrl(this));
+		btnNewButton.addMouseListener(new RotateClockwiseCtrl(this));
 		panel.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Rotate Counter-Clockwise");
-		btnNewButton_1.addActionListener(new RotateCounterClockwiseCtrl(this));
+		btnNewButton_1.addMouseListener(new RotateCounterClockwiseCtrl(this));
 		panel.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Flip Horizontally");
-		btnNewButton_2.addActionListener(new HorizontalFlipCtrl(this));
+		btnNewButton_2.addMouseListener(new HorizontalFlipCtrl(this));
 		panel.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("Flip Vertically");
-		btnNewButton_3.addActionListener(new VerticalFlipCtrl(this));
+		btnNewButton_3.addMouseListener(new VerticalFlipCtrl(this));
 		panel.add(btnNewButton_3); 
 
 	}
@@ -131,6 +132,36 @@ public class BullpenView extends JPanel {
 				pieces.get(i).setVisible(true);
 			}
 		}
+	}
+	
+	@Override
+	public void repaint(){
+		if(repaint != null && repaint){
+			super.repaint();
+			repaint = false;
+		}
+	}
+	
+	/**
+	 * this is needed to prevent flickering when dragging inside the board.
+	 * TODO: find another way to prevent this flickering
+	 */
+	public void setRepaintInvalid(){
+		for(PieceView p: pieces){
+			p.setRepaintInvalid();
+		}
+	}
+	
+	/**
+	 * this is needed to prevent flickering when dragging inside the board.
+	 * TODO: find another way to prevent this flickering
+	 */
+	public void setRepaintValid(){
+		repaint = true;
+		for(PieceView p: pieces){
+			p.setRepaintInvalid();
+		}
+		repaint();
 	}
 	
 	/**

@@ -30,7 +30,7 @@ public class PieceContainer extends JPanel{
 		source = null;
 		draggedPiece = new PieceView(new Piece());
 		setLayout(new GridLayout(1,0));
-		setBounds(0,0,350,170);
+		setBounds(0,0,144,144);
 		add(draggedPiece);
 		
 		//The panel holding the piece should not be visible.
@@ -55,7 +55,7 @@ public class PieceContainer extends JPanel{
 	
 	public void setAnchortile(TileView t){
 		anchorTile = t; 
-		System.out.println("Point: " + ((PieceTile)t.getTile()).getPieceGridRow() + " " + ((PieceTile)t.getTile()).getPieceGridCol());
+		//System.out.println("Point: " + ((PieceTile)t.getTile()).getPieceGridRow() + " " + ((PieceTile)t.getTile()).getPieceGridCol());
 	}
 	
 	public TileView getAnchorTile(){

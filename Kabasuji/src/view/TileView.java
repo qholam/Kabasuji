@@ -9,6 +9,9 @@ import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.border.LineBorder;
+
+import GUI.KabasujiFrame;
+
 import java.awt.Color;
 import java.awt.Dimension;
 /**
@@ -34,10 +37,9 @@ public class TileView extends JPanel{
 	 */
 	public TileView(Tile t){
 		super();
-		repaint = true;
 		
 		//TODO set a proper size based on the grids of a board 
-		setPreferredSize(new Dimension(24,24));
+		setPreferredSize(new Dimension(KabasujiFrame.tileWidth, KabasujiFrame.tileHeight));
 		setLayout(null);
 		
 		tile = t;
@@ -71,13 +73,14 @@ public class TileView extends JPanel{
 			setOpaque(true);
 			//setVisible(true);
 		}
-
 	}
 	
 	@Override
 	public void repaint(){
-		if(repaint != null && repaint)
+		if(repaint != null && repaint){
 			super.repaint();
+			repaint = false;
+		}
 	}
 	
 	/**
@@ -94,6 +97,7 @@ public class TileView extends JPanel{
 	 */
 	public void setRepaintValid(){
 		repaint = true;
+		repaint();
 	}
 	
 	/**
@@ -108,6 +112,6 @@ public class TileView extends JPanel{
 	 */
 	public void setTile(Tile tile) {
 		this.tile = tile;
-		this.repaint();
+		//this.repaint();
 	}
 }

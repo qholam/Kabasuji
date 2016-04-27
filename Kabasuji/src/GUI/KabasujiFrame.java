@@ -22,10 +22,12 @@ public class KabasujiFrame extends JFrame {
 	final String MainMenu = "MainMenu";
 	final String Puzzle1 = "Puzzle1";
 	final String LevelSelect = "LevelSelect";
-
+	public final static int tileWidth = 24;
+	public final static int tileHeight = 24;
+	
 	private JPanel contentPane;
 	PieceContainer container;
-	Piece[] pieces = new Piece[35];
+	static Piece[] pieces = new Piece[35];
 
 	/**
 	 * Create the frame.
@@ -379,5 +381,9 @@ public class KabasujiFrame extends JFrame {
 			}
 		}
 		return p;
+	}
+	
+	public static Piece getPiece(int n){
+		return pieces[n];
 	}
 }

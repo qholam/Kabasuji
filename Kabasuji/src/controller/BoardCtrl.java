@@ -42,7 +42,7 @@ public class BoardCtrl implements MouseListener{
 	}
 	
 	@Override
-	public void mouseClicked (MouseEvent me){
+	public void mousePressed (MouseEvent me){
 		//this determines the amount to change the quantity of the pice by
 		int pieceQty = 1;
 
@@ -83,8 +83,9 @@ public class BoardCtrl implements MouseListener{
 		}
 		else{
 		//piece is currently being dragged, handle that
-			boardPanel.setRepaintValid();
+			//get the component that was clicked on
 			Component c = boardPanel.getBoardTilePanel().getComponentAt(me.getPoint());
+			
 			if(c instanceof TileView){
 				//get the row and column of the click on the board
 				Tile t = ((TileView) c).getTile();
@@ -103,10 +104,7 @@ public class BoardCtrl implements MouseListener{
 				//add the piece and check if there was a problem doing so, if there is return
 				if(!boardPanel.getBoard().addPiece(container.getDraggingPiece().getPiece(), row, col))
 					return;
-					
-				boardPanel.repaint();
 	
-				
 				//quantity of piece will be reduced by 1 now
 				pieceQty = -1;
 			}
@@ -125,39 +123,31 @@ public class BoardCtrl implements MouseListener{
 				bpview = ((BuilderLevel)levelPanel).getBullpenView();
 			}
 	    	bp.changeQuanity(dragged, pieceQty);
-	    	bpview.repaint();
 	    	
 	    	container.setVisible(false);
 		}
+		
 	}
 	
 	@Override
 	public void mouseReleased(MouseEvent me){
-		/**
-		 * need more information to complete this 
-		 */
-				
-		//IMove move = new BoardToBullpenMove();
-		//if (move.doMove(theGame)) 
-		//{
-		//	theGame.doMove (move);     // Successful Move has been Move
-		//} 
-		//else 
-		//{
-		//	fromWidget.returnWidget (draggingWidget);
-		//}
-				
-		// release the dragging object, (this will reset dragSource)
-		//releaseDraggingObject();
-				
-		// finally repaint
-		//repaint();
+		if(levelPanel instanceof LevelPanel){
+			bp = ((LevelPanel)levelPanel).getBullpenView().getBullpen();
+			bpview = ((LevelPanel)levelPanel).getBullpenView();
+		}
+		else{
+			bp = ((BuilderLevel)levelPanel).getBullpenView().getBullpen();
+			bpview = ((BuilderLevel)levelPanel).getBullpenView();
+		}
+		bpview.setRepaintValid();
+		boardPanel.setRepaintValid();
+		container.repaint();
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {
+	public void mouseClicked(MouseEvent e) {
 		
-		
+
 	}
 
 	@Override

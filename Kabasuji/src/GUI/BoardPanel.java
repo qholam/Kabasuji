@@ -25,6 +25,9 @@ public class BoardPanel extends JPanel {
 	TileView[][] tileViews;
 	
 	JPanel boardTilePanel;
+	
+	Boolean repaint = true;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -40,11 +43,9 @@ public class BoardPanel extends JPanel {
 		boardTilePanel = new JPanel();
 		add(boardTilePanel);
 		boardTilePanel.setLayout(new GridLayout(b.getNumRows(), b.getNumColumns(), 0, 0));
-		boardTilePanel.setBounds(10, 10, 580, 280);
-		/* RICHARDCHANGE boardTilePanel.setVisible(false); */
+		boardTilePanel.setBounds(10, 10, b.getNumRows() * KabasujiFrame.tileWidth, b.getNumColumns() * KabasujiFrame.tileHeight);
 		//panel.setBounds(10, 10, 28*b.getNumColumns(), 28*b.getNumRows());
 		
-		/* RICHARDCHANGE comment these loops out */
 		for (int r = 0; r < b.getNumRows(); r++) {
 			for (int c = 0; c < b.getNumColumns(); c++) {
 				tileViews[c][r] = new TileView(b.getGrid()[c][r]);
@@ -68,20 +69,9 @@ public class BoardPanel extends JPanel {
 				else{
 					tileViews[c][r].setTile(board.getGrid()[c][r]);
 				}
+				//tileViews[c][r].setRepaintValid();
 			}
 		}
-		
-		/* RICHARDCHANGE uncomment these
-		 for (int i = 0; i < board.getNumRows(); i++) {
-			for (int j = 0; j < board.getNumColumns(); j++) {
-				if (board.getGrid()[j][i] != null) {
-					g.setColor(Color.lightGray);
-					g.fillRect (boardTilePanel.getX()+24*j, boardTilePanel.getY()+24*i, 24, 24);
-					g.setColor(Color.black);
-					g.drawRect (boardTilePanel.getX()+24*j, boardTilePanel.getY()+24*i, 24, 24);
-				}
-			}
-		}*/
 	}
 	
 	public Board getBoard(){
@@ -92,14 +82,22 @@ public class BoardPanel extends JPanel {
 		return tileViews;
 	}
 	
+	public void repaint(){
+		if(repaint != null && repaint){
+			super.repaint();
+			repaint = false;
+		}
+	}
+	
 	/**
 	 * this is needed to prevent flickering when dragging inside the board.
 	 * TODO: find another way to prevent this flickering
 	 */
 	public void setRepaintInvalid(){
+		repaint = false;
 		for (int r = 0; r < board.getNumRows(); r++) {
 			for (int c = 0; c < board.getNumRows(); c++) {
-				tileViews[r][c].setRepaintInvalid();
+				tileViews[c][r].setRepaintInvalid();
 			}
 		}
 	}
@@ -109,9 +107,12 @@ public class BoardPanel extends JPanel {
 	 * TODO: find another way to prevent this flickering
 	 */
 	public void setRepaintValid(){
+		repaint = true;
+		repaint();
+		
 		for (int r = 0; r < board.getNumRows(); r++) {
 			for (int c = 0; c < board.getNumRows(); c++) {
-				tileViews[r][c].setRepaintValid();
+				tileViews[c][r].setRepaintValid();
 			}
 		}
 	}

@@ -66,31 +66,34 @@ public class Board implements Serializable{
 	 * @param row The row in which the upper left hand tile of the piece grid will be placed
 	 * @param col The column in which the upper left hand tile of the piece grid will be placed
 	 */
-	public boolean addPiece(Piece piece, int row, int col) {
+	public boolean addPiece(Piece p, int row, int col) {
 		boolean added = true;
-		
-		//get piece
-		Piece p = piece;
-		
-		//check for invalid row and column
-		if(row < 0 || col < 0)
-			return false;
-		
-		//get piece tiles of the given piece and ensure each tile can be placed
-		ArrayList<PieceTile> pieceTiles = piece.getPieceTiles();
-		for(PieceTile pt: pieceTiles){
-			if(row + pt.getPieceGridRow() >= this.numRows || col + pt.getPieceGridCol() >= this.numColumns){
-				return false;
-			}
-		}
-		
-		//add piece to board
+		//simulate adding
 		int r = 0;
 		int c = 0;
 		PieceTile[][] pgrid = p.getpieceGrid();
 		for(int i = row; i < row + p.getMaxWidth(); i++){
 			for(int j = col; j < col + p.getMaxHeight(); j++){
-				if(pgrid[c][r] != null){
+				if((i < 0 || j < 0 || i >= numRows || j >= numColumns)){
+					if(pgrid[c][r] != null)
+						return false;
+				}
+				else{
+					if(boardGrid[j][i].isCovered() && pgrid[c][r] != null)
+						return false;
+				}
+				c++;
+			}
+			c = 0;
+			r++;
+		}
+		
+		//add piece to board
+		r = 0;
+		c = 0;
+		for(int i = row; i < row + p.getMaxWidth(); i++){
+			for(int j = col; j < col + p.getMaxHeight(); j++){
+				if(i >= 0 && j >= 0 &&  i < numRows && j < numColumns && pgrid[c][r] != null){
 					//piece is now covered
 					boardGrid[j][i].cover();
 					//set row and column of the piece tile
@@ -160,7 +163,7 @@ public class Board implements Serializable{
 		boolean isLocated = false;
 		
 		for(Piece p: pieces){
-			System.out.println(p.getPieceTiles().size());
+			//System.out.println(p.getPieceTiles().size());
 			//get all the piece tiles and see if they have the given row and col values
 			for(PieceTile pt: p.getPieceTiles()){
 				if(pt.getCol() == col && pt.getRow() == row)
@@ -179,7 +182,7 @@ public class Board implements Serializable{
 		Piece piece = null;
 		
 		for(Piece p: pieces){
-			System.out.println(p.getPieceTiles().size());
+			//System.out.println(p.getPieceTiles().size());
 			//get all the piece tiles and see if they have the given row and col values
 			for(PieceTile pt: p.getPieceTiles()){
 				if(pt.getCol() == col && pt.getRow() == row)

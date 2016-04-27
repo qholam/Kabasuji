@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
+import GUI.KabasujiFrame;
 import entity.Piece;
 import entity.Tile;
 /**
@@ -25,6 +26,8 @@ public class PieceView extends JPanel {
 	//Tileviews contained by this pieceview
 	TileView[][] tilesView;
 	
+	Boolean repaint = true;
+	
 	public PieceView(Piece p) {
 		super();
 		
@@ -36,14 +39,14 @@ public class PieceView extends JPanel {
 		for(int i = 0; i < p.getMaxHeight(); i++){
 			for(int j = 0; j < p.getMaxWidth(); j++){
 				tilesView[j][i] = new TileView(g[j][i]);
-				/* RICHARDCHANGE tilesView[j][i].setVisible(false); */
+				tilesView[j][i].setVisible(false);
 				add(tilesView[j][i]);
 			}
-		}
+		}	
 		
+		setPreferredSize(new Dimension(6 * KabasujiFrame.tileWidth, 6 * KabasujiFrame.tileHeight));
 		//The panel holding the piece should not be visible.
 		this.setOpaque(false);
-		setPreferredSize(new Dimension(144, 144));
 	} 
 	
 	/**
@@ -52,29 +55,65 @@ public class PieceView extends JPanel {
 	@Override 
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		
-		/* RICHARDCHANGE Comment out this method of drawing */
 		Tile[][] grid = piece.getpieceGrid();
 		
 		for(int i = 0; i < tilesView.length; i++){
 			for(int j = 0; j < tilesView[i].length; j++){
 				tilesView[j][i].setTile(grid[j][i]);
+				//tilesView[j][i].setRepaintValid();
 			}
-		}
+		}	
 		
-		/* RICHARDCHANGE Use this to draw instead */
-		for (int i = 0; i < 6; i++) {
-			for (int j = 0; j < 6; j++) {
-				if (piece.getpieceGrid()[j][i] != null) {
-					g.setColor(Color.orange);
-					g.fillRect (24*j, 24*i, 24, 24);
+		for(int i = 0; i < tilesView.length; i++){
+			for(int j = 0; j < tilesView[i].length; j++){
+				if(piece.getpieceGrid()[j][i] != null){
+					int tw = KabasujiFrame.tileWidth;
+					int th = KabasujiFrame.tileHeight;
+					g.setColor(piece.getpieceGrid()[j][i].getColor());
+					g.fillRect(tw*j, th*i, tw, th);
 					g.setColor(Color.black);
-					g.drawRect (24*j, 24*i, 24, 24);
+					g.drawRect(tw*j, th*i, tw, th);
 				}
 			}
 		}
 	}
 
+	@Override
+	public void repaint(){
+		if(repaint != null && repaint){
+			super.repaint();
+			repaint = false;
+		}
+	}
+	
+	
+	/**
+	 * this is needed to prevent flickering when dragging inside the board.
+	 * TODO: find another way to prevent this flickering
+	 */
+	public void setRepaintInvalid(){
+		repaint = false;
+		for(int i = 0; i < tilesView.length; i++){
+			for(int j = 0; j < tilesView[i].length; j++){
+				tilesView[j][i].setRepaintInvalid();
+			}
+		}
+	}
+	
+	/**
+	 * this is needed to prevent flickering when dragging inside the board.
+	 * TODO: find another way to prevent this flickering
+	 */
+	public void setRepaintValid(){
+		repaint = true;
+		repaint();
+		for(int i = 0; i < tilesView.length; i++){
+			for(int j = 0; j < tilesView[i].length; j++){
+				tilesView[j][i].setRepaintValid();
+			}
+		}
+	}
+	
 	/**
 	 * @return the piece
 	 */
@@ -84,6 +123,6 @@ public class PieceView extends JPanel {
 
 	public void setPiece(Piece p){
 		piece = p;
-		repaint();
+		//this.setRepaintValid();
 	}
 }
