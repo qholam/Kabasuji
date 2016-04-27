@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+import controller.BoardCtrl;
 import controller.DragCtrl;
 import controller.MouseMoveCtrl;
 import entity.Board;
@@ -47,7 +48,8 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		setBounds(0, 0, 1200, 800);
 		
 		boardPanel = new BoardPanel(new Board(null, 12, 12));
-		boardPanel.setBounds(25, 400, 308, 308);
+		boardPanel.setBounds(25, 400, 600, 300);
+		boardPanel.addMouseListener(new BoardCtrl(boardPanel, this));
 		add(boardPanel);
 		
 		Bullpen b = new Bullpen();
@@ -111,7 +113,7 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		add(btnMenu);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(775, 25, 370, 675);
+		panel.setBounds(775, 25, 400, 675);
 		add(panel);
 		panel.setLayout(new GridLayout(1, 1, 0, 0));
 		panel.addMouseMotionListener(new MouseMoveCtrl(this));

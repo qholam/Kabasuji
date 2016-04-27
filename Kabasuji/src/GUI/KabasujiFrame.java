@@ -22,6 +22,9 @@ public class KabasujiFrame extends JFrame {
 	final String MainMenu = "MainMenu";
 	final String Puzzle1 = "Puzzle1";
 	final String LevelSelect = "LevelSelect";
+	
+	public final static int tileWidth = 24;
+	public final static int tileHeight = 24;
 
 	private JPanel contentPane;
 	PieceContainer container;
