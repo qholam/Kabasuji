@@ -5,11 +5,15 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import GUI.BoardPanel;
+import GUI.BuilderLevel;
 import GUI.LevelPanel;
 import GUI.PieceContainer;
 import entity.Board;
 import entity.BoardTile;
+import entity.Bullpen;
 import entity.KabasujiGame;
+import entity.Piece;
+import entity.PieceTile;
 import entity.Tile;
 import view.PieceView;
 import view.TileView;
@@ -32,11 +36,45 @@ public class BoardCtrl implements MouseListener{
 	
 	@Override
 	public void mousePressed (MouseEvent me){
+		//this determines the amount to change the quantity of the pice by
+		int pieceQty = 1;
+		
+		if(!container.isVisible())
+			return;
+		boardPanel.setRepaintValid();
 		Component c = boardPanel.getBoardTilePanel().getComponentAt(me.getPoint());
 		if(c instanceof TileView){
+			//get the row and column of the click on the board
 			Tile t = ((TileView) c).getTile();
-			System.out.println(t.getRow() + " " + t.getCol());
+			int tRow = t.getRow();
+			int tCol = t.getCol();
+
+			//get the row and column of the anchoring tile
+			TileView anchor = container.getAnchorTile();
+			int anchorRow = ((PieceTile) anchor.getTile()).getPieceGridRow();
+			int anchorCol = ((PieceTile) anchor.getTile()).getPieceGridCol();	
+			
+			//get row and col on board in which the left hand corner of the tile in the piece grid will be added to
+			int row = tRow - anchorRow;
+			int col = tCol - anchorCol;
+			boardPanel.getBoard().addPiece(container.getDraggingPiece().getPiece(), row, col);
+			boardPanel.repaint();
+
+			
+			//quantity of piece will be reduced by 1 now
+			pieceQty = -1;
 		}
+		
+		//release the dragging piece	
+		//get the piece being dragged
+		Piece dragged = container.getDraggingPiece().getPiece();
+		
+		//added it back to the bullpen by updating pieces quantity
+		Bullpen bp = levelPanel.getBullpenView().getBullpen();
+    	bp.changeQuanity(dragged, pieceQty);
+    	levelPanel.getBullpenView().repaint();
+    	
+    	container.setVisible(false);
 	}
 	
 	@Override

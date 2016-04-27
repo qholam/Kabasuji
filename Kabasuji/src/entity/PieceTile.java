@@ -16,7 +16,7 @@ public class PieceTile extends Tile {
 		super(-1,-1);
 		
 		rowInPieceContainer = -1;
-		colInPieceContainer = -1;
+		colInPieceContainer = -1; 
 	}
 	
 	/**

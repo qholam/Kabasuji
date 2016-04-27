@@ -77,7 +77,6 @@ public class LevelPanel extends JPanel{
 		setBounds(0, 0, 800, 800);
 		
 		board = new BoardPanel(l.getBoard());
-		
 		board.addMouseMotionListener(new MouseMoveCtrl(this));
 		board.addMouseListener(new BoardCtrl(board, this));
 		board.setBounds(25, 400, 600, 300);

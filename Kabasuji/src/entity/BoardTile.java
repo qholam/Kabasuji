@@ -1,5 +1,6 @@
 package entity;
 
+import java.awt.Color;
 import java.io.Serializable;
 
 /**
@@ -50,5 +51,15 @@ public class BoardTile extends Tile{
 	 */
 	public boolean isCovered(){
 		return this.isCovered;
+	}
+	
+	@Override
+	public Color getColor(){
+		Color c = Color.LIGHT_GRAY;
+		
+		if(isCovered)
+			c = new PieceTile().getColor();
+		
+		return c;
 	}
 }

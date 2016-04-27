@@ -13,6 +13,7 @@ import view.TileView;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.GridLayout;
@@ -49,6 +50,16 @@ public class BoardPanel extends JPanel {
 			}
 		}
 		setOpaque(true);
+	}
+	
+	@Override
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		for (int r = 0; r < board.getNumRows(); r++) {
+			for (int c = 0; c < board.getNumColumns(); c++) {
+				tileViews[c][r].setTile(board.getGrid()[c][r]);;
+			}
+		}
 	}
 	
 	public Board getBoard(){

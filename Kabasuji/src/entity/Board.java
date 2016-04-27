@@ -3,6 +3,8 @@ package entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import view.TileView;
+
 public class Board implements Serializable{ 
 	
 	// All pieces on board
@@ -29,7 +31,7 @@ public class Board implements Serializable{
 		
 		for (int r = 0; r < this.numRows; r++) {
 			for (int c = 0; c < this.numColumns; c++) {
-				boardGrid[c][r] = new NoTile(r, c);
+				boardGrid[c][r] = new BoardTile(r, c);
 			}
 		}
 	}
@@ -66,20 +68,36 @@ public class Board implements Serializable{
 	public boolean addPiece(Piece p, int row, int col) {
 		//Ensure that the given row and column will be within bounds
 		if(row < 0 || row >= this.numRows || col < 0 || col >= this.numColumns)
-			return false;
+			//return false;
 		//Ensure that piece will fit on the board
 		if(row+p.getMaxWidth() >= this.numRows || col+p.getMaxHeight() >= this.numColumns)
-			return false;
+			//return false;
 		
 		//Check if piece can be legally placed based on the logistics of the level type
 		if(level instanceof PuzzleLevel){
 			//there can be no overlapping of pieces on the board
 			for(int i = row; i < row + p.getMaxWidth(); i++){
 				for(int j = col; i < col + p.getMaxHeight(); j++){
-					
+					if(boardGrid[j][i] == null || boardGrid[j][i].isCovered()) 
+							return false;
 				}
 			}
 			
+		}
+		
+		//add piece to board
+		int r = 0;
+		int c = 0;
+		PieceTile[][] pgrid = p.getpieceGrid();
+		for(int i = row; i < row + p.getMaxWidth(); i++){
+			for(int j = col; j < col + p.getMaxHeight(); j++){
+				if(pgrid[c][r] != null)
+					//piece is now covered
+					boardGrid[j][i].cover();
+				c++;
+			}
+			c = 0;
+			r++;
 		}
 		
 		return true;

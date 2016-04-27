@@ -17,7 +17,7 @@ public class Piece  implements Serializable{
 	int rowPos, colPos;
 	
 	//parameters of class
-	private final int maxWidth = 6;
+	private final int maxWidth = 6; 
 	private final int maxHeight = 6;
 
 	/**
@@ -31,7 +31,7 @@ public class Piece  implements Serializable{
 		rowPos = -1;
 		colPos = -1;
 		
-	}
+	} 
 	
 	/**
 	 * Construct to create a piece, that allows for specification of piece shape.
@@ -61,8 +61,8 @@ public class Piece  implements Serializable{
 	 * @param int row of pieceGrid to add {@link PieceTile} to.
 	 * @param int col of pieceGrid to add {@link PieceTile} to.
 	 */
-	public void addTile(PieceTile p, int row, int col){
-		this.pieceGrid[row][col] = p;
+	public void addTile(PieceTile p, int col, int row){
+		this.pieceGrid[col][row] = p;
 		p.setPieceGridCol(col);
 		p.setPieceGridRow(row);
 	}
@@ -107,8 +107,8 @@ public class Piece  implements Serializable{
 		            arr[i][j].setRow(row);
 		            arr[i][j].setCol(col);
 		            
-		            arr[i][j].setPieceGridRow(i);
-		            arr[i][j].setPieceGridCol(j);
+		            arr[i][j].setPieceGridRow(j);
+		            arr[i][j].setPieceGridCol(i);
 	            }
 	        }
 	    }
@@ -143,8 +143,8 @@ public class Piece  implements Serializable{
 		            arr[i][j].setRow(row);
 		            arr[i][j].setCol(col);
 		            
-		            arr[i][j].setPieceGridRow(i);
-		            arr[i][j].setPieceGridCol(j);
+		            arr[i][j].setPieceGridRow(j);
+		            arr[i][j].setPieceGridCol(i);
 	            }
 	        }
 	    }
@@ -178,8 +178,8 @@ public class Piece  implements Serializable{
 		            arr[i][j].setRow(row);
 		            arr[i][j].setCol(col);
 		            
-		            arr[i][j].setPieceGridRow(i);
-		            arr[i][j].setPieceGridCol(j);
+		            arr[i][j].setPieceGridRow(j);
+		            arr[i][j].setPieceGridCol(i);
 	            }
 	        }
 	    }
@@ -213,8 +213,8 @@ public class Piece  implements Serializable{
 		            arr[i][j].setRow(row);
 		            arr[i][j].setCol(col);
 		            
-		            arr[i][j].setPieceGridRow(i);
-		            arr[i][j].setPieceGridCol(j);
+		            arr[i][j].setPieceGridRow(j);
+		            arr[i][j].setPieceGridCol(i);
 	            }
 	        }
 	    }
@@ -305,7 +305,7 @@ public class Piece  implements Serializable{
 	 * Update the col position of the upperleft hand corner of a piece relative to the board.
 	 * @param int New col.
 	 */
-	public void seColPos(int n){
+	public void setColPos(int n){
 		this.colPos = n;
 	}
 	

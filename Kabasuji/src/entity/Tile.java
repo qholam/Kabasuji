@@ -35,7 +35,7 @@ public abstract class Tile  implements Serializable{
 			equals = this.toString().equals(other.toString()) && this.row == other.getRow() && this.col == other.getCol();
 		}
 		
-		return equals;
+		return equals; 
 	}
 	
 	/**

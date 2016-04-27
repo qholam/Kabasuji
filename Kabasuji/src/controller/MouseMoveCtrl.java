@@ -33,7 +33,7 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
     	TileView tv;
  
     	//check if container is currently being used
-    	if(container.isVisible()){
+    	if(container.isVisible()){ 
     		//this prevents flickering when dragging a piece over the board
     		if(l instanceof LevelPanel){
 	    		((LevelPanel) l).getBoardPanel().setRepaintInvalid();
@@ -56,8 +56,8 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
     		//height of a tile in the container
     		int ch = container.getHeight()/6;
     		//calculate offset to have mouse hoover over the anchor tile
-    		int dx = cw * ((PieceTile) tv.getTile()).getPieceGridRow() + cw/2;
-    		int dy = ch * ((PieceTile) tv.getTile()).getPieceGridCol() + ch/2;
+    		int dx = cw * ((PieceTile) tv.getTile()).getPieceGridCol() + cw/2;
+    		int dy = ch * ((PieceTile) tv.getTile()).getPieceGridRow() + ch/2;
     		
     		//account for the offest and set the point
     		point.translate(-dx, -dy);
@@ -102,7 +102,7 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
 		if(container.isVisible()){
 			if(l instanceof LevelPanel){
 				//allow board to be rapainted again
-				((LevelPanel) l).getBoardPanel().setRepaintInvalid();
+				((LevelPanel) l).getBoardPanel().setRepaintValid();
 				
 				//get the piece being dragged
 				Piece dragged = container.getDraggingPiece().getPiece();
@@ -116,7 +116,7 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
 			}
 			else{
 				//allow board to be rapainted again
-				((BuilderLevel) l).getBoardPanel().setRepaintInvalid();
+				((BuilderLevel) l).getBoardPanel().setRepaintValid();
 				
 				//get the piece being dragged
 				Piece dragged = container.getDraggingPiece().getPiece();
