@@ -54,7 +54,7 @@ public class PieceContainer extends JPanel{
 	}
 	
 	public void setAnchortile(TileView t){
-		anchorTile = t;
+		anchorTile = t; 
 		System.out.println("Point: " + ((PieceTile)t.getTile()).getPieceGridRow() + " " + ((PieceTile)t.getTile()).getPieceGridCol());
 	}
 	

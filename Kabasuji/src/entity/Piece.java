@@ -47,13 +47,13 @@ public class Piece  implements Serializable{
 		
 		pieceGrid = new PieceTile[maxWidth][maxHeight];
 		
-		for(int i = 0; i < maxHeight; i++){
-			for(int j = 0; j < maxWidth; j++){
-				if(arr[i][j])
-					pieceGrid[i][j] = new PieceTile(i, j);
+		for(int r = 0; r < maxWidth; r++){
+			for(int c = 0; c < maxHeight; c++){
+				if(arr[c][r])
+					pieceGrid[c][r] = new PieceTile(r, c);
 			}
 		}	
-	}
+	} 
 	
 	/**
 	 * Add given {@link PieceTile} to the (row,col) specified by the {@link PieceTile}.
@@ -83,7 +83,7 @@ public class Piece  implements Serializable{
 	 * Rotates a piece clockwise, a piece is mutated rather than having a new instance be made.
 	 * @return PieceTile[][] returns the given array after rotating it clockwise.
 	 */
-	public void rotateClockwise(){
+	public void rotateCounterclockwise(){
 		int w = this.pieceGrid.length;
 		int h = this.pieceGrid[0].length;
 		PieceTile[][] arr = new PieceTile[w][h];
@@ -120,7 +120,7 @@ public class Piece  implements Serializable{
 	 * Rotates a piece counterclockwise, a piece is mutated rather than having a new instance be made.
 	 * @return PieceTile[][] returns the given array after rotating it counterclockwise.
 	 */
-	public void rotateCounterclockwise(){
+	public void rotateClockwise(){
 		int w = this.maxWidth;
 		int h = this.maxHeight;
 		PieceTile[][] arr = new PieceTile[w][h];
@@ -156,7 +156,7 @@ public class Piece  implements Serializable{
 	 * Vertically flips an array.
 	 * @return PieceTile[][] returns the given array after flipping it vertically.
 	 */
-	public void verticalFlip(){
+	public void horizontalFlip(){
 		int w = this.maxWidth;
 		int h = this.maxHeight;
 		PieceTile[][] arr = new PieceTile[h][w];
@@ -191,7 +191,7 @@ public class Piece  implements Serializable{
 	 * Horizontally flips an array.
 	 * @return PieceTile[][] returns the given array after flipping it horizontally.
 	 */
-	public void horizontalFlip(){
+	public void verticalFlip(){
 		int w = this.pieceGrid.length;
 		int h = this.pieceGrid[0].length;
 		PieceTile[][] arr = new PieceTile[h][w];

@@ -32,7 +32,7 @@ public class KabasujiFrame extends JFrame {
 	 */
 	public KabasujiFrame() {
 		
-		/** Create all 35 Kabasuji Hexominos */
+		/** Create all 35 Kabasuji Hexominos */ 
 		pieces[1] = createPiece(new int[]{
 				1, 0, 0, 0, 0, 0,
 				1, 0, 0, 0, 0, 0,

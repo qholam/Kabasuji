@@ -56,8 +56,8 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
     		//height of a tile in the container
     		int ch = container.getHeight()/6;
     		//calculate offset to have mouse hoover over the anchor tile
-    		int dx = cw * ((PieceTile) tv.getTile()).getPieceGridCol() + cw/2;
-    		int dy = ch * ((PieceTile) tv.getTile()).getPieceGridRow() + ch/2;
+    		int dx = cw * ((PieceTile) tv.getTile()).getPieceGridRow() + cw/2;
+    		int dy = ch * ((PieceTile) tv.getTile()).getPieceGridCol() + ch/2;
     		
     		//account for the offest and set the point
     		point.translate(-dx, -dy);

@@ -28,14 +28,14 @@ public class PieceView extends JPanel {
 		super();
 		
 		piece = p;
-		Tile[][] g = p.getpieceGrid(); 
+		Tile[][] g = p.getpieceGrid();  
 		
 		setLayout(new GridLayout(p.getMaxHeight(), p.getMaxWidth(), 0, 0));
 		tilesView = new TileView[p.getMaxHeight()][p.getMaxWidth()];
 		for(int i = 0; i < p.getMaxHeight(); i++){
 			for(int j = 0; j < p.getMaxWidth(); j++){
-				tilesView[i][j] = new TileView(g[i][j]);
-				add(tilesView[i][j]);
+				tilesView[j][i] = new TileView(g[j][i]);
+				add(tilesView[j][i]);
 			}
 		}	
 		
@@ -53,7 +53,7 @@ public class PieceView extends JPanel {
 		
 		for(int i = 0; i < tilesView.length; i++){
 			for(int j = 0; j < tilesView[i].length; j++){
-				tilesView[i][j].setTile(grid[i][j]);
+				tilesView[j][i].setTile(grid[j][i]);
 			}
 		}	
 	}

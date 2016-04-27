@@ -23,6 +23,7 @@ import java.awt.Graphics;
 
 import javax.swing.SwingConstants;
 
+import controller.BoardCtrl;
 import controller.DragCtrl;
 import controller.MouseMoveCtrl;
 import controller.PieceInBullpenCtrl;
@@ -78,12 +79,7 @@ public class LevelPanel extends JPanel{
 		board = new BoardPanel(l.getBoard());
 		
 		board.addMouseMotionListener(new MouseMoveCtrl(this));
-		board.addMouseListener(new MouseAdapter(){
-			@Override
-	        public void mouseClicked(MouseEvent me){
-	        	System.out.println("hi");
-	        }
-		});
+		board.addMouseListener(new BoardCtrl(board, this));
 		board.setBounds(25, 400, 600, 300);
 		add(board);
 		

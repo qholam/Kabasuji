@@ -63,7 +63,7 @@ public class DragCtrl implements MouseListener, MouseMotionListener{
 		this.l = l;
 		pv = panel;
     	p = pv.getPiece();
-	}
+	} 
 	
     public void mouseClicked(MouseEvent me) {
 		//checks that it is a left mouse press,if not do nothing

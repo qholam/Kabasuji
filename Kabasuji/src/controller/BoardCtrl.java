@@ -1,58 +1,46 @@
 package controller;
 
+import java.awt.Component;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
+import GUI.BoardPanel;
+import GUI.LevelPanel;
 import GUI.PieceContainer;
 import entity.Board;
+import entity.BoardTile;
 import entity.KabasujiGame;
+import entity.Tile;
 import view.PieceView;
+import view.TileView;
 
 /**
  * Drag Pieces inside the board.
  * @author LilyAnne
  *
  */
-public class BoardCtrl
-{
-	KabasujiGame theGame;
-	Board theBoard;
-	PieceView srcPiece;
+public class BoardCtrl implements MouseListener{
+	BoardPanel boardPanel;
+	LevelPanel levelPanel;
+	PieceContainer container;
 	
-	public void BoardtoBoardCtrl(KabasujiGame theGame, Board theBoard, PieceView srcPiece)
-	{
-		this.theGame = theGame;
-		this.theBoard = theBoard;
-		this.srcPiece = srcPiece;
-
+	public BoardCtrl(BoardPanel board, LevelPanel level){
+		boardPanel = board;
+		levelPanel = level;
+		container = level.getPieceContainer();
 	}
 	
-	public void mousePressed (MouseEvent me)
-	{
-		PieceContainer container = theGame.getContainer();
-		PieceView pieceDragging = container.getDraggingPiece();
-		
-		
-		
-
-		//Invalid selection
-		if (srcPiece.getPiece() == null) 
-		{
-			//releaseDraggingObject();
-			return;
+	@Override
+	public void mousePressed (MouseEvent me){
+		Component c = boardPanel.getBoardTilePanel().getComponentAt(me.getPoint());
+		if(c instanceof TileView){
+			Tile t = ((TileView) c).getTile();
+			System.out.println(t.getRow() + " " + t.getCol());
 		}
-				
-			
-		// Tell container which object is being dragged, and where in that widget the user clicked.
-		//c.setActiveDraggingObject (piece, me);
-				
-		// Tell container which source widget initiated the drag
-		//setDragSource (board);
-			
-		//redraw();
 	}
 	
-	public void mouseReleased(MouseEvent me)
-	{
+	@Override
+	public void mouseReleased(MouseEvent me){
 		/**
 		 * need more information to complete this 
 		 */
@@ -72,5 +60,23 @@ public class BoardCtrl
 				
 		// finally repaint
 		//repaint();
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

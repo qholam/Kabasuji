@@ -22,10 +22,12 @@ public class BoardPanel extends JPanel {
 	Board board;
 	//Tiles vies on the board
 	TileView[][] tileViews;
+	
+	JPanel boardTilePanel;
 	/**
 	 * Create the panel.
 	 */
-	public BoardPanel(Board b) {
+	public BoardPanel(Board b) { 
 		board = b;
 		tileViews = new TileView[b.getNumColumns()][b.getNumRows()];
 		
@@ -34,16 +36,16 @@ public class BoardPanel extends JPanel {
 		setBounds(0, 0, 600, 300);
 		setBackground(new Color(255, 165, 0));  
 		
-		JPanel panel = new JPanel();
-		add(panel);
-		panel.setLayout(new GridLayout(b.getNumRows(), b.getNumColumns(), 0, 0));
-		panel.setBounds(10, 10, 580, 280);
+		boardTilePanel = new JPanel();
+		add(boardTilePanel);
+		boardTilePanel.setLayout(new GridLayout(b.getNumRows(), b.getNumColumns(), 0, 0));
+		boardTilePanel.setBounds(10, 10, 580, 280);
 		//panel.setBounds(10, 10, 28*b.getNumColumns(), 28*b.getNumRows());
 		
 		for (int r = 0; r < b.getNumRows(); r++) {
 			for (int c = 0; c < b.getNumColumns(); c++) {
 				tileViews[c][r] = new TileView(b.getGrid()[c][r]);
-				panel.add(tileViews[c][r]);
+				boardTilePanel.add(tileViews[c][r]);
 			}
 		}
 		setOpaque(true);
@@ -79,5 +81,9 @@ public class BoardPanel extends JPanel {
 				tileViews[r][c].setRepaintValid();
 			}
 		}
+	}
+	
+	public JPanel getBoardTilePanel(){
+		return boardTilePanel;
 	}
 }

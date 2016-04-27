@@ -21,7 +21,7 @@ public class Board implements Serializable{
 	 *  @param numRows The number of rows of tiles this board should have
 	 *  @param numColumns The number of columns of tiles this board should have
 	 */
-	public Board(Level level, int numRows, int numColumns) {
+	public Board(Level level, int numRows, int numColumns) { 
 		this.level = level;
 		this.numRows = numRows;
 		this.numColumns = numColumns;
@@ -60,10 +60,29 @@ public class Board implements Serializable{
 	
 	/** Adds a piece to the board ... ?
 	 * @param p The piece to add to the board
+	 * @param row The row in which the upper left hand tile of the piece grid will be placed
+	 * @param col The column in which the upper left hand tile of the piece grid will be placed
 	 */
-	public boolean addPiece(Piece p) {
-		// TODO
-		return false;
+	public boolean addPiece(Piece p, int row, int col) {
+		//Ensure that the given row and column will be within bounds
+		if(row < 0 || row >= this.numRows || col < 0 || col >= this.numColumns)
+			return false;
+		//Ensure that piece will fit on the board
+		if(row+p.getMaxWidth() >= this.numRows || col+p.getMaxHeight() >= this.numColumns)
+			return false;
+		
+		//Check if piece can be legally placed based on the logistics of the level type
+		if(level instanceof PuzzleLevel){
+			//there can be no overlapping of pieces on the board
+			for(int i = row; i < row + p.getMaxWidth(); i++){
+				for(int j = col; i < col + p.getMaxHeight(); j++){
+					
+				}
+			}
+			
+		}
+		
+		return true;
 	}
 	
 	public Level getLevel(){
