@@ -5,6 +5,7 @@ import java.awt.Component;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 import GUI.BullpenView;
 import GUI.KabasujiBuilderFrame;
@@ -32,6 +33,7 @@ public class LilyAnneTest extends TestCase
 	KabasujiFrame frame;
 	KabasujiBuilderFrame bFrame;
 	Board board;
+	Level l;
 	SpecifyBoardPropertiesView sbpv;
 	LevelSelector ls;
 
@@ -69,8 +71,19 @@ public class LilyAnneTest extends TestCase
 		b = new BullpenView(pen);
 		frame = new KabasujiFrame();
 		bFrame = new KabasujiBuilderFrame();
+		l = new Level(board, pen, true, 1, 0);
+		board = new Board(l, 10, 10);
 		
 		
+	}
+	
+	public void testBoard()
+	{
+		board.addPiece(piece1, 3, 3);
+		assertTrue(board.boardGrid[3][5].isCovered());
+		
+		board.removePiece(piece1);
+		assertFalse(board.boardGrid[3][5].isCovered());
 	}
 	
 	/**
@@ -93,6 +106,8 @@ public class LilyAnneTest extends TestCase
 	public void testSpecifyBoardPropertiesView()
 	{
 		sbpv = new SpecifyBoardPropertiesView(bFrame);
+		Component c1 = sbpv.getComponentAt(237, 236);
+		assertTrue(c1 instanceof JTextField);
 	}
 	
 	public void testLevelSelector()
