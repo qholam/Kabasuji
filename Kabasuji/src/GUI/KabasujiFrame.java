@@ -49,6 +49,8 @@ public class KabasujiFrame extends JFrame {
 		mainMenu.setBounds(0, 0, 800, 800);
 		contentPane.add(mainMenu, MainMenu);
 		
+		initPieces();
+		
 		//to be remove this bullpen was made for testing
 		Bullpen bp = new Bullpen();
 		for (int i = 0; i < 5; i++) {
