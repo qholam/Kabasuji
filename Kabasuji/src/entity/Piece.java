@@ -1,6 +1,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Representation of a piece.
@@ -15,6 +16,8 @@ public class Piece  implements Serializable{
 	//The (row, col) of the upper-left hand corner of the pieceGrid of the Piece on the board, if applicable
 	//this may be helpful when adding a piece to the board through a drag
 	int rowPos, colPos;
+	//piece tiles contained by the grid
+	ArrayList <PieceTile> pieceTiles = new ArrayList<PieceTile>();
 	
 	//parameters of class
 	private final int maxWidth = 6; 
@@ -31,7 +34,25 @@ public class Piece  implements Serializable{
 		rowPos = -1;
 		colPos = -1;
 		
-	} 
+	} 	
+	
+	/**
+	 * clonse the given piece
+	 * @param p
+	 */
+	public Piece(Piece p){
+		this.pieceGrid = p.pieceGrid;
+		
+		for(int r = 0; r < maxWidth; r++){
+			for(int c = 0; c < maxHeight; c++){
+				if(p.getpieceGrid()[c][r] != null)
+					pieceGrid[c][r] = new PieceTile(r, c); 
+			}
+		}	
+		
+		rowPos = p.rowPos;
+		colPos = p.colPos;
+	}
 	
 	/**
 	 * Construct to create a piece, that allows for specification of piece shape.
@@ -50,7 +71,7 @@ public class Piece  implements Serializable{
 		for(int r = 0; r < maxWidth; r++){
 			for(int c = 0; c < maxHeight; c++){
 				if(arr[c][r])
-					pieceGrid[c][r] = new PieceTile(r, c);
+					pieceGrid[c][r] = new PieceTile(r, c); 
 			}
 		}	
 	} 
@@ -314,5 +335,22 @@ public class Piece  implements Serializable{
 	 */
 	public PieceTile[][] getpieceGrid() {
 		return this.pieceGrid;
+	}
+	
+	/**
+	 * @return The PieceTiles on the grid
+	 */
+	public ArrayList<PieceTile> getPieceTiles(){
+		pieceTiles = new ArrayList<PieceTile>();
+		
+		for(int r = 0; r < pieceGrid.length; r++){
+			for(int c = 0; c < pieceGrid[0].length; c++){
+				if(pieceGrid[c][r] != null){
+					pieceTiles.add(pieceGrid[c][r]);
+				}
+			}
+		}
+		
+		return pieceTiles;
 	}
 }

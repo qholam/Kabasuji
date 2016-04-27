@@ -12,8 +12,11 @@ import entity.Board;
 import entity.BoardTile;
 import entity.Bullpen;
 import entity.KabasujiGame;
+import entity.Level;
+import entity.NoTile;
 import entity.Piece;
 import entity.PieceTile;
+import entity.PuzzleLevel;
 import entity.Tile;
 import view.PieceView;
 import view.TileView;
@@ -21,6 +24,7 @@ import view.TileView;
 /**
  * Drag Pieces inside the board.
  * @author LilyAnne
+ * @author Quoc Holam
  *
  */
 public class BoardCtrl implements MouseListener{
@@ -39,8 +43,42 @@ public class BoardCtrl implements MouseListener{
 		//this determines the amount to change the quantity of the pice by
 		int pieceQty = 1;
 		
-		if(!container.isVisible())
+		//is anything being dragged? if not then see if there is a piece to remove there
+		if(!container.isVisible()){
+			Level l = levelPanel.getLevel();
+			//can only be removed from board if it is puzzle level
+			//if(l instanceof PuzzleLevel){
+				Component c = boardPanel.getBoardTilePanel().getComponentAt(me.getPoint());
+				if(c instanceof TileView){
+					TileView tv = (TileView) c;
+					Tile t = tv.getTile();
+					
+					//ensure the tile clicked on was a board tile
+					if(!(t instanceof BoardTile) || t instanceof NoTile){
+						//do nothing if it is not a boardtile
+						return;
+					}
+					
+					//check if the board tile clicked on was covered, if so get the piece there
+					BoardTile bt = (BoardTile) t;
+					if(bt.isCovered()){
+						//get the row and column of the click
+						int row = bt.getRow();
+						int col = bt.getCol();
+						
+						//remove the piece there
+						Piece removed = boardPanel.getBoard().removePieceAt(row, col);
+						
+						//set container visible again and add removed piece to it
+						container.setDraggingPiece(removed);
+						container.setSource(boardPanel);
+						container.setVisible(true);
+					}
+				}
+			//}
+				
 			return;
+		}
 		boardPanel.setRepaintValid();
 		Component c = boardPanel.getBoardTilePanel().getComponentAt(me.getPoint());
 		if(c instanceof TileView){
@@ -102,7 +140,7 @@ public class BoardCtrl implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

@@ -23,7 +23,7 @@ public class TestLevels extends TestCase {
 	ReleaseLevel release;
 	Level level;
 	
-	public void setUp(){
+	public void setUp(){ 
 		movesRemaining = 1; 
 		timeRemaining = 5;
 		levelNum = 1;

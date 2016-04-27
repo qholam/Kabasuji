@@ -16,7 +16,7 @@ public class Board implements Serializable{
 	// The number of rows of tiles on this board
 	int numRows;
 	// The number of columns of tiles on this board
-	int numColumns;
+	int numColumns; 
 	 
 	/** Constructor requires level reference and size specifications (rows and columns) 
 	 *  @param level The level to which this board belongs
@@ -24,6 +24,7 @@ public class Board implements Serializable{
 	 *  @param numColumns The number of columns of tiles this board should have
 	 */
 	public Board(Level level, int numRows, int numColumns) { 
+		pieces = new ArrayList<Piece>();
 		this.level = level;
 		this.numRows = numRows;
 		this.numColumns = numColumns;
@@ -60,13 +61,18 @@ public class Board implements Serializable{
 		return boardGrid;
 	}
 	
-	/** Adds a piece to the board ... ?
+	/** Adds a piece to the boar. The given row and column specify the position of the upperleft hand corner of the piece grid.
 	 * @param p The piece to add to the board
 	 * @param row The row in which the upper left hand tile of the piece grid will be placed
 	 * @param col The column in which the upper left hand tile of the piece grid will be placed
 	 */
-	public boolean addPiece(Piece p, int row, int col) {
+	public boolean addPiece(Piece piece, int row, int col) {
+		//create a copy of the piece
+		//Piece p = new Piece(piece);
+		Piece p = piece;
+		
 		//Ensure that the given row and column will be within bounds
+		//TODO finish this
 		if(row < 0 || row >= this.numRows || col < 0 || col >= this.numColumns)
 			//return false;
 		//Ensure that piece will fit on the board
@@ -82,7 +88,7 @@ public class Board implements Serializable{
 							return false;
 				}
 			}
-			
+			System.out.println("true meet");
 		}
 		
 		//add piece to board
@@ -91,16 +97,104 @@ public class Board implements Serializable{
 		PieceTile[][] pgrid = p.getpieceGrid();
 		for(int i = row; i < row + p.getMaxWidth(); i++){
 			for(int j = col; j < col + p.getMaxHeight(); j++){
-				if(pgrid[c][r] != null)
+				if(pgrid[c][r] != null){
 					//piece is now covered
 					boardGrid[j][i].cover();
+					//set row and column of the piece tile
+					pgrid[c][r].setCol(j);
+					pgrid[c][r].setRow(i);
+				}
 				c++;
 			}
 			c = 0;
 			r++;
 		}
 		
+		//set the position of the upper left hand tile of the piece and keep track of it
+		p.setColPos(col);
+		p.setRowPos(row);
+		pieces.add(p);
+		
 		return true;
+	}
+	
+	/**
+	 * Remove the piece at the specified row and column.
+	 * @param row
+	 * @param col
+	 * @return
+	 */
+	public Piece removePieceAt(int row, int col){
+		Piece p = null;
+		
+		//ensure there is a piece at the specified row and col
+		if(!isLocatedAt(row, col)){
+			return null;
+		}
+		
+		//get the piece at the specified location
+		p = getPieceAt(row, col);
+		//remove the piece
+		removePiece(p);
+		
+		return p;
+	}
+	
+	/**
+	 * Removes the given piece from the board
+	 * @para p Piece to remove
+	 */
+	public void removePiece(Piece p){
+		//ensures the given piece is actually on the board
+		if(!pieces.contains(p))
+			return;
+		
+		//get the piece tiles of the given piece and remove them(in this case the board tiles are just set to be uncovered) **this may need changing
+		for(PieceTile pt: p.getPieceTiles()){
+			//get row and column of piece tile
+			int row = pt.getRow();
+			int col = pt.getCol();
+			
+			//uncover the board tile located there
+			boardGrid[col][row].uncover();
+		}
+	}
+	
+	/**
+	 * Determines if there is a  piece that is located at the specified row and column on the board
+	 */
+	public boolean isLocatedAt(int row, int col){
+		boolean isLocated = false;
+		
+		for(Piece p: pieces){
+			System.out.println(p.getPieceTiles().size());
+			//get all the piece tiles and see if they have the given row and col values
+			for(PieceTile pt: p.getPieceTiles()){
+				if(pt.getCol() == col && pt.getRow() == row)
+					isLocated = true;
+			}
+		}
+		
+		return isLocated;
+	}
+	
+	/**
+	 * Gets the piece at the specified row and column, if applicable.
+	 * @return
+	 */
+	public Piece getPieceAt(int row, int col){
+		Piece piece = null;
+		
+		for(Piece p: pieces){
+			System.out.println(p.getPieceTiles().size());
+			//get all the piece tiles and see if they have the given row and col values
+			for(PieceTile pt: p.getPieceTiles()){
+				if(pt.getCol() == col && pt.getRow() == row)
+					piece = p;
+			}
+		}
+		
+		return piece;
 	}
 	
 	public Level getLevel(){

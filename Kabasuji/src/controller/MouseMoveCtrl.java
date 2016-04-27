@@ -7,6 +7,7 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.JPanel;
 
+import GUI.BoardPanel;
 import GUI.BuilderLevel;
 import GUI.LevelPanel;
 import GUI.PieceContainer;
@@ -34,15 +35,15 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
  
     	//check if container is currently being used
     	if(container.isVisible()){ 
-    		//this prevents flickering when dragging a piece over the board
+    		//this prevents flickering when dragging a piece over the board 
     		if(l instanceof LevelPanel){
 	    		((LevelPanel) l).getBoardPanel().setRepaintInvalid();
-	    		
+	    		((LevelPanel) l).getBullpenView().setSelected(null);
 	    		((LevelPanel) l).setIgnoreRepaint(true);
     		}
     		else{
     			((BuilderLevel) l).getBoardPanel().setRepaintInvalid();
-	    		
+    			((BuilderLevel) l).getBullpenView().setSelected(null);
 	    		((BuilderLevel) l).setIgnoreRepaint(true);
     		}
     		tv = container.getAnchorTile();
@@ -101,6 +102,10 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
 	public void mousePressed(MouseEvent arg0) {
 		if(container.isVisible()){
 			if(l instanceof LevelPanel){
+				//if source is board it cannot be dropped anywhere else but the board
+				if(container.getSource() instanceof BoardPanel){
+					return;
+				}
 				//allow board to be rapainted again
 				((LevelPanel) l).getBoardPanel().setRepaintValid();
 				
@@ -115,6 +120,11 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
 		    	container.setVisible(false);
 			}
 			else{
+				//if source is board it cannot be dropped anywhere else but the board
+				if(container.getSource() instanceof BoardPanel){
+					return;
+				}
+				
 				//allow board to be rapainted again
 				((BuilderLevel) l).getBoardPanel().setRepaintValid();
 				

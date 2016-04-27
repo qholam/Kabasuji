@@ -21,7 +21,7 @@ public class PuzzleLevel extends Level {
 	 */
 	public PuzzleLevel(int movesRemaining, Board board, Bullpen bullpen, boolean isUnlocked, int levelNum, int stars){
 		super(board, bullpen, isUnlocked, levelNum, stars);
-		this.movesRemaining = movesRemaining;
+		this.movesRemaining = movesRemaining; 
 	} 
 	
 	/**

@@ -19,26 +19,28 @@ public class Serializer {
 		public static void main(String[] args){
 			Bullpen b = new Bullpen();
 			for(int i = 0; i < 6; i++){
-				Piece p = new Piece();
+				Piece p = new Piece(); 
 				p.addTile(new PieceTile(), 0, 2); 
 				p.addTile(new PieceTile(), 1, 2); 
 				p.addTile(new PieceTile(), 2, 2);
-				p.addTile(new PieceTile(), 3, 2);
+				p.addTile(new PieceTile(), 3, 2); 
 				p.addTile(new PieceTile(), 4, 2);
 				p.addTile(new PieceTile(), 5, 2);
 				p.addTile(new PieceTile(), 5-i, 1);
-				p.addTile(new PieceTile(), 5-i, 3);
+				p.addTile(new PieceTile(), 5-i, 3); 
 				b.addPiece(p);
 			} 
-			Level l = (Level) new PuzzleLevel(20, new Board(null, 10, 10), b, true, 1, 0);
-			new Serializer().serializeLevel(l);
+			PuzzleLevel puz = new PuzzleLevel(20, null, null, true, 1, 0);
+			Board board = new Board(puz, 10, 10);
+			puz = new PuzzleLevel(50, board, b, true, 1, 0);
+			new Serializer().serializeLevel(puz);
 			
 		}
 		
 	
 		public void serializeLevel(Level l){ 
 		   try{  
-			FileOutputStream fout = new FileOutputStream("Kabasuji/src/savedLevels/" + l.toString());
+			FileOutputStream fout = new FileOutputStream("src/savedLevels/" + l.toString());
 			ObjectOutputStream oos = new ObjectOutputStream(fout);   
 			oos.writeObject(l);
 			oos.close();
