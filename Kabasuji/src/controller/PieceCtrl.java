@@ -39,9 +39,6 @@ public class PieceCtrl implements MouseListener, MouseMotionListener{
 	
 	@Override
     public void mouseClicked(MouseEvent me) {
-		if(!SwingUtilities.isLeftMouseButton(me) )
-			return; 
-		
 		if(l instanceof LevelPanel){
 	    	bullpen = ((LevelPanel) l).getBullpenView();
 	    	container = ((LevelPanel) l).getPieceContainer();
@@ -51,20 +48,17 @@ public class PieceCtrl implements MouseListener, MouseMotionListener{
 	    	container = ((BuilderLevel) l).getPieceContainer();
     	}
 		
-		if(!container.isVisible()){
-        	Component c = pv.getComponentAt(me.getPoint());
-        	if(c instanceof TileView){
-        		tv = (TileView) c;
-        		Tile t = tv.getTile();
-        		if(t != null && !t.toString().equals(TileType.noTile)){
-        			container.setAnchortile(tv);
-        			container.setSource(pv);
-        			point = tv.getLocation();
-        			container.setDraggingPiece(pv.getPiece());
-    	            container.setLocation(point);
-    	            container.setVisible(true);
-        		}
-        	}  
+		if(SwingUtilities.isLeftMouseButton(me) ){
+			Component c = pv.getComponentAt(me.getPoint());
+			if(c instanceof TileView){
+				Tile t = ((TileView) c).getTile();
+				if(t == null || t.toString().equals(TileType.noTile)){
+					return;
+				}
+				else{
+					bullpen.setSelected(pv);
+				}
+			}
 		}
     }
 	
