@@ -5,6 +5,8 @@ import java.awt.event.MouseListener;
 
 import GUI.BoardPanel;
 import GUI.SpecifyBoardPropertiesView;
+import entity.NoTile;
+import view.TileView;
 
 public class SpecifyBoardCtrl implements MouseListener{
 	SpecifyBoardPropertiesView sbpv;
@@ -17,14 +19,18 @@ public class SpecifyBoardCtrl implements MouseListener{
 	
 	@Override
 	public void mouseClicked(MouseEvent me) {
-		// TODO Auto-generated method stub
+		TileView t = sbpv.getClickedTile(me);
+		if(t != null){
+			System.out.println("Set tile" + t.getTile().getRow() + " " + t.getTile().getCol());
+			t.setTile(new NoTile(0,0));	
+		}
 		
+		boardPanel.setRepaintValid();
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent me) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 	@Override

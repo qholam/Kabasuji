@@ -82,7 +82,7 @@ public class Piece  implements Serializable{
 	 * @param int row of pieceGrid to add {@link PieceTile} to.
 	 * @param int col of pieceGrid to add {@link PieceTile} to.
 	 */
-	public void addTile(PieceTile p, int col, int row){
+	public void addTile(PieceTile p, int row, int col){
 		this.pieceGrid[col][row] = p;
 		p.setPieceGridCol(col);
 		p.setPieceGridRow(row);

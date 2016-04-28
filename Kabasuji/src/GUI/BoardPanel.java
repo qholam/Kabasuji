@@ -63,7 +63,11 @@ public class BoardPanel extends JPanel {
 		
 		for (int r = 0; r < board.getNumRows(); r++) {
 			for (int c = 0; c < board.getNumColumns(); c++) {
-				if(board.getGrid()[c][r].isCovered()){
+				//no tile?
+				if(board.getGrid()[c][r].toString().equals(TileType.noTile)){
+					tileViews[c][r].setTile(new PieceTile());
+				}
+				else if(board.getGrid()[c][r].isCovered()){
 					PieceTile p = new PieceTile();
 					p.setCol(c);
 					p.setRow(r);
@@ -71,8 +75,7 @@ public class BoardPanel extends JPanel {
 				}
 				else{
 					tileViews[c][r].setTile(board.getGrid()[c][r]);
-				}
-				//tileViews[c][r].setRepaintValid();
+				}	
 			}
 		}
 		
@@ -123,5 +126,22 @@ public class BoardPanel extends JPanel {
 	
 	public JPanel getBoardTilePanel(){
 		return boardTilePanel;
+	}
+	
+	/**
+	 * Get the tile view at the specified mouse event
+	 * @param me
+	 */
+	public TileView getClickedTile(MouseEvent me){
+		TileView t = null;
+		
+		//get the component that was clicked on
+		Component c = boardTilePanel.getComponentAt(me.getPoint());
+		if(c instanceof TileView){
+			t = (TileView) c;
+		}
+		
+		
+		return t;
 	}
 }

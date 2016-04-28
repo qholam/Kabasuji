@@ -1,6 +1,7 @@
 package GUI;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 
 import javax.swing.JLabel;
@@ -9,10 +10,13 @@ import javax.swing.border.LineBorder;
 
 import controller.SpecifyBoardCtrl;
 import entity.Board;
+import view.TileView;
+
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import java.awt.Button;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -165,6 +169,7 @@ public class SpecifyBoardPropertiesView extends JPanel {
 	}
 	
 	void updateBoard() {
+		System.out.println(board.getTileViews()[0][1].getTile().toString());
 		updateWidth();
 		updateHeight();
 		txtEnterWidthmax.setText("" + width);
@@ -175,5 +180,13 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		boardContainer.add(board);
 		boardContainer.repaint();
 		
+	}
+	
+	/**
+	 * Get the tile view at the specified mouse event
+	 * @param me
+	 */
+	public TileView getClickedTile(MouseEvent me){
+		return board.getClickedTile(me);
 	}
 }
