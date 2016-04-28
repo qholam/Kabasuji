@@ -139,8 +139,8 @@ public class TestEntity extends TestCase {
 		
 		assertEquals(selected, pieces1);
 		assertEquals(bullpen.getNumPieces(), 3);
-		bullpen.changeQuanity(pieces1, 1);
-		assertEquals(bullpen.getNumPieces(), 1);
+		bullpen.changeQuantity(pieces1, -1);
+		assertEquals(bullpen.getNumPieces(), 2);
 		
 	}
 	

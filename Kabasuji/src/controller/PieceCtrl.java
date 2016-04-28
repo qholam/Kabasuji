@@ -89,7 +89,7 @@ public class PieceCtrl implements MouseListener, MouseMotionListener{
     	            container.setLocation(point);
     	            container.setVisible(true);
     	            Bullpen bp = bullpen.getBullpen();
-    	            bp.changeQuanity(pv.getPiece(), -1);
+    	            bp.changeQuantity(pv.getPiece(), -1);
         		}
         	}  
         	else{
@@ -97,12 +97,12 @@ public class PieceCtrl implements MouseListener, MouseMotionListener{
     			Bullpen bp;
     			if(l instanceof LevelPanel){
 	    			bp = ((LevelPanel) l).getBullpenView().getBullpen();
-	    	    	bp.changeQuanity(dragged, 1);
+	    	    	bp.changeQuantity(dragged, 1);
 	    	    	((LevelPanel) l).getBullpenView().repaint();
     			}
     			else{
     				bp = ((BuilderLevel) l).getBullpenView().getBullpen();
-	    	    	bp.changeQuanity(dragged, 1);
+	    	    	bp.changeQuantity(dragged, 1);
 	    	    	((BuilderLevel) l).getBullpenView().repaint();
     			}
     	    	container.setVisible(false);
