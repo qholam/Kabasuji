@@ -64,7 +64,7 @@ public class TileView extends JPanel{
 		}
 		else if (tile.toString().equals(TileType.noTile)) {
 			setBackground(new JPanel().getBackground());
-			setBorder(new LineBorder(new Color(0, 0, 0), 1));
+			setBorder(new LineBorder(new Color(0, 0, 0), 0));
 			setOpaque(true);
 		}
 		else{ 

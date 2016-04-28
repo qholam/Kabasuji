@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import entity.Board;
 import entity.BoardTile;
 import entity.Bullpen;
+import entity.NoTile;
 import entity.Piece;
 import entity.PieceTile;
 import entity.Tile;
@@ -65,7 +66,8 @@ public class BoardPanel extends JPanel {
 			for (int c = 0; c < board.getNumColumns(); c++) {
 				//no tile?
 				if(board.getGrid()[c][r].toString().equals(TileType.noTile)){
-					tileViews[c][r].setTile(new PieceTile());
+					tileViews[c][r].setTile(new NoTile(r,c));
+					tileViews[c][r].setOpaque(false);
 				}
 				else if(board.getGrid()[c][r].isCovered()){
 					PieceTile p = new PieceTile();
