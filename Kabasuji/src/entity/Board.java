@@ -216,12 +216,26 @@ public class Board implements Serializable {
 			// get all the piece tiles and see if they have the given row and
 			// col values
 			for (PieceTile pt : p.getPieceTiles()) {
-				if (pt.getCol() == col && pt.getRow() == row)
+				if (pt.getCol() == col && pt.getRow() == row){
 					piece = p;
+					break;
+				}
 			}
 		}
 
 		return piece;
+	}
+	
+	/**
+	 * Method that check if this board is valid to be used in the game.
+	 * @return boolean True if board is valid
+	 */
+	public boolean isValid(){
+		boolean valid = true;
+		
+		//check if any 
+		
+		return valid;
 	}
 
 	public Level getLevel() {

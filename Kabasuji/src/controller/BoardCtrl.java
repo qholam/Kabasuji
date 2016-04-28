@@ -135,7 +135,7 @@ public class BoardCtrl implements MouseListener {
 				else {
 					// quantity of piece will be reduced by 1 now since move was
 					// good
-					pieceQty = -1;
+					pieceQty = 0;
 				}
 
 				// release the dragging piece
