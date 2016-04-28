@@ -32,7 +32,7 @@ public abstract class Tile implements Serializable{
 			//cast to Tile
 			other = (Tile) obj;
 			
-			equals = this.toString().equals(other.toString()) && this.row == other.getRow() && this.col == other.getCol();
+			equals = this.toString().equals(other.toString());
 		}
 		
 		return equals; 
