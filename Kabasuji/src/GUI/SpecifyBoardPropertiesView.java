@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import controller.SpecifyBoardCtrl;
 import entity.Board;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
@@ -104,6 +105,7 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		boardContainer.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		board = new BoardPanel(new Board(null, width, height));
+		board.addMouseListener(new SpecifyBoardCtrl(this, board));
 		boardContainer.add(board);
 		
 		JButton btnUpdateSize = new JButton("UPDATE SIZE");

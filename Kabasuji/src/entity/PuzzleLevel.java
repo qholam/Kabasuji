@@ -72,4 +72,12 @@ public class PuzzleLevel extends Level {
 	public String toString(){
 		return "Puzzle" + this.levelNum;
 	}
+	
+	/**
+	 * Returns the type of the level
+	 */
+	@Override
+	public LevelType getLevelType(){
+		return LevelType.Puzzle;
+	}
 }

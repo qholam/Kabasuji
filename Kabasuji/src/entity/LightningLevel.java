@@ -84,4 +84,12 @@ public class LightningLevel extends Level{
 	public String toString(){
 		return "Lightning" + this.levelNum;
 	}
+	
+	/**
+	 * Returns the type of the level
+	 */
+	@Override
+	public LevelType getLevelType(){
+		return LevelType.Lightning;
+	}
 }

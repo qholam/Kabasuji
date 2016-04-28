@@ -1,50 +1,47 @@
 package move;
 
 import entity.Board;
+import entity.Bullpen;
 import entity.Level;
-import entity.LightningLevel;
 import entity.Piece;
 import entity.PuzzleLevel;
+import entity.LevelType;
+import entity.LightningLevel;
 
 /**
- * Move class for moving pieces within the board.
+ * Move pieces from the Board to the Bullpen.
  * 
- * Only valid in Puzzle Levels and Level Builder
+ * Only valid in Puzzle Level? and Level Builder
  * 
  * @author LilyAnne
  * @author Quoc HoLam
  *
  */
-
-public class BoardToBoardMove implements IMove {
-
+public class BullpenToBoardMove implements IMove {
 	Board board;
 	Piece pieceBeingDragged;
+	Bullpen bullpen;
 	Level level;
 	int row, col;
-	int originalRow, originalCol;
 
 	/**
-	 * Constructor for BoardToBoardMove
+	 * Constructor for BoardToBullpenMove
 	 * 
 	 * @param board
 	 * @param pieceBeingDragged
-	 * @param level
 	 * @param row
-	 *            The row to add the piece to
+	 *            The row on the board to add the piece to
 	 * @param col
-	 *            The column to add the piece to
+	 *            The col on the board to add the piece to
 	 */
 
-	public BoardToBoardMove(Board board, Level level, Piece pieceBeingDragged,  int row, int col) {
+	public BullpenToBoardMove(Board board, Level level, Piece pieceBeingDragged, Bullpen bullpen, int row, int col) {
 		this.board = board;
-		this.pieceBeingDragged = pieceBeingDragged;
 		this.level = level;
+		this.pieceBeingDragged = pieceBeingDragged;
+		this.bullpen = bullpen;
 		this.row = row;
 		this.col = col;
-		//keep track of old row and column for redo.
-		this.originalRow = pieceBeingDragged.getRowPos();
-		this.originalCol = pieceBeingDragged.getColPos();
 	}
 
 	/**
@@ -52,11 +49,15 @@ public class BoardToBoardMove implements IMove {
 	 */
 	@Override
 	public boolean doMove() {
-		if (!isValid())
+		//is move valid to be made?
+		if (!isValid()) {
 			return false;
+		}
 
-		// TODO board.remove(pieceBeingDragged);
+		//add piece to board
 		board.addPiece(pieceBeingDragged, row, col);
+		
+		//Move was successful!
 		return true;
 	}
 
@@ -69,6 +70,7 @@ public class BoardToBoardMove implements IMove {
 
 		Piece p = pieceBeingDragged;
 
+		// check if level has been won
 		if (level.hasWon()) {
 			validMove = false;
 		}
@@ -105,5 +107,4 @@ public class BoardToBoardMove implements IMove {
 		// TODO
 		return false;
 	}
-
 }

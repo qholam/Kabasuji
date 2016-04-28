@@ -88,4 +88,11 @@ public class Level implements Serializable{
 	public boolean doMove(IMove move){
 		return false;
 	}
+	
+	/**
+	 * Returns the type of the level
+	 */
+	public LevelType getLevelType(){
+		return null;
+	}
 }

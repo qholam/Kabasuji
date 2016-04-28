@@ -115,4 +115,13 @@ public class ReleaseLevel extends Level {
 	public String toString(){
 		return "Release" + this.levelNum;
 	}
+	
+	/**
+	 * Returns the type of the level
+	 */
+	@Override
+	public LevelType getLevelType(){
+		return LevelType.Release;
+	}
+	
 }
