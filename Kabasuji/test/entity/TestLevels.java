@@ -4,9 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import junit.framework.TestCase;
-import move.BullpenToLightningBoardMove;
-import move.BullpenToPuzzleBoardMove;
-import move.BullpenToReleaseBoardMove;
+import move.BullpenToBoardMove;
 
 public class TestLevels extends TestCase {
 	//Create elements for different levels
@@ -60,7 +58,7 @@ public class TestLevels extends TestCase {
 		assertEquals(puzzle.hasWon(), false);
 		
 		//move piece to board
-		BullpenToPuzzleBoardMove BPM = new BullpenToPuzzleBoardMove(puzzleBoard, piece, puzzle, bullpen);
+		BullpenToBoardMove BPM = new BullpenToBoardMove(puzzleBoard, puzzle, piece ,bullpen, 0, 0);
 		assertEquals(puzzle.doMove(BPM), true);
 		
 		assertEquals(puzzle.getMovesRemaining(), 0);
@@ -74,7 +72,7 @@ public class TestLevels extends TestCase {
 		assertEquals(lightning.hasWon(), false); 
 		
 		//move piece to board
-		BullpenToLightningBoardMove BLM = new BullpenToLightningBoardMove(lightningBoard, piece, lightning, bullpen);
+		BullpenToBoardMove BLM = new BullpenToBoardMove(lightningBoard, lightning, piece, bullpen, 0, 0);
 		assertEquals(lightning.doMove(BLM), true);
 		assertEquals(lightning.getTimeRemaining(), 5); 
 		
@@ -90,7 +88,7 @@ public class TestLevels extends TestCase {
 			releaseBoard.boardGrid[0][i] = new ReleaseTile(i, 0, new Number(i + 1, Color.red));
 		}
 		
-		BullpenToReleaseBoardMove BRM = new BullpenToReleaseBoardMove(releaseBoard, piece, release, bullpen);
+		BullpenToBoardMove BRM = new BullpenToBoardMove(releaseBoard, release, piece, bullpen, 0, 0);
 		assertEquals(release.doMove(BRM), true);
 		assertEquals(release.getNumMoves(), 1);
 		assertEquals(release.hasWon(), true);
@@ -106,6 +104,9 @@ public class TestLevels extends TestCase {
 		assertEquals(level.hasWon(), false);
 		assertEquals(level.getBullpen(), bullpen);
 		assertEquals(level.getBoard(), board);
+		BullpenToBoardMove BPM = new BullpenToBoardMove(puzzleBoard, puzzle, piece ,bullpen, 0, 0);
+		assertEquals(level.doMove(BPM), false);
+		assertEquals(level.getLevelType(), null);
 	}
 
 	/**

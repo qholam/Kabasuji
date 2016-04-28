@@ -150,7 +150,7 @@ public class BoardCtrl implements MouseListener {
 					bp = ((BuilderLevel) levelPanel).getBullpenView().getBullpen();
 					bpview = ((BuilderLevel) levelPanel).getBullpenView();
 				}
-				bp.changeQuanity(dragged, pieceQty);
+				bp.changeQuantity(dragged, pieceQty);
 
 				container.setVisible(false);
 			}

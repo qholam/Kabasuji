@@ -17,7 +17,7 @@ public class Bullpen implements Serializable {
 	 */
 	public Bullpen(){ 
 		//initially no piece is selected
-		selectedPiece = null;
+		this.selectedPiece = null;
 		//no pieces are on the board
 		pieces = new ArrayList<Piece>();
 		piecesInfo = new HashMap<Piece, Integer>();
@@ -28,7 +28,11 @@ public class Bullpen implements Serializable {
 	 * @param p the pieces to add to the Bullpen
 	 */
 	public Bullpen(ArrayList<Piece> p){
-		new Bullpen();
+		//initially no piece is selected
+		this.selectedPiece = null;
+		//no pieces are on the board
+		pieces = new ArrayList<Piece>();
+		piecesInfo = new HashMap<Piece, Integer>();
 		
 		//add given pieces to bullpen
 		for(Piece piece: p){
@@ -78,7 +82,7 @@ public class Bullpen implements Serializable {
 	 */
 	public void setSelectedPiece(Piece selectedPiece) {
 		//Ensures that the piece is in the bullpen
-		if(!pieces.contains(selectedPiece))
+		if(pieces.contains(selectedPiece))
 			this.selectedPiece = selectedPiece;
 	}
 	
@@ -100,7 +104,7 @@ public class Bullpen implements Serializable {
 	 * Decrease quantity of given Piece(if it is in the Bullpen) by one.
 	 * @param p Given piece to update quanitity for
 	 */
-	public void changeQuanity(Piece p, int dx){
+	public void changeQuantity(Piece p, int dx){
 		if(piecesInfo.containsKey(p))
 			piecesInfo.put(p, piecesInfo.get(p) + dx);
 	}

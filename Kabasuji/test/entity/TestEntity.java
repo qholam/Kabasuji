@@ -12,20 +12,18 @@ import junit.framework.TestCase;
 public class TestEntity extends TestCase {
 
 	TileType tileType;
-	//Tile tile1;
-	//Tile tile2;
+	Bullpen bullpen;
 	Number number;
 	ReleaseTile releaseTile;
 	PieceTile pieceTile;
 	PieceTile pieceTile1;
-	Piece piece, piece1, piece2, piece3, piece4;
+	Piece piece, piece1, piece2, piece3, piece4, pieces1, pieces2, pieces3;
 	boolean[][] pieceArray;
 	ArrayList<PieceTile> pieceTileArray;
+	ArrayList<Piece> BullpenArray;
 	
 	public void setUp() throws Exception{
 		tileType = new TileType();
-		//tile1 = new Tile(5, 2);
-		//tile2 = new Tile(5, 2);
 		number = new Number(2, Color.red);
 		releaseTile = new ReleaseTile(5, 2, number);
 		pieceTile = new PieceTile();
@@ -36,12 +34,36 @@ public class TestEntity extends TestCase {
 		piece2 = new Piece(pieceArray);
 		piece3 = new Piece(piece2);
 		
-		/**
-		piece4 = new Piece();
-		piece4.pieceTiles.add(pieceTile);
-		pieceTileArray = new ArrayList<PieceTile>();
-		pieceTileArray.add(pieceTile);
-		**/
+		BullpenArray = new ArrayList<Piece>();
+		bullpen = new Bullpen();
+		
+		pieces1 = new Piece();
+		pieces1.addTile(new PieceTile(), 0, 2); 
+		pieces1.addTile(new PieceTile(), 1, 2); 
+		pieces1.addTile(new PieceTile(), 2, 2);
+		pieces1.addTile(new PieceTile(), 3, 2);
+		pieces1.addTile(new PieceTile(), 4, 2);
+		pieces1.addTile(new PieceTile(), 3, 1);
+		pieces1.addTile(new PieceTile(), 3, 3);
+		
+		pieces2 = new Piece();
+		pieces2.addTile(new PieceTile(), 0, 3);
+		pieces2.addTile(new PieceTile(), 1, 3);
+		pieces2.addTile(new PieceTile(), 2, 3);
+		pieces2.addTile(new PieceTile(), 3, 3);
+		pieces2.addTile(new PieceTile(), 4, 3);
+		pieces2.addTile(new PieceTile(), 3, 2);
+		pieces2.addTile(new PieceTile(), 3, 4);
+		
+		pieces3 = new Piece();
+		pieces3.addTile(new PieceTile(), 1, 2);
+		pieces3.addTile(new PieceTile(), 2, 2);
+		pieces3.addTile(new PieceTile(), 3, 2);
+		pieces3.addTile(new PieceTile(), 2, 1);
+		pieces3.addTile(new PieceTile(), 2, 3);
+		pieces3.addTile(new PieceTile(), 2, 4);
+		pieces3.addTile(new PieceTile(), 2, 5);	
+		
 	}
 	
 	/**
@@ -89,7 +111,6 @@ public class TestEntity extends TestCase {
 		assertEquals(piece1.getRowPos(), 30);
 		piece1.setColPos(20);
 		assertEquals(piece1.getColPos(), 20);
-		//assertEquals(piece4.getPieceTiles(), pieceTileArray);
 	}
 	
 	public void testNumber(){
@@ -97,5 +118,30 @@ public class TestEntity extends TestCase {
 		assertEquals(number.getColor(), Color.red);
 	}
 	
+	public void testBullpen(){
+		Bullpen bullpen1;
+		Piece selected;
+		BullpenArray.add(pieces1);
+		BullpenArray.add(pieces2);
+		BullpenArray.add(pieces3);
+		
+		bullpen.addPiece(pieces1);
+		bullpen.addPiece(pieces2);
+		bullpen.addPiece(pieces3);
+		
+		assertEquals(bullpen.getPieces(), BullpenArray);
+		
+		bullpen1 = new Bullpen(bullpen.getPieces());
+		assertEquals(bullpen1.getPieces(), BullpenArray);
+		
+		bullpen.setSelectedPiece(pieces1);
+		selected = bullpen.getSelectedPiece();
+		
+		assertEquals(selected, pieces1);
+		assertEquals(bullpen.getNumPieces(), 3);
+		bullpen.changeQuantity(pieces1, -1);
+		assertEquals(bullpen.getNumPieces(), 2);
+		
+	}
 	
 }
