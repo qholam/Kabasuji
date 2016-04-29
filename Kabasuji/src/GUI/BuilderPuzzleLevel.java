@@ -21,8 +21,11 @@ import controller.EditorPanelCtrl;
 import controller.MouseMoveCtrl;
 import entity.Board;
 import entity.Bullpen;
+import entity.Level;
 import entity.Piece;
 import entity.PieceTile;
+import entity.PuzzleLevel;
+import serializers.Serializer;
 
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
@@ -34,6 +37,9 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 	Board board;
 	BullpenView  bullpen;
 	PieceContainer container;
+	JLabel movesLabel;
+	
+	PuzzleLevel level;
 	
 	/**
 	 * Create the panel.
@@ -43,6 +49,9 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		container.setVisible(false);
 		add(container);
 		kFrame = frame;
+		
+		int numMoves = 10;
+		level = new PuzzleLevel(numMoves, kFrame.workingBoard, new Bullpen(), false, 0, 0);
 		
 		setBackground(Color.GRAY);
 		setLayout(null);
@@ -101,13 +110,19 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		btnNewButton_1.addMouseListener(new MouseMoveCtrl(this));
 		add(btnNewButton_1);
 		
-		JLabel lblNewLabel = new JLabel("ALLOWED MOVES: 0");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 28));
-		lblNewLabel.setBounds(275, 336, 350, 57);
-		add(lblNewLabel);
+		movesLabel = new JLabel("ALLOWED MOVES: " + numMoves);
+		movesLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		movesLabel.setFont(new Font("Tahoma", Font.BOLD, 28));
+		movesLabel.setBounds(275, 336, 350, 57);
+		add(movesLabel);
 		
 		JButton btnMenu = new JButton("SAVE");
+		btnMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				level = new PuzzleLevel(level.getMovesRemaining(), boardPanel.getBoard(), bullpen.getBullpen(), level.isUnlocked(), level.getLevelNum(), 0);
+				new Serializer().serializeLevel(level);
+			}
+		});
 		btnMenu.setBounds(650, 25, 100, 75);
 		btnMenu.addMouseMotionListener(new MouseMoveCtrl(this));
 		btnMenu.addMouseListener(new MouseMoveCtrl(this));
@@ -158,6 +173,8 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		JButton button_1 = new JButton("+");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				level.changeNumMoves(1);
+				movesLabel.setText("ALLOWED MOVES: " + level.getMovesRemaining());
 			}
 		});
 		button_1.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -169,6 +186,10 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		JButton button_2 = new JButton("-");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (level.getMovesRemaining() > 1) {
+					level.changeNumMoves(-1);
+					movesLabel.setText("ALLOWED MOVES: " + level.getMovesRemaining());
+				}
 			}
 		});
 		button_2.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -222,5 +243,9 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 	
 	public BoardPanel getBoardPanel(){
 		return boardPanel;
+	}
+	
+	public Level getLevel() {
+		return level;
 	}
 }
