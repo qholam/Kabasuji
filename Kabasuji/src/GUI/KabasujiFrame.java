@@ -79,10 +79,11 @@ public class KabasujiFrame extends JFrame {
 		Level l2 = new LightningLevel(100, new Board(null, 6, 6),new Bullpen(), true, 1, 0);
 		LevelPanel lightning1 = new LevelPanel(this, l2);
 		contentPane.add(lightning1, Lightning1);
+		*/
+		
 		LevelSelector levelSelect = new LevelSelector(this);
 		levelSelect.setBounds(0, 0, 800, 800);
 		contentPane.add(levelSelect, LevelSelect);
-		*/
 		
 		splash.displaySplashScreen();
 	}

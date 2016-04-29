@@ -87,6 +87,13 @@ public class LevelSelector extends JPanel {
 		JButton lightningLevel1 = new JButton("1");
 		lightningLevel1.setBounds(120, 528, 60, 50);
 		lightningLevel1.setForeground(new Color(255, 165, 0));
+		/**
+		lightningLevel1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.Lightning1);
+			}
+		}); 
+		*/
 		add(lightningLevel1);
 
 		JButton lightningLevel2 = new JButton("2");
