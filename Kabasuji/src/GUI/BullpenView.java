@@ -10,12 +10,14 @@ import java.util.ArrayList;
 
 import javax.swing.ScrollPaneConstants;
 
+import controller.DragCtrl;
 import controller.HorizontalFlipCtrl;
 import controller.PieceInBullpenCtrl;
 import controller.RotateClockwiseCtrl;
 import controller.RotateCounterClockwiseCtrl;
 import controller.VerticalFlipCtrl;
 import entity.Bullpen;
+import entity.Level;
 import entity.Piece;
 import entity.PieceTile;
 import view.PieceView;
@@ -43,13 +45,17 @@ public class BullpenView extends JPanel {
 	//the current selected pieceview 
 	PieceView selected;
 	Piece p;
+	JPanel level;
+	
+	JPanel scrollPanel;
 	
 	Boolean repaint = true;
 	
 	/**
 	 * Create the panel.
 	 */
-	public BullpenView(Bullpen b) {
+	public BullpenView(Bullpen b, JPanel l) {
+		level = l;
 		pieces = new ArrayList<PieceView>();
 		//pieceContainers = new ArrayList<JPanel>();
 		selected = new PieceView(new Piece());
@@ -62,10 +68,10 @@ public class BullpenView extends JPanel {
 		setBounds(0, 0, 600, 300);
 		setBackground(new Color(255, 165, 0));
 
-		JPanel scrollPanel = new JPanel();
+		scrollPanel = new JPanel();
 		
 		JScrollPane scrollPane = new JScrollPane(scrollPanel);
-		scrollPanel.setLayout(null);
+		scrollPanel.setLayout(new GridLayout(1, 0, 24, 0));
 		
 		scrollPane.setBounds(10, 10, 580, 240);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -181,6 +187,17 @@ public class BullpenView extends JPanel {
 	
 	public PieceView getSelected(){
 		return selected;
+	}
+	
+	public void addPiece(Piece p) {
+		bullpen.addPiece(p);
+		PieceView pv = new PieceView(p);
+		pv.addMouseListener(new PieceInBullpenCtrl(this, pv));
+		pv.addMouseListener(new DragCtrl(pv, level));
+		pv.setBounds(10 + bullpen.getNumPieces() * 200, 10, 6 * KabasujiFrame.tileWidth, 6 * KabasujiFrame.tileHeight);
+		pieces.add(pv);
+		scrollPanel.add(pv);
+        scrollPanel.setPreferredSize(new Dimension(200 * scrollPanel.getComponents().length, 0)); 
 	}
 	
 	//public ArrayList<JPanel> getPieceContainers(){

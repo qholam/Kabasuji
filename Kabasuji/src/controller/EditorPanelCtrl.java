@@ -27,6 +27,7 @@ public class EditorPanelCtrl implements MouseListener, MouseMotionListener {
 	PieceContainer container;
 	
 	public EditorPanelCtrl(PieceView pv, JPanel l){
+		this.pv = pv;
 		this.l = l;
 		this.container = ((BuilderLevel) l).getPieceContainer();
 		this.bv = ((BuilderLevel) l).getBullpenView();
@@ -40,16 +41,17 @@ public class EditorPanelCtrl implements MouseListener, MouseMotionListener {
 			return;
 		}		
 		if(SwingUtilities.isLeftMouseButton(me)){
-		Component c = container.getComponentAt(me.getPoint());
-		if(c instanceof PieceView){
-			Piece p = ((PieceView) c).getPiece();
-			bv.getBullpen().addPiece(p);
+		//Component c = pv.getComponentAt(me.getPoint());
+		System.out.println(pv.getPiece().toString());
+		if(pv instanceof PieceView){
+			Piece p = ((PieceView) pv).getPiece();
+			bv.addPiece(p);
 			System.out.println("# in bullpen" + bv.getBullpen().getPieces().size());
 			}
 		}
 		bv = ((BuilderLevel) l).getBullpenView();
 		bv.setRepaintValid();
-		container.repaint();
+		bv.repaint();
 		
 		}
 	

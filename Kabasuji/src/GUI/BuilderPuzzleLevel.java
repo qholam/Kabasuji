@@ -76,7 +76,7 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 			p.addTile(new PieceTile(), 5-i, 3);
 			b.addPiece(p);
 		}
-		bullpen = new BullpenView(b);
+		bullpen = new BullpenView(b, this);
 		bullpen.setBounds(25, 25, 600, 300);
 		//add controllers to handle dragging
 		for(int i = 0; i < bullpen.getBullpen().getPieces().size(); i++){
