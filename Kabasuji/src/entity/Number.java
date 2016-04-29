@@ -1,8 +1,9 @@
 package entity;
 
 import java.awt.Color;
+import java.io.Serializable;
 
-public class Number {
+public class Number implements Serializable{
 	//number of the tile and its color
 	int number;
 	Color color;

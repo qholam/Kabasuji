@@ -8,6 +8,7 @@ import entity.Bullpen;
 import entity.Level;
 import entity.LightningLevel;
 import entity.PuzzleLevel;
+import serializers.Deserializer;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -68,6 +69,13 @@ public class LevelSelector extends JPanel {
 		JButton releaseLevel1 = new JButton("1");
 		releaseLevel1.setBounds(120, 364, 60, 50);
 		releaseLevel1.setForeground(new Color(255, 165, 0));
+		releaseLevel1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				LevelPanel puzzle1 = new LevelPanel(kFrame, new Deserializer().deserialzeReleaseLevel(1));
+				kFrame.addToContentPane((JPanel)puzzle1, kFrame.Puzzle1);
+				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.Puzzle1);
+			}
+		});  
 		add(releaseLevel1);
 		
 		JButton releaseLevel2 = new JButton("2");
