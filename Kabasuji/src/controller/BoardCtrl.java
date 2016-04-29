@@ -17,6 +17,7 @@ import entity.Level;
 import entity.NoTile;
 import entity.Piece;
 import entity.PieceTile;
+import entity.PuzzleLevel;
 import entity.Tile;
 import move.BoardToBoardMove;
 import move.BullpenToBoardMove;
@@ -58,8 +59,12 @@ public class BoardCtrl implements MouseListener {
 			if (levelPanel instanceof LevelPanel) {
 				if(((LevelPanel) levelPanel).getLevel().getStars() == 3)
 					return;
+				if(!(((LevelPanel) levelPanel).getLevel() instanceof PuzzleLevel))
+					return;
 			} else {
 				if(((BuilderLevel) levelPanel).getLevel().getStars() == 3)
+					return;
+				if(!(((BuilderLevel) levelPanel).getLevel() instanceof PuzzleLevel))
 					return;
 			}
 			// Level l = levelPanel.getLevel();
