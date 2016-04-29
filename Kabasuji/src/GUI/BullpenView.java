@@ -123,7 +123,7 @@ public class BullpenView extends JPanel {
 		super.paintComponent(g);
 		
 		ArrayList<Piece> p = bullpen.getPieces();
-		for(int i = 0; i < p.size(); i++){
+		for(int i = 0; i < pieces.size(); i++){
 			pieces.get(i).setPiece(p.get(i));
 			if(bullpen.getQuantity(pieces.get(i).getPiece()) < 1){
 				pieces.get(i).setVisible(false);

@@ -40,12 +40,11 @@ public class EditorPanelCtrl implements MouseListener, MouseMotionListener {
 			return;
 		}		
 		if(SwingUtilities.isLeftMouseButton(me)){
-			
 		Component c = container.getComponentAt(me.getPoint());
 		if(c instanceof PieceView){
 			Piece p = ((PieceView) c).getPiece();
-				bv.getBullpen().addPiece(p);
-				System.out.println("# in bullpen" + bv.getBullpen().getPieces().size());
+			bv.getBullpen().addPiece(p);
+			System.out.println("# in bullpen" + bv.getBullpen().getPieces().size());
 			}
 		}
 		bv = ((BuilderLevel) l).getBullpenView();
