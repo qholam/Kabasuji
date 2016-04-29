@@ -6,7 +6,7 @@ import GUI.PieceContainer;
 public class KabasujiGame {
 	protected PieceContainer container = null;
 	
-	public static void main() {
+	public static void main(String[] args) {
 		KabasujiFrame kFrame = new KabasujiFrame();
 		kFrame.setVisible(true);
 	}
