@@ -8,6 +8,7 @@ import view.PieceView;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 /**
  * @author Richard Hayes
@@ -15,6 +16,7 @@ import java.awt.GridLayout;
  */
 public class EditorPanel extends JPanel {
 	
+	Piece[] actualPieces = new Piece[35];
 	PieceView[] pieces = new PieceView[35];
 	KabasujiBuilderFrame kFrame;
 
@@ -28,6 +30,18 @@ public class EditorPanel extends JPanel {
 			add(pieces[i]);
 			setPreferredSize(new Dimension(100, 100 * getComponents().length));
 		}
+	}
+	
+	//Nick added methods
+	public Piece[] getPieces(){
+		for(int i=0; i<pieces.length;i++){
+			actualPieces[i]=pieces[i].getPiece();
+		}
+		return actualPieces;
+	}
+	
+	public PieceView[]  getPieceViews(){
+		return pieces;
 	}
 
 }

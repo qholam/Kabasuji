@@ -22,12 +22,11 @@ public class EditorPanelCtrl implements MouseListener, MouseMotionListener {
 	JPanel l;
 	PieceView pv;
 	BullpenView bv;
-	EditorPanel ep;
+	//EditorPanel ep;
 	PieceContainer container;
 	
-	public EditorPanelCtrl(EditorPanel ep, JPanel l){
+	public EditorPanelCtrl(PieceView pv, JPanel l){
 		this.l = l;
-		this.ep = ep;
 		this.container = ((BuilderLevel) l).getPieceContainer();
 		this.bv = ((BuilderLevel) l).getBullpenView();
 	}
