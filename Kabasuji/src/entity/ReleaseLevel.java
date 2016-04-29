@@ -109,6 +109,14 @@ public class ReleaseLevel extends Level {
 	}
 	
 	/**
+	 * Changes the number of moves according to the give int.
+	 * @param dm Number of moves to add/subtract
+	 */
+	public void changeNumMoves(int dm){
+		this.numMoves = this.numMoves + dm;
+	}
+	
+	/**
 	 * Will be useful when naming save level .txt files
 	 */
 	@Override

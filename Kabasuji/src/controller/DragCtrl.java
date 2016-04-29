@@ -129,7 +129,7 @@ public class DragCtrl implements MouseListener, MouseMotionListener {
 					// this drag
 					container.setAnchortile(tv);
 					// set the source
-					container.setSource(pv);
+					container.setSource(bullpen);
 
 					// get the position on the mouse on the level panel
 					Point point = l.getMousePosition();

@@ -55,10 +55,17 @@ public class KabasujiFrame extends JFrame {
 		
 		//to be remove this bullpen was made for testing
 		Bullpen bp = new Bullpen();
-		for (int i = 0; i < 5; i++) {
-			bp.addPiece(pieces[i]);
+		for (int i = 0; i < 6; i++) {
+			bp.addPiece(createPiece(new int[]{
+					1, 0, 0, 0, 0, 0,
+					1, 0, 0, 0, 0, 0,
+					1, 0, 0, 0, 0, 0,
+					1, 0, 0, 0, 0, 0,
+					1, 0, 0, 0, 0, 0,
+					1, 0, 0, 0, 0, 0
+					}));
 		}
-		Level l = new PuzzleLevel(10, new Board(null, 10, 10), bp, true, 1, 0);
+		Level l = new PuzzleLevel(30, new Board(null, 6, 6), bp, true, 1, 0);
 		//LevelPanel puzzle1 = new LevelPanel(this, deserializer.deserialzePuzzleLevel(1));
 		LevelPanel puzzle1 = new LevelPanel(this, l);
 		mainMenu.setBounds(0, 0, 800, 800);
@@ -375,7 +382,7 @@ public class KabasujiFrame extends JFrame {
 		for (int a = 0; a < 6; a++) {
 			for (int b = 0; b < 6; b++) {
 				if (tileIntArray[num] == 1) {
-					p.addTile(new PieceTile(), b, a);
+					p.addTile(new PieceTile(), a, b);
 				}
 				num++;
 			}

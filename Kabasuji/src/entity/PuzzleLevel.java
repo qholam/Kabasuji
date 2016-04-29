@@ -25,23 +25,40 @@ public class PuzzleLevel extends Level {
 	} 
 	
 	/**
-	 * Checks whether or not the level has been won.
+	 * Checks whether or not the level has been won. Also updates the stars accordingly.
 	 * @return boolean determining if the level has been won
 	 */
 	public boolean hasWon(){
+		int numLeft =  board.getNumUncovered();
+		
 		//if the bullpen is empty in puzzle level, then all pieces have been placed.
-		if (this.bullpen.getNumPieces() == 0){
+		if (numLeft == 0){
 			return true;
 		}
+		
 		//if no moves remaining, check how many pieces are left in bullpen. If 2 or less, conditions fulfilled to win puzzle level.
 		if (movesRemaining == 0){
-			if (this.bullpen.getNumPieces() <= 2){
+			if (numLeft <= 12){
 				return true;
 			}
 		}
+		//System.out.println("num stars: " + stars);
 		//level has not been won
 		return false;
 		
+	}
+	
+	public void updateStars(){
+		int numLeft =  board.getNumUncovered();
+		
+		//if the bullpen is empty in puzzle level, then all pieces have been placed.
+		if (numLeft == 0)
+			stars = Math.max(stars, 3);
+		else if(numLeft <= 6)
+			stars = Math.max(stars, 2);
+		else if(numLeft <= 12)
+			stars = Math.max(stars, 1);
+
 	}
 	
 	/** 
@@ -79,5 +96,13 @@ public class PuzzleLevel extends Level {
 	@Override
 	public LevelType getLevelType(){
 		return LevelType.Puzzle;
+	}
+	
+	/**
+	 * Changes the number of moves according to the give int.
+	 * @param dm Number of moves to add/subtract
+	 */
+	public void changeNumMoves(int dm){
+		this.movesRemaining = this.movesRemaining + dm;
 	}
 }

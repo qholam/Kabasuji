@@ -54,6 +54,14 @@ public class BoardCtrl implements MouseListener {
 		// is anything being dragged? if not then see if there is a piece to
 		// remove there
 		if (!container.isVisible()) {// nothing being dragged
+			//check if game is over, if so do nothing
+			if (levelPanel instanceof LevelPanel) {
+				if(((LevelPanel) levelPanel).getLevel().getStars() == 3)
+					return;
+			} else {
+				if(((BuilderLevel) levelPanel).getLevel().getStars() == 3)
+					return;
+			}
 			// Level l = levelPanel.getLevel();
 			// can only be removed from board if it is puzzle level
 			// if(l instanceof PuzzleLevel){
@@ -130,6 +138,7 @@ public class BoardCtrl implements MouseListener {
 				// was move successful?
 				// TODO: what to do when move is invalid?
 				if (!move.doMove()) {
+					System.out.println("cant do move");
 					return;
 				} 
 				else {
@@ -138,9 +147,6 @@ public class BoardCtrl implements MouseListener {
 					pieceQty = 0;
 				}
 
-				// release the dragging piece
-				// get the piece being dragged
-				Piece dragged = container.getDraggingPiece().getPiece();
 
 				// updating pieces quantity in bullpen
 				if (levelPanel instanceof LevelPanel) {
@@ -150,8 +156,6 @@ public class BoardCtrl implements MouseListener {
 					bp = ((BuilderLevel) levelPanel).getBullpenView().getBullpen();
 					bpview = ((BuilderLevel) levelPanel).getBullpenView();
 				}
-				bp.changeQuantity(dragged, pieceQty);
-
 				container.setVisible(false);
 			}
 		}
@@ -171,6 +175,11 @@ public class BoardCtrl implements MouseListener {
 		bpview.setRepaintValid();
 		boardPanel.setRepaintValid();
 		container.repaint();
+		//update status of level
+		if (levelPanel instanceof LevelPanel)
+			((LevelPanel) levelPanel).updateLevel();
+		else
+			((BuilderLevel) levelPanel).updateLevel();
 	}
 
 	@Override
