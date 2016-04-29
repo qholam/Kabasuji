@@ -56,6 +56,7 @@ public class LevelPanel extends JPanel{
 	JLabel infoLabel;
 	BullpenView bullpen;
 	BoardPanel board;
+	JButton nextLvlBtn;
 	
 	PieceContainer container;
 	/**
@@ -116,7 +117,7 @@ public class LevelPanel extends JPanel{
 				}
 			}
 		});
-		trashBtn.setBounds(650, 600, 100, 100);
+		trashBtn.setBounds(650, 564, 100, 100);
 		//this makes the drag smoother
 		trashBtn.addMouseMotionListener(new MouseMoveCtrl(this));
 		trashBtn.addMouseListener(new MouseMoveCtrl(this));
@@ -168,6 +169,15 @@ public class LevelPanel extends JPanel{
 		//handles the dragging of an object, this makes the drag smoother
 		this.addMouseMotionListener(new MouseMoveCtrl(this));
 		this.addMouseListener(new MouseMoveCtrl(this));
+		
+		nextLvlBtn = new JButton("Next Level");
+		nextLvlBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		nextLvlBtn.setBounds(650, 675, 100, 36);
+		nextLvlBtn.setVisible(false);
+		add(nextLvlBtn);
 	}
 	
 	@Override
@@ -206,6 +216,8 @@ public class LevelPanel extends JPanel{
 			break;
 		case 1:
 			oneStar = true;
+			//player can move on to next level if they choose
+			nextLvlBtn.setVisible(true);
 			break;
 		default:
 			break;
