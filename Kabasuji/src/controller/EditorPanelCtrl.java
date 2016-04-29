@@ -8,6 +8,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+
 import GUI.BuilderLevel;
 import GUI.BullpenView;
 import GUI.EditorPanel;
@@ -16,7 +18,6 @@ import entity.Piece;
 import view.PieceView;
 
 public class EditorPanelCtrl implements MouseListener, MouseMotionListener {
-	
 	JPanel l;
 	PieceView pv;
 	BullpenView bv;
@@ -24,7 +25,6 @@ public class EditorPanelCtrl implements MouseListener, MouseMotionListener {
 	PieceContainer container;
 	
 	public EditorPanelCtrl(EditorPanel ep, JPanel l){
-		System.out.println("In Editor Panel");
 		this.l = l;
 		this.ep = ep;
 		this.container = ((BuilderLevel) l).getPieceContainer();
@@ -37,11 +37,14 @@ public class EditorPanelCtrl implements MouseListener, MouseMotionListener {
 		if(!(l instanceof BuilderLevel)){
 			return;
 		}
+		if(SwingUtilities.isLeftMouseButton(me)){
 		Component c = pv.getComponentAt(me.getPoint());
 		if(c instanceof PieceView){
+			System.out.println("PieceView");
 			Piece p = ((PieceView) c).getPiece();
 				bv.getBullpen().addPiece(p);
 			}
+		}
 		bv = ((BuilderLevel) l).getBullpenView();
 		bv.setRepaintValid();
 		container.repaint();

@@ -131,7 +131,7 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		EditorPanel editorPanel = new EditorPanel(kFrame);
 		
 		//Nick added this 	\/
-		editorPanel.addMouseMotionListener(new EditorPanelCtrl(editorPanel,this));
+		editorPanel.addMouseListener(new EditorPanelCtrl(editorPanel,this));
 		//  				/\
 		panel_1.add(editorPanel);
 		scrollPane.addMouseMotionListener(new MouseMoveCtrl(this));
