@@ -5,6 +5,7 @@ import entity.Bullpen;
 import entity.Level;
 import entity.Piece;
 import entity.PuzzleLevel;
+import entity.ReleaseLevel;
 import entity.LevelType;
 import entity.LightningLevel;
 
@@ -49,15 +50,27 @@ public class BullpenToBoardMove implements IMove {
 	 */
 	@Override
 	public boolean doMove() {
-		//is move valid to be made?
+		// is move valid to be made?
 		if (!isValid()) {
 			return false;
 		}
 
-		//add piece to board
+		// add piece to board
 		board.addPiece(pieceBeingDragged, row, col);
 		
-		//Move was successful!
+		//update stuff specific to a level type
+		switch (level.getLevelType()) {
+		case Lightning:
+			break;
+		case Puzzle:
+			((PuzzleLevel) level).changeNumMoves(-1);
+			break;
+		default:
+			((ReleaseLevel) level).changeNumMoves(1);
+			break;
+		}
+
+		// Move was successful!
 		return true;
 	}
 
@@ -71,18 +84,18 @@ public class BullpenToBoardMove implements IMove {
 		Piece p = pieceBeingDragged;
 
 		// check if level has been won
-		if (level.hasWon()) {
+		if (level.hasWon() && level.getStars() == 3) {
 			validMove = false;
 		}
 
 		// check logic specific to a level type
 		switch (level.getLevelType()) {
 		case Lightning:
-			if (((LightningLevel) level).getTimeRemaining() <= 0)
+			if (((LightningLevel) level).getTimeRemaining() < 0)
 				validMove = false;
 			break;
 		case Puzzle:
-			if (((PuzzleLevel) level).getMovesRemaining() <= 0)
+			if (((PuzzleLevel) level).getMovesRemaining() < 0)
 				validMove = false;
 			break;
 		default:
@@ -91,6 +104,7 @@ public class BullpenToBoardMove implements IMove {
 
 		// check if piece can be added to board
 		if (!board.canAddAt(p, row, col)) {
+			//System.out.println("cant add");
 			validMove = false;
 		}
 

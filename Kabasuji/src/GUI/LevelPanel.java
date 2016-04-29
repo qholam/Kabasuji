@@ -80,6 +80,7 @@ public class LevelPanel extends JPanel{
 		board.addMouseMotionListener(new MouseMoveCtrl(this));
 		board.addMouseListener(new BoardCtrl(board, this));
 		board.setBounds(25, 400, 308, 308);
+		board.getBoard().setLevel(l);
 		add(board);
 		
 		bullpen = new BullpenView(l.getBullpen()); 
@@ -188,6 +189,29 @@ public class LevelPanel extends JPanel{
 			infoLabel = new JLabel("Time Left: " + ((LightningLevel) level).getTimeRemaining());
 		else
 			infoLabel = new JLabel("Moves: " + ((ReleaseLevel) level).getNumMoves());
+	}
+	/**
+	 * Method that updates the status of a level.
+	 */
+	public void updateLevel(){
+		//update stars
+		level.updateStars();
+		
+		switch(level.getStars()){
+		case 3:
+			threeStar = true;
+			break;
+		case 2:
+			twoStar = true;
+			break;
+		case 1:
+			oneStar = true;
+			break;
+		default:
+			break;
+		}
+		
+		repaint();
 	}
 	
 	public PieceContainer getPieceContainer(){

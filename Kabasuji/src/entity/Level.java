@@ -74,6 +74,13 @@ public class Level implements Serializable{
 	}
 
 	/**
+	 * update number of stars base on conditions of level type.
+	 */
+	public void updateStars(){
+		
+	}
+	
+	/**
 	 * Checks whether or not the level has been won.
 	 * @return boolean determining if the level has been won
 	 */

@@ -227,6 +227,23 @@ public class Board implements Serializable {
 	}
 	
 	/**
+	 * Returns the number of uncovered board tiles left.
+	 */
+	public int getNumUncovered(){
+		int num = 0;
+		
+		for (int r = 0; r < this.numRows; r++) {
+			for (int c = 0; c < this.numColumns; c++) {
+				if(!boardGrid[c][r].isCovered)
+					num++;
+			}
+		}
+		//System.out.println("num uncovered: " + num);
+		return num;
+		
+	}
+	
+	/**
 	 * Method that check if this board is valid to be used in the game.
 	 * @return boolean True if board is valid
 	 */
@@ -240,6 +257,10 @@ public class Board implements Serializable {
 
 	public Level getLevel() {
 		return level;
+	}
+	
+	public void setLevel(Level l){
+		level = l;
 	}
 
 	/**

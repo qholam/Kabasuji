@@ -113,6 +113,13 @@ public class Bullpen implements Serializable {
 	 * Checks the number of pieces left.
 	 */
 	public int getNumPieces(){
-		return piecesInfo.size();
+		int num = 0;
+		
+		for(Piece p: pieces){
+			if(piecesInfo.get(p) > 0)
+				num++;
+		}
+		//System.out.println("Pieces left: " + num);
+		return num;	
 	}
 }

@@ -30,4 +30,12 @@ public abstract class BuilderLevel extends JPanel {
 		return null;
 	}
 
+	/**
+	 * Updates status of a level.
+	 */
+	public void updateLevel() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
