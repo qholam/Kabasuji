@@ -22,6 +22,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 
 import controller.BoardCtrl;
 import controller.DragCtrl;
@@ -57,12 +58,13 @@ public class LevelPanel extends JPanel{
 	BullpenView bullpen;
 	BoardPanel board;
 	JButton nextLvlBtn;
+	Timer timer;
 	
 	PieceContainer container;
 	/**
 	 * Create the panel. 
 	 */
-	public LevelPanel(KabasujiFrame frame, Level l) {	
+	public LevelPanel(KabasujiFrame frame, final Level l) {	
 		container = frame.getPieceContainer();
 		container.setVisible(false);
 		add(container);
@@ -126,8 +128,26 @@ public class LevelPanel extends JPanel{
 		//Change here(condensed all level view into one)
 		if(l instanceof PuzzleLevel)
 			infoLabel = new JLabel("MOVES LEFT: " + ((PuzzleLevel) l).getMovesRemaining());
-		else if( l instanceof LightningLevel)
+		else if( l instanceof LightningLevel){
 			infoLabel = new JLabel("Time Left: " + ((LightningLevel) l).getTimeRemaining());
+			
+			//set a timer
+			timer = new Timer(1000, new ActionListener() {
+				//Codes runs every one second
+				public void actionPerformed(ActionEvent e) {
+					if(!l.hasWon() && ((LightningLevel) l).getTimeRemaining() > 0){//update timer if game has been won
+						//get the time remaining
+						int remaining = ((LightningLevel) l).getTimeRemaining();
+						//update time
+						((LightningLevel) l).decrementTimeRemaining();
+						//update the panel for the timer
+						repaint();
+					}
+				}
+			});
+			timer.setInitialDelay(1000);
+			timer.start();
+		}
 		else
 			infoLabel = new JLabel("Moves: 0");
 		infoLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -179,26 +199,28 @@ public class LevelPanel extends JPanel{
 		nextLvlBtn.setVisible(false);
 		add(nextLvlBtn);
 	}
-	
+
 	@Override
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
 		//update stars accordingly
-		if(oneStar)
-			star1.setText("One star");
-		if(twoStar)
-			star2.setText("Two star");
 		if(threeStar)
 			star3.setText("Three star");
+		else if(twoStar)
+			star2.setText("Two star");
+		else if(oneStar)
+			star1.setText("One star");
+		
+		
 		
 		//update moves/time depending on the level type
 		if(level instanceof PuzzleLevel)
 			infoLabel.setText("MOVES LEFT: " + ((PuzzleLevel) level).getMovesRemaining());
 		else if(level instanceof LightningLevel)
-			infoLabel = new JLabel("Time Left: " + ((LightningLevel) level).getTimeRemaining());
+			infoLabel.setText("Time Left: " + ((LightningLevel) level).getTimeRemaining());
 		else
-			infoLabel = new JLabel("Moves: " + ((ReleaseLevel) level).getNumMoves());
+			infoLabel.setText("Moves: " + ((ReleaseLevel) level).getNumMoves());
 	}
 	/**
 	 * Method that updates the status of a level.
@@ -225,7 +247,7 @@ public class LevelPanel extends JPanel{
 		
 		repaint();
 	}
-	
+	 
 	public PieceContainer getPieceContainer(){
 		return container;
 	}

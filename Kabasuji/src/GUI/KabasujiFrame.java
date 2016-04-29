@@ -21,7 +21,9 @@ public class KabasujiFrame extends JFrame {
 	final String SplashScreen = "SplashScreen";
 	final String MainMenu = "MainMenu";
 	final String Puzzle1 = "Puzzle1";
+	final String Lightning1 = "Lightning1";
 	final String LevelSelect = "LevelSelect";
+	
 	public final static int tileWidth = 24;
 	public final static int tileHeight = 24;
 	
@@ -65,15 +67,22 @@ public class KabasujiFrame extends JFrame {
 					1, 0, 0, 0, 0, 0
 					}));
 		}
-		Level l = new PuzzleLevel(30, new Board(null, 6, 6), bp, true, 1, 0);
+		
+		//TOMMYCOMMENT to run either lightning comment out the creation of the puzzlelevel and uncomment the line that creates the lightning level
+		//Level l = new PuzzleLevel(30, new Board(null, 6, 6), bp, true, 1, 0);
+		Level l = new LightningLevel(20, new Board(null, 6, 6),bp, true, 1, 0);
 		//LevelPanel puzzle1 = new LevelPanel(this, deserializer.deserialzePuzzleLevel(1));
 		LevelPanel puzzle1 = new LevelPanel(this, l);
-		mainMenu.setBounds(0, 0, 800, 800);
 		contentPane.add(puzzle1, Puzzle1);
 		
+		/* TOMMYCOMMENT Drag does not redraw properly when this code is added.
+		Level l2 = new LightningLevel(100, new Board(null, 6, 6),new Bullpen(), true, 1, 0);
+		LevelPanel lightning1 = new LevelPanel(this, l2);
+		contentPane.add(lightning1, Lightning1);
 		LevelSelector levelSelect = new LevelSelector(this);
 		levelSelect.setBounds(0, 0, 800, 800);
 		contentPane.add(levelSelect, LevelSelect);
+		*/
 		
 		splash.displaySplashScreen();
 	}
