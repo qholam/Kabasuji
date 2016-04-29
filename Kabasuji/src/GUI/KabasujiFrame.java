@@ -69,8 +69,8 @@ public class KabasujiFrame extends JFrame {
 		}
 		
 		//TOMMYCOMMENT to run either lightning comment out the creation of the puzzlelevel and uncomment the line that creates the lightning level
-		Level l = new PuzzleLevel(30, new Board(null, 6, 6), bp, true, 1, 0);
-		//Level l = new LightningLevel(100, new Board(null, 6, 6),new Bullpen(), true, 1, 0);
+		//Level l = new PuzzleLevel(30, new Board(null, 6, 6), bp, true, 1, 0);
+		Level l = new LightningLevel(20, new Board(null, 6, 6),bp, true, 1, 0);
 		//LevelPanel puzzle1 = new LevelPanel(this, deserializer.deserialzePuzzleLevel(1));
 		LevelPanel puzzle1 = new LevelPanel(this, l);
 		contentPane.add(puzzle1, Puzzle1);

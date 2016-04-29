@@ -91,7 +91,7 @@ public class BullpenToBoardMove implements IMove {
 		// check logic specific to a level type
 		switch (level.getLevelType()) {
 		case Lightning:
-			if (((LightningLevel) level).getTimeRemaining() < 0)
+			if (((LightningLevel) level).getTimeRemaining() <= 0)
 				validMove = false;
 			break;
 		case Puzzle:
