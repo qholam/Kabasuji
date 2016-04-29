@@ -76,7 +76,6 @@ public class KabasujiBuilderFrame extends JFrame {
 		specifyBoard.setBounds(0, 0, 1200, 800);
 		contentPane.add(specifyBoard, SpecifyBoardProperties);
 		
-		workingLevel = new BuilderPuzzleLevel(this);
 		workingLevel.setBounds(0, 0, 1200, 800);
 		contentPane.add(workingLevel, BuilderPuzzleLevel);
 		

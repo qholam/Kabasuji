@@ -45,6 +45,7 @@ public class BuilderLevelTypeSelect extends JPanel
 		button.setBounds(438, 303, 324, 87);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
+				kFrame.workingLevel = new BuilderPuzzleLevel(kFrame);
 				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.SpecifyBoardProperties);
 			}
 		});
