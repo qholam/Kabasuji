@@ -5,7 +5,7 @@ import move.IMove;
 /**
  * Constructor for a lightning level. Extends level.
  * @author Calvin
- *
+ * @author Quoc HoLam
  */
 public class LightningLevel extends Level{
 	private int timeRemaining;
@@ -57,6 +57,23 @@ public class LightningLevel extends Level{
 		return false;
 	}
 	
+	/**
+	 * update number of stars base on conditions of level type.
+	 */
+	@Override
+	public void updateStars(){
+		int numLeft =  board.getNumUncovered();
+		
+		//if the bullpen is empty in puzzle level, then all pieces have been placed.
+		if (numLeft == 0)
+			stars = Math.max(stars, 3);
+		else if(numLeft <= 6)
+			stars = Math.max(stars, 2);
+		else if(numLeft <= 12)
+			stars = Math.max(stars, 1);
+
+	}
+	
 	/** 
 	 * Checks if move has been made.
 	 * @return boolean determining if the move was made
@@ -76,6 +93,14 @@ public class LightningLevel extends Level{
 	public int getTimeRemaining(){
 		return this.timeRemaining;
 	}	
+	
+	/**
+	 * Decrease the time remaining by 1 second.
+	 */
+	public void decrementTimeRemaining(){
+		timeRemaining--;
+	}	
+	
 	
 	/**
 	 * Will be useful when naming save level .txt files
