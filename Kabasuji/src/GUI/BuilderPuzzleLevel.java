@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 
 import controller.BoardCtrl;
 import controller.DragCtrl;
+import controller.EditorPanelCtrl;
 import controller.MouseMoveCtrl;
 import entity.Board;
 import entity.Bullpen;
@@ -128,9 +129,15 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		panel_1.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		EditorPanel editorPanel = new EditorPanel(kFrame);
+		
+		//Nick added this 	\/
+		editorPanel.addMouseMotionListener(new EditorPanelCtrl(editorPanel,this));
+		//  				/\
 		panel_1.add(editorPanel);
 		scrollPane.addMouseMotionListener(new MouseMoveCtrl(this));
 		scrollPane.addMouseListener(new MouseMoveCtrl(this));
+		
+		
 		
 		JButton btnUndo = new JButton("UNDO");
 		btnUndo.setBounds(25, 366, 89, 23);
