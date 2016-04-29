@@ -69,7 +69,7 @@ public class BoardPanel extends JPanel {
 					tileViews[c][r].setTile(new NoTile(r,c));
 					tileViews[c][r].setOpaque(false);
 				}
-				else if(board.getGrid()[c][r].isCovered()){
+				else if(board.getGrid()[c][r].isCovered()){//covered tile?
 					PieceTile p = new PieceTile();
 					p.setCol(c);
 					p.setRow(r);

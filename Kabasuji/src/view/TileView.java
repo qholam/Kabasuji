@@ -1,7 +1,9 @@
 package view;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import entity.ReleaseTile;
 import entity.Tile;
 import entity.TileType;
 
@@ -14,6 +16,7 @@ import GUI.KabasujiFrame;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 /**
  * @author Quoc HoLam
  * View for Tiles
@@ -24,6 +27,8 @@ public class TileView extends JPanel{
 	 * Auto-generate by Eclipse to suppress a warning
 	 */
 	private static final long serialVersionUID = 4176891530644715173L;
+	
+	JLabel j;
 	
 	//Tile that this view represents
 	Tile tile;
@@ -51,7 +56,9 @@ public class TileView extends JPanel{
 	@Override
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-
+		
+		if(j != null)
+			this.remove(j);
 		//check if tile is null or  a noTile, if so set it to not be visible(not implemented)
 		//NEEDS TO LOOK INTO(get the setVisble function calls to work)
 		//the current color for notiles/null is the default color of a jpanel(technically invisble), there were issues with the call to repaint
@@ -66,6 +73,14 @@ public class TileView extends JPanel{
 			setBackground(new JPanel().getBackground());
 			setBorder(new LineBorder(new Color(0, 0, 0), 0));
 			setOpaque(true);
+		}
+		else if(tile.toString().equals(TileType.releaseTile)){
+			setBorder(new LineBorder(new Color(0, 0, 0), 1));
+			j = new JLabel(new Integer(((ReleaseTile) tile).getNumber().getNum()).toString());
+			j.setForeground(((ReleaseTile) tile).getNumber().getColor());
+			j.setFont(new Font("Elephant", Font.PLAIN, 20));
+			j.setBounds(0, 0, 24, 24);
+			add(j);
 		}
 		else{ 
 			setBackground(tile.getColor());

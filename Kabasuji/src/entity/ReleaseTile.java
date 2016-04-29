@@ -1,4 +1,7 @@
 package entity;
+
+import java.awt.Color;
+
 /**
  * represents a tile on the release board.
  * @author Quoc HoLam
@@ -24,11 +27,36 @@ public class ReleaseTile extends BoardTile{
 	}
 	
 	/**
+	 * sets the next release tile
+	 * @return the next release tile
+	 */
+	public ReleaseTile getNext(){
+		//if(this.num.getNum() >= 6){
+			//return null;
+		//}
+		Number number = new Number(this.num.getNum() + 1, this.num.getColor());
+		return new ReleaseTile(0, 0, number);
+	}
+	
+	/**
+	 * sets the next release tile
+	 * @return the next release tile
+	 */
+	public ReleaseTile getPrevious(){
+		Number number = new Number(this.num.getNum() - 1, this.num.getColor());
+		return new ReleaseTile(0, 0, number);
+	}
+	
+	/**
 	 * Gets the Number of the release tile.
 	 * @return Number the number of this tile.
 	 */
 	public Number getNumber(){
 		return this.num;
+	}
+	
+	public Color getColor(){
+		return this.num.getColor();
 	}
 
 }

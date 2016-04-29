@@ -189,4 +189,8 @@ public class SpecifyBoardPropertiesView extends JPanel {
 	public TileView getClickedTile(MouseEvent me){
 		return board.getClickedTile(me);
 	}
+	
+	public KabasujiBuilderFrame getFrame(){
+		return kFrame;
+	}
 }
