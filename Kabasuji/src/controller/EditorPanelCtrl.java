@@ -14,6 +14,7 @@ import GUI.BuilderLevel;
 import GUI.BullpenView;
 import GUI.EditorPanel;
 import GUI.PieceContainer;
+import entity.Bullpen;
 import entity.Piece;
 import view.PieceView;
 
@@ -33,6 +34,7 @@ public class EditorPanelCtrl implements MouseListener, MouseMotionListener {
 	
 	@Override
 	public void mouseClicked(MouseEvent me) {
+		System.out.println("# in bullpen" + bv.getBullpen().getPieces().size());
 		System.out.println("GOT CLICK");
 		if(!(l instanceof BuilderLevel)){
 			return;
@@ -42,7 +44,8 @@ public class EditorPanelCtrl implements MouseListener, MouseMotionListener {
 		Component c = container.getComponentAt(me.getPoint());
 		if(c instanceof PieceView){
 			Piece p = ((PieceView) c).getPiece();
-				bv.getBullpen().addPiece(p,1);
+				bv.getBullpen().addPiece(p);
+				System.out.println("# in bullpen" + bv.getBullpen().getPieces().size());
 			}
 		}
 		bv = ((BuilderLevel) l).getBullpenView();
