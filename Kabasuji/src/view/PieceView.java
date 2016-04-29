@@ -49,6 +49,11 @@ public class PieceView extends JPanel {
 		this.setOpaque(false);
 	} 
 	
+	//Colors of pieces can be
+	Color[] boardPieceColors = {Color.GREEN, Color.RED, Color.BLUE, Color.MAGENTA, Color.YELLOW, Color.PINK,Color.BLACK, Color.CYAN};
+	//index to keep track of the color the next piece created should be
+	int colorIndex = 0;
+	
 	/**
 	 * Properly update the displayed info on this {@link Piece}
 	 */

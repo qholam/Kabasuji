@@ -95,7 +95,6 @@ public class ReleaseLevel extends Level {
 		boolean valid = false;
 		if (move.doMove()){
 			valid = true;
-			numMoves++;
 		}
 		return valid;
 	}

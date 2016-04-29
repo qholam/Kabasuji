@@ -34,6 +34,8 @@ public class Piece  implements Serializable{
 		rowPos = -1;
 		colPos = -1;
 		
+		//updates index so that next piece created is different color
+		PieceTileColor.index++;
 	} 	
 	
 	/**
@@ -52,6 +54,9 @@ public class Piece  implements Serializable{
 		
 		rowPos = p.rowPos;
 		colPos = p.colPos;
+		
+		//updates index so that next piece created is different color
+		PieceTileColor.index = PieceTileColor.index % PieceTileColor.boardPieceColors.length;
 	}
 	
 	/**
@@ -74,6 +79,8 @@ public class Piece  implements Serializable{
 					pieceGrid[c][r] = new PieceTile(r, c); 
 			}
 		}	
+		
+		PieceTileColor.index = PieceTileColor.index % PieceTileColor.boardPieceColors.length;
 	} 
 	
 	/**

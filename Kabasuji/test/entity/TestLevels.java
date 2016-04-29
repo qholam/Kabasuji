@@ -49,6 +49,7 @@ public class TestLevels extends TestCase {
 		bullpen.addPiece(piece, 1);
 		bullpen1 = new Bullpen();
 		bullpen1.addPiece(piece, 1);
+		bullpen1.addPiece(piece, 1);
 		
 		lightningBoard = new Board(lightning, numRows, numColumns);
 		puzzleBoard = new Board(puzzle, numRows, numColumns);
@@ -64,8 +65,8 @@ public class TestLevels extends TestCase {
 		bullpen5 = new Bullpen();
 		bullpen5.addPiece(piece);
 		bullpen5.addPiece(piece);
-		puzzle5 = new PuzzleLevel(5, puzzleBoard5, bullpen5, unlocked, levelNum, stars);
 		puzzleBoard5 = new Board(puzzle5, 10, 10);
+		puzzle5 = new PuzzleLevel(5, puzzleBoard5, bullpen5, unlocked, levelNum, stars);
 		
 		lightning5 = new LightningLevel(timeRemaining, lightningBoard5, bullpen5, unlocked, levelNum, stars);
 		lightningBoard5 = new Board(lightning5, 10, 10);
@@ -87,6 +88,8 @@ public class TestLevels extends TestCase {
 		
 		assertEquals(puzzle.getMovesRemaining(), 0);
 		assertEquals(puzzle.hasWon(), true);
+		puzzle.updateStars();
+		assertEquals(puzzle.getStars(), 3);
 	}
 	
 	/**
@@ -99,6 +102,8 @@ public class TestLevels extends TestCase {
 		BullpenToBoardMove BLM = new BullpenToBoardMove(lightningBoard, lightning, piece, bullpen, 0, 0);
 		assertEquals(lightning.doMove(BLM), true);
 		assertEquals(lightning.getTimeRemaining(), 5); 
+		lightning.updateStars();
+		assertEquals(lightning.getStars(), 3);
 		
 	} 
 	
@@ -147,8 +152,8 @@ public class TestLevels extends TestCase {
 	 * Test board methods
 	 */
 	public void testBoard(){
+		puzzleBoard1 = new Board(puzzle1, numRows, numColumns);
 		puzzle1 = new PuzzleLevel(movesRemaining, puzzleBoard1, bullpen1, unlocked, levelNum, stars);
-		puzzleBoard1 = new Board(puzzle, numRows, numColumns);
 		BullpenToBoardMove BPM = new BullpenToBoardMove(puzzleBoard1, puzzle1, piece ,bullpen1, 0, 0);
 		puzzle1.doMove(BPM);
 		assertEquals(puzzleBoard1.getPieceAt(0, 0), piece);

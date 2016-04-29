@@ -27,7 +27,7 @@ public class KabasujiFrame extends JFrame {
 	public final static int tileWidth = 24;
 	public final static int tileHeight = 24;
 	
-	private JPanel contentPane;
+	JPanel contentPane;
 	PieceContainer container; 
 	static Piece[] pieces = new Piece[35];
 
@@ -69,8 +69,8 @@ public class KabasujiFrame extends JFrame {
 		}
 		
 		//TOMMYCOMMENT to run either lightning comment out the creation of the puzzlelevel and uncomment the line that creates the lightning level
-		//Level l = new PuzzleLevel(30, new Board(null, 6, 6), bp, true, 1, 0);
-		Level l = new LightningLevel(20, new Board(null, 6, 6),bp, true, 1, 0);
+		Level l = new PuzzleLevel(30, new Board(null, 6, 6), bp, true, 1, 0);
+		//Level l = new LightningLevel(20, new Board(null, 6, 6),bp, true, 1, 0);
 		//LevelPanel puzzle1 = new LevelPanel(this, deserializer.deserialzePuzzleLevel(1));
 		LevelPanel puzzle1 = new LevelPanel(this, l);
 		contentPane.add(puzzle1, Puzzle1);
@@ -94,6 +94,10 @@ public class KabasujiFrame extends JFrame {
 	
 	public PieceContainer getPieceContainer(){
 		return container;
+	}
+	
+	public void addToContentPane(JPanel l, String s){
+		contentPane.add(l, s);
 	}
 	
 	/** Initializes all 35 Kabasuji Pieces from hardcoded int arrays.*/

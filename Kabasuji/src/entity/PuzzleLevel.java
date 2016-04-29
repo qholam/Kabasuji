@@ -5,7 +5,7 @@ import move.IMove;
 /**
  * Constructor for a puzzle level. Extends level.
  * @author Calvin
- * @author Quoc HoLam
+ *
  */
 public class PuzzleLevel extends Level {
 	private int movesRemaining;
@@ -48,9 +48,6 @@ public class PuzzleLevel extends Level {
 		
 	}
 	
-	/**
-	 * update number of stars base on conditions of level type.
-	 */
 	public void updateStars(){
 		int numLeft =  board.getNumUncovered();
 		
@@ -71,7 +68,7 @@ public class PuzzleLevel extends Level {
 	public boolean doMove(IMove move){
 		boolean valid = false;
 		if (move.doMove()){
-			movesRemaining = movesRemaining - 1;
+			//movesRemaining = movesRemaining - 1;
 			valid = true;
 		}
 		return valid;
@@ -107,6 +104,5 @@ public class PuzzleLevel extends Level {
 	 */
 	public void changeNumMoves(int dm){
 		this.movesRemaining = this.movesRemaining + dm;
-		System.out.println(movesRemaining);
 	}
 }

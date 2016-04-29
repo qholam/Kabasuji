@@ -79,13 +79,19 @@ public abstract class Tile implements Serializable{
 	 * Get the background color of the tile based on the type of the tile
 	 */
 	public Color getColor(){
+		Color c = null;
+		
 		switch(this.toString()){
 		case TileType.pieceTile:
-			return Color.ORANGE;
+			c = PieceTileColor.boardPieceColors[PieceTileColor.index % PieceTileColor.boardPieceColors.length];
+			break;
 		default:
 			//default color for all board tiles(including lightning and release)
 			//NoTile is not visible so it does not matter what color it is
-			return Color.LIGHT_GRAY;
+			c = Color.LIGHT_GRAY;
+			break;
 		}
+		
+		return c;
 	}
 }

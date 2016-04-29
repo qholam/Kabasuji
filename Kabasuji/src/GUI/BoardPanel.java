@@ -73,6 +73,7 @@ public class BoardPanel extends JPanel {
 					PieceTile p = new PieceTile();
 					p.setCol(c);
 					p.setRow(r);
+					p.setColor(board.getGrid()[c][r].getColor());
 					tileViews[c][r].setTile(p);
 				}
 				else{
