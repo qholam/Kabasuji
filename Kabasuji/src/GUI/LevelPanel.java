@@ -86,7 +86,7 @@ public class LevelPanel extends JPanel{
 		board.getBoard().setLevel(l);
 		add(board);
 		
-		bullpen = new BullpenView(l.getBullpen()); 
+		bullpen = new BullpenView(l.getBullpen(),this); 
 		bullpen.setBounds(25, 25, 600, 300);
 		//add adapter to each piece in bullpen to handle a drag within the level panel
 		for(int i = 0; i < bullpen.getBullpen().getPieces().size(); i++){

@@ -2,6 +2,7 @@ package GUI;
 
 import javax.swing.JPanel;
 
+import controller.MouseMoveCtrl;
 import entity.Piece;
 import view.PieceView;
 
@@ -19,15 +20,20 @@ public class EditorPanel extends JPanel {
 	Piece[] actualPieces = new Piece[35];
 	PieceView[] pieces = new PieceView[35];
 	KabasujiBuilderFrame kFrame;
+	JPanel level;
 
 	/** Default constructor for an EditorPanel. */
-	public EditorPanel(KabasujiBuilderFrame frame) {
+	public EditorPanel(KabasujiBuilderFrame frame, JPanel l) {
 		setLayout(new GridLayout(18, 18, 24, 0));
 		kFrame = frame;
+		this.level=l;
+		
 		
 		for (int i = 0; i < kFrame.pieces.length; i++) {
 			pieces[i] = new PieceView(kFrame.pieces[i]);
 			add(pieces[i]);
+			pieces[i].addMouseMotionListener(new MouseMoveCtrl(l));
+			pieces[i].addMouseListener(new MouseMoveCtrl(l));
 			setPreferredSize(new Dimension(100, 100 * getComponents().length));
 		}
 	}

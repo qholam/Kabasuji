@@ -143,7 +143,7 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		scrollPane.setViewportView(panel_1);
 		panel_1.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		EditorPanel editorPanel = new EditorPanel(kFrame);
+		EditorPanel editorPanel = new EditorPanel(kFrame, this);
 		panel_1.add(editorPanel);
 		scrollPane.addMouseMotionListener(new MouseMoveCtrl(this));
 		scrollPane.addMouseListener(new MouseMoveCtrl(this));
@@ -151,6 +151,8 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		for(int i = 0; i < editorPanel.getPieces().length; i++){
 			editorPanel.getPieceViews()[i].addMouseListener(new EditorPanelCtrl(editorPanel.getPieceViews()[i], this));
 		}
+		editorPanel.addMouseMotionListener(new MouseMoveCtrl(this));
+		editorPanel.addMouseListener(new MouseMoveCtrl(this));
 		
 		
 		JButton btnUndo = new JButton("UNDO");
