@@ -143,6 +143,17 @@ public class TestEntity extends TestCase {
 		//assertEquals(bullpen.getNumPieces(), 2);
 		
 	}
+	
+	public void testBoardTile(){
+		BoardTile boardtile = new BoardTile(1, 1);
+		Color color;
+		boardtile.uncover();
+		assertEquals(boardtile.isCovered, false);
+		boardtile.cover();
+		assertEquals(boardtile.isCovered, true);
+		color = boardtile.getColor();
+		assertEquals(color, Color.orange);
+	}
 
 	
 }
