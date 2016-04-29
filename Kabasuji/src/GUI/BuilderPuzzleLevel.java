@@ -51,7 +51,7 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		kFrame = frame;
 		
 		int numMoves = 10;
-		level = new PuzzleLevel(numMoves, kFrame.workingBoard, new Bullpen(), false, 0, 0);
+		level = new PuzzleLevel(numMoves, kFrame.workingBoard, new Bullpen(), false, 1, 0);
 		
 		setBackground(Color.GRAY);
 		setLayout(null);

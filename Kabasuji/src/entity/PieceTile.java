@@ -1,4 +1,7 @@
 package entity;
+
+import java.awt.Color;
+
 /**
  * Represents a tile of a {@link Piece}.
  * @author Quoc HoLam
@@ -8,6 +11,7 @@ public class PieceTile extends Tile {
 	//used to track a a piece tiles position within its piece grid container.
 	int rowInPieceContainer, colInPieceContainer;
 	
+	Color c;
 	/**
 	 * Default constructor to create a piece tile that is initially not on the board.
 	 */
@@ -17,6 +21,9 @@ public class PieceTile extends Tile {
 		
 		rowInPieceContainer = -1;
 		colInPieceContainer = -1; 
+		
+		//set color of tile
+		c = PieceTileColor.boardPieceColors[PieceTileColor.index % PieceTileColor.boardPieceColors.length];
 	}
 	
 	/**
@@ -54,5 +61,14 @@ public class PieceTile extends Tile {
 	 */
 	public String toString() {
 		return TileType.pieceTile;
+	}
+	
+	@Override
+	public Color getColor(){
+		return c;
+	}
+	
+	public void setColor(Color col){
+		c = col;
 	}
 }

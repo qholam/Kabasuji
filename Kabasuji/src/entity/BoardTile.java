@@ -11,6 +11,7 @@ import java.io.Serializable;
 public class BoardTile extends Tile{
 	//determines whether this BoardTile is cover by a {@link PieceTile}
 	boolean isCovered;
+	Color c;
 	
 	/**
 	 * Constructor to create BoardTile with given specifications. 
@@ -20,6 +21,8 @@ public class BoardTile extends Tile{
 	public BoardTile(int row, int col) {
 		super(row, col);
 		isCovered = false;
+		
+		c = Color.LIGHT_GRAY;
 	}
 
 	@Override
@@ -55,11 +58,10 @@ public class BoardTile extends Tile{
 	
 	@Override
 	public Color getColor(){
-		Color c = Color.LIGHT_GRAY;
-		
-		if(isCovered)
-			c = new PieceTile().getColor();
-		
 		return c;
+	}
+	
+	public void setColor(Color col){
+		c = col;
 	}
 }

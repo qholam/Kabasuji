@@ -3,6 +3,12 @@ package GUI;
 
 import javax.swing.JPanel;
 
+import entity.Board;
+import entity.Bullpen;
+import entity.Level;
+import entity.LightningLevel;
+import entity.PuzzleLevel;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -30,7 +36,7 @@ public class LevelSelector extends JPanel {
 
 		puzzleLevel1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.Puzzle1);
+				
 			}
 		});  
 		add(puzzleLevel1);
@@ -87,13 +93,20 @@ public class LevelSelector extends JPanel {
 		JButton lightningLevel1 = new JButton("1");
 		lightningLevel1.setBounds(120, 528, 60, 50);
 		lightningLevel1.setForeground(new Color(255, 165, 0));
-		/**
+		
 		lightningLevel1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.Lightning1);
+				Bullpen bp = new Bullpen();
+				for (int i = 0; i < 10; i++) {
+					bp.addPiece(kFrame.pieces[i]);
+				}
+				Level l = new LightningLevel(20, new Board(null, 6, 6),bp, true, 1, 0);
+				LevelPanel puzzle1 = new LevelPanel(kFrame, l);
+				kFrame.addToContentPane((JPanel)puzzle1, kFrame.Puzzle1);
+				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.Puzzle1);
 			}
 		}); 
-		*/
+		
 		add(lightningLevel1);
 
 		JButton lightningLevel2 = new JButton("2");

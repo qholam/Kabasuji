@@ -1,5 +1,6 @@
 package entity;
 
+import java.awt.Color;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -91,8 +92,12 @@ public class Board implements Serializable {
 		for (int i = row; i < row + p.getMaxWidth(); i++) {
 			for (int j = col; j < col + p.getMaxHeight(); j++) {
 				if (i >= 0 && j >= 0 && i < numRows && j < numColumns && pgrid[c][r] != null) {
+					//get color of piece tile
+					Color color = pgrid[c][r].getColor();
+					
 					// piece is now covered
 					boardGrid[j][i].cover();
+					boardGrid[j][i].setColor(color);
 					// set row and column of the piece tile
 					pgrid[c][r].setCol(j);
 					pgrid[c][r].setRow(i);
@@ -153,6 +158,7 @@ public class Board implements Serializable {
 
 			// uncover the board tile located there
 			boardGrid[col][row].uncover();
+			boardGrid[col][row].setColor(Color.LIGHT_GRAY);
 		}
 	}
 
@@ -167,12 +173,15 @@ public class Board implements Serializable {
 		PieceTile[][] pgrid = p.getpieceGrid();
 		for (int i = row; i < row + p.getMaxWidth(); i++) {
 			for (int j = col; j < col + p.getMaxHeight(); j++) {
-				if ((i < 0 || j < 0 || i >= numRows || j >= numColumns)) {
+				if ((i < 0 || j < 0 || i >= numRows || j >= numColumns)) {//checks if pieces tiles will be places outside the boundaries of the board
 					if (pgrid[c][r] != null)
 						return false;
-				} else {
-					if (boardGrid[j][i].isCovered() && pgrid[c][r] != null)
-						return false;
+				} 
+				else if(boardGrid[j][i].isCovered() && pgrid[c][r] != null){//Tiles cannot overlap
+					return false;
+				}
+				else if(boardGrid[j][i].toString().equals(TileType.noTile) && pgrid[c][r] != null){//Ensures piece tiles are not placed on top of a location on the board in which no tile exists
+					return false;
 				}
 				c++;
 			}
