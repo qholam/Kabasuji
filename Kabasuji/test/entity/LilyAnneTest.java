@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import GUI.BullpenView;
 import GUI.KabasujiBuilderFrame;
 import GUI.KabasujiFrame;
+import GUI.LevelPanel;
 import GUI.LevelSelector;
 import GUI.SpecifyBoardPropertiesView;
 import junit.framework.TestCase;
@@ -34,6 +35,7 @@ public class LilyAnneTest extends TestCase
 	KabasujiBuilderFrame bFrame;
 	Board board;
 	Level l;
+	LevelPanel lp;
 	SpecifyBoardPropertiesView sbpv;
 	LevelSelector ls;
 
@@ -68,7 +70,7 @@ public class LilyAnneTest extends TestCase
 		piece3.addTile(new PieceTile(), 2, 5);
 		
 		
-		b = new BullpenView(pen);
+		b = new BullpenView(pen, lp);
 		frame = new KabasujiFrame();
 		bFrame = new KabasujiBuilderFrame();
 		l = new Level(board, pen, true, 1, 0);
