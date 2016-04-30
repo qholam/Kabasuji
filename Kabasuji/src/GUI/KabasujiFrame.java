@@ -21,7 +21,7 @@ public class KabasujiFrame extends JFrame {
 	final String SplashScreen = "SplashScreen";
 	final String MainMenu = "MainMenu";
 	final String Puzzle1 = "Puzzle1";
-	final String Lightning1 = "Lightning1";
+	public final String LevelPanel = "LevelPanel";
 	final String LevelSelect = "LevelSelect";
 	
 	public final static int tileWidth = 24;

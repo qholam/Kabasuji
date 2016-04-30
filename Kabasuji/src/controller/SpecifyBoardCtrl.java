@@ -78,7 +78,7 @@ public class SpecifyBoardCtrl implements MouseListener {
 				break;
 			case TileType.releaseTile:
 				//get the color of the tile
-				Color c = ((ReleaseTile) t.getTile()).getColor();
+				Color c = ((ReleaseTile) t.getTile()).getNumber().getColor();
 				if(c.equals(Color.GREEN)){
 					boardPanel.getBoard().getGrid()[col][row] = redRelease;
 					boardPanel.getBoard().getGrid()[col][row].setRow(row);

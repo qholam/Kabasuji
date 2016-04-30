@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import entity.Board;
 import entity.BoardTile;
 import entity.Bullpen;
+import entity.LevelType;
 import entity.NoTile;
 import entity.Piece;
 import entity.PieceTile;
@@ -75,6 +76,9 @@ public class BoardPanel extends JPanel {
 					p.setRow(r);
 					p.setColor(board.getGrid()[c][r].getColor());
 					tileViews[c][r].setTile(p);
+					if(!board.getLevel().getLevelType().equals(LevelType.Puzzle)){
+						tileViews[c][r].setBackground(Color.GREEN);
+					}
 				}
 				else{
 					tileViews[c][r].setTile(board.getGrid()[c][r]);

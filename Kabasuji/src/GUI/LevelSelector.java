@@ -3,9 +3,11 @@ package GUI;
 
 import javax.swing.JPanel;
 
+import controller.LoadLevelCtrl;
 import entity.Board;
 import entity.Bullpen;
 import entity.Level;
+import entity.LevelType;
 import entity.LightningLevel;
 import entity.PuzzleLevel;
 import serializers.Deserializer;
@@ -35,13 +37,7 @@ public class LevelSelector extends JPanel {
 		puzzleLevel1.setBounds(120, 200, 60, 50);
 		puzzleLevel1.setForeground(new Color(255, 165, 0));
 
-		puzzleLevel1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ae) {
-				LevelPanel puzzle1 = new LevelPanel(kFrame, new Deserializer().deserialzePuzzleLevel(1));
-				kFrame.addToContentPane((JPanel)puzzle1, kFrame.Puzzle1);
-				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.Puzzle1);
-			}
-		});  
+		puzzleLevel1.addActionListener(new LoadLevelCtrl(LevelType.Puzzle, kFrame, 1));
 		add(puzzleLevel1);
 
 		JLabel lblKabasuji = new JLabel("Kabasuji");
@@ -71,13 +67,7 @@ public class LevelSelector extends JPanel {
 		JButton releaseLevel1 = new JButton("1");
 		releaseLevel1.setBounds(120, 364, 60, 50);
 		releaseLevel1.setForeground(new Color(255, 165, 0));
-		releaseLevel1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ae) {
-				LevelPanel puzzle1 = new LevelPanel(kFrame, new Deserializer().deserialzeReleaseLevel(1));
-				kFrame.addToContentPane((JPanel)puzzle1, kFrame.Puzzle1);
-				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.Puzzle1);
-			}
-		});  
+		releaseLevel1.addActionListener(new LoadLevelCtrl(LevelType.Release, kFrame, 1)); 
 		add(releaseLevel1);
 		
 		JButton releaseLevel2 = new JButton("2");

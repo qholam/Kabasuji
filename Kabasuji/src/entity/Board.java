@@ -177,7 +177,7 @@ public class Board implements Serializable {
 					if (pgrid[c][r] != null)
 						return false;
 				} 
-				else if(boardGrid[j][i].isCovered() && pgrid[c][r] != null){//Tiles cannot overlap
+				else if(!this.level.getLevelType().equals(LevelType.Lightning) && boardGrid[j][i].isCovered() && pgrid[c][r] != null){//Tiles cannot overlap unless it is a lightning level
 					return false;
 				}
 				else if(boardGrid[j][i].toString().equals(TileType.noTile) && pgrid[c][r] != null){//Ensures piece tiles are not placed on top of a location on the board in which no tile exists
