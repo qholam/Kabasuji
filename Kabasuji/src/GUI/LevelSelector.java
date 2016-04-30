@@ -36,7 +36,6 @@ public class LevelSelector extends JPanel {
 		JButton puzzleLevel1 = new JButton("1");
 		puzzleLevel1.setBounds(120, 200, 60, 50);
 		puzzleLevel1.setForeground(new Color(255, 165, 0));
-
 		puzzleLevel1.addActionListener(new LoadLevelCtrl(LevelType.Puzzle, kFrame, 1));
 		add(puzzleLevel1);
 
@@ -47,11 +46,13 @@ public class LevelSelector extends JPanel {
 		JButton puzzleLevel2 = new JButton("2");
 		puzzleLevel2.setBounds(240, 200, 60, 50);
 		puzzleLevel2.setForeground(new Color(255, 165, 0));
+		puzzleLevel2.addActionListener(new LoadLevelCtrl(LevelType.Puzzle, kFrame, 2));
 		add(puzzleLevel2);
 
 		JButton puzzleLevel3 = new JButton("3");
 		puzzleLevel3.setBounds(360, 200, 60, 50);
 		puzzleLevel3.setForeground(new Color(255, 165, 0));
+		puzzleLevel3.addActionListener(new LoadLevelCtrl(LevelType.Puzzle, kFrame, 3));
 		add(puzzleLevel3);
 
 		JButton puzzleLevel4 = new JButton("4");

@@ -26,11 +26,13 @@ import javax.swing.Timer;
 
 import controller.BoardCtrl;
 import controller.DragCtrl;
+import controller.LoadLevelCtrl;
 import controller.MouseMoveCtrl;
 import controller.PieceInBullpenCtrl;
 import entity.Board;
 import entity.Bullpen;
 import entity.Level;
+import entity.LevelType;
 import entity.LightningLevel;
 import entity.Piece;
 import entity.PieceTile;
@@ -191,10 +193,7 @@ public class LevelPanel extends JPanel{
 		this.addMouseListener(new MouseMoveCtrl(this));
 		
 		nextLvlBtn = new JButton("Next Level");
-		nextLvlBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		nextLvlBtn.addActionListener(new LoadLevelCtrl(l.getLevelType(), kFrame, l.getLevelNum() + 1));
 		nextLvlBtn.setBounds(650, 675, 100, 36);
 		nextLvlBtn.setVisible(false);
 		add(nextLvlBtn);
