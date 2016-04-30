@@ -17,8 +17,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -263,8 +265,24 @@ public class LevelPanel extends JPanel {
 		// get current stars
 		int curStars = this.getLevel().getStars();
 
+		//if there were no previous stars
+
+		if(prevStars == 0){
+			String str = this.getLevel().getLevelType().toString() + this.getLevel().getLevelNum() + ": " + curStars;
+			
+			FileOutputStream fileOut;
+			try {
+				fileOut = new FileOutputStream("src/LevelInfo/LevelStars");
+				
+				fileOut.write(str.getBytes());
+				fileOut.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		// if the current stars is a higher score than write to file and save
-		if (curStars > prevStars) {
+		else if (curStars > prevStars) {
 			try {
 				// input the file content to the String "input"
 				BufferedReader file = new BufferedReader(new FileReader("src/LevelInfo/LevelStars"));

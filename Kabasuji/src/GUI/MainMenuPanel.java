@@ -7,6 +7,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
@@ -74,7 +77,17 @@ public class MainMenuPanel extends JPanel
 		Button button_2 = new Button("Reset Score");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				//TO ADD
+				FileOutputStream fileOut;
+				try {
+					fileOut = new FileOutputStream("src/LevelInfo/LevelStars");
+					
+					fileOut.write("".getBytes());
+					fileOut.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 			}
 		});
 		button_2.setForeground(Color.YELLOW);
