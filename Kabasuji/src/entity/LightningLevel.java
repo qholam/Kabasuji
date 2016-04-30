@@ -117,4 +117,9 @@ public class LightningLevel extends Level{
 	public LevelType getLevelType(){
 		return LevelType.Lightning;
 	}
+	
+	public void changeTimeRemaining(int dm){
+		this.timeRemaining = dm;
+	}
+
 }

@@ -94,7 +94,7 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		nextButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				kFrame.setWorkingBoard(board.getBoard());
-				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.BuilderPuzzleLevel);
+				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.BuilderPuzzleLevel);//CHANGE FOR LIGHNING
 			}
 		});
 		nextButton.setForeground(Color.YELLOW);

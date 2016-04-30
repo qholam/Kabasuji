@@ -45,7 +45,7 @@ public class BuilderLevelTypeSelect extends JPanel
 		button.setBounds(438, 303, 324, 87);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				kFrame.workingLevel = new BuilderPuzzleLevel(kFrame);
+				//kFrame.workingLevel = new BuilderPuzzleLevel(kFrame);
 				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.SpecifyBoardProperties);
 			}
 		});
@@ -63,6 +63,13 @@ public class BuilderLevelTypeSelect extends JPanel
 		button_2.setFont(new Font("Dialog", Font.PLAIN, 49));
 		button_2.setBackground(new Color(255, 165, 0));
 		button_2.setBounds(438, 396, 324, 87);
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				kFrame.workingLevel = new BuilderLightningLevel(kFrame);
+				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.SpecifyBoardProperties);
+			}
+		});
+
 		add(button_2);
 		
 		Button button_3 = new Button("Main Menu");

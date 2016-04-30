@@ -21,6 +21,8 @@ public class KabasujiBuilderFrame extends JFrame {
 	final String BuilderLevelTypeSelect = "BuilderLevelTypeSelect";
 	final String SpecifyBoardProperties = "SpecifyBoardProperties";
 	final String BuilderPuzzleLevel = "BuilderPuzzleLevel";
+	final String BuilderLightningLevel = "BuilderLightningLevel";
+
 
 	private JPanel contentPane;
 	
@@ -76,6 +78,9 @@ public class KabasujiBuilderFrame extends JFrame {
 		specifyBoard.setBounds(0, 0, 1200, 800);
 		contentPane.add(specifyBoard, SpecifyBoardProperties);
 		
+		//Added by nick
+		//CHANGE FOR LIGHTNING
+		workingLevel=new BuilderPuzzleLevel(this);
 		workingLevel.setBounds(0, 0, 1200, 800);
 		contentPane.add(workingLevel, BuilderPuzzleLevel);
 		
