@@ -12,6 +12,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
@@ -121,6 +123,20 @@ public class BuilderLightningLevel extends BuilderLevel {
 		JButton btnMenu = new JButton("SAVE");
 		btnMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
+				Object[] options = { "1", "2", "3", "4", "5" };
+				String s = (String) JOptionPane.showInputDialog(null, "Please choose a level ID to overwrite:", "Save",
+						JOptionPane.PLAIN_MESSAGE, null, options, "1");
+				if (s != null) {
+					int id = Integer.parseInt(s);
+					level = new LightningLevel(level.getTimeRemaining(), boardPanel.getBoard(), bullpen.getBullpen(),
+							level.isUnlocked(), id, 0);
+					new Serializer().serializeLevel(level);
+					JOptionPane.showMessageDialog(null, "Level " + id + " has been successfully saved.");
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Level saving has been cancelled.");
+				}
+				
 				level = new LightningLevel(level.getTimeRemaining(), boardPanel.getBoard(), bullpen.getBullpen(), level.isUnlocked(), level.getLevelNum(), 0);
 				new Serializer().serializeLevel(level);
 			}
