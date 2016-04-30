@@ -91,6 +91,10 @@ public class KabasujiBuilderFrame extends JFrame {
 		return (CardLayout)contentPane.getLayout();
 	}
 	
+	public JPanel getContentPane() {
+		return contentPane;
+	}
+	
 	void setWorkingBoard(Board b) {
 		workingBoard = b;
 		workingLevel.setBoard(b);
