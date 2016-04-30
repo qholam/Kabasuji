@@ -197,6 +197,7 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		board = new BoardPanel(new Board(null, width, height));
 		boardContainer.add(board);
 		boardContainer.repaint();
+		repaint();
 		
 	}
 	
