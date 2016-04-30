@@ -52,55 +52,55 @@ public class BoardCtrl implements MouseListener {
 		// this determines the amount to change the quantity of the pice by
 		int pieceQty = 1;
 		Level l;
-		
+
 		// is anything being dragged? if not then see if there is a piece to
 		// remove there
 		if (!container.isVisible()) {// nothing being dragged
-			//check if game is over, if so do nothing
+			// check if game is over, if so do nothing
 			if (levelPanel instanceof LevelPanel) {
-				if(((LevelPanel) levelPanel).getLevel().getStars() == 3)
+				if (((LevelPanel) levelPanel).getLevel().getStars() == 3)
 					return;
 				l = ((LevelPanel) levelPanel).getLevel();
 			} else {
-				if(((BuilderLevel) levelPanel).getLevel().getStars() == 3)
+				if (((BuilderLevel) levelPanel).getLevel().getStars() == 3)
 					return;
 				l = ((BuilderLevel) levelPanel).getLevel();
 			}
-			//Level l = levelPanel.getLevel();
+			// Level l = levelPanel.getLevel();
 			// can only be removed from board if it is puzzle level
-			if(l instanceof PuzzleLevel){
-			Component c = boardPanel.getBoardTilePanel().getComponentAt(me.getPoint());
-			if (c instanceof TileView) {
-				TileView tv = (TileView) c;
-				Tile t = tv.getTile();
+			if (l instanceof PuzzleLevel) {
+				Component c = boardPanel.getBoardTilePanel().getComponentAt(me.getPoint());
+				if (c instanceof TileView) {
+					TileView tv = (TileView) c;
+					Tile t = tv.getTile();
 
-				// check if tile clicked was a piece tile
-				if (t instanceof PieceTile) {
-					PieceTile bt = (PieceTile) t;
+					// check if tile clicked was a piece tile
+					if (t instanceof PieceTile) {
+						PieceTile bt = (PieceTile) t;
 
-					// get the row and column of the click
-					int row = bt.getRow();
-					int col = bt.getCol();
+						// get the row and column of the click
+						int row = bt.getRow();
+						int col = bt.getCol();
 
-					// test some shit
-					PieceTile pt = new PieceTile();
-					pt.setPieceGridCol(bt.getPieceGridCol());
-					pt.setPieceGridRow(bt.getPieceGridRow());
+						// test some shit
+						PieceTile pt = new PieceTile();
+						pt.setPieceGridCol(bt.getPieceGridCol());
+						pt.setPieceGridRow(bt.getPieceGridRow());
 
-					// remove the piece there
-					Piece removed = boardPanel.getBoard().removePieceAt(row, col);
+						// remove the piece there
+						Piece removed = boardPanel.getBoard().removePieceAt(row, col);
 
-					// set container visible again and add removed piece to it,
-					// be sure to set anchor and source
-					container.setDraggingPiece(removed);
-					container.setAnchortile(new TileView(removed.getpieceGrid()[col - removed.getColPos()][row - removed.getRowPos()]));
-					container.setSource(boardPanel);
-					container.setVisible(true);
+						// set container visible again and add removed piece to
+						// it,
+						// be sure to set anchor and source
+						container.setDraggingPiece(removed);
+						container.setAnchortile(new TileView(removed.getpieceGrid()[col - removed.getColPos()][row - removed.getRowPos()]));
+						container.setSource(boardPanel);
+						container.setVisible(true);
+					}
 				}
 			}
-			}
-		} 
-		else {
+		} else {
 			// piece is currently being dragged, handle that
 			// get the component that was clicked on
 			Component c = boardPanel.getBoardTilePanel().getComponentAt(me.getPoint());
@@ -135,22 +135,22 @@ public class BoardCtrl implements MouseListener {
 
 				// check the source of the drag
 				if (source instanceof BullpenView)
-					move = new BullpenToBoardMove(boardPanel.getBoard(), level, container.getDraggingPiece().getPiece(),bp, row, col);
+					move = new BullpenToBoardMove(boardPanel.getBoard(), level, container.getDraggingPiece().getPiece(),
+							bp, row, col);
 				else// otherwise source is the board
-					move = new BoardToBoardMove(boardPanel.getBoard(), level, container.getDraggingPiece().getPiece(), row, col);
+					move = new BoardToBoardMove(boardPanel.getBoard(), level, container.getDraggingPiece().getPiece(),
+							row, col);
 
 				// was move successful?
 				// TODO: what to do when move is invalid?
 				if (!move.doMove()) {
 					System.out.println("cant do move");
 					return;
-				} 
-				else {
+				} else {
 					// quantity of piece will be reduced by 1 now since move was
 					// good
 					pieceQty = 0;
 				}
-
 
 				// updating pieces quantity in bullpen
 				if (levelPanel instanceof LevelPanel) {
@@ -171,15 +171,14 @@ public class BoardCtrl implements MouseListener {
 		if (levelPanel instanceof LevelPanel) {
 			bp = ((LevelPanel) levelPanel).getBullpenView().getBullpen();
 			bpview = ((LevelPanel) levelPanel).getBullpenView();
-		} 
-		else {
+		} else {
 			bp = ((BuilderLevel) levelPanel).getBullpenView().getBullpen();
 			bpview = ((BuilderLevel) levelPanel).getBullpenView();
 		}
 		bpview.setRepaintValid();
 		boardPanel.setRepaintValid();
 		container.repaint();
-		//update status of level
+		// update status of level
 		if (levelPanel instanceof LevelPanel)
 			((LevelPanel) levelPanel).updateLevel();
 		else

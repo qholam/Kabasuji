@@ -56,7 +56,7 @@ public class ReleaseTile extends BoardTile{
 	}
 	
 	public Color getColor(){
-		return this.num.getColor();
+		return super.getColor();
 	}
 
 }

@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import GUI.BoardPanel;
 import GUI.BuilderLevel;
+import GUI.BullpenView;
 import GUI.LevelPanel;
 import GUI.PieceContainer;
 import entity.Bullpen;
@@ -144,8 +145,5 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseReleased(MouseEvent arg0) {}
 }

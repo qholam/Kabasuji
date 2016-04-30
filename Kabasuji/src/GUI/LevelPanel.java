@@ -226,6 +226,7 @@ public class LevelPanel extends JPanel{
 	 * Method that updates the status of a level.
 	 */
 	public void updateLevel(){
+		level.hasWon();
 		//update stars
 		level.updateStars();
 		

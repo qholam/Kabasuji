@@ -37,7 +37,9 @@ public class LevelSelector extends JPanel {
 
 		puzzleLevel1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				
+				LevelPanel puzzle1 = new LevelPanel(kFrame, new Deserializer().deserialzePuzzleLevel(1));
+				kFrame.addToContentPane((JPanel)puzzle1, kFrame.Puzzle1);
+				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.Puzzle1);
 			}
 		});  
 		add(puzzleLevel1);
