@@ -72,8 +72,8 @@ public class KabasujiFrame extends JFrame {
 		Level l = new PuzzleLevel(30, new Board(null, 6, 6), bp, true, 1, 0);
 		//Level l = new LightningLevel(20, new Board(null, 6, 6),bp, true, 1, 0);
 		//LevelPanel puzzle1 = new LevelPanel(this, deserializer.deserialzePuzzleLevel(1));
-		LevelPanel puzzle1 = new LevelPanel(this, l);
-		contentPane.add(puzzle1, Puzzle1);
+		LevelPanel levelPanel = new LevelPanel(this, l);
+		contentPane.add(levelPanel, Puzzle1);
 		
 		/* TOMMYCOMMENT Drag does not redraw properly when this code is added.
 		Level l2 = new LightningLevel(100, new Board(null, 6, 6),new Bullpen(), true, 1, 0);

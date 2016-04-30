@@ -112,20 +112,13 @@ public class LevelPanel extends JPanel{
 		} 
 		add(bullpen);
 		
-		JButton trashBtn = new JButton("TRASH");
-		trashBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				boolean b = container.isVisible();
-				if(!b){
-					
-				}
-			}
-		});
-		trashBtn.setBounds(650, 564, 100, 100);
+		JButton resetBtn = new JButton("RESET");
+		resetBtn.addActionListener(new LoadLevelCtrl(this.getLevel().getLevelType(), kFrame, this.getLevel().getLevelNum()));
+		resetBtn.setBounds(650, 564, 100, 100);
 		//this makes the drag smoother
-		trashBtn.addMouseMotionListener(new MouseMoveCtrl(this));
-		trashBtn.addMouseListener(new MouseMoveCtrl(this));
-		add(trashBtn);
+		resetBtn.addMouseMotionListener(new MouseMoveCtrl(this));
+		resetBtn.addMouseListener(new MouseMoveCtrl(this));
+		add(resetBtn);
 		
 		//Change here(condensed all level view into one)
 		if(l instanceof PuzzleLevel)
