@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import GUI.BoardPanel;
 import GUI.BullpenView;
+import GUI.LevelPanel;
 import controller.HorizontalFlipCtrl;
 import controller.RotateClockwiseCtrl;
 import controller.RotateCounterClockwiseCtrl;
@@ -27,6 +28,7 @@ public class TestControllers extends TestCase {
 	Board board;
 	BoardPanel boardPanel;
 	MouseEvent pr, re;
+	LevelPanel lp;
 
 	
 	public void setUp(){
@@ -43,7 +45,7 @@ public class TestControllers extends TestCase {
 		bpArray = new ArrayList<Piece>();
 		bpArray.add(piece);
 		bp = new Bullpen(bpArray);
-		bpv = new BullpenView(bp);
+		bpv = new BullpenView(bp, lp);
 		VerticalFlipCtrl VFC = new VerticalFlipCtrl(bpv);
 		/*
 		MouseEvent me = new MouseEvent(bp., MouseEvent.MOUSE_PRESSED, 
@@ -57,7 +59,7 @@ public class TestControllers extends TestCase {
 		bpArray = new ArrayList<Piece>();
 		bpArray.add(piece);
 		bp = new Bullpen(bpArray);
-		bpv = new BullpenView(bp);
+		bpv = new BullpenView(bp, lp);
 		HorizontalFlipCtrl HFC = new HorizontalFlipCtrl(bpv);
 		HFC.mousePressed(pr);
 	}
@@ -66,7 +68,7 @@ public class TestControllers extends TestCase {
 		bpArray = new ArrayList<Piece>();
 		bpArray.add(piece);
 		bp = new Bullpen(bpArray);
-		bpv = new BullpenView(bp);
+		bpv = new BullpenView(bp, lp);
 		RotateCounterClockwiseCtrl RCC = new RotateCounterClockwiseCtrl(bpv);
 		RCC.mousePressed(pr);
 		
@@ -76,7 +78,7 @@ public class TestControllers extends TestCase {
 		bpArray = new ArrayList<Piece>();
 		bpArray.add(piece);
 		bp = new Bullpen(bpArray);
-		bpv = new BullpenView(bp);
+		bpv = new BullpenView(bp, lp);
 		RotateClockwiseCtrl RC = new RotateClockwiseCtrl(bpv);
 		RC.mousePressed(pr);
 	}
