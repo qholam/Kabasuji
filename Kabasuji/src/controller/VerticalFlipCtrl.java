@@ -48,7 +48,6 @@ public class VerticalFlipCtrl implements ActionListener, MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		System.out.println(e.getX() + " " + e.getY());
 		// get the current selected pieceview in the bullpen
 		PieceView pv = bpview.getSelected();
 

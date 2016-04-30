@@ -26,7 +26,7 @@ public class LoadLevelCtrl implements ActionListener{
 		levelNum = num;
 	}
 
-	public void actionPerformed(ActionEvent ae) {
+	public void actionPerformed(ActionEvent ae) {		
 		LevelPanel levelPanel = null;
 		switch (levelType) {
 		case Lightning:

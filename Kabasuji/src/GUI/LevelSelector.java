@@ -14,8 +14,14 @@ import serializers.Deserializer;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -24,6 +30,25 @@ public class LevelSelector extends JPanel {
 
 	
 	KabasujiFrame kFrame;
+
+	JLabel lblPuzzleStars1;
+	JLabel lblPuzzleStars2;
+	JLabel lblPuzzleStars3;
+	JLabel lblPuzzleStars4;
+	JLabel lblPuzzleStars5;
+
+	JLabel lblReleaseStars1;
+	JLabel lblReleaseStars2;
+	JLabel lblReleaseStars3;
+	JLabel lblReleaseStars4;
+	JLabel lblReleaseStars5;
+	
+	JLabel lblLightningStars1;
+	JLabel lblLightningStars2;
+	JLabel lblLightningStars3;
+	JLabel lblLightningStars4;
+	JLabel lblLightningStars5;
+
 	/*
 	 * Create the panel.
 	 */
@@ -160,67 +185,83 @@ public class LevelSelector extends JPanel {
 		lblSelectLevel.setBounds(331, 60, 117, 29);
 		add(lblSelectLevel);
 
-		JLabel lblPuzzleStars1 = new JLabel("Stars");
+		int stars = kFrame.getStars(LevelType.Puzzle, 1);
+		lblPuzzleStars1 = new JLabel(stars + " Star");
 		lblPuzzleStars1.setBounds(120, 260, 61, 16);
 		add(lblPuzzleStars1);
 
-		JLabel lblPuzzleStars2 = new JLabel("Stars");
+		stars = kFrame.getStars(LevelType.Puzzle, 2);
+		lblPuzzleStars2 = new JLabel(stars + " Star");
 		lblPuzzleStars2.setBounds(240, 260, 61, 16);
 		add(lblPuzzleStars2);
 
-		JLabel lblPuzzleStars3 = new JLabel("Stars");
+		stars = kFrame.getStars(LevelType.Puzzle, 3);
+		lblPuzzleStars3 = new JLabel(stars + " Star");
 		lblPuzzleStars3.setBounds(360, 260, 61, 16);
 		add(lblPuzzleStars3);
 
-		JLabel lblPuzzleStars4 = new JLabel("Stars");
+		stars = kFrame.getStars(LevelType.Puzzle, 4);
+		lblPuzzleStars4 = new JLabel(stars + " Star");
 		lblPuzzleStars4.setBounds(480, 260, 61, 16);
 		add(lblPuzzleStars4);
 
-		JLabel lblPuzzleStars5 = new JLabel("Stars");
+		stars = kFrame.getStars(LevelType.Puzzle, 5);
+		lblPuzzleStars5 = new JLabel(stars + " Star");
 		lblPuzzleStars5.setBounds(600, 260, 61, 16);
 		add(lblPuzzleStars5);
 
-		JLabel lblReleaseStars1 = new JLabel("Stars");
+		stars = kFrame.getStars(LevelType.Release, 1);
+		lblReleaseStars1 = new JLabel(stars + " Star");
 		lblReleaseStars1.setBounds(120, 426, 61, 16);
 		add(lblReleaseStars1);
 
-		JLabel lblReleaseStars2 = new JLabel("Stars");
+		stars = kFrame.getStars(LevelType.Release, 2);
+		lblReleaseStars2 = new JLabel(stars + " Star");
 		lblReleaseStars2.setBounds(240, 426, 61, 16);
 		add(lblReleaseStars2);
-
-		JLabel lblReleaseStars3 = new JLabel("Stars");
+		
+		stars = kFrame.getStars(LevelType.Release, 3);
+		lblReleaseStars3 = new JLabel(stars + " Star");
 		lblReleaseStars3.setBounds(357, 426, 61, 16);
 		add(lblReleaseStars3);
 
-		JLabel lblReleaseStars4 = new JLabel("Stars");
+		stars = kFrame.getStars(LevelType.Release, 4);
+		lblReleaseStars4 = new JLabel(stars + " Star");
 		lblReleaseStars4.setBounds(480, 426, 61, 16);
 		add(lblReleaseStars4);
 
-		JLabel lblReleaseStars5 = new JLabel("Stars");
+		stars = kFrame.getStars(LevelType.Release, 5);
+		lblReleaseStars5 = new JLabel(stars + " Star");
 		lblReleaseStars5.setBounds(600, 426, 61, 16);
 		add(lblReleaseStars5);
 		
-		JLabel lblLightningStars1 = new JLabel("Stars");
+		stars = kFrame.getStars(LevelType.Lightning, 1);
+		lblLightningStars1 = new JLabel(stars + " Star");
 		lblLightningStars1.setBounds(120, 590, 61, 16);
 		add(lblLightningStars1);
 
-		JLabel lblLightningStars2 = new JLabel("Stars");
+		stars = kFrame.getStars(LevelType.Lightning, 2);
+		lblLightningStars2 = new JLabel(stars + " Star");
 		lblLightningStars2.setBounds(240, 590, 61, 16);
 		add(lblLightningStars2);
 
-		JLabel lblLightningStars3 = new JLabel("Stars");
+		stars = kFrame.getStars(LevelType.Lightning, 3);
+		lblLightningStars3 = new JLabel(stars + " Star");
 		lblLightningStars3.setBounds(360, 590, 61, 16);
 		add(lblLightningStars3);
 
-		JLabel lblLightningStars4 = new JLabel("Stars");
+		stars = kFrame.getStars(LevelType.Lightning, 4);
+		lblLightningStars4 = new JLabel(stars + " Star");
 		lblLightningStars4.setBounds(480, 590, 61, 16);
 		add(lblLightningStars4);
 
-		JLabel lblLightningStars5 = new JLabel("Stars");
+		stars = kFrame.getStars(LevelType.Lightning, 5);
+		lblLightningStars5 = new JLabel(stars + " Star");
 		lblLightningStars5.setBounds(600, 590, 61, 16);
 		add(lblLightningStars5);
 
 	}
-
+	
+	
 }
 

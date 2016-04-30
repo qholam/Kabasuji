@@ -1,6 +1,9 @@
 package GUI;
 
 import java.awt.EventQueue;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 import entity.Board;
 import entity.Bullpen;
 import entity.Level;
+import entity.LevelType;
 import entity.LightningLevel;
 import entity.Piece;
 import entity.PieceTile;
@@ -81,9 +85,7 @@ public class KabasujiFrame extends JFrame {
 		contentPane.add(lightning1, Lightning1);
 		*/
 		
-		LevelSelector levelSelect = new LevelSelector(this);
-		levelSelect.setBounds(0, 0, 800, 800);
-		contentPane.add(levelSelect, LevelSelect);
+		
 		
 		splash.displaySplashScreen();
 	}
@@ -406,5 +408,43 @@ public class KabasujiFrame extends JFrame {
 	
 	public static Piece getPiece(int n){
 		return pieces[n];
+	}
+	
+	/**
+	 * get stars of a level
+	 * @param puzzle
+	 * @param i
+	 * @return
+	 */
+	public int getStars(LevelType puzzle, int i){
+		int stars = 0;
+		BufferedReader file;
+		String currentLine;
+		//level of interest to find stars for
+		String level = puzzle.toString() + i;
+
+		try {
+			//get the file that hold all info on level stars
+			file = new BufferedReader(new FileReader("src/LevelInfo/LevelStars"));
+			
+			//get the first line
+			currentLine = file.readLine();
+			
+			//search for desired level to get stars of
+			while(currentLine != null){
+				String temp = currentLine.split(":")[0];
+				if(temp.equals(level)){
+					stars = Integer.valueOf(currentLine.split(":")[1].replaceAll("[^0-9]+", ""));
+				}
+				currentLine = file.readLine();
+			}
+			
+			file.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return stars;
 	}
 }

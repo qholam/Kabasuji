@@ -46,6 +46,9 @@ public class MainMenuPanel extends JPanel
 		Button button = new Button("View Levels");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
+				LevelSelector levelSelect = new LevelSelector(kFrame);
+				levelSelect.setBounds(0, 0, 800, 800);
+				kFrame.contentPane.add(levelSelect, kFrame.LevelSelect);
 				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.LevelSelect);
 			}
 		});
