@@ -82,10 +82,10 @@ public class LilyAnneTest extends TestCase
 	public void testBoard()
 	{
 		board.addPiece(piece1, 3, 3);
-		assertTrue(board.boardGrid[3][5].isCovered());
+		assertTrue(board.boardGrid[5][3].isCovered());
 		
 		board.removePiece(piece1);
-		assertFalse(board.boardGrid[3][5].isCovered());
+		assertFalse(board.boardGrid[5][3].isCovered());
 	}
 	
 	/**
