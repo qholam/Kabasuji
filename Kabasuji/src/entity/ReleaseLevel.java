@@ -55,11 +55,11 @@ public class ReleaseLevel extends Level {
 				if (board.boardGrid[i][a] instanceof ReleaseTile) {
 					if (board.boardGrid[i][a].isCovered()) {
 						release = (ReleaseTile) board.boardGrid[i][a];
-						if (release.getNumber().getColor().equals(Color.red)) {
+						if (release.getNumber().getColor().equals(Color.RED)) {
 							color = 0;
-						} else if (release.getNumber().getColor().equals(Color.blue)) {
+						} else if (release.getNumber().getColor().equals(Color.BLUE)) {
 							color = 1;
-						} else if (release.getNumber().getColor().equals(Color.green)) {
+						} else if (release.getNumber().getColor().equals(Color.GREEN)) {
 							color = 2;
 						}
 						covered[color][release.getNumber().getNum() - 1] = true;
@@ -68,6 +68,9 @@ public class ReleaseLevel extends Level {
 			}
 		}
 
+		int setsCovered = 0;
+		boolean oneCovered = false;
+		
 		for (int r = 0; r < 3; r++) {
 			int count = 0;
 			for (int c = 0; c < 6; c++) {
@@ -75,13 +78,24 @@ public class ReleaseLevel extends Level {
 					count++;
 					// if the count is 6 for any set then its a win
 					if (count == 6) {
-						return true;
+						oneCovered = true;
+						setsCovered++;
 					}
 				}
 			}
 		}
+		//update stars
+		if(setsCovered == 3){
+			stars = Math.max(stars, 3);
+		}
+		else if(setsCovered == 2){
+			stars = Math.max(stars, 2);
+		}
+		else if(setsCovered == 1){
+			stars = Math.max(stars, 1);
+		}
 
-		return false;
+		return oneCovered;
 
 	}
 

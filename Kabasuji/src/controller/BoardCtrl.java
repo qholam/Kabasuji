@@ -51,7 +51,8 @@ public class BoardCtrl implements MouseListener {
 	public void mousePressed(MouseEvent me) {
 		// this determines the amount to change the quantity of the pice by
 		int pieceQty = 1;
-
+		Level l;
+		
 		// is anything being dragged? if not then see if there is a piece to
 		// remove there
 		if (!container.isVisible()) {// nothing being dragged
@@ -59,17 +60,15 @@ public class BoardCtrl implements MouseListener {
 			if (levelPanel instanceof LevelPanel) {
 				if(((LevelPanel) levelPanel).getLevel().getStars() == 3)
 					return;
-				if(!(((LevelPanel) levelPanel).getLevel() instanceof PuzzleLevel))
-					return;
+				l = ((LevelPanel) levelPanel).getLevel();
 			} else {
 				if(((BuilderLevel) levelPanel).getLevel().getStars() == 3)
 					return;
-				if(!(((BuilderLevel) levelPanel).getLevel() instanceof PuzzleLevel))
-					return;
+				l = ((BuilderLevel) levelPanel).getLevel();
 			}
-			// Level l = levelPanel.getLevel();
+			//Level l = levelPanel.getLevel();
 			// can only be removed from board if it is puzzle level
-			// if(l instanceof PuzzleLevel){
+			if(l instanceof PuzzleLevel){
 			Component c = boardPanel.getBoardTilePanel().getComponentAt(me.getPoint());
 			if (c instanceof TileView) {
 				TileView tv = (TileView) c;
@@ -99,7 +98,7 @@ public class BoardCtrl implements MouseListener {
 					container.setVisible(true);
 				}
 			}
-			// }
+			}
 		} 
 		else {
 			// piece is currently being dragged, handle that
