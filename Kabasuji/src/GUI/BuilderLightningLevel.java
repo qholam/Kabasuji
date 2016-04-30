@@ -173,11 +173,27 @@ public class BuilderLightningLevel extends BuilderLevel {
 		button.addMouseListener(new MouseMoveCtrl(this));
 		add(button);
 		
-		final JTextField textField = new JTextField(30);
-		textField.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				int input = Integer.parseInt(textField.getText());
-				level.changeTimeRemaining(input);
+		final JTextField textField = new JTextField("Enter Time", 30);
+		textField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (textField.getText() != null && textField.getText() != "") {
+					try {
+						int input = Integer.parseInt(textField.getText());
+						if (input > 0 && input < 1000) {
+							level.changeTimeRemaining(input);
+							movesLabel.setText("TIME REMAINING: " + level.getTimeRemaining());
+							textField.setText("Enter Time");
+						} else if (input > 999) {
+							level.changeTimeRemaining(999);
+							movesLabel.setText("TIME REMAINING: " + level.getTimeRemaining());
+							textField.setText("Enter time");
+						} else {
+							textField.setText("Enter time");
+						}
+					} catch (NumberFormatException ex) {
+						textField.setText("Enter time");
+					}
+				}
 			}
 		});
 		textField.setBounds(635, 336, 112, 27);
