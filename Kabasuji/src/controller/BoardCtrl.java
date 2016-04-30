@@ -168,6 +168,7 @@ public class BoardCtrl implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent me) {
+		System.out.println(me.getX() + " " + me.getY());
 		if (levelPanel instanceof LevelPanel) {
 			bp = ((LevelPanel) levelPanel).getBullpenView().getBullpen();
 			bpview = ((LevelPanel) levelPanel).getBullpenView();
@@ -200,5 +201,13 @@ public class BoardCtrl implements MouseListener {
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	/**
+	 * Gets the current BoardView.
+	 * @return BoardView the current boardview.
+	 */
+	public BoardPanel getBoardView(){
+		return this.boardPanel;
 	}
 }
