@@ -198,7 +198,7 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		txtEnterHeightmax.setText("" + height);
 		
 		boardContainer.remove(board);
-		board = new BoardPanel(new Board(kFrame.workingLevel.getLevel(), width, height));
+		board = new BoardPanel(new Board(kFrame.workingLevel.getLevel(), height, width));
 		kFrame.setWorkingBoard(board.getBoard());
 		boardContainer.add(board);
 		board.setRepaintValid();

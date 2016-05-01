@@ -125,7 +125,7 @@ public class BoardPanel extends JPanel {
 		repaint();
 		
 		for (int r = 0; r < board.getNumRows(); r++) {
-			for (int c = 0; c < board.getNumRows(); c++) {
+			for (int c = 0; c < board.getNumColumns(); c++) {
 				tileViews[c][r].setRepaintValid();
 			}
 		}
