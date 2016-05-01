@@ -84,11 +84,13 @@ public class LevelSelector extends JPanel {
 		JButton puzzleLevel4 = new JButton("4");
 		puzzleLevel4.setBounds(480, 200, 60, 50);
 		puzzleLevel4.setForeground(new Color(255, 165, 0));
+		puzzleLevel4.addActionListener(new LoadLevelCtrl(LevelType.Puzzle, kFrame, 4));
 		add(puzzleLevel4);
 
 		JButton puzzleLevel5 = new JButton("5");
 		puzzleLevel5.setBounds(600, 200, 60, 50);
 		puzzleLevel5.setForeground(new Color(255, 165, 0));
+		puzzleLevel5.addActionListener(new LoadLevelCtrl(LevelType.Puzzle, kFrame, 5));
 		add(puzzleLevel5);
 
 		JButton releaseLevel1 = new JButton("1");
@@ -100,27 +102,30 @@ public class LevelSelector extends JPanel {
 		JButton releaseLevel2 = new JButton("2");
 		releaseLevel2.setBounds(240, 364, 60, 50);
 		releaseLevel2.setForeground(new Color(255, 165, 0));
+		releaseLevel2.addActionListener(new LoadLevelCtrl(LevelType.Release, kFrame, 2));
 		add(releaseLevel2);
 
 		JButton releaseLevel3 = new JButton("3");
 		releaseLevel3.setBounds(360, 364, 60, 50);
 		releaseLevel3.setForeground(new Color(255, 165, 0));
+		releaseLevel3.addActionListener(new LoadLevelCtrl(LevelType.Release, kFrame, 3));
 		add(releaseLevel3);
 
 		JButton releaseLevel4 = new JButton("4");
 		releaseLevel4.setBounds(480, 364, 60, 50);
 		releaseLevel4.setForeground(new Color(255, 165, 0));
+		releaseLevel4.addActionListener(new LoadLevelCtrl(LevelType.Release, kFrame, 4));
 		add(releaseLevel4);
 
 		JButton releaseLevel5 = new JButton("5");
 		releaseLevel5.setBounds(600, 364, 60, 50);
 		releaseLevel5.setForeground(new Color(255, 165, 0));
+		releaseLevel5.addActionListener(new LoadLevelCtrl(LevelType.Release, kFrame, 5));
 		add(releaseLevel5);
 
 		JButton lightningLevel1 = new JButton("1");
 		lightningLevel1.setBounds(120, 528, 60, 50);
 		lightningLevel1.setForeground(new Color(255, 165, 0));
-		
 		lightningLevel1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				Bullpen bp = new Bullpen();
@@ -133,27 +138,30 @@ public class LevelSelector extends JPanel {
 				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.Puzzle1);
 			}
 		}); 
-		
 		add(lightningLevel1);
 
 		JButton lightningLevel2 = new JButton("2");
 		lightningLevel2.setBounds(240, 528, 60, 50);
 		lightningLevel2.setForeground(new Color(255, 165, 0));
+		lightningLevel2.addActionListener(new LoadLevelCtrl(LevelType.Release, kFrame, 2));
 		add(lightningLevel2);
 
 		JButton lightningLevel3 = new JButton("3");
 		lightningLevel3.setBounds(360, 528, 60, 50);
 		lightningLevel3.setForeground(new Color(255, 165, 0));
+		lightningLevel3.addActionListener(new LoadLevelCtrl(LevelType.Release, kFrame, 3));
 		add(lightningLevel3);
 
 		JButton lightningLevel4 = new JButton("4");
 		lightningLevel4.setBounds(480, 528, 60, 50);
 		lightningLevel4.setForeground(new Color(255, 165, 0));
+		lightningLevel4.addActionListener(new LoadLevelCtrl(LevelType.Release, kFrame, 4));
 		add(lightningLevel4);
 
 		JButton lightningLevel5 = new JButton("5");
 		lightningLevel5.setBounds(600, 528, 60, 50);
 		lightningLevel5.setForeground(new Color(255, 165, 0));
+		lightningLevel5.addActionListener(new LoadLevelCtrl(LevelType.Release, kFrame, 5));
 		add(lightningLevel5);
 
 		JLabel puzzleLabel = new JLabel("Puzzle");

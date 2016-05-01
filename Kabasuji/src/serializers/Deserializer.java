@@ -36,7 +36,6 @@ public class Deserializer {
 			return level;
 
 		} catch (Exception ex) {
-			ex.printStackTrace();
 			return null;
 		}
 	}
@@ -60,7 +59,6 @@ public class Deserializer {
 			return level;
 
 		} catch (Exception ex) {
-			ex.printStackTrace();
 			return null;
 		}
 	}
@@ -84,7 +82,6 @@ public class Deserializer {
 			return level;
 
 		} catch (Exception ex) {
-			ex.printStackTrace();
 			return null;
 		}
 	}
