@@ -95,7 +95,8 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		Button nextButton = new Button("Next");
 		nextButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				kFrame.setWorkingBoard(board.getBoard());
+				kFrame.setWorkingBoard(new Board(kFrame.workingLevel.getLevel(), board.getBoard().getNumRows(), board.getBoard().getNumColumns()));
+				kFrame.workingLevel.setBoard(kFrame.workingBoard);
 				LevelType lt = kFrame.workingLevel.getLevel().getLevelType();
 				System.out.println(lt);
 				if (lt.equals(LevelType.Lightning)) {
