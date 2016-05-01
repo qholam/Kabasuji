@@ -34,7 +34,6 @@ public class PieceTile extends Tile {
 	public PieceTile(int row, int col){
 		super(row,col);
 		
-		
 		rowInPieceContainer = row;
 		colInPieceContainer = col;
 		c = PieceTileColor.boardPieceColors[PieceTileColor.index % PieceTileColor.boardPieceColors.length];
