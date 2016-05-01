@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import GUI.BuilderLightningLevel;
 import GUI.BullpenView;
 import GUI.KabasujiBuilderFrame;
 import GUI.KabasujiFrame;
@@ -38,6 +39,7 @@ public class TestGUI extends TestCase
 	LevelPanel lp;
 	SpecifyBoardPropertiesView sbpv;
 	LevelSelector ls;
+	BuilderLightningLevel bll;
 
 	public void setUp()
 	{
@@ -86,6 +88,10 @@ public class TestGUI extends TestCase
 		
 		board.removePiece(piece1);
 		assertFalse(board.boardGrid[5][3].isCovered());
+		
+		board.addPiece(piece1, 3, 3);
+		assertTrue(board.boardGrid[5][3].isCovered());
+
 	}
 	
 	/**
@@ -125,7 +131,12 @@ public class TestGUI extends TestCase
 		Component c2 = ls.getComponentAt(7, 1);
 		
 		assertTrue(c2 instanceof JLabel);
-		
 	}
 
+	public void testLightningLevel()
+	{
+		bll = new BuilderLightningLevel(bFrame);
+		Component c = bll.getComponentAt(655, 605);
+		assertTrue(c instanceof JButton);
+	}
 }
