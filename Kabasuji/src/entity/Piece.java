@@ -43,12 +43,12 @@ public class Piece  implements Serializable{
 	 * @param p
 	 */
 	public Piece(Piece p){
+		pieceGrid = new PieceTile[maxHeight][maxWidth];
 		this.pieceGrid = p.pieceGrid;
-		
 		for(int r = 0; r < maxWidth; r++){
 			for(int c = 0; c < maxHeight; c++){
 				if(p.getpieceGrid()[c][r] != null)
-					pieceGrid[c][r] = new PieceTile(r, c); 
+					pieceGrid[c][r] = new PieceTile(r, c);
 			}
 		}	
 		
@@ -56,7 +56,8 @@ public class Piece  implements Serializable{
 		colPos = p.colPos;
 		
 		//updates index so that next piece created is different color
-		PieceTileColor.index = PieceTileColor.index % PieceTileColor.boardPieceColors.length;
+		//PieceTileColor.index = PieceTileColor.index % PieceTileColor.boardPieceColors.length;
+		PieceTileColor.index++;
 	}
 	
 	/**
