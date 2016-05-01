@@ -123,8 +123,13 @@ public class LevelPanel extends JPanel {
 		add(bullpen);
 
 		JButton resetBtn = new JButton("RESET");
-		resetBtn.addActionListener(
-				new LoadLevelCtrl(this.getLevel().getLevelType(), kFrame, this.getLevel().getLevelNum()));
+		resetBtn.addActionListener(new LoadLevelCtrl(this.getLevel().getLevelType(), kFrame, this.getLevel().getLevelNum()));
+		resetBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				//saves stars before reseting level
+				saveStars();
+			}
+		});
 		resetBtn.setBounds(650, 564, 100, 100);
 		// this makes the drag smoother
 		resetBtn.addMouseMotionListener(new MouseMoveCtrl(this));
@@ -198,6 +203,12 @@ public class LevelPanel extends JPanel {
 		this.addMouseListener(new MouseMoveCtrl(this));
 
 		nextLvlBtn = new JButton("Next Level");
+		nextLvlBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				//saves stars before moving on to next level
+				saveStars();
+			}
+		});
 		nextLvlBtn.addActionListener(new LoadLevelCtrl(l.getLevelType(), kFrame, l.getLevelNum() + 1));
 		nextLvlBtn.setBounds(650, 675, 100, 36);
 		nextLvlBtn.setVisible(false);
@@ -268,16 +279,15 @@ public class LevelPanel extends JPanel {
 		int prevStars = kFrame.getStars(this.getLevel().getLevelType(), this.getLevel().getLevelNum());
 		// get current stars
 		int curStars = this.getLevel().getStars();
-
+		System.out.println(prevStars + " " + curStars + "Level Num" + this.getLevel().getLevelNum());
 		//if there were no previous stars
 
 		if(prevStars == 0){
-			String str = this.getLevel().getLevelType().toString() + this.getLevel().getLevelNum() + ": " + curStars;
+			String str = "\n" + this.getLevel().getLevelType().toString() + this.getLevel().getLevelNum() + ": " + curStars;
 			
 			FileOutputStream fileOut;
 			try {
-				fileOut = new FileOutputStream("src/LevelInfo/LevelStars");
-				
+				fileOut = new FileOutputStream("src/LevelInfo/LevelStars", true);
 				fileOut.write(str.getBytes());
 				fileOut.close();
 			} catch (IOException e) {

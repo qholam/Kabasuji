@@ -168,7 +168,7 @@ public class BoardCtrl implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent me) {
-		System.out.println(me.getX() + " " + me.getY());
+		//System.out.println(me.getX() + " " + me.getY());
 		if (levelPanel instanceof LevelPanel) {
 			bp = ((LevelPanel) levelPanel).getBullpenView().getBullpen();
 			bpview = ((LevelPanel) levelPanel).getBullpenView();
