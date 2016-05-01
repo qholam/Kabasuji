@@ -45,7 +45,8 @@ public class EditorPanelCtrl implements MouseListener, MouseMotionListener {
 		System.out.println(pv.getPiece().toString());
 		if(pv instanceof PieceView){
 			Piece p = ((PieceView) pv).getPiece();
-			bv.addPiece(p);
+			Piece pClone = new Piece(p);
+			bv.addPiece(pClone);
 			System.out.println("# in bullpen" + bv.getBullpen().getPieces().size());
 			}
 		}
