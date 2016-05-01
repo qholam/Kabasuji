@@ -5,11 +5,13 @@ import javax.swing.JPanel;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -139,13 +141,7 @@ public class LevelPanel extends JPanel {
 			timer = new Timer(1000, new ActionListener() {
 				// Codes runs every one second
 				public void actionPerformed(ActionEvent e) {
-					if (!l.hasWon() && ((LightningLevel) l).getTimeRemaining() > 0) {// update
-																						// timer
-																						// if
-																						// game
-																						// has
-																						// been
-																						// won
+					if (!l.hasWon() && ((LightningLevel) l).getTimeRemaining() > 0) {
 						// get the time remaining
 						int remaining = ((LightningLevel) l).getTimeRemaining();
 						// update time
@@ -185,15 +181,15 @@ public class LevelPanel extends JPanel {
 		add(panel);
 		panel.setLayout(new GridLayout(3, 1, 0, 0));
 
-		star3 = new JLabel("---");
+		star3 = new JLabel("");
 		star3.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(star3);
 
-		star2 = new JLabel("---");
+		star2 = new JLabel("");
 		star2.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(star2);
 
-		star1 = new JLabel("---");
+		star1 = new JLabel("");
 		star1.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(star1);
 
@@ -211,14 +207,20 @@ public class LevelPanel extends JPanel {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-
+		ImageIcon star = new ImageIcon(new ImageIcon(getClass().getResource("pictures/star.png")).getImage().getScaledInstance(100,100, Image.SCALE_DEFAULT));
 		// update stars accordingly
-		if (threeStar)
-			star3.setText("Three star");
-		else if (twoStar)
-			star2.setText("Two star");
-		else if (oneStar)
-			star1.setText("One star");
+		if (threeStar){
+			star3.setIcon(star);
+			//star3.setText("Three star");
+		}
+		else if (twoStar){
+			star2.setIcon(star);
+			//star2.setText("Two star");
+		}
+		else if (oneStar){
+			star1.setIcon(star);
+			//star1.setText("One star");
+		}
 
 		// update moves/time depending on the level type
 		if (level instanceof PuzzleLevel)
