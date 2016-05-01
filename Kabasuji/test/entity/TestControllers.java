@@ -10,6 +10,7 @@ import GUI.BoardPanel;
 import GUI.BullpenView;
 import GUI.KabasujiFrame;
 import GUI.LevelPanel;
+import controller.BoardCtrl;
 import controller.DragCtrl;
 import controller.HorizontalFlipCtrl;
 import controller.MouseMoveCtrl;
@@ -33,6 +34,7 @@ public class TestControllers extends TestMouse {
 	ArrayList<Piece> bpArray;
 	Board board;
 	BoardPanel boardPanel;
+	BoardCtrl bc;
 	MouseEvent pr, re;
 	PuzzleLevel pl;
 	LevelPanel lp;
@@ -50,9 +52,11 @@ public class TestControllers extends TestMouse {
 	bp2 = new Bullpen();
 	bp2.addPiece(piece, 1);
 	board = new Board(pl, 12, 12);
+	boardPanel = new BoardPanel(board);
 	pl = new PuzzleLevel(5, board, bp2, true, 1, 1);
 	kFrame = new KabasujiFrame();
 	lp = new LevelPanel(kFrame, pl);
+	bc = new BoardCtrl(boardPanel, lp);
 	}
 	
 	public void testVerticalFlip(){
@@ -70,12 +74,6 @@ public class TestControllers extends TestMouse {
 		p = bpc.getPieceView().getPiece();
 		assertEquals(piece, p);
 		
-		/*
-		MouseEvent me = new MouseEvent(bp., MouseEvent.MOUSE_PRESSED, 
-				System.currentTimeMillis(), 0, 
-				10, 10, 0, false);
-		VFC.mouseClicked(me);
-		*/
 	}
 	
 	public void testHorizantalFlip(){
@@ -139,17 +137,22 @@ public class TestControllers extends TestMouse {
 		pr = mouseMoved(bpv, 643, 148);
 		MMC.mouseMoved(pr);
 		pr = createClicked(bpv, 643, 132);
-		MMC.mouseReleased(pr);
+		MMC.mousePressed(pr);
 		p = bpc.getPieceView().getPiece();
 		assertTrue(p != null);
 	}
-	
+
 	public void testDragCtrl(){
 		bpv = new BullpenView(bp2, lp);
 		bpc = new PieceInBullpenCtrl(bpv, pv);
 		DragCtrl dc = new DragCtrl(pv, lp);
 		pr = createClicked(bpv, 18, 132);
 		dc.mousePressed(pr);
+		re = createClicked(boardPanel, 15, 21);
+		dc.mouseReleased(re);
+		//bc.mouseReleased(re);
+		p = bc.getBoardView().getBoard().getPieceAt(0, 0);
+		//assertEquals(lp.getPieceContainer().getDraggingPiece(), pv);
 	}
 	
 	
