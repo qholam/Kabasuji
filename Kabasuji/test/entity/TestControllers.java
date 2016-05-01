@@ -8,8 +8,11 @@ import java.util.ArrayList;
 
 import GUI.BoardPanel;
 import GUI.BullpenView;
+import GUI.KabasujiFrame;
 import GUI.LevelPanel;
+import controller.DragCtrl;
 import controller.HorizontalFlipCtrl;
+import controller.MouseMoveCtrl;
 import controller.PieceInBullpenCtrl;
 import controller.RotateClockwiseCtrl;
 import controller.RotateCounterClockwiseCtrl;
@@ -20,16 +23,18 @@ import view.PieceView;
 public class TestControllers extends TestMouse {
 	
 	KabasujiGame game;
+	KabasujiFrame kFrame;
 	Piece piece, p, piece2;
 	PieceView pv;
 	PieceTile[] pieceTiles = new PieceTile[6];
-	Bullpen bp;
+	Bullpen bp, bp2;
 	BullpenView bpv;
 	PieceInBullpenCtrl bpc;
 	ArrayList<Piece> bpArray;
 	Board board;
 	BoardPanel boardPanel;
 	MouseEvent pr, re;
+	PuzzleLevel pl;
 	LevelPanel lp;
 
 	
@@ -42,6 +47,12 @@ public class TestControllers extends TestMouse {
 		}
 	pv = new PieceView(piece);
 	piece2 = piece;
+	bp2 = new Bullpen();
+	bp2.addPiece(piece, 1);
+	board = new Board(pl, 12, 12);
+	pl = new PuzzleLevel(5, board, bp2, true, 1, 1);
+	kFrame = new KabasujiFrame();
+	lp = new LevelPanel(kFrame, pl);
 	}
 	
 	public void testVerticalFlip(){
@@ -55,6 +66,7 @@ public class TestControllers extends TestMouse {
 		bpc.mousePressed(pr);
 		pr = createClicked(bpv, 102, 29);
 		VFC.mousePressed(pr);
+		VFC.mouseReleased(pr);
 		p = bpc.getPieceView().getPiece();
 		assertEquals(piece, p);
 		
@@ -77,6 +89,7 @@ public class TestControllers extends TestMouse {
 		bpc.mousePressed(pr);
 		pr = createClicked(bpv, 90, 12);
 		HFC.mousePressed(pr);
+		HFC.mouseReleased(pr);
 		p = bpc.getPieceView().getPiece();
 		piece.horizontalFlip();
 		assertEquals(piece, p);
@@ -93,6 +106,7 @@ public class TestControllers extends TestMouse {
 		bpc.mousePressed(pr);
 		pr = createPressed(bpv, 45, 32);
 		RCC.mousePressed(pr);
+		RCC.mouseReleased(pr);
 		p = bpc.getPieceView().getPiece();
 		piece.rotateCounterclockwise();
 		assertEquals(piece, p);
@@ -110,12 +124,33 @@ public class TestControllers extends TestMouse {
 		bpc.mousePressed(pr);;
 		pr = createPressed(bpv, 102, 19);
 		RC.mousePressed(pr);
+		RC.mouseReleased(pr);
 		p = bpc.getPieceView().getPiece();
 		piece.rotateClockwise();
 		assertEquals(piece, p);
 	}
 	
+	public void testMoveMouseCtrl(){
+		bpv = new BullpenView(bp2, lp);
+		bpc = new PieceInBullpenCtrl(bpv, pv);
+		MouseMoveCtrl MMC = new MouseMoveCtrl(lp);
+		pr = createClicked(bpv, 18, 132);
+		bpc.mousePressed(pr);
+		pr = mouseMoved(bpv, 643, 148);
+		MMC.mouseMoved(pr);
+		pr = createClicked(bpv, 643, 132);
+		MMC.mouseReleased(pr);
+		p = bpc.getPieceView().getPiece();
+		assertTrue(p != null);
+	}
 	
+	public void testDragCtrl(){
+		bpv = new BullpenView(bp2, lp);
+		bpc = new PieceInBullpenCtrl(bpv, pv);
+		DragCtrl dc = new DragCtrl(pv, lp);
+		pr = createClicked(bpv, 18, 132);
+		dc.mousePressed(pr);
+	}
 	
 	
 }
