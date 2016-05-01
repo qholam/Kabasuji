@@ -280,8 +280,8 @@ public class LevelPanel extends JPanel {
 		// get current stars
 		int curStars = this.getLevel().getStars();
 		System.out.println(prevStars + " " + curStars + "Level Num" + this.getLevel().getLevelNum());
+		
 		//if there were no previous stars
-
 		if(prevStars == 0){
 			String str = "\n" + this.getLevel().getLevelType().toString() + this.getLevel().getLevelNum() + ": " + curStars;
 			
