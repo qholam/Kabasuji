@@ -169,7 +169,7 @@ public class Board implements Serializable {
 		// simulate adding
 		int r = 0;
 		int c = 0;
-
+		
 		PieceTile[][] pgrid = p.getpieceGrid();
 		for (int i = row; i < row + p.getMaxHeight(); i++) {
 			for (int j = col; j < col + p.getMaxWidth(); j++) {

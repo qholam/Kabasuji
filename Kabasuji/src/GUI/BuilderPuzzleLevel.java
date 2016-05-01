@@ -59,12 +59,14 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		setLayout(null);
 		setBounds(0, 0, 1200, 800);
 		
-		boardPanel = new BoardPanel(new Board(null, 12, 12));
+		boardPanel = new BoardPanel(kFrame.workingBoard);
 		boardPanel.setBounds(25, 400, 600, 300);
 		boardPanel.addMouseListener(new BoardCtrl(boardPanel, this));
 		boardPanel.addMouseMotionListener(new MouseMoveCtrl(this));
 		boardPanel.addMouseListener(new MouseMoveCtrl(this));
 		add(boardPanel);
+		
+		//System.out.println(boardPanel.getBoard().getLevel().getLevelType());
 		
 		Bullpen b = new Bullpen();
 		//test pieces

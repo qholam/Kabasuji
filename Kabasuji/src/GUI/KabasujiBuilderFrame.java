@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 import entity.Board;
 import entity.Level;
+import entity.LevelType;
 import entity.Piece;
 import entity.PieceTile;
 
@@ -22,6 +23,7 @@ public class KabasujiBuilderFrame extends JFrame {
 	final String SpecifyBoardProperties = "SpecifyBoardProperties";
 	final String BuilderPuzzleLevel = "BuilderPuzzleLevel";
 	final String BuilderLightningLevel = "BuilderLightningLevel";
+	public LevelType levelType;
 
 
 	private JPanel contentPane;
@@ -53,7 +55,7 @@ public class KabasujiBuilderFrame extends JFrame {
 	 */
 	public KabasujiBuilderFrame() {
 		container = new PieceContainer();
-		
+		workingBoard = new Board(null, 12,12);
 		initPieces();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
