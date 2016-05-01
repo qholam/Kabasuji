@@ -82,9 +82,9 @@ public class KabasujiBuilderFrame extends JFrame {
 		
 		//Added by nick
 		//CHANGE FOR LIGHTNING
-		workingLevel=new BuilderPuzzleLevel(this);
-		workingLevel.setBounds(0, 0, 1200, 800);
-		contentPane.add(workingLevel, BuilderPuzzleLevel);
+		//workingLevel=new BuilderPuzzleLevel(this);
+		//workingLevel.setBounds(0, 0, 1200, 800);
+		//contentPane.add(workingLevel, BuilderPuzzleLevel);
 		
 		splash.displaySplashScreen();
 	}
