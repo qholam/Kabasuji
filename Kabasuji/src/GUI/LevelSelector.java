@@ -23,6 +23,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -184,80 +185,97 @@ public class LevelSelector extends JPanel {
 		lblSelectLevel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		lblSelectLevel.setBounds(331, 60, 117, 29);
 		add(lblSelectLevel);
-
+		
+		//Labels that hold the highest star achieved for each level
 		int stars = kFrame.getStars(LevelType.Puzzle, 1);
-		lblPuzzleStars1 = new JLabel(stars + " Star");
+		System.out.println(stars);
+		lblPuzzleStars1 = new JLabel();
 		lblPuzzleStars1.setBounds(120, 260, 61, 16);
+		lblPuzzleStars1.setIcon(new ImageIcon(getClass().getResource("pictures/" + stars + "star.png")));
 		add(lblPuzzleStars1);
 
 		stars = kFrame.getStars(LevelType.Puzzle, 2);
 		lblPuzzleStars2 = new JLabel(stars + " Star");
 		lblPuzzleStars2.setBounds(240, 260, 61, 16);
+		lblPuzzleStars2.setIcon(new ImageIcon(getClass().getResource("pictures/" + stars + "star.png")));
 		add(lblPuzzleStars2);
 
 		stars = kFrame.getStars(LevelType.Puzzle, 3);
 		lblPuzzleStars3 = new JLabel(stars + " Star");
 		lblPuzzleStars3.setBounds(360, 260, 61, 16);
+		lblPuzzleStars3.setIcon(new ImageIcon(getClass().getResource("pictures/" + stars + "star.png")));
 		add(lblPuzzleStars3);
 
 		stars = kFrame.getStars(LevelType.Puzzle, 4);
 		lblPuzzleStars4 = new JLabel(stars + " Star");
 		lblPuzzleStars4.setBounds(480, 260, 61, 16);
+		lblPuzzleStars4.setIcon(new ImageIcon(getClass().getResource("pictures/" + stars + "star.png")));
 		add(lblPuzzleStars4);
 
 		stars = kFrame.getStars(LevelType.Puzzle, 5);
 		lblPuzzleStars5 = new JLabel(stars + " Star");
 		lblPuzzleStars5.setBounds(600, 260, 61, 16);
+		lblPuzzleStars5.setIcon(new ImageIcon(getClass().getResource("pictures/" + stars + "star.png")));
 		add(lblPuzzleStars5);
 
 		stars = kFrame.getStars(LevelType.Release, 1);
 		lblReleaseStars1 = new JLabel(stars + " Star");
 		lblReleaseStars1.setBounds(120, 426, 61, 16);
+		lblReleaseStars1.setIcon(new ImageIcon(getClass().getResource("pictures/" + stars + "star.png")));
 		add(lblReleaseStars1);
 
 		stars = kFrame.getStars(LevelType.Release, 2);
 		lblReleaseStars2 = new JLabel(stars + " Star");
 		lblReleaseStars2.setBounds(240, 426, 61, 16);
+		lblReleaseStars2.setIcon(new ImageIcon(getClass().getResource("pictures/" + stars + "star.png")));
 		add(lblReleaseStars2);
 		
 		stars = kFrame.getStars(LevelType.Release, 3);
 		lblReleaseStars3 = new JLabel(stars + " Star");
 		lblReleaseStars3.setBounds(357, 426, 61, 16);
+		lblReleaseStars3.setIcon(new ImageIcon(getClass().getResource("pictures/" + stars + "star.png")));
 		add(lblReleaseStars3);
 
 		stars = kFrame.getStars(LevelType.Release, 4);
 		lblReleaseStars4 = new JLabel(stars + " Star");
 		lblReleaseStars4.setBounds(480, 426, 61, 16);
+		lblReleaseStars4.setIcon(new ImageIcon(getClass().getResource("pictures/" + stars + "star.png")));
 		add(lblReleaseStars4);
 
 		stars = kFrame.getStars(LevelType.Release, 5);
 		lblReleaseStars5 = new JLabel(stars + " Star");
 		lblReleaseStars5.setBounds(600, 426, 61, 16);
+		lblReleaseStars5.setIcon(new ImageIcon(getClass().getResource("pictures/" + stars + "star.png")));
 		add(lblReleaseStars5);
 		
 		stars = kFrame.getStars(LevelType.Lightning, 1);
 		lblLightningStars1 = new JLabel(stars + " Star");
 		lblLightningStars1.setBounds(120, 590, 61, 16);
+		lblLightningStars1.setIcon(new ImageIcon(getClass().getResource("pictures/" + stars + "star.png")));
 		add(lblLightningStars1);
 
 		stars = kFrame.getStars(LevelType.Lightning, 2);
 		lblLightningStars2 = new JLabel(stars + " Star");
 		lblLightningStars2.setBounds(240, 590, 61, 16);
+		lblLightningStars2.setIcon(new ImageIcon(getClass().getResource("pictures/" + stars + "star.png")));
 		add(lblLightningStars2);
 
 		stars = kFrame.getStars(LevelType.Lightning, 3);
 		lblLightningStars3 = new JLabel(stars + " Star");
 		lblLightningStars3.setBounds(360, 590, 61, 16);
+		lblLightningStars3.setIcon(new ImageIcon(getClass().getResource("pictures/" + stars + "star.png")));
 		add(lblLightningStars3);
 
 		stars = kFrame.getStars(LevelType.Lightning, 4);
 		lblLightningStars4 = new JLabel(stars + " Star");
 		lblLightningStars4.setBounds(480, 590, 61, 16);
+		lblLightningStars4.setIcon(new ImageIcon(getClass().getResource("pictures/" + stars + "star.png")));
 		add(lblLightningStars4);
 
 		stars = kFrame.getStars(LevelType.Lightning, 5);
 		lblLightningStars5 = new JLabel(stars + " Star");
 		lblLightningStars5.setBounds(600, 590, 61, 16);
+		lblLightningStars5.setIcon(new ImageIcon(getClass().getResource("pictures/" + stars + "star.png")));
 		add(lblLightningStars5);
 
 	}
