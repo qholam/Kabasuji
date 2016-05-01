@@ -55,6 +55,7 @@ public class Piece  implements Serializable{
 		rowPos = p.rowPos;
 		colPos = p.colPos;
 		
+		
 		//updates index so that next piece created is different color
 		//PieceTileColor.index = PieceTileColor.index % PieceTileColor.boardPieceColors.length;
 		PieceTileColor.index++;
