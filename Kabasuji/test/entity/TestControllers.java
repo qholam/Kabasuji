@@ -58,7 +58,7 @@ public class TestControllers extends TestMouse {
 	lp = new LevelPanel(kFrame, pl);
 	bc = new BoardCtrl(boardPanel, lp);
 	}
-	
+	/**
 	public void testVerticalFlip(){
 		bpArray = new ArrayList<Piece>();
 		bpArray.add(piece);
@@ -126,7 +126,7 @@ public class TestControllers extends TestMouse {
 		p = bpc.getPieceView().getPiece();
 		piece.rotateClockwise();
 		assertEquals(piece, p);
-	}
+	}**/
 	
 	public void testMoveMouseCtrl(){
 		bpv = new BullpenView(bp2, lp);
