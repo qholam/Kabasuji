@@ -21,7 +21,7 @@ import view.PieceView;
  * @author LilyAnne
  *
  */
-public class LilyAnneTest extends TestCase 
+public class TestGUI extends TestCase 
 {
 	Bullpen pen;
 	Piece piece1;
