@@ -207,7 +207,9 @@ public class LevelPanel extends JPanel {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		ImageIcon star = new ImageIcon(new ImageIcon(getClass().getResource("pictures/star.png")).getImage().getScaledInstance(100,100, Image.SCALE_DEFAULT));
+		
+		ImageIcon star = new ImageIcon(getClass().getResource("pictures/star.png"));
+
 		// update stars accordingly
 		if (threeStar){
 			star3.setIcon(star);
