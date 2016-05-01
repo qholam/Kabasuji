@@ -12,6 +12,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import javax.swing.border.LineBorder;
+
+import controller.LoadLevelCtrl;
+import entity.LevelType;
+
 import javax.swing.JLabel;
 
 public class MainMenuPanel extends JPanel 
@@ -62,12 +66,7 @@ public class MainMenuPanel extends JPanel
 		add(button);
 		
 		Button button_1 = new Button("Play");
-		button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ae) {
-				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.Puzzle1);
-				repaint();
-			}
-		});
+		button_1.addActionListener(new LoadLevelCtrl(LevelType.Puzzle, kFrame, 1));
 		button_1.setForeground(Color.YELLOW);
 		button_1.setFont(new Font("Dialog", Font.PLAIN, 49));
 		button_1.setBackground(new Color(255, 165, 0));
@@ -79,8 +78,10 @@ public class MainMenuPanel extends JPanel
 			public void actionPerformed(ActionEvent ae) {
 				FileOutputStream fileOut;
 				try {
+					//open file that holds info on stars
 					fileOut = new FileOutputStream("src/LevelInfo/LevelStars");
 					
+					//delete everything
 					fileOut.write("".getBytes());
 					fileOut.close();
 				} catch (IOException e) {

@@ -18,6 +18,7 @@ import entity.Piece;
 import entity.PieceTile;
 import entity.PuzzleLevel;
 import serializers.Deserializer;
+import serializers.Serializer;
 
 import java.awt.CardLayout;
 
