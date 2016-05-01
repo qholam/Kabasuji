@@ -171,8 +171,8 @@ public class Board implements Serializable {
 		int c = 0;
 
 		PieceTile[][] pgrid = p.getpieceGrid();
-		for (int i = row; i < row + p.getMaxWidth(); i++) {
-			for (int j = col; j < col + p.getMaxHeight(); j++) {
+		for (int i = row; i < row + p.getMaxHeight(); i++) {
+			for (int j = col; j < col + p.getMaxWidth(); j++) {
 				if ((i < 0 || j < 0 || i >= numRows || j >= numColumns)) {//checks if pieces tiles will be places outside the boundaries of the board
 					if (pgrid[c][r] != null)
 						return false;
