@@ -3,6 +3,7 @@ package GUI;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.Graphics;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -198,13 +199,15 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		txtEnterHeightmax.setText("" + height);
 		
 		boardContainer.remove(board);
+		boardContainer.revalidate();
+		boardContainer.repaint();
 		board = new BoardPanel(new Board(kFrame.workingLevel.getLevel(), height, width));
 		board.addMouseListener(new SpecifyBoardCtrl(this, board));
 		kFrame.setWorkingBoard(board.getBoard());
 		boardContainer.add(board);
-		board.setRepaintValid();
-		repaint();
-		
+		boardContainer.revalidate();
+		boardContainer.repaint();
+		repaint();	
 	}
 	
 	/**
