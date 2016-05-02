@@ -165,7 +165,7 @@ public class BullpenView extends JPanel {
 	public void setRepaintValid(){
 		repaint = true;
 		for(PieceView p: pieces){
-			p.setRepaintInvalid();
+			p.setRepaintValid();
 		}
 		repaint();
 	}
