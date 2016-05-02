@@ -138,7 +138,7 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
 		    	bp.changeQuantity(dragged, 1);
 		    	((BuilderLevel) l).getBullpenView().setRepaintValid();
 		    	
-		    	container.setVisible(false);
+		    	container.setVisible(false); 
 			}
 		}
 		
