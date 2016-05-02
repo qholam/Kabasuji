@@ -102,9 +102,10 @@ public class TileView extends JPanel{
 	 * this is needed to prevent flickering when dragging inside the board.
 	 * TODO: find another way to prevent this flickering
 	 */
+	/**
 	public void setRepaintInvalid(){
 		repaint = false;
-	}
+	}*/
  
 	/**
 	 * this is needed to prevent flickering when dragging inside the board.

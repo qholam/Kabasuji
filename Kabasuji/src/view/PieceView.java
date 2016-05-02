@@ -98,6 +98,7 @@ public class PieceView extends JPanel {
 	 * this is needed to prevent flickering when dragging inside the board.
 	 * TODO: find another way to prevent this flickering
 	 */
+	/**
 	public void setRepaintInvalid(){
 		repaint = false;
 		for(int i = 0; i < tilesView.length; i++){
@@ -105,7 +106,7 @@ public class PieceView extends JPanel {
 				tilesView[j][i].setRepaintInvalid();
 			}
 		}
-	}
+	}*/
 	
 	/**
 	 * this is needed to prevent flickering when dragging inside the board.

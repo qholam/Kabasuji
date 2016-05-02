@@ -107,14 +107,14 @@ public class BoardPanel extends JPanel {
 	 * this is needed to prevent flickering when dragging inside the board.
 	 * TODO: find another way to prevent this flickering
 	 */
-	public void setRepaintInvalid(){
+	/**public void setRepaintInvalid(){
 		repaint = false;
 		for (int r = 0; r < board.getNumRows(); r++) {
 			for (int c = 0; c < board.getNumRows(); c++) {
 				tileViews[c][r].setRepaintInvalid();
 			}
 		}
-	}
+	}*/
 	
 	/**
 	 * this is needed to prevent flickering when dragging inside the board.

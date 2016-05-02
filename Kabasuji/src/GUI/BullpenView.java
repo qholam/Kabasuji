@@ -152,11 +152,12 @@ public class BullpenView extends JPanel {
 	 * this is needed to prevent flickering when dragging inside the board.
 	 * TODO: find another way to prevent this flickering
 	 */
+	/**
 	public void setRepaintInvalid(){
 		for(PieceView p: pieces){
 			p.setRepaintInvalid();
 		}
-	}
+	}*/
 	
 	/**
 	 * this is needed to prevent flickering when dragging inside the board.
