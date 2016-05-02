@@ -69,7 +69,7 @@ public class PieceView extends JPanel {
 			}
 		}
 		
-		
+		/*
 		for(int i = 0; i < tilesView.length; i++){
 			for(int j = 0; j < tilesView[i].length; j++){
 				if(piece.getpieceGrid()[j][i] != null){
@@ -82,7 +82,7 @@ public class PieceView extends JPanel {
 				}
 			}
 		}
-		
+		*/
 	}
 
 	@Override

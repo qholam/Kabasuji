@@ -101,7 +101,7 @@ public class DragCtrl implements MouseListener, MouseMotionListener {
 			// get the bullpenview
 			bullpen = ((LevelPanel) l).getBullpenView();
 			// get container
-			container = ((LevelPanel) l).getPieceContainer();
+			container = ((LevelPanel) l).getPieceContainer(); 
 		} else {
 			// get the bullpenview
 			bullpen = ((BuilderLevel) l).getBullpenView();
@@ -154,7 +154,9 @@ public class DragCtrl implements MouseListener, MouseMotionListener {
 
 					// update quantity of piece
 					Bullpen bp = bullpen.getBullpen();
-					bp.changeQuantity(p, -1);
+					bullpen.getPieceViews().remove(pv);
+					bullpen.removePiece(pv);
+					bp.getPieces().remove(p);
 				}
 			} else {// another piece is currently being dragged, release it
 					// first

@@ -25,7 +25,7 @@ public class Bullpen implements Serializable {
 
 	/**
 	 * Constructor to create a Bullpen filled with the given pieces.
-	 * @param p the pieces to add to the Bullpen
+	 * @param p the pieces to add to the Bullpen 
 	 */
 	public Bullpen(ArrayList<Piece> p){
 		//initially no piece is selected
@@ -113,13 +113,6 @@ public class Bullpen implements Serializable {
 	 * Checks the number of pieces left.
 	 */
 	public int getNumPieces(){
-		int num = 0;
-		
-		for(Piece p: pieces){
-			if(piecesInfo.get(p) > 0)
-				num++;
-		}
-		//System.out.println("Pieces left: " + num);
-		return num;	
+		return pieces.size();
 	}
 }

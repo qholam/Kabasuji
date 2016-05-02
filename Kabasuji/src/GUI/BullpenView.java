@@ -129,16 +129,22 @@ public class BullpenView extends JPanel {
 		super.paintComponent(g);
 		
 		ArrayList<Piece> p = bullpen.getPieces();
-		for(int i = 0; i < pieces.size(); i++){
+		for(int i = 0; i < p.size(); i++){
 			pieces.get(i).setPiece(p.get(i));
 			if(bullpen.getQuantity(pieces.get(i).getPiece()) < 1){
-				pieces.get(i).setVisible(false);
+				//pieces.get(i).setVisible(false);
 			}
 			else{
 				pieces.get(i).setVisible(true);
 			}
 		}
 	}
+	
+	public void removePiece(PieceView p){
+		scrollPanel.remove(p);
+		scrollPanel.setPreferredSize(new Dimension(200 * scrollPanel.getComponents().length, 0)); 
+	}
+	
 	
 	@Override
 	public void repaint(){
@@ -188,7 +194,7 @@ public class BullpenView extends JPanel {
 	
 	public PieceView getSelected(){
 		return selected;
-	}
+	} 
 	
 	public void addPiece(Piece p) {
 		bullpen.addPiece(p);

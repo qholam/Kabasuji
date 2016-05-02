@@ -34,7 +34,7 @@ public class EditorPanelCtrl implements MouseListener, MouseMotionListener {
 	}
 	
 	@Override
-	public void mouseClicked(MouseEvent me) {
+	public void mouseClicked(MouseEvent me) { 
 		System.out.println("# in bullpen" + bv.getBullpen().getPieces().size());
 		System.out.println("GOT CLICK");
 		if(!(l instanceof BuilderLevel)){

@@ -32,7 +32,7 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
 	@Override
     public void mouseMoved(MouseEvent me) {
     	TileView tv;
- 
+  
     	//check if container is currently being used
     	if(container.isVisible()){ 
     		//this prevents flickering when dragging a piece over the board 
@@ -116,7 +116,7 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
 				
 				//added it back to the bullpen by updating pieces quantity
 				Bullpen bp = ((LevelPanel) l).getBullpenView().getBullpen();
-		    	bp.changeQuantity(dragged, 1);
+				((LevelPanel) l).getBullpenView().addPiece(container.getDraggingPiece().getPiece());
 		    	((LevelPanel) l).getBullpenView().setRepaintValid();
 		    	
 		    	container.setVisible(false);
@@ -135,7 +135,7 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
 				
 				//added it back to the bullpen by updating pieces quantity
 				Bullpen bp = ((BuilderLevel) l).getBullpenView().getBullpen();
-		    	bp.changeQuantity(dragged, 1);
+				((BuilderLevel) l).getBullpenView().addPiece(container.getDraggingPiece().getPiece());
 		    	((BuilderLevel) l).getBullpenView().setRepaintValid();
 		    	
 		    	container.setVisible(false); 
