@@ -48,7 +48,7 @@ public class SpecifyBoardCtrl implements MouseListener {
 	ReleaseTile blueRelease = new ReleaseTile(0, 0, new Number(1, Color.BLUE));
 	@Override
 	public void mousePressed(MouseEvent me) {
-		
+		System.out.println(me.getX() + " " + me.getY());
 		TileView t = sbpv.getClickedTile(me);
 		//click has to be on a board tile
 		if(t == null)
@@ -56,6 +56,7 @@ public class SpecifyBoardCtrl implements MouseListener {
 		
 		int row = t.getTile().getRow();
 		int col = t.getTile().getCol();
+		System.out.println(me.getModifiers());
 		
 		if(SwingUtilities.isLeftMouseButton(me)){//left click will remove/readd tiles
 			//add or remove board tile depending on whether or not there is currently a board tile at clicked location

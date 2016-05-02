@@ -1,6 +1,7 @@
 package entity;
 
 import java.awt.AWTException;
+import java.awt.Component;
 import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
@@ -44,11 +45,12 @@ public class TestControllers extends TestMouse {
 	BullpenView bpv;
 	PieceInBullpenCtrl bpc;
 	ArrayList<Piece> bpArray;
-	Board board;
-	BoardPanel boardPanel;
+	Board board, rb;
+	BoardPanel boardPanel2;
 	BoardCtrl bc;
 	MouseEvent pr, re;
 	PuzzleLevel pl;
+	ReleaseLevel rl;
 	LevelPanel lp;
 
 	
@@ -64,12 +66,13 @@ public class TestControllers extends TestMouse {
 	bp2 = new Bullpen();
 	bp2.addPiece(piece, 1);
 	board = new Board(pl, 10, 10);
+	rb = new Board(release, 10, 10);
 	boardPanel = new BoardPanel(board);
 	pl = new PuzzleLevel(5, board, bp2, true, 1, 1);
 	kFrame = new KabasujiFrame();
 	lp = new LevelPanel(kFrame, pl);
 	}
-
+/**
 	public void testVerticalFlip(){
 		bpArray = new ArrayList<Piece>();
 		bpArray.add(piece);
@@ -165,19 +168,24 @@ public class TestControllers extends TestMouse {
 		p = bc.getBoardView().getBoard().getPieceAt(0, 0);
 		//assertEquals(lp.getPieceContainer().getDraggingPiece(), pv);
 	}
-	
+	**/
 	public void testSpecifyBoardCtrl(){
 		bFrame = new KabasujiBuilderFrame();
+		bFrame.setWorkingBoard(rb);
 		//KabasujiBuilderFrame bFrame2 = new KabasujiBuilderFrame();
 		boardPanel = new BoardPanel(bFrame.getBoard());
 		SpecifyBoardPropertiesView properties = new SpecifyBoardPropertiesView(bFrame);
 		SpecifyBoardCtrl sbc = new SpecifyBoardCtrl(properties, boardPanel);
-		re = createPressed2(boardPanel, 0, 0);
-		//bFrame2 = properties.getFrame();
+		re = createPressed2(boardPanel, 140, 141);
 		sbc.mouseClicked(re);
+		//TileView c = boardPanel.getClickedTile(re);
+		//System.out.println(c);
+		sbc.mousePressed(re);
+		sbc.mousePressed(re);
+		re = createRightClick2(boardPanel, 140, 141);
 		sbc.mousePressed(re);
 	}
-
+/**
 	
 	public void testLoadLevelCtrl(){
 		LoadLevelCtrl LLC = new LoadLevelCtrl(LevelType.Puzzle, kFrame, 1);
@@ -209,6 +217,6 @@ public class TestControllers extends TestMouse {
 		pr = createRightClick(boardPanel, 74, 44);
 		BC.mousePressed(pr);
 		BC.mouseReleased(pr);
-	}
+	}**/
 	
 }
