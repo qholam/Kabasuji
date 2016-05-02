@@ -26,7 +26,7 @@ public class PieceInBullpenCtrl implements MouseListener, MouseMotionListener{
 	@Override
     public void mousePressed(MouseEvent me) {
 		System.out.println(me.getX() + " " + me.getY());
-		if(me.isPopupTrigger()){
+		if(SwingUtilities.isRightMouseButton(me)){
 			Component c = pv.getComponentAt(me.getPoint());
 			
 			//more accurate clicking, piece is only selected if user clicks on a tile that is not null or a notile
