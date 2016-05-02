@@ -279,7 +279,7 @@ public class LevelPanel extends JPanel {
 		int prevStars = kFrame.getStars(this.getLevel().getLevelType(), this.getLevel().getLevelNum());
 		// get current stars
 		int curStars = this.getLevel().getStars();
-		System.out.println(prevStars + " " + curStars + "Level Num" + this.getLevel().getLevelNum());
+		//System.out.println(prevStars + " " + curStars + "Level Num" + this.getLevel().getLevelNum());
 		
 		//if there were no previous stars
 		if(prevStars == 0){
