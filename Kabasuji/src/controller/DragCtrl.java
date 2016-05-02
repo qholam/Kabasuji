@@ -93,8 +93,8 @@ public class DragCtrl implements MouseListener, MouseMotionListener {
 	@Override
 	public void mousePressed(MouseEvent me) {
 		// checks that it is a left mouse press,if not do nothing
-		if (me.isPopupTrigger())
-			return; 
+		if (!SwingUtilities.isLeftMouseButton(me))
+			return;
 
 		// get the bullpen and container
 		if (l instanceof LevelPanel) {

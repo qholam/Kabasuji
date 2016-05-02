@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import junit.framework.TestCase;
+import view.TileView;
 
 /**
  * This class will tests general methods from the entity classes.
@@ -22,6 +23,8 @@ public class TestEntity extends TestCase {
 	ArrayList<PieceTile> pieceTileArray;
 	ArrayList<Piece> BullpenArray;
 	
+	TileView tv;
+	
 	Level level;
 	Board board;
 	
@@ -36,6 +39,8 @@ public class TestEntity extends TestCase {
 		pieceArray = new boolean[6][6];
 		piece2 = new Piece(pieceArray);
 		piece3 = new Piece(piece2);
+		
+		tv = new TileView(releaseTile);
 		
 		BullpenArray = new ArrayList<Piece>();
 		bullpen = new Bullpen();
@@ -81,6 +86,10 @@ public class TestEntity extends TestCase {
 	}
 	
 	public void testTile(){
+		
+		assertEquals(tv.getTile(), releaseTile);
+		tv.setTile(pieceTile);
+		assertEquals(tv.getTile(), pieceTile);
 	}
 	
 	/**
