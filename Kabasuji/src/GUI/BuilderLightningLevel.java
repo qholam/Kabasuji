@@ -69,19 +69,6 @@ public class BuilderLightningLevel extends BuilderLevel {
 		add(boardPanel);
 		
 		Bullpen b = new Bullpen();
-		//test pieces
-		for(int i = 0; i < 6; i++){
-			Piece p = new Piece();
-			p.addTile(new PieceTile(), 0, 2); 
-			p.addTile(new PieceTile(), 1, 2); 
-			p.addTile(new PieceTile(), 2, 2);
-			p.addTile(new PieceTile(), 3, 2);
-			p.addTile(new PieceTile(), 4, 2);
-			p.addTile(new PieceTile(), 5, 2);
-			p.addTile(new PieceTile(), 5-i, 1);
-			p.addTile(new PieceTile(), 5-i, 3);
-			b.addPiece(p);
-		}
 		bullpen = new BullpenView(b, this);
 		bullpen.setBounds(25, 25, 600, 300);
 		//add controllers to handle dragging
