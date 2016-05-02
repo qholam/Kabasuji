@@ -51,7 +51,19 @@ public abstract class TestMouse extends TestCase{
 				System.currentTimeMillis(), 0, 
 				dx, dy, 2, false);
 		return me;
+	}
 	
-	
+	/**
+	 * Creates a mouse move.
+	 * @param source
+	 * @param dx
+	 * @param dy
+	 * @return
+	 */
+	public MouseEvent mouseMoved(JComponent source, int dx, int dy) {
+		MouseEvent me = new MouseEvent(source, MouseEvent.MOUSE_MOVED, 
+				System.currentTimeMillis(), 0, 
+				dx, dy, 0, false);
+		return me;
 	}
 }

@@ -171,12 +171,5 @@ public class TestLevels extends TestCase {
 		puzzle5.doMove(BBM);
 		assertEquals(puzzleBoard5.getPieceAt(2, 2), piece);
 		
-		/**
-		BullpenToBoardMove BPM1 = new BullpenToBoardMove(lightningBoard5, lightning5, piece, bullpen6, 0, 0);
-		lightning5.doMove(BPM1);
-		BoardToBoardMove BBM1 = new BoardToBoardMove(lightningBoard5, lightning5, piece, 2, 2);
-		lightning5.doMove(BBM1);
-		assertEquals(lightningBoard5.getPieceAt(2, 2), piece);
-		**/
 	}
 }

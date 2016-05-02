@@ -99,8 +99,8 @@ public class TestEntity extends TestCase {
 		pieceTile.setPieceGridRow(7);
 		assertEquals(pieceTile.getPieceGridCol(), 5);
 		assertEquals(pieceTile.getPieceGridRow(), 7);
-		assertEquals(pieceTile1.getPieceGridCol(), -1);
-		assertEquals(pieceTile1.getPieceGridRow(), -1);
+		assertEquals(pieceTile1.getPieceGridCol(), 20);
+		assertEquals(pieceTile1.getPieceGridRow(), 10);
 		assertEquals(pieceTile.toString(), tileType.pieceTile);
 	}
 	
@@ -152,7 +152,7 @@ public class TestEntity extends TestCase {
 		boardtile.cover();
 		assertEquals(boardtile.isCovered, true);
 		color = boardtile.getColor();
-		assertEquals(color, Color.orange);
+		assertEquals(color, Color.LIGHT_GRAY);
 	}
 
 	

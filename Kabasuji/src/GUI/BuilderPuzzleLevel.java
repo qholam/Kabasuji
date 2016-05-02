@@ -261,7 +261,7 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		this.addMouseListener(new MouseMoveCtrl(this));
 	}
 	
-	void setBoard(Board b) {
+	public void setBoard(Board b) {
 		remove(boardPanel);
 		boardPanel = new BoardPanel(b);
 		boardPanel.setBounds(25, 400, 600, 300);

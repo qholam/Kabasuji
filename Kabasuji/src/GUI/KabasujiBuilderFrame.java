@@ -10,8 +10,10 @@ import javax.swing.border.EmptyBorder;
 import entity.Board;
 import entity.Level;
 import entity.LevelType;
+import entity.LightningLevel;
 import entity.Piece;
 import entity.PieceTile;
+import entity.PuzzleLevel;
 
 import java.awt.CardLayout;
 
@@ -99,6 +101,12 @@ public class KabasujiBuilderFrame extends JFrame {
 	
 	void setWorkingBoard(Board b) {
 		workingBoard = b;
+		if (b.getLevel() instanceof LightningLevel){
+			workingLevel = (BuilderLightningLevel) workingLevel;
+		}
+		if (b.getLevel() instanceof PuzzleLevel){
+			workingLevel = (BuilderPuzzleLevel) workingLevel;
+		}
 		workingLevel.setBoard(b);
 		workingLevel.repaint();
 	}

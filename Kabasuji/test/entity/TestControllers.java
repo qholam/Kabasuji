@@ -8,8 +8,10 @@ import java.util.ArrayList;
 
 import GUI.BoardPanel;
 import GUI.BullpenView;
+import GUI.KabasujiBuilderFrame;
 import GUI.KabasujiFrame;
 import GUI.LevelPanel;
+import GUI.SpecifyBoardPropertiesView;
 import controller.BoardCtrl;
 import controller.DragCtrl;
 import controller.HorizontalFlipCtrl;
@@ -17,6 +19,7 @@ import controller.MouseMoveCtrl;
 import controller.PieceInBullpenCtrl;
 import controller.RotateClockwiseCtrl;
 import controller.RotateCounterClockwiseCtrl;
+import controller.SpecifyBoardCtrl;
 import controller.VerticalFlipCtrl;
 import junit.framework.TestCase;
 import view.PieceView;
@@ -25,6 +28,7 @@ public class TestControllers extends TestMouse {
 	
 	KabasujiGame game;
 	KabasujiFrame kFrame;
+	KabasujiBuilderFrame bFrame;
 	Piece piece, p, piece2;
 	PieceView pv;
 	PieceTile[] pieceTiles = new PieceTile[6];
@@ -58,7 +62,7 @@ public class TestControllers extends TestMouse {
 	lp = new LevelPanel(kFrame, pl);
 	bc = new BoardCtrl(boardPanel, lp);
 	}
-	/**
+	
 	public void testVerticalFlip(){
 		bpArray = new ArrayList<Piece>();
 		bpArray.add(piece);
@@ -126,7 +130,7 @@ public class TestControllers extends TestMouse {
 		p = bpc.getPieceView().getPiece();
 		piece.rotateClockwise();
 		assertEquals(piece, p);
-	}**/
+	}
 	
 	public void testMoveMouseCtrl(){
 		bpv = new BullpenView(bp2, lp);
@@ -155,5 +159,17 @@ public class TestControllers extends TestMouse {
 		//assertEquals(lp.getPieceContainer().getDraggingPiece(), pv);
 	}
 	
+	public void testSpecifyBoardCtrl(){
+		bFrame = new KabasujiBuilderFrame();
+		SpecifyBoardPropertiesView properties = new SpecifyBoardPropertiesView(bFrame);
+		SpecifyBoardCtrl sbc = new SpecifyBoardCtrl(properties, boardPanel);
+		bpv = new BullpenView(bp2, lp);
+		bpc = new PieceInBullpenCtrl(bpv, pv);
+		pr = createClicked(bpv, 18, 132);
+		sbc.mouseClicked(pr);
+		//sbc.mousePressed(pr);
+		re = createClicked(boardPanel, 15, 21);
+		sbc.mousePressed(re);
+	}
 	
 }

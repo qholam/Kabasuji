@@ -25,7 +25,8 @@ public class PieceInBullpenCtrl implements MouseListener, MouseMotionListener{
 	 
 	@Override
     public void mousePressed(MouseEvent me) {
-		if(SwingUtilities.isRightMouseButton(me)){
+		System.out.println(me.getX() + " " + me.getY());
+		if(me.isPopupTrigger()){
 			Component c = pv.getComponentAt(me.getPoint());
 			
 			//more accurate clicking, piece is only selected if user clicks on a tile that is not null or a notile
@@ -60,6 +61,8 @@ public class PieceInBullpenCtrl implements MouseListener, MouseMotionListener{
 
 	@Override
     public void mouseReleased(MouseEvent me){
+		System.out.println(me.getX() + " " + me.getY());
+
 		bv.setRepaintValid();
 		pv.setRepaintValid();
     }
@@ -72,5 +75,13 @@ public class PieceInBullpenCtrl implements MouseListener, MouseMotionListener{
 	public void mouseMoved(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	/**
+	 * Gets the pieceView associated with this piece in bullpen controller.
+	 * @return PieceView the pieceView of the piece
+	 */
+	public PieceView getPieceView(){
+		return this.pv;
 	}
 }

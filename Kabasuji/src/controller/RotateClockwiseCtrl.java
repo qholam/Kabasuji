@@ -57,7 +57,7 @@ public class RotateClockwiseCtrl implements ActionListener, MouseListener {
 	public void mousePressed(MouseEvent e) {
 		// get the current selected pieceview in the bullpen
 		PieceView pv = bpview.getSelected();
-
+		//System.out.println(e.getX() + " " + e.getY());
 		// check if nothing is selected
 		if (pv == null)
 			return;

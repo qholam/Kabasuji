@@ -46,20 +46,21 @@ public class RotateCounterClockwiseCtrl implements ActionListener, MouseListener
 	@Override
 	public void mousePressed(MouseEvent e) {
 		//get the current selected pieceview in the bullpen
-				PieceView pv = bpview.getSelected();
-				
-				//check if nothing is selected
-				if(pv == null)
-					return;
-				
-				//get the piece
-				Piece p = pv.getPiece();
-				
-				//rotate the selected piece clockwise
-				p.rotateCounterclockwise();
-				
-				//repaint the piece view
-				pv.setRepaintValid();
+		System.out.println(e.getX() + " " + e.getY());
+		PieceView pv = bpview.getSelected();
+		
+		//check if nothing is selected
+		if(pv == null)
+			return;
+		
+		//get the piece
+		Piece p = pv.getPiece();
+		
+		//rotate the selected piece clockwise
+		p.rotateCounterclockwise();
+			
+		//repaint the piece view
+		pv.setRepaintValid();
 		
 	}
 
