@@ -78,7 +78,6 @@ public class TestEntity extends TestCase {
 	}
 	
 	public void testTile(){
-		
 	}
 	
 	/**
@@ -87,6 +86,16 @@ public class TestEntity extends TestCase {
 	public void testReleaseTile(){
 		assertEquals(releaseTile.getNumber(), number);
 		assertEquals(releaseTile.toString(), tileType.releaseTile);
+		
+		Number number2 = new Number(1, Color.red);
+		Number number3 = new Number(3, Color.red);
+		ReleaseTile releaseTile2 = new ReleaseTile(5, 3, number2);
+		ReleaseTile releaseTile3 = new ReleaseTile(5, 4, number3);
+		
+		assertEquals(releaseTile.getPrevious(), releaseTile2);
+		assertEquals(releaseTile.getNext(), releaseTile3);
+		
+		assertFalse(releaseTile.equals(piece));
 	}
 	
 	/**

@@ -2,11 +2,15 @@ package entity;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.MouseEvent;
 
+import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.text.JTextComponent;
 
+import GUI.BoardPanel;
 import GUI.BuilderLightningLevel;
 import GUI.BullpenView;
 import GUI.KabasujiBuilderFrame;
@@ -14,6 +18,7 @@ import GUI.KabasujiFrame;
 import GUI.LevelPanel;
 import GUI.LevelSelector;
 import GUI.SpecifyBoardPropertiesView;
+import controller.SpecifyBoardCtrl;
 import junit.framework.TestCase;
 import view.PieceView;
 
@@ -22,7 +27,7 @@ import view.PieceView;
  * @author LilyAnne
  *
  */
-public class TestGUI extends TestCase 
+public class TestGUI extends TestMouse 
 {
 	Bullpen pen;
 	Piece piece1;
@@ -40,6 +45,8 @@ public class TestGUI extends TestCase
 	SpecifyBoardPropertiesView sbpv;
 	LevelSelector ls;
 	BuilderLightningLevel bll;
+	
+	MouseEvent pr, re;
 
 	public void setUp()
 	{
@@ -113,9 +120,17 @@ public class TestGUI extends TestCase
 	
 	public void testSpecifyBoardPropertiesView()
 	{
+		BoardPanel b = new BoardPanel(board);
 		sbpv = new SpecifyBoardPropertiesView(bFrame);
 		Component c1 = sbpv.getComponentAt(237, 236);
 		assertTrue(c1 instanceof JTextField);
+		
+		
+		SpecifyBoardCtrl SPC = new SpecifyBoardCtrl(sbpv, b);
+		pr = createClicked(sbpv, 10, 10);
+		SPC.mousePressed(pr);
+		
+		
 	}
 	
 	public void testLevelSelector()
@@ -131,6 +146,7 @@ public class TestGUI extends TestCase
 		Component c2 = ls.getComponentAt(7, 1);
 		
 		assertTrue(c2 instanceof JLabel);
+		
 	}
 
 	public void testLightningLevel()
