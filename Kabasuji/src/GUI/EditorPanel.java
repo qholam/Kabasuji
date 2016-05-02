@@ -31,9 +31,11 @@ public class EditorPanel extends JPanel {
 		
 		for (int i = 0; i < kFrame.pieces.length; i++) {
 			pieces[i] = new PieceView(kFrame.pieces[i]);
-			add(pieces[i]);
 			pieces[i].addMouseMotionListener(new MouseMoveCtrl(l));
 			pieces[i].addMouseListener(new MouseMoveCtrl(l));
+			JPanel p = new JPanel();
+			p.add(pieces[i]);
+			add(p);
 			setPreferredSize(new Dimension(100, 100 * getComponents().length));
 		}
 	}
