@@ -47,7 +47,7 @@ public class BoardPanel extends JPanel {
 		boardTilePanel.setOpaque(false);
 		add(boardTilePanel);
 		boardTilePanel.setLayout(new GridLayout(b.getNumRows(), b.getNumColumns(), 0, 0));
-		boardTilePanel.setBounds(10, 10, b.getNumRows() * KabasujiFrame.tileWidth, b.getNumColumns() * KabasujiFrame.tileHeight);
+		boardTilePanel.setBounds(10, 10, b.getNumColumns() * KabasujiFrame.tileWidth, b.getNumRows() * KabasujiFrame.tileHeight);
 		//panel.setBounds(10, 10, 28*b.getNumColumns(), 28*b.getNumRows());
 		
 		for (int r = 0; r < b.getNumRows(); r++) {
@@ -125,7 +125,7 @@ public class BoardPanel extends JPanel {
 		repaint();
 		
 		for (int r = 0; r < board.getNumRows(); r++) {
-			for (int c = 0; c < board.getNumRows(); c++) {
+			for (int c = 0; c < board.getNumColumns(); c++) {
 				tileViews[c][r].setRepaintValid();
 			}
 		}

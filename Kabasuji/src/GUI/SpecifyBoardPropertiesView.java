@@ -91,22 +91,35 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		txtEnterHeightmax.setBounds(236, 273, 112, 27);
 		add(txtEnterHeightmax);
 		
+		boardContainer = new JPanel();
+		boardContainer.setBounds(300, 325, 308, 308);
+		add(boardContainer);
+		boardContainer.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		board = new BoardPanel(new Board(null, width, height));
+		board.addMouseListener(new SpecifyBoardCtrl(this, board));
+		boardContainer.add(board);
+		
 		//button which will take user to the view to edit the level
 		Button nextButton = new Button("Next");
 		nextButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				kFrame.setWorkingBoard(board.getBoard());
+				///System.out.println("Level Type: " + kFrame.workingBoard.getLevel().getLevelType());
+				kFrame.workingLevel.setBoard(kFrame.workingBoard);
 				LevelType lt = kFrame.workingLevel.getLevel().getLevelType();
 				System.out.println(lt);
 				if (lt.equals(LevelType.Lightning)) {
 					kFrame.workingLevel=new BuilderLightningLevel(kFrame);
 					kFrame.workingLevel.setBounds(0, 0, 1200, 800);
+					kFrame.workingLevel.setBoard(kFrame.workingBoard);
 					kFrame.getContentPane().add(kFrame.workingLevel, kFrame.BuilderLightningLevel);
 					kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.BuilderLightningLevel);
 				}
 				else if (lt.equals(LevelType.Puzzle)) {
 					kFrame.workingLevel=new BuilderPuzzleLevel(kFrame);
 					kFrame.workingLevel.setBounds(0, 0, 1200, 800);
+					kFrame.workingLevel.setBoard(kFrame.workingBoard);
 					kFrame.getContentPane().add(kFrame.workingLevel, kFrame.BuilderPuzzleLevel);
 					kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.BuilderPuzzleLevel);
 				}
@@ -120,15 +133,6 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		nextButton.setBackground(new Color(255, 165, 0));
 		nextButton.setBounds(809, 646, 131, 44);
 		add(nextButton);	
-		
-		boardContainer = new JPanel();
-		boardContainer.setBounds(300, 325, 308, 308);
-		add(boardContainer);
-		boardContainer.setLayout(new GridLayout(0, 1, 0, 0));
-		
-		board = new BoardPanel(new Board(null, width, height));
-		board.addMouseListener(new SpecifyBoardCtrl(this, board));
-		boardContainer.add(board);
 		
 		JButton btnUpdateSize = new JButton("UPDATE SIZE");
 		btnUpdateSize.addActionListener(new ActionListener() {
@@ -194,9 +198,10 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		txtEnterHeightmax.setText("" + height);
 		
 		boardContainer.remove(board);
-		board = new BoardPanel(new Board(null, width, height));
+		board = new BoardPanel(new Board(kFrame.workingLevel.getLevel(), height, width));
+		kFrame.setWorkingBoard(board.getBoard());
 		boardContainer.add(board);
-		boardContainer.repaint();
+		board.setRepaintValid();
 		repaint();
 		
 	}

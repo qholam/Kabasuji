@@ -10,6 +10,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
+
+import entity.LevelType;
+
 import javax.swing.JLabel;
 
 public class BuilderLevelTypeSelect extends JPanel
@@ -45,6 +48,7 @@ public class BuilderLevelTypeSelect extends JPanel
 		button.setBounds(438, 303, 324, 87);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
+				kFrame.levelType = LevelType.Puzzle;
 				kFrame.workingLevel = new BuilderPuzzleLevel(kFrame);
 				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.SpecifyBoardProperties);
 			}

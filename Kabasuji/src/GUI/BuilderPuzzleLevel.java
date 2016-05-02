@@ -10,6 +10,8 @@ import java.awt.Container;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -59,12 +61,29 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		setLayout(null);
 		setBounds(0, 0, 1200, 800);
 		
-		boardPanel = new BoardPanel(new Board(null, 12, 12));
+		boardPanel = new BoardPanel(kFrame.workingBoard);
+		boardPanel.getBoard().setLevel(level);
 		boardPanel.setBounds(25, 400, 600, 300);
 		boardPanel.addMouseListener(new BoardCtrl(boardPanel, this));
+		boardPanel.addMouseListener(new MouseAdapter() {
+                private Color background;
+
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    System.out.println("clicked");
+                }         
+		});
 		boardPanel.addMouseMotionListener(new MouseMoveCtrl(this));
 		boardPanel.addMouseListener(new MouseMoveCtrl(this));
 		add(boardPanel);
+		
+		this.addMouseListener(new MouseAdapter() {
+            private Color background;
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                System.out.println("level panel clicked");
+            }});
 		
 		Bullpen b = new Bullpen();
 		//test pieces
