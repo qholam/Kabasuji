@@ -24,7 +24,8 @@ public class MainMenuPanel extends JPanel
 	 * Auto-generate by Eclipse to suppress a warning
 	 */
 	private static final long serialVersionUID = -7680580324316157014L;
-	KabasujiFrame kFrame; 
+	KabasujiFrame kFrame;
+	public ActionEvent button; 
 
 	/**
 	 * Create the panel.
@@ -71,6 +72,7 @@ public class MainMenuPanel extends JPanel
 		button_1.setFont(new Font("Dialog", Font.PLAIN, 49));
 		button_1.setBackground(new Color(255, 165, 0));
 		button_1.setBounds(238, 303, 324, 87);
+		button = button_1;
 		add(button_1);
 		
 		Button button_2 = new Button("Reset Score");

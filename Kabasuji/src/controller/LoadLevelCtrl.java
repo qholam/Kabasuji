@@ -31,7 +31,7 @@ public class LoadLevelCtrl implements ActionListener{
 	 * Loads level. 
 	 * TODO: make this more dynamic. This assumes that the most number of levels of each type is 5.
 	 */
-	public void actionPerformed(ActionEvent ae) {		
+	public void actionPerformed(ActionEvent ae) {	
 		LevelPanel levelPanel = null;
 		Level level = null;
 		switch (levelType) {

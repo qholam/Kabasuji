@@ -2,19 +2,25 @@ package entity;
 
 import java.awt.AWTException;
 import java.awt.Robot;
+import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+
+import javax.swing.AbstractButton;
+import javax.swing.JButton;
 
 import GUI.BoardPanel;
 import GUI.BullpenView;
 import GUI.KabasujiBuilderFrame;
 import GUI.KabasujiFrame;
 import GUI.LevelPanel;
+import GUI.MainMenuPanel;
 import GUI.SpecifyBoardPropertiesView;
 import controller.BoardCtrl;
 import controller.DragCtrl;
 import controller.HorizontalFlipCtrl;
+import controller.LoadLevelCtrl;
 import controller.MouseMoveCtrl;
 import controller.PieceInBullpenCtrl;
 import controller.RotateClockwiseCtrl;
@@ -62,7 +68,7 @@ public class TestControllers extends TestMouse {
 	lp = new LevelPanel(kFrame, pl);
 	bc = new BoardCtrl(boardPanel, lp);
 	}
-	
+
 	public void testVerticalFlip(){
 		bpArray = new ArrayList<Piece>();
 		bpArray.add(piece);
@@ -170,6 +176,23 @@ public class TestControllers extends TestMouse {
 		//sbc.mousePressed(pr);
 		re = createClicked(boardPanel, 15, 21);
 		sbc.mousePressed(re);
+	}
+
+	public void testLoadLevelCtrl(){
+		LoadLevelCtrl LLC = new LoadLevelCtrl(LevelType.Puzzle, kFrame, 1);
+		LoadLevelCtrl LLC2 = new LoadLevelCtrl(LevelType.Puzzle, kFrame, 6);
+		LoadLevelCtrl LLC3 = new LoadLevelCtrl(LevelType.Lightning, kFrame, 1);
+		LoadLevelCtrl LLC4 = new LoadLevelCtrl(LevelType.Release, kFrame, 1);
+		LoadLevelCtrl LLC5 = new LoadLevelCtrl(LevelType.Lightning, kFrame, 6);
+		LoadLevelCtrl LLC6 = new LoadLevelCtrl(LevelType.Release, kFrame, 6);
+		
+		MainMenuPanel MMP = new MainMenuPanel(kFrame);
+		LLC.actionPerformed(MMP.button);
+		LLC2.actionPerformed(MMP.button);
+		LLC3.actionPerformed(MMP.button);
+		LLC4.actionPerformed(MMP.button);
+		LLC5.actionPerformed(MMP.button);
+		LLC6.actionPerformed(MMP.button);
 	}
 	
 }
