@@ -95,7 +95,7 @@ public class BoardCtrl implements MouseListener {
 						// it,
 						// be sure to set anchor and source
 						container.setDraggingPiece(removed);
-						container.setAnchortile(new TileView(removed.getpieceGrid()[col - removed.getColPos()][row - removed.getRowPos()]));
+						container.setAnchortile(new TileView(removed.getpieceGrid()[col - removed.getColPos()][row - removed.getRowPos()])); 
 						container.setSource(boardPanel);
 						container.setVisible(true);
 					}

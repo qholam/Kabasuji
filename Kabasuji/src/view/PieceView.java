@@ -67,9 +67,9 @@ public class PieceView extends JPanel {
 				tilesView[j][i].setTile(grid[j][i]);
 				//tilesView[j][i].setRepaintValid();
 			}
-		}	
+		}
 		
-		/**
+		
 		for(int i = 0; i < tilesView.length; i++){
 			for(int j = 0; j < tilesView[i].length; j++){
 				if(piece.getpieceGrid()[j][i] != null){
@@ -81,7 +81,7 @@ public class PieceView extends JPanel {
 					g.drawRect(tw*j, th*i, tw, th);
 				}
 			}
-		}*/
+		}
 		
 	}
 

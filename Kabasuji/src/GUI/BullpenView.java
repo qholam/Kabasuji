@@ -71,7 +71,7 @@ public class BullpenView extends JPanel {
 		scrollPanel = new JPanel();
 		
 		JScrollPane scrollPane = new JScrollPane(scrollPanel);
-		scrollPanel.setLayout(new GridLayout(1, 0, 24, 0));
+		scrollPanel.setLayout(null);
 		
 		scrollPane.setBounds(10, 10, 580, 240);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -84,14 +84,14 @@ public class BullpenView extends JPanel {
 			//pieceContainers.add(pieceContainer);
 			
 			//not to sure on the math here, it just works
-			//pieceContainer.setBounds(10 + i * 200, 10, 200, 200);
+			//pieceContainer.setBounds(10 + i * 200, 10, 6 * KabasujiFrame.tileWidth, 6 * KabasujiFrame.tileHeight);
 			
 			PieceView p = new PieceView(b.getPieces().get(i));
 			p.addMouseListener(new PieceInBullpenCtrl(this, p));
 			pieces.add(p);
 			pieces.get(i).setBounds(10 + i * 200, 10, 6 * KabasujiFrame.tileWidth, 6 * KabasujiFrame.tileHeight);
 			//pieceContainer.add(pieces.get(i));
-            //scrollPanel.add(pieceContainer);
+            //scrollPanel.add(pieceContainer); 
 			scrollPanel.add(pieces.get(i));
             scrollPanel.setPreferredSize(new Dimension(200 * scrollPanel.getComponents().length, 0));  
 		}

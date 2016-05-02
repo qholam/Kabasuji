@@ -20,7 +20,7 @@ public class Piece  implements Serializable{
 	ArrayList <PieceTile> pieceTiles = new ArrayList<PieceTile>();
 	
 	//parameters of class
-	private final int maxWidth = 6; 
+	private final int maxWidth = 6;  
 	private final int maxHeight = 6;
 
 	/**
@@ -44,7 +44,7 @@ public class Piece  implements Serializable{
 	 */
 	public Piece(Piece p){
 		pieceGrid = new PieceTile[maxHeight][maxWidth];
-		this.pieceGrid = p.pieceGrid;
+		//this.pieceGrid = p.pieceGrid;
 		for(int r = 0; r < maxWidth; r++){
 			for(int c = 0; c < maxHeight; c++){
 				if(p.getpieceGrid()[c][r] != null)
