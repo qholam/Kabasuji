@@ -22,6 +22,9 @@ public class TestEntity extends TestCase {
 	ArrayList<PieceTile> pieceTileArray;
 	ArrayList<Piece> BullpenArray;
 	
+	Level level;
+	Board board;
+	
 	public void setUp() throws Exception{
 		tileType = new TileType();
 		number = new Number(2, Color.red);
@@ -119,7 +122,7 @@ public class TestEntity extends TestCase {
 		piece1.setRowPos(30);
 		assertEquals(piece1.getRowPos(), 30);
 		piece1.setColPos(20);
-		assertEquals(piece1.getColPos(), 20);
+		assertEquals(piece1.getColPos(), 20);		
 	}
 	
 	public void testNumber(){
@@ -163,6 +166,5 @@ public class TestEntity extends TestCase {
 		color = boardtile.getColor();
 		assertEquals(color, Color.LIGHT_GRAY);
 	}
-
 	
 }
