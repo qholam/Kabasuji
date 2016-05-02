@@ -237,6 +237,9 @@ public class BuilderLightningLevel extends BuilderLevel {
 		remove(boardPanel);
 		boardPanel = new BoardPanel(b);
 		boardPanel.setBounds(25, 400, 600, 300);
+		boardPanel.addMouseListener(new BoardCtrl(boardPanel, this));
+		boardPanel.addMouseMotionListener(new MouseMoveCtrl(this));
+		boardPanel.addMouseListener(new MouseMoveCtrl(this));
 		add(boardPanel);
 		boardPanel.repaint();
 	}

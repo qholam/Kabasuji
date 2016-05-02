@@ -112,10 +112,14 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		add(bullpen);
 		
 		JButton btnNewButton_1 = new JButton("TRASH");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				container.setDraggingPiece(null);
+				container.setVisible(false);
+				System.out.println("Working");
 			}
 		});
+		
 		btnNewButton_1.setBounds(650, 600, 100, 100);
 		btnNewButton_1.addMouseMotionListener(new MouseMoveCtrl(this));
 		btnNewButton_1.addMouseListener(new MouseMoveCtrl(this));
