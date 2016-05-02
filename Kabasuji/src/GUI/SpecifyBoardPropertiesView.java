@@ -96,7 +96,7 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		add(boardContainer);
 		boardContainer.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		board = new BoardPanel(new Board(null, width, height));
+		board = new BoardPanel(kFrame.workingBoard);
 		board.addMouseListener(new SpecifyBoardCtrl(this, board));
 		boardContainer.add(board);
 		
@@ -199,6 +199,7 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		
 		boardContainer.remove(board);
 		board = new BoardPanel(new Board(kFrame.workingLevel.getLevel(), height, width));
+		board.addMouseListener(new SpecifyBoardCtrl(this, board));
 		kFrame.setWorkingBoard(board.getBoard());
 		boardContainer.add(board);
 		board.setRepaintValid();
