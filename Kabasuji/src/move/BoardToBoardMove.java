@@ -102,7 +102,12 @@ public class BoardToBoardMove implements IMove {
 	 */
 	@Override
 	public boolean undo() {
-		// TODO
+		//remove piece
+		board.removePiece(this.pieceBeingDragged);
+		
+		//add it back to orignial spot
+		board.addPiece(this.pieceBeingDragged, this.originalRow, this.originalCol);
+
 		return false;
 	}
 

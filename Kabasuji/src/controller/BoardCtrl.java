@@ -147,10 +147,6 @@ public class BoardCtrl implements MouseListener {
 				if (!move.doMove()) {
 					//System.out.println("cant do move");
 					return;
-				} else {
-					// quantity of piece will be reduced by 1 now since move was
-					// good
-					pieceQty = 0;
 				}
 
 				// updating pieces quantity in bullpen

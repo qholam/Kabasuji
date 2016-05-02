@@ -118,7 +118,12 @@ public class BullpenToBoardMove implements IMove {
 	 */
 	@Override
 	public boolean undo() {
-		// TODO
-		return false;
+		//remove the piece from the board
+		board.removePiece(this.pieceBeingDragged);
+		
+		//add back to bullpen
+		bullpen.changeQuantity(this.pieceBeingDragged, 1);
+		
+		return true;
 	}
 }
