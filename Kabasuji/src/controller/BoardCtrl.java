@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import GUI.BoardPanel;
 import GUI.BuilderLevel;
 import GUI.BullpenView;
+import GUI.KabasujiFrame;
 import GUI.LevelPanel;
 import GUI.PieceContainer;
 import entity.BoardTile;
@@ -144,12 +145,8 @@ public class BoardCtrl implements MouseListener {
 				// was move successful?
 				// TODO: what to do when move is invalid?
 				if (!move.doMove()) {
-					System.out.println("cant do move");
+					//System.out.println("cant do move");
 					return;
-				} else {
-					// quantity of piece will be reduced by 1 now since move was
-					// good
-					pieceQty = 0;
 				}
 
 				// updating pieces quantity in bullpen

@@ -16,6 +16,7 @@ import GUI.KabasujiBuilderFrame;
 import GUI.KabasujiFrame;
 import GUI.LevelPanel;
 import GUI.MainMenuPanel;
+import GUI.PieceContainer;
 import GUI.SpecifyBoardPropertiesView;
 import controller.BoardCtrl;
 import controller.DragCtrl;
@@ -167,12 +168,12 @@ public class TestControllers extends TestMouse {
 	
 	public void testSpecifyBoardCtrl(){
 		bFrame = new KabasujiBuilderFrame();
-		KabasujiBuilderFrame bFrame2 = new KabasujiBuilderFrame();
+		//KabasujiBuilderFrame bFrame2 = new KabasujiBuilderFrame();
 		boardPanel = new BoardPanel(bFrame.getBoard());
 		SpecifyBoardPropertiesView properties = new SpecifyBoardPropertiesView(bFrame);
 		SpecifyBoardCtrl sbc = new SpecifyBoardCtrl(properties, boardPanel);
 		re = createPressed2(boardPanel, 0, 0);
-		bFrame2 = properties.getFrame();
+		//bFrame2 = properties.getFrame();
 		sbc.mouseClicked(re);
 		sbc.mousePressed(re);
 	}
@@ -193,6 +194,21 @@ public class TestControllers extends TestMouse {
 		LLC4.actionPerformed(MMP.button);
 		LLC5.actionPerformed(MMP.button);
 		LLC6.actionPerformed(MMP.button);
+	}
+	
+	public void testBoardCtrl(){
+		bpArray = new ArrayList<Piece>();
+		bpArray.add(piece);
+		bp = new Bullpen(bpArray);
+		bpv = new BullpenView(bp, lp);
+		BoardCtrl BC = new BoardCtrl(boardPanel, lp);
+		//lp.getPieceContainer().setVisible(false);
+		PieceContainer PC = new PieceContainer();
+		PC.setDraggingPiece(piece);
+		PC.setSource(lp);
+		pr = createRightClick(boardPanel, 74, 44);
+		BC.mousePressed(pr);
+		BC.mouseReleased(pr);
 	}
 	
 }
