@@ -82,6 +82,7 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 
             @Override
             public void mousePressed(MouseEvent e) {
+            	System.out.println(e.getX() + " " + e.getY());
                 System.out.println("level panel clicked");
             }});
 		

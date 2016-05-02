@@ -99,7 +99,7 @@ public class KabasujiBuilderFrame extends JFrame {
 		return contentPane;
 	}
 	
-	void setWorkingBoard(Board b) {
+	public void setWorkingBoard(Board b) {
 		workingBoard = b;
 		if (b.getLevel() instanceof LightningLevel){
 			workingLevel = (BuilderLightningLevel) workingLevel;
@@ -417,5 +417,10 @@ public class KabasujiBuilderFrame extends JFrame {
 			}
 		}
 		return p;
+	}
+
+	public Board getBoard() {
+		// TODO Auto-generated method stub
+		return this.workingBoard;
 	}
 }

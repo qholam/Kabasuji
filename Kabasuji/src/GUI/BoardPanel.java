@@ -141,9 +141,18 @@ public class BoardPanel extends JPanel {
 	 */
 	public TileView getClickedTile(MouseEvent me){
 		TileView t = null;
-		
 		//get the component that was clicked on
 		Component c = boardTilePanel.getComponentAt(me.getPoint());
+		/**
+		System.out.println(boardTilePanel.getComponent(5));
+		System.out.println(boardTilePanel.contains(me.getPoint()));
+		System.out.println(boardTilePanel.getComponentAt(me.getPoint()));
+		System.out.println(me.getSource());
+		System.out.println(me.getX() + " " + me.getY() + "dalsjdlas " + me.getPoint());
+		System.out.println(me.getModifiers());
+		System.out.println(me.isPopupTrigger());
+		System.out.println(me.getClickCount());
+		**/
 		if(c instanceof TileView){
 			t = (TileView) c;
 		}

@@ -66,4 +66,13 @@ public abstract class TestMouse extends TestCase{
 				dx, dy, 0, false);
 		return me;
 	}
+	
+	/** (dx,dy) are offsets into the widget space. Feel Free to Use as Is. */
+	public MouseEvent createPressed2 (JComponent source, int dx, int dy) {
+		MouseEvent me = new MouseEvent(source, MouseEvent.MOUSE_PRESSED, 
+				System.currentTimeMillis(), 16, 
+				dx, dy, 1, false);
+		return me;
+	}
 }
+

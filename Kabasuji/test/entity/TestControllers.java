@@ -29,6 +29,7 @@ import controller.SpecifyBoardCtrl;
 import controller.VerticalFlipCtrl;
 import junit.framework.TestCase;
 import view.PieceView;
+import view.TileView;
 
 public class TestControllers extends TestMouse {
 	
@@ -61,12 +62,11 @@ public class TestControllers extends TestMouse {
 	piece2 = piece;
 	bp2 = new Bullpen();
 	bp2.addPiece(piece, 1);
-	board = new Board(pl, 12, 12);
+	board = new Board(pl, 10, 10);
 	boardPanel = new BoardPanel(board);
 	pl = new PuzzleLevel(5, board, bp2, true, 1, 1);
 	kFrame = new KabasujiFrame();
 	lp = new LevelPanel(kFrame, pl);
-	bc = new BoardCtrl(boardPanel, lp);
 	}
 
 	public void testVerticalFlip(){
@@ -85,7 +85,6 @@ public class TestControllers extends TestMouse {
 		assertEquals(piece, p);
 		
 	}
-	
 	public void testHorizantalFlip(){
 		bpArray = new ArrayList<Piece>();
 		bpArray.add(piece);
@@ -156,6 +155,7 @@ public class TestControllers extends TestMouse {
 		bpv = new BullpenView(bp2, lp);
 		bpc = new PieceInBullpenCtrl(bpv, pv);
 		DragCtrl dc = new DragCtrl(pv, lp);
+		bc = new BoardCtrl(boardPanel, lp);
 		pr = createClicked(bpv, 18, 132);
 		dc.mousePressed(pr);
 		re = createClicked(boardPanel, 15, 21);
@@ -167,17 +167,17 @@ public class TestControllers extends TestMouse {
 	
 	public void testSpecifyBoardCtrl(){
 		bFrame = new KabasujiBuilderFrame();
+		KabasujiBuilderFrame bFrame2 = new KabasujiBuilderFrame();
+		boardPanel = new BoardPanel(bFrame.getBoard());
 		SpecifyBoardPropertiesView properties = new SpecifyBoardPropertiesView(bFrame);
 		SpecifyBoardCtrl sbc = new SpecifyBoardCtrl(properties, boardPanel);
-		bpv = new BullpenView(bp2, lp);
-		bpc = new PieceInBullpenCtrl(bpv, pv);
-		pr = createClicked(bpv, 18, 132);
-		sbc.mouseClicked(pr);
-		//sbc.mousePressed(pr);
-		re = createClicked(boardPanel, 15, 21);
+		re = createPressed2(boardPanel, 0, 0);
+		bFrame2 = properties.getFrame();
+		sbc.mouseClicked(re);
 		sbc.mousePressed(re);
 	}
 
+	
 	public void testLoadLevelCtrl(){
 		LoadLevelCtrl LLC = new LoadLevelCtrl(LevelType.Puzzle, kFrame, 1);
 		LoadLevelCtrl LLC2 = new LoadLevelCtrl(LevelType.Puzzle, kFrame, 6);
