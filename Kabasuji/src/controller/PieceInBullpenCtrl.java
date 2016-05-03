@@ -25,6 +25,8 @@ public class PieceInBullpenCtrl implements MouseListener, MouseMotionListener{
 	 
 	@Override
     public void mousePressed(MouseEvent me) {
+		System.out.println(me.getX() + " " + me.getY());
+		System.out.println(me.isPopupTrigger() + " " +  me.getModifiers() + " " + me.getID());
 		if(SwingUtilities.isRightMouseButton(me)){
 			Component c = pv.getComponentAt(me.getPoint());
 			

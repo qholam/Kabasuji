@@ -53,7 +53,6 @@ public class EditorPanelCtrl implements MouseListener, MouseMotionListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("# in bullpen" + bv.getBullpen().getPieces().size());
 		System.out.println("GOT CLICK");
 		if (!(l instanceof BuilderLevel)) {
 			return;
@@ -72,6 +71,7 @@ public class EditorPanelCtrl implements MouseListener, MouseMotionListener {
 		bv.revalidate();
 		bv.setRepaintValid();
 		bv.repaint();
+		System.out.println("# in bullpen" + bv.getBullpen().getPieces().size());
 	}
 
 	@Override
@@ -91,6 +91,14 @@ public class EditorPanelCtrl implements MouseListener, MouseMotionListener {
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+/**
+ * Gets the bullpenview associated with this panel.
+ * @return BullpenView the BullpenView associated with this panel.
+ **/
+	public BullpenView getBullpenView() {
+		return this.bv;
+		
 	}
 
 }

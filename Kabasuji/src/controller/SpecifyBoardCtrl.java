@@ -56,7 +56,7 @@ public class SpecifyBoardCtrl implements MouseListener {
 		
 		int row = t.getTile().getRow();
 		int col = t.getTile().getCol();
-		System.out.println(me.getModifiers());
+
 		
 		if(SwingUtilities.isLeftMouseButton(me)){//left click will remove/readd tiles
 			//add or remove board tile depending on whether or not there is currently a board tile at clicked location
