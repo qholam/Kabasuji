@@ -54,6 +54,8 @@ public class BullpenView extends JPanel {
 	
 	/**
 	 * Create the panel.
+	 * @param b The bullpen to use when creating this panel.
+	 * @param l The level this panel will be used in.
 	 */
 	public BullpenView(Bullpen b, JPanel l) {
 		level = l;
@@ -140,7 +142,11 @@ public class BullpenView extends JPanel {
 			}				
 		}
 	}
-	 
+	
+	/**
+	 * Removes a piece from this bullpen.
+	 * @param p The piece to remove from the bullpen.
+	 */
 	public void removePiece(PieceView p){
 		pieces.remove(p);
 		scrollPanel.remove(p);
@@ -148,7 +154,9 @@ public class BullpenView extends JPanel {
 		scrollPanel.setPreferredSize(new Dimension(200 * scrollPanel.getComponents().length, 0)); 
 	}
 	
-	
+	/**
+	 * Removes all pieces from the bullpen.
+	 */
 	public void removeAll(){
 		int length = pieces.size();
 		
@@ -167,18 +175,6 @@ public class BullpenView extends JPanel {
 	
 	/**
 	 * this is needed to prevent flickering when dragging inside the board.
-	 * TODO: find another way to prevent this flickering
-	 */
-	/**
-	public void setRepaintInvalid(){
-		for(PieceView p: pieces){
-			p.setRepaintInvalid();
-		}
-	}*/
-	
-	/**
-	 * this is needed to prevent flickering when dragging inside the board.
-	 * TODO: find another way to prevent this flickering
 	 */
 	public void setRepaintValid(){
 		repaint = true;
@@ -195,18 +191,34 @@ public class BullpenView extends JPanel {
 		return bullpen;
 	}
 	
+	/**
+	 * Get all of the pieceViews in this bullpenView.
+	 * @return A list of the pieceViews contained in this bullpenView.
+	 */
 	public ArrayList<PieceView> getPieceViews(){
 		return pieces;
 	}
 	
+	/**
+	 * Sets the currently selected piece.
+	 * @param p The piece we want to select.
+	 */
 	public void setSelected(PieceView p){
 		selected = p;
 	}
 	
+	/**
+	 * Returns the currently selected piece.
+	 * @return The currently selected piece.
+	 */
 	public PieceView getSelected(){
 		return selected;
 	} 
 	
+	/**
+	 * Adds a piece to this bullpenView.
+	 * @param p The piece to be added.
+	 */
 	public void addPiece(Piece p) {
 		PieceView pv = new PieceView(p);
 		pv.addMouseListener(new PieceInBullpenCtrl(this, pv));
@@ -220,7 +232,4 @@ public class BullpenView extends JPanel {
 		setRepaintValid();
 	}
 	
-	//public ArrayList<JPanel> getPieceContainers(){
-	//	return pieceContainers;
-	//}
 }

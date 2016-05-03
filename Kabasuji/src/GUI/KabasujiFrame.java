@@ -23,6 +23,11 @@ import serializers.Serializer;
 
 import java.awt.CardLayout;
 
+/**
+ * The frame class that contains all of the information for the player application.
+ * @author Richard Hayes
+ *
+ */
 public class KabasujiFrame extends JFrame {
 	final String SplashScreen = "SplashScreen";
 	final String MainMenu = "MainMenu";
@@ -92,14 +97,28 @@ public class KabasujiFrame extends JFrame {
 		splash.displaySplashScreen();
 	}
 	
+	/**
+	 * Returns the cardLayout that is used in the player.
+	 * @return The cardLayout that is used in the player.
+	 */
 	public CardLayout getCardLayout() {
 		return (CardLayout)contentPane.getLayout();
 	}
 	
+	/**
+	 * Returns the piece container that is used to move pieces in the player.
+	 * @return The piece container that is used to move pieces in the player.
+	 */
 	public PieceContainer getPieceContainer(){
 		return container;
 	}
 	
+	/**
+	 * Adds a JPanel to the content pane and associated it with a string for the
+	 * cardLaout to use.
+	 * @param l The JPanel we want to add to the content.
+	 * @param s The string we want to associate with the panel we add.
+	 */
 	public void addToContentPane(JPanel l, String s){
 		contentPane.add(l, s);
 	}
@@ -413,10 +432,10 @@ public class KabasujiFrame extends JFrame {
 	}
 	
 	/**
-	 * get stars of a level
-	 * @param puzzle
-	 * @param i
-	 * @return
+	 * Get stars of a level.
+	 * @param puzzle The level type we want to check the stars of.
+	 * @param i The index of the level type we want to check.
+	 * @return The amount of stars the checked level has.
 	 */
 	public int getStars(LevelType puzzle, int i){
 		int stars = 0;
