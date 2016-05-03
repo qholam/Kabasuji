@@ -8,8 +8,10 @@ import javax.swing.SwingUtilities;
 
 import GUI.BoardPanel;
 import GUI.KabasujiBuilderFrame;
+import GUI.KabasujiFrame;
 import GUI.SpecifyBoardPropertiesView;
 import entity.BoardTile;
+import entity.LevelType;
 import entity.NoTile;
 import entity.ReleaseTile;
 import entity.TileType;
@@ -69,6 +71,10 @@ public class SpecifyBoardCtrl implements MouseListener {
 			}
 		}
 		else if(SwingUtilities.isRightMouseButton(me)){//right click will add/remove release tiles
+			if(!sbpv.getFrame().levelType.equals(LevelType.Release)){
+				//only run if this is a release level
+				return;
+			}
 			switch(t.getTile().toString()){
 			case TileType.boardTile:
 				boardPanel.getBoard().getGrid()[col][row] = greenRelease;

@@ -249,6 +249,10 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 			public void actionPerformed(ActionEvent e) {
 				boardPanel.clearBoard();
 				bullpen.removeAll();
+				boardPanel.revalidate();
+				bullpen.revalidate();
+				boardPanel.setRepaintValid();
+				bullpen.setRepaintValid();
 			}
 		});
 		button_3.setBounds(650, 111, 100, 75);
