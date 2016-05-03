@@ -70,7 +70,6 @@ public class EditorPanelCtrl implements MouseListener, MouseMotionListener {
 		bv = ((BuilderLevel) l).getBullpenView();
 		bv.revalidate();
 		bv.setRepaintValid();
-		bv.repaint();
 		System.out.println("# in bullpen" + bv.getBullpen().getPieces().size());
 	}
 

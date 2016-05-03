@@ -128,6 +128,7 @@ public class Board implements Serializable {
 	 * @return
 	 */
 	public Piece removePieceAt(int row, int col) {
+		System.out.println("Trying to remove piece at : " + row + " " + col);
 		Piece p = null;
 
 		// ensure there is a piece at the specified row and col

@@ -62,6 +62,7 @@ public class BullpenToBoardMove implements IMove {
 		//update stuff specific to a level type
 		switch (level.getLevelType()) {
 		case Lightning:
+			//time is handled by the LevelPanel
 			break;
 		case Puzzle:
 			((PuzzleLevel) level).changeNumMoves(-1);
@@ -120,10 +121,10 @@ public class BullpenToBoardMove implements IMove {
 	@Override
 	public boolean undo() {
 		//remove the piece from the board
-		Piece p = board.removePieceAt(row,col);
+		board.removePiece(this.pieceBeingDragged);
 		
 		//add back to bullpen
-		bullpen.addPiece(p); 
+		bullpen.addPiece(this.pieceBeingDragged); 
 		
 		return true;
 	}

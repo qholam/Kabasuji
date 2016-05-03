@@ -49,6 +49,9 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 	
 	PuzzleLevel level;
 	
+	//number of moves allowed
+	int numMovesAllowed;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -58,6 +61,7 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		container.setVisible(false);
 		add(container);
 		kFrame = frame;
+		numMovesAllowed = 0;
 		
 		int numMoves = 10;
 		level = new PuzzleLevel(numMoves, kFrame.workingBoard, new Bullpen(), false, 1, 0);
@@ -130,7 +134,7 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		btnNewButton_1.addMouseListener(new MouseMoveCtrl(this));
 		add(btnNewButton_1);
 		
-		movesLabel = new JLabel("ALLOWED MOVES: " + numMoves);
+		movesLabel = new JLabel("ALLOWED MOVES: " + numMovesAllowed);
 		movesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		movesLabel.setFont(new Font("Tahoma", Font.BOLD, 28));
 		movesLabel.setBounds(275, 336, 350, 57);
@@ -144,7 +148,7 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 						JOptionPane.PLAIN_MESSAGE, null, options, "1");
 				if (s != null) {
 					int id = Integer.parseInt(s);
-					level = new PuzzleLevel(level.getMovesRemaining(), boardPanel.getBoard(), bullpen.getBullpen(),
+					level = new PuzzleLevel(numMovesAllowed, boardPanel.getBoard(), bullpen.getBullpen(),
 							level.isUnlocked(), id, 0);
 					new Serializer().serializeLevel(level);
 					JOptionPane.showMessageDialog(null, "Level " + id + " has been successfully saved.");
@@ -232,8 +236,8 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		JButton button_1 = new JButton("+");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				level.changeNumMoves(1);
-				movesLabel.setText("ALLOWED MOVES: " + level.getMovesRemaining());
+				numMovesAllowed++;
+				movesLabel.setText("ALLOWED MOVES: " + numMovesAllowed);
 			}
 		});
 		button_1.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -245,9 +249,9 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		JButton button_2 = new JButton("-");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (level.getMovesRemaining() > 1) {
-					level.changeNumMoves(-1);
-					movesLabel.setText("ALLOWED MOVES: " + level.getMovesRemaining());
+				if (numMovesAllowed > 1) {
+					numMovesAllowed--;
+					movesLabel.setText("ALLOWED MOVES: " + numMovesAllowed);
 				}
 			}
 		});
