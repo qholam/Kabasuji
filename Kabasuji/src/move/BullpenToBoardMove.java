@@ -27,14 +27,16 @@ public class BullpenToBoardMove implements IMove {
 	int row, col;
 
 	/**
-	 * Constructor for BoardToBullpenMove
+	 * Constructor for BoardToBullpenMove.
 	 * 
-	 * @param board
-	 * @param pieceBeingDragged
+	 * @param board Given board to be used during this move.
+	 * @param level The level in which this move will take place.
+	 * @param pieceBeingDragged The piece being dragged.
+	 * @param bullpen The given bullpen to be used during this move.
 	 * @param row
-	 *            The row on the board to add the piece to
+	 *            The row on the board to add the piece to.
 	 * @param col
-	 *            The col on the board to add the piece to
+	 *            The col on the board to add the piece to.
 	 */
 
 	public BullpenToBoardMove(Board board, Level level, Piece pieceBeingDragged, Bullpen bullpen, int row, int col) {
@@ -48,6 +50,7 @@ public class BullpenToBoardMove implements IMove {
 
 	/**
 	 * Processes the move within the Board.
+	 * @return Boolean indicating if move was succesful. 
 	 */
 	@Override
 	public boolean doMove() {
@@ -78,6 +81,7 @@ public class BullpenToBoardMove implements IMove {
 
 	/**
 	 * Checks whether the attempted move is valid.
+	 * @return Boolean indicating if move is valid.
 	 */
 	@Override
 	public boolean isValid() {
@@ -117,6 +121,7 @@ public class BullpenToBoardMove implements IMove {
 	 * Undo the most recent move.
 	 * 
 	 * Level Builder only?
+	 * @return Boolean indicating if undo was a success. 
 	 */
 	@Override
 	public boolean undo() {
