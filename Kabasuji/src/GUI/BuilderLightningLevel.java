@@ -188,6 +188,10 @@ public class BuilderLightningLevel extends BuilderLevel {
 		btnUndo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent me) {
+				//do nothing if there is nothing to undo
+				if(moves.size() <= 0)
+					return;
+				
 				//pop move and undo
 				IMove move = popMove();
 				//add to redo stack
