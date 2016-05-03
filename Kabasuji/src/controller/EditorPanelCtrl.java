@@ -69,7 +69,6 @@ public class EditorPanelCtrl implements MouseListener, MouseMotionListener {
 		}
 		if (SwingUtilities.isLeftMouseButton(e)) {
 			// Component c = pv.getComponentAt(me.getPoint());
-			System.out.println(pv.getPiece().toString());
 			if (pv instanceof PieceView) {
 				Piece p = ((PieceView) pv).getPiece();
 				//clone piece
