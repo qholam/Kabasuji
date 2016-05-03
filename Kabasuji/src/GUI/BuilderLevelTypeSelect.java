@@ -62,7 +62,7 @@ public class BuilderLevelTypeSelect extends JPanel
 		button_1.setBounds(438, 489, 324, 87);
 		add(button_1);
 	
-		Button button_2 = new Button("Lightning");
+		Button button_2 = new Button("Lightning"); 
 		button_2.setForeground(Color.YELLOW);
 		button_2.setFont(new Font("Dialog", Font.PLAIN, 49));
 		button_2.setBackground(new Color(255, 165, 0));

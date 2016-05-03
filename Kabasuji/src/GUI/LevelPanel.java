@@ -119,7 +119,7 @@ public class LevelPanel extends JPanel {
 			}
 			c.addMouseMotionListener(new MouseMoveCtrl(this));
 			c.addMouseListener(new MouseMoveCtrl(this));
-		}
+		} 
 		add(bullpen);
 
 		JButton resetBtn = new JButton("RESET");

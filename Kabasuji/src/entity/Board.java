@@ -245,9 +245,9 @@ public class Board implements Serializable {
 		
 		for (int r = 0; r < this.numRows; r++) {
 			for (int c = 0; c < this.numColumns; c++) {
-				if(!boardGrid[c][r].isCovered)
+				if(!boardGrid[c][r].isCovered && boardGrid[c][r].toString().equals(TileType.boardTile))
 					num++;
-			}
+			} 
 		}
 		//System.out.println("num uncovered: " + num);
 		return num;

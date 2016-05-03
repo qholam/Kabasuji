@@ -108,7 +108,7 @@ public class KabasujiBuilderFrame extends JFrame {
 			workingLevel = (BuilderPuzzleLevel) workingLevel;
 		}
 		workingLevel.setBoard(b);
-		workingLevel.repaint();
+		workingLevel.repaint(); 
 	}
 
 	public PieceContainer getPieceContainer(){
