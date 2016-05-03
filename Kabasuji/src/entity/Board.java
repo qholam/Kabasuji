@@ -123,7 +123,6 @@ public class Board implements Serializable {
 	 * @return The piece that is removed.
 	 */
 	public Piece removePieceAt(int row, int col) {
-		System.out.println("Trying to remove piece at : " + row + " " + col);
 		Piece p = null;
 
 		// ensure there is a piece at the specified row and col
@@ -214,7 +213,6 @@ public class Board implements Serializable {
 		boolean isLocated = false;
 
 		for (Piece p : pieces) {
-			// System.out.println(p.getPieceTiles().size());
 			// get all the piece tiles and see if they have the given row and
 			// col values
 			for (PieceTile pt : p.getPieceTiles()) {
@@ -235,7 +233,6 @@ public class Board implements Serializable {
 		Piece piece = null;
 
 		for (Piece p : pieces) {
-			// System.out.println(p.getPieceTiles().size());
 			// get all the piece tiles and see if they have the given row and
 			// col values
 			for (PieceTile pt : p.getPieceTiles()) {
@@ -261,7 +258,6 @@ public class Board implements Serializable {
 					num++;
 			} 
 		}
-		//System.out.println("num uncovered: " + num);
 		return num;
 		
 	}
