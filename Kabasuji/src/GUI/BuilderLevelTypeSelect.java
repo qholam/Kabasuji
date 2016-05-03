@@ -63,6 +63,17 @@ public class BuilderLevelTypeSelect extends JPanel
 		button_1.setFont(new Font("Dialog", Font.PLAIN, 49));
 		button_1.setBackground(new Color(255, 165, 0));
 		button_1.setBounds(438, 489, 324, 87);
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				kFrame.levelType = LevelType.Release;
+				kFrame.workingLevel = new BuilderReleaseLevel(kFrame);
+				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.SpecifyBoardProperties);
+				SpecifyBoardPropertiesView specifyBoard = new SpecifyBoardPropertiesView(kFrame);
+				specifyBoard.setBounds(0, 0, 1200, 800);
+				kFrame.getContentPane().add(specifyBoard, kFrame.SpecifyBoardProperties);
+				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.SpecifyBoardProperties);
+			}
+		});
 		add(button_1);
 	
 		Button button_2 = new Button("Lightning"); 

@@ -12,11 +12,15 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.Graphics;
+
 import javax.swing.SwingConstants;
 
 import controller.BoardCtrl;
@@ -30,6 +34,7 @@ import entity.Piece;
 import entity.PieceTile;
 import entity.PuzzleLevel;
 import entity.ReleaseLevel;
+import move.IMove;
 import serializers.Serializer;
 
 import javax.swing.JScrollPane;
@@ -42,19 +47,25 @@ public class BuilderReleaseLevel extends BuilderLevel {
 	Board board;
 	BullpenView  bullpen;
 	PieceContainer container;
-	//JLabel movesLabel;
+	JLabel movesLabel;
 	
 	ReleaseLevel level;
+	
+	//number of moves allowed
+	int numMovesAllowed;
 	
 	/**
 	 * Create the panel.
 	 */
-	public BuilderReleaseLevel(KabasujiBuilderFrame frame) {
+	public BuilderReleaseLevel(KabasujiBuilderFrame frame) { 
+		super();
 		container = frame.getPieceContainer();
 		container.setVisible(false);
 		add(container);
 		kFrame = frame;
+		numMovesAllowed = 0;
 		
+		int numMoves = 10;
 		level = new ReleaseLevel(kFrame.workingBoard, new Bullpen(), false, 1, 0);
 		
 		setBackground(Color.GRAY);
@@ -65,26 +76,9 @@ public class BuilderReleaseLevel extends BuilderLevel {
 		boardPanel.getBoard().setLevel(level);
 		boardPanel.setBounds(25, 400, 600, 300);
 		boardPanel.addMouseListener(new BoardCtrl(boardPanel, this));
-		boardPanel.addMouseListener(new MouseAdapter() {
-                private Color background;
-
-                @Override
-                public void mousePressed(MouseEvent e) {
-                    System.out.println("clicked");
-                }         
-		});
 		boardPanel.addMouseMotionListener(new MouseMoveCtrl(this));
 		boardPanel.addMouseListener(new MouseMoveCtrl(this));
 		add(boardPanel);
-		
-		this.addMouseListener(new MouseAdapter() {
-            private Color background;
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            	System.out.println(e.getX() + " " + e.getY());
-                System.out.println("level panel clicked");
-            }});
 		
 		Bullpen b = new Bullpen();
 		bullpen = new BullpenView(b, this);
@@ -125,13 +119,6 @@ public class BuilderReleaseLevel extends BuilderLevel {
 		btnNewButton_1.addMouseListener(new MouseMoveCtrl(this));
 		add(btnNewButton_1);
 		
-		/**
-		movesLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		movesLabel.setFont(new Font("Tahoma", Font.BOLD, 28));
-		movesLabel.setBounds(275, 336, 350, 57);
-		add(movesLabel);
-		**/
-		
 		JButton btnMenu = new JButton("SAVE");
 		btnMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
@@ -139,6 +126,12 @@ public class BuilderReleaseLevel extends BuilderLevel {
 				String s = (String) JOptionPane.showInputDialog(null, "Please choose a level ID to overwrite:", "Save",
 						JOptionPane.PLAIN_MESSAGE, null, options, "1");
 				if (s != null) {
+					//clear board and add pieces back to bullpen
+					ArrayList<Piece> temp = boardPanel.getBoard().pieces;
+					for(int i = 0; i<temp.size(); i++){
+						bullpen.getBullpen().addPiece(temp.get(i));
+					}
+					boardPanel.clearBoard();
 					int id = Integer.parseInt(s);
 					level = new ReleaseLevel(boardPanel.getBoard(), bullpen.getBullpen(),
 							level.isUnlocked(), id, 0);
@@ -187,50 +180,53 @@ public class BuilderReleaseLevel extends BuilderLevel {
 		btnUndo.setBounds(25, 366, 89, 23);
 		btnUndo.addMouseMotionListener(new MouseMoveCtrl(this));
 		btnUndo.addMouseListener(new MouseMoveCtrl(this));
+		btnUndo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent me) {
+				//pop move and undo
+				IMove move = popMove();
+				//add to redo stack
+				pushRedo(move);
+				//do the undo
+				move.undo();
+				//repaint
+				boardPanel.revalidate();
+				bullpen.revalidate();
+				boardPanel.setRepaintValid();
+				bullpen.setRepaintValid();
+			}
+			
+			@Override
+			public void mouseReleased(MouseEvent me){
+				boardPanel.revalidate();
+				bullpen.revalidate();
+				boardPanel.setRepaintValid();
+				bullpen.setRepaintValid();
+			}
+		});
 		add(btnUndo);
 		
 		JButton button = new JButton("REDO");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		button.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent me) {
+				//TODO
 			}
 		});
 		button.setBounds(124, 366, 89, 23);
 		button.addMouseMotionListener(new MouseMoveCtrl(this));
 		button.addMouseListener(new MouseMoveCtrl(this));
 		add(button);
-		/**
-		JButton button_1 = new JButton("+");
-		button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-	
-				movesLabel.setText("ALLOWED MOVES: " + level.getMovesRemaining());
-			}
-		});
-		button_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		button_1.setBounds(635, 336, 50, 23);
-		button_1.addMouseMotionListener(new MouseMoveCtrl(this));
-		button_1.addMouseListener(new MouseMoveCtrl(this));
-		add(button_1);
 		
-		
-		JButton button_2 = new JButton("-");
-		button_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (level.getMovesRemaining() > 1) {
-					level.changeNumMoves(-1);
-					movesLabel.setText("ALLOWED MOVES: " + level.getMovesRemaining());
-				}
-			}
-		});
-		button_2.setFont(new Font("Tahoma", Font.BOLD, 11));
-		button_2.setBounds(635, 370, 50, 23);
-		button_2.addMouseMotionListener(new MouseMoveCtrl(this));
-		button_2.addMouseListener(new MouseMoveCtrl(this));
-		add(button_2);
-		**/
 		JButton button_3 = new JButton("RESET");
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				boardPanel.clearBoard();
+				bullpen.removeAll();
+				boardPanel.revalidate();
+				bullpen.revalidate();
+				boardPanel.setRepaintValid();
+				bullpen.setRepaintValid();
 			}
 		});
 		button_3.setBounds(650, 111, 100, 75);
