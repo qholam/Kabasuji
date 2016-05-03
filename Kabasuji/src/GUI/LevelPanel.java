@@ -55,6 +55,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
+/**
+ * The level panel that is displaying the currently selected level.
+ * @author Richard Hayes
+ *
+ */
 public class LevelPanel extends JPanel {
 	KabasujiFrame kFrame;
 	// the level that this panel represents
@@ -272,7 +277,7 @@ public class LevelPanel extends JPanel {
 	}
 
 	/**
-	 * Saves the stars achieved on this level
+	 * Saves the stars achieved on this level.
 	 */
 	public void saveStars() {
 		// previous earned stars
@@ -323,18 +328,34 @@ public class LevelPanel extends JPanel {
 		}
 	}
 
+	/**
+	 * Gets the piece container that we are using to move pieces in this level.
+	 * @return The piece container that we are using to move pieces in this level.
+	 */
 	public PieceContainer getPieceContainer() {
 		return container;
 	}
 
+	/**
+	 * Gets the bullpenView that is used in this level.
+	 * @return The bullpenView that is used in this level.
+	 */
 	public BullpenView getBullpenView() {
 		return bullpen;
 	}
 
+	/**
+	 * Gets the boardPanel that is used in this level.
+	 * @return The boardPanel that is used in this level.
+	 */
 	public BoardPanel getBoardPanel() {
 		return board;
 	}
 
+	/**
+	 * Gets the level that is currently being played.
+	 * @return The level that is currently being played.
+	 */
 	public Level getLevel() {
 		return level;
 	}

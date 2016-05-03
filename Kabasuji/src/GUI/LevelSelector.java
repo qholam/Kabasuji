@@ -27,6 +27,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+/**
+ * A panel used to select which level you want to play.
+ * @author Richard Hayes
+ *
+ */
 public class LevelSelector extends JPanel {
 
 	
