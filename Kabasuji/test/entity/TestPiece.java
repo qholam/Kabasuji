@@ -73,7 +73,7 @@ public class TestPiece extends TestCase{
 	 * Test equals method
 	 */
 	public void testEquals(){
-		assertEquals(p, p1);
+		assertEquals(p.toString(), p1.toString());
 	}
 	
 	/**
@@ -81,7 +81,7 @@ public class TestPiece extends TestCase{
 	 */
 	public void testClockwise(){
 		p.rotateClockwise();
-		assertEquals(cw, p);
+		assertEquals(cw.toString(), p.toString());
 	}
 	
 	/**
@@ -89,7 +89,7 @@ public class TestPiece extends TestCase{
 	 */
 	public void testCounterClockwise(){
 		p.rotateCounterclockwise();
-		assertEquals(ccw, p);
+		assertEquals(ccw.toString(), p.toString());
 	}
 	
 	/**
@@ -97,7 +97,7 @@ public class TestPiece extends TestCase{
 	 */
 	public void testVertical(){
 		p.verticalFlip();
-		assertEquals(v, p);
+		assertEquals(v.toString(), p.toString());
 	}
 	
 	/**
@@ -105,6 +105,6 @@ public class TestPiece extends TestCase{
 	 */
 	public void testHorizontal(){
 		p.horizontalFlip();
-		assertEquals(h, p);
+		assertEquals(h.toString(), p.toString());
 	}
 }
