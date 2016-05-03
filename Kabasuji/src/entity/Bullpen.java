@@ -25,7 +25,7 @@ public class Bullpen implements Serializable {
 
 	/**
 	 * Constructor to create a Bullpen filled with the given pieces.
-	 * @param p the pieces to add to the Bullpen 
+	 * @param p the pieces to add to the Bullpen.
 	 */
 	public Bullpen(ArrayList<Piece> p){
 		//initially no piece is selected
@@ -41,8 +41,8 @@ public class Bullpen implements Serializable {
 	}
 	
 	/**
-	 * method to get the quantity of a given piece
-	 * @param piece Given piece
+	 * method to get the quantity of a given piece.
+	 * @param piece Given piece.
 	 */
 	public int getQuantity(Piece p){
 		return piecesInfo.get(p);
@@ -50,7 +50,7 @@ public class Bullpen implements Serializable {
 	
 	/**
 	 * Method to easily add only one of a Piece to the Bullpen.
-	 * @param Piece Given Piece to add
+	 * @param Piece Given Piece to add.
 	 */
 	public void addPiece(Piece p){
 		addPiece(p, 1);
@@ -58,8 +58,8 @@ public class Bullpen implements Serializable {
 	
 	/**
 	 * Add a piece to the Bullpen with the given quantity.
-	 * @param Piece Given Piece to add
-	 * @param int The quantity of that piece to add
+	 * @param Piece Given Piece to add.
+	 * @param int The quantity of that piece to add.
 	 */
 	public void addPiece(Piece p, int n){
 		//add piece to arraylist
@@ -70,7 +70,7 @@ public class Bullpen implements Serializable {
 
 	/**
 	 * Get the piece that is currently selected in the bullpen.
-	 * @return the selectedPiece
+	 * @return the selectedPiece.
 	 */
 	public Piece getSelectedPiece() {
 		return selectedPiece;
@@ -78,7 +78,7 @@ public class Bullpen implements Serializable {
 	
 	/**
 	 * Set the selected piece.
-	 * @param selectedPiece the selectedPiece to set
+	 * @param selectedPiece the selectedPiece to set.
 	 */
 	public void setSelectedPiece(Piece selectedPiece) {
 		//Ensures that the piece is in the bullpen
@@ -87,31 +87,23 @@ public class Bullpen implements Serializable {
 	}
 	
 	/**
-	 * @return the pieces
+	 * Gets the array of pieces from the bullpen.
+	 * @return the pieces.
 	 */
 	public ArrayList<Piece> getPieces() {
 		return pieces;
 	}
 	
 	/**
-	 * @return the piecesInfo
+	 * @return the piecesInfo.
 	 */
 	public HashMap<Piece, Integer> getPiecesInfo() {
 		return piecesInfo;
 	}
-	
-	/**
-	 * Decrease quantity of given Piece(if it is in the Bullpen) by one.
-	 * @param p Given piece to update quanitity for
-	 */
-	/**
-	public void changeQuantity(Piece p, int dx){
-		if(piecesInfo.containsKey(p))
-			piecesInfo.put(p, piecesInfo.get(p) + dx);
-	}*/
 
 	/**
 	 * Checks the number of pieces left.
+	 * @return The number of pieces left in the bullpen.
 	 */
 	public int getNumPieces(){
 		return pieces.size();

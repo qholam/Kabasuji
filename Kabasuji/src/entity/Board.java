@@ -21,14 +21,14 @@ public class Board implements Serializable {
 
 	/**
 	 * Constructor requires level reference and size specifications (rows and
-	 * columns)
+	 * columns).
 	 * 
 	 * @param level
-	 *            The level to which this board belongs
+	 *            The level to which this board belongs.
 	 * @param numRows
-	 *            The number of rows of tiles this board should have
+	 *            The number of rows of tiles this board should have.
 	 * @param numColumns
-	 *            The number of columns of tiles this board should have
+	 *            The number of columns of tiles this board should have.
 	 */
 	public Board(Level level, int numRows, int numColumns) {
 		boardGrid = new BoardTile[numColumns][numRows];
@@ -76,13 +76,13 @@ public class Board implements Serializable {
 	 * of the upperleft hand corner of the piece grid.
 	 * 
 	 * @param p
-	 *            The piece to add to the board
+	 *            The piece to add to the board.
 	 * @param row
 	 *            The row in which the upper left hand tile of the piece grid
-	 *            will be placed
+	 *            will be placed.
 	 * @param col
 	 *            The column in which the upper left hand tile of the piece grid
-	 *            will be placed
+	 *            will be placed.
 	 */
 	public void addPiece(Piece p, int row, int col) {
 		// add piece to board
@@ -118,9 +118,9 @@ public class Board implements Serializable {
 	/**
 	 * Remove the piece at the specified row and column.
 	 * 
-	 * @param row
-	 * @param col
-	 * @return
+	 * @param row The row to remove this piece at.
+	 * @param col The column to remove this piece at.
+	 * @return The piece that is removed.
 	 */
 	public Piece removePieceAt(int row, int col) {
 		System.out.println("Trying to remove piece at : " + row + " " + col);
@@ -142,9 +142,9 @@ public class Board implements Serializable {
 	}
 
 	/**
-	 * Removes the given piece from the board
+	 * Removes the given piece from the board.
 	 * 
-	 * @para p Piece to remove
+	 * @param p Piece to remove.
 	 */
 	public void removePiece(Piece p) {
 		// ensures the given piece is actually on the board
@@ -168,7 +168,12 @@ public class Board implements Serializable {
 	}
 
 	/**
-	 * Determine if a piece can be added at given row and column
+	 * Determine if a piece can be added at given row and column.
+	 * 
+	 * @param p The piece that we are testing to see if it will add.
+	 * @param row The row to add this piece at.
+	 * @param col The column to add this piece at.
+	 * @return Whether or not this add was successful.
 	 */
 	public boolean canAddAt(Piece p, int row, int col) {
 		// simulate adding
@@ -199,7 +204,11 @@ public class Board implements Serializable {
 
 	/**
 	 * Determines if there is a piece that is located at the specified row and
-	 * column on the board
+	 * column on the board.
+	 * 
+	 * @param row The row to validate.
+	 * @param col The column to validate.
+	 * @return Whether or not the piece is located at the row, column position.
 	 */
 	public boolean isLocatedAt(int row, int col) {
 		boolean isLocated = false;
@@ -220,7 +229,7 @@ public class Board implements Serializable {
 	/**
 	 * Gets the piece at the specified row and column, if applicable.
 	 * 
-	 * @return
+	 * @return The piece at the given location.
 	 */
 	public Piece getPieceAt(int row, int col) {
 		Piece piece = null;
@@ -259,7 +268,7 @@ public class Board implements Serializable {
 	
 	/**
 	 * Method that check if this board is valid to be used in the game.
-	 * @return boolean True if board is valid
+	 * @return boolean True if board is valid.
 	 */
 	public boolean isValid(){
 		boolean valid = true;

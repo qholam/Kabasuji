@@ -11,7 +11,7 @@ public class LightningLevel extends Level{
 	private int timeRemaining;
 	
 	/**
-	 * constructor for a puzzle level
+	 * constructor for a puzzle level.
 	 * @param timeRemaining The amount of tie remaining for the level.
 	 * @param board The board on which the level is played on.
 	 * @param bullpen Bullpen where the piece tiles will come from.
@@ -26,7 +26,7 @@ public class LightningLevel extends Level{
 	
 	/**
 	 * Checks whether or not the level has been won.
-	 * @return boolean determining if the level has been won
+	 * @return boolean determining if the level has been won.
 	 */
 	public boolean hasWon(){
 		int notCovered = 0;
@@ -76,7 +76,7 @@ public class LightningLevel extends Level{
 	
 	/** 
 	 * Checks if move has been made.
-	 * @return boolean determining if the move was made
+	 * @return boolean determining if the move was made.
 	 */
 	public boolean doMove(IMove move){
 		boolean valid = false;
@@ -88,7 +88,7 @@ public class LightningLevel extends Level{
 
 	/**
 	 * Gets the remaining time on the level.
-	 * @return timeRemaining
+	 * @return timeRemaining.
 	 */
 	public int getTimeRemaining(){
 		return this.timeRemaining;
@@ -103,7 +103,7 @@ public class LightningLevel extends Level{
 	
 	
 	/**
-	 * Will be useful when naming save level .txt files
+	 * Will be useful when naming save level .txt files.
 	 */
 	@Override
 	public String toString(){
@@ -111,13 +111,18 @@ public class LightningLevel extends Level{
 	}
 	
 	/**
-	 * Returns the type of the level
+	 * Returns the type of the level.
+	 * @return The type of this level.
 	 */
 	@Override
 	public LevelType getLevelType(){
 		return LevelType.Lightning;
 	}
 	
+	/**
+	 * Updates the time remaining in this lightning level.
+	 * @param dm The new time to set the time remaining to.
+	 */
 	public void changeTimeRemaining(int dm){
 		this.timeRemaining = dm;
 	}

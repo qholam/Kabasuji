@@ -82,7 +82,7 @@ public class Level implements Serializable{
 	
 	/**
 	 * Checks whether or not the level has been won.
-	 * @return boolean determining if the level has been won
+	 * @return boolean determining if the level has been won.
 	 */
 	public boolean hasWon(){
 		return false;
@@ -90,14 +90,15 @@ public class Level implements Serializable{
 	
 	/** 
 	 * Checks if move has been made.
-	 * @return boolean determining if the move was made
+	 * @return boolean determining if the move was made.
 	 */
 	public boolean doMove(IMove move){
 		return false;
 	}
 	
 	/**
-	 * Returns the type of the level
+	 * Returns the type of the level.
+	 * @return The type of the current level.
 	 */
 	public LevelType getLevelType(){
 		if (this instanceof ReleaseLevel){
