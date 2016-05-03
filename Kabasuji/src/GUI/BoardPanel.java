@@ -46,9 +46,9 @@ public class BoardPanel extends JPanel {
 		
 		boardTilePanel = new JPanel();
 		boardTilePanel.setOpaque(false);
-		add(boardTilePanel);
 		boardTilePanel.setLayout(new GridLayout(b.getNumRows(), b.getNumColumns(), 0, 0));
 		boardTilePanel.setBounds(10, 10, b.getNumColumns() * KabasujiFrame.tileWidth, b.getNumRows() * KabasujiFrame.tileHeight);
+		add(boardTilePanel);
 		//panel.setBounds(10, 10, 28*b.getNumColumns(), 28*b.getNumRows());
 		
 		for (int r = 0; r < b.getNumRows(); r++) {
@@ -148,9 +148,6 @@ public class BoardPanel extends JPanel {
 		Component c = boardTilePanel.getComponentAt(me.getPoint());
 		
 		//System.out.println(boardTilePanel.getComponent(5));
-		System.out.println(boardTilePanel.contains(me.getPoint()));
-		System.out.println(boardTilePanel.getComponentAt(me.getPoint()));
-		System.out.println(c);
 		if(c instanceof TileView){
 			t = (TileView) c;
 		}

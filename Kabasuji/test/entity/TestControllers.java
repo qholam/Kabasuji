@@ -72,13 +72,13 @@ public class TestControllers extends TestMouse {
 	boardPanel = new BoardPanel(board);
 	boardPanel2 = new BoardPanel(rb);
 	rl = new ReleaseLevel(board, bp2, true, 1, 1);
+	rb.setLevel(rl);
 	pl = new PuzzleLevel(5, board, bp2, true, 1, 1);
 	kFrame = new KabasujiFrame();
 	rlp = new LevelPanel(kFrame, rl);
 	lp = new LevelPanel(kFrame, pl);
 	}
 
-	/**
 	public void testVerticalFlip(){
 		bpArray = new ArrayList<Piece>();
 		bpArray.add(piece);
@@ -190,7 +190,8 @@ public class TestControllers extends TestMouse {
 		sbc.mousePressed(re);
 		
 		rbFrame = new KabasujiBuilderFrame();
-		boardPanel2 = new BoardPanel(rbFrame.getBoard());
+		boardPanel2 = new BoardPanel(rb);
+		System.out.println(rb.getLevel().getBoard().boardGrid.toString());
 		SpecifyBoardPropertiesView rproperties = new SpecifyBoardPropertiesView(rbFrame);
 		SpecifyBoardCtrl rsbc = new SpecifyBoardCtrl(rproperties, boardPanel2);
 		re = createPressed2(boardPanel2, 140, 141);
@@ -241,12 +242,15 @@ public class TestControllers extends TestMouse {
 		EPC.mousePressed(pr);
 		assertEquals(EPC.getBullpenView().getBullpen().getPieces().size(), 1);
 	}
-	**/
 	
 	public void testPieceInBullpenCtrl(){
 		bp = new Bullpen();
+		bp.addPiece(piece);
 		bpv = new BullpenView(bp, lp);
 		PieceInBullpenCtrl PBC = new PieceInBullpenCtrl(bpv, pv);
+		pr = createRightClick2(bpv, 18, 132);
+		PBC.mousePressed(pr);
+		PBC.mouseReleased(pr);
 	}
 	
 }
