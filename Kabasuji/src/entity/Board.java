@@ -43,7 +43,7 @@ public class Board implements Serializable {
 			}
 		}
 	}
-
+	
 	/**
 	 * Getter for number of rows in this board.
 	 * 
