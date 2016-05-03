@@ -26,7 +26,7 @@ public class PieceView extends JPanel {
 	Piece piece;
 	//Tileviews contained by this pieceview
 	TileView[][] tilesView;
-	
+
 	Boolean repaint = true;
 	
 	public PieceView(Piece p) {
