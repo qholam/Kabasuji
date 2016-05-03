@@ -41,12 +41,15 @@ public class LoadLevelCtrl implements ActionListener{
 	public void actionPerformed(ActionEvent ae) {	
 		LevelPanel levelPanel = null;
 		Level level = null;
+		
+		//determine level type to load
 		switch (levelType) {
 		case Lightning:
 			if(levelNum > 5){
 				//do something
 			}
 			else{
+				//load next lightning level
 				level = new Deserializer().deserialzeLightningLevel(levelNum);
 				if(level != null)
 					levelPanel = new LevelPanel(kFrame, level);
@@ -54,11 +57,13 @@ public class LoadLevelCtrl implements ActionListener{
 			break;
 		case Release:
 			if(levelNum > 5){
+				//if on last release level, then load first puzzle lightning level
 				level = new Deserializer().deserialzeLightningLevel(1);
 				if(level != null)
 					levelPanel = new LevelPanel(kFrame, level);
 			}
 			else{
+				//load next release level
 				level = new Deserializer().deserialzeReleaseLevel(levelNum);
 				if(level != null)
 					levelPanel = new LevelPanel(kFrame, level);
@@ -66,11 +71,13 @@ public class LoadLevelCtrl implements ActionListener{
 			break;
 		case Puzzle:
 			if(levelNum > 5){
+				//if on last puzzle level, then load first release level
 				level = new Deserializer().deserialzeReleaseLevel(1);
 				if(level != null)
 					levelPanel = new LevelPanel(kFrame, level);
 			}
 			else{
+				//load next puzzle level
 				level = new Deserializer().deserialzePuzzleLevel(levelNum);
 				if(level != null)
 					levelPanel = new LevelPanel(kFrame, level);
@@ -80,6 +87,7 @@ public class LoadLevelCtrl implements ActionListener{
 			break;
 		}
 
+		//display the level
 		if(levelPanel != null){
 			kFrame.addToContentPane((JPanel) levelPanel, kFrame.LevelPanel);
 			kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.LevelPanel);

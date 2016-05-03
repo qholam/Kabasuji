@@ -181,6 +181,7 @@ public class BoardCtrl implements MouseListener {
 	 */
 	public void mouseReleased(MouseEvent me) {
 		//System.out.println(me.getX() + " " + me.getY());
+		//get the bullpen and bullpenview
 		if (levelPanel instanceof LevelPanel) {
 			bp = ((LevelPanel) levelPanel).getBullpenView().getBullpen();
 			bpview = ((LevelPanel) levelPanel).getBullpenView();
@@ -188,9 +189,12 @@ public class BoardCtrl implements MouseListener {
 			bp = ((BuilderLevel) levelPanel).getBullpenView().getBullpen();
 			bpview = ((BuilderLevel) levelPanel).getBullpenView();
 		}
+		
+		//repaint bullpen and board views
 		bpview.setRepaintValid();
 		boardPanel.setRepaintValid();
 		container.repaint();
+		
 		// update status of level
 		if (levelPanel instanceof LevelPanel)
 			((LevelPanel) levelPanel).updateLevel();

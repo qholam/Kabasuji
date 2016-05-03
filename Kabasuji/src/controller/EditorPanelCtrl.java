@@ -63,8 +63,7 @@ public class EditorPanelCtrl implements MouseListener, MouseMotionListener {
 	 * @param e MouseEvent.
 	 */
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("GOT CLICK");
+		//do nothing if not in builder level panel
 		if (!(l instanceof BuilderLevel)) {
 			return;
 		}
@@ -73,15 +72,15 @@ public class EditorPanelCtrl implements MouseListener, MouseMotionListener {
 			System.out.println(pv.getPiece().toString());
 			if (pv instanceof PieceView) {
 				Piece p = ((PieceView) pv).getPiece();
+				//clone piece
 				Piece pClone = new Piece(p);
+				//add to bullpen
 				bv.getBullpen().addPiece(pClone);
-				System.out.println("# in bullpen" + bv.getBullpen().getPieces().size());
 			}
 		}
 		bv = ((BuilderLevel) l).getBullpenView();
 		bv.revalidate();
 		bv.setRepaintValid();
-		System.out.println("# in bullpen" + bv.getBullpen().getPieces().size());
 	}
 
 	@Override
