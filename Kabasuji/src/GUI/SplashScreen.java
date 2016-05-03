@@ -11,8 +11,8 @@ import javax.swing.JLabel;
 import java.awt.Label;
 
 /**
+ * Splash screen that is displayed before the application is loaded.
  * @author Quoc HoLam
- * Splash screen that is displayed before the application is loaded
  */
 public class SplashScreen extends JFrame {
 	/**
@@ -25,7 +25,8 @@ public class SplashScreen extends JFrame {
 	private Label label;
 	
 	/**
-	 * Create the panel.
+	 * Constructor for SplashScreen.
+	 * @param frame.
 	 */
 	public SplashScreen(KabasujiFrame frame) {
 		kf = frame;
@@ -53,6 +54,9 @@ public class SplashScreen extends JFrame {
 		contentPane.add(label);
 	}
 	
+	/**
+	 * Display Splash Screen.
+	 */
 	public void displaySplashScreen(){
 		this.setVisible(true);
 		

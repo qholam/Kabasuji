@@ -24,8 +24,9 @@ import java.awt.event.ActionEvent;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 /**
+ * Gui for the designer to specify the shape and size of the board.
  * @author Quoc HoLam
- * Gui for the designer to specify the shape and size of the board
+ * 
  */
 public class SpecifyBoardPropertiesView extends JPanel {
 	/**
@@ -42,7 +43,8 @@ public class SpecifyBoardPropertiesView extends JPanel {
 	int heightMax;
 
 	/**
-	 * Create the panel.
+	 * Constructor for SpecifyBoardPropertiesView.
+	 * @param frame.
 	 */
 	public SpecifyBoardPropertiesView(KabasujiBuilderFrame frame) {
 		kFrame = frame;
@@ -112,7 +114,7 @@ public class SpecifyBoardPropertiesView extends JPanel {
 				///System.out.println("Level Type: " + kFrame.workingBoard.getLevel().getLevelType());
 				kFrame.workingLevel.setBoard(kFrame.workingBoard);
 				LevelType lt = kFrame.workingLevel.getLevel().getLevelType();
-				System.out.println(lt);
+				//System.out.println(lt);
 				if (lt.equals(LevelType.Lightning)) {
 					kFrame.workingLevel=new BuilderLightningLevel(kFrame);
 					kFrame.workingLevel.setBounds(0, 0, 1200, 800);
@@ -164,6 +166,10 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		add(lblHeightmax);
 	}
 	
+	/**
+	 * Update the Board height.
+	 * @return boolean if update successful.
+	 */
 	boolean updateHeight() {
 		String s = txtEnterHeightmax.getText();
 		int newHeight;
@@ -181,6 +187,10 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		return true;
 	}
 	
+	/**
+	 * Update the Board Width.
+	 * @return boolean if update successful.
+	 */
 	boolean updateWidth() {
 		String s = txtEnterWidthmax.getText();
 		int newWidth;
@@ -198,8 +208,11 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		return true;
 	}
 	
+	/**
+	 * Update the board with given Width and Height.
+	 */
 	public void updateBoard() {
-		System.out.println(board.getTileViews()[0][1].getTile().toString());
+		//System.out.println(board.getTileViews()[0][1].getTile().toString());
 		updateWidth();
 		updateHeight();
 		txtEnterWidthmax.setText("" + width);
@@ -218,13 +231,17 @@ public class SpecifyBoardPropertiesView extends JPanel {
 	}
 	
 	/**
-	 * Get the tile view at the specified mouse event
+	 * Get the tile view at the specified mouse event.
 	 * @param me
 	 */
 	public TileView getClickedTile(MouseEvent me){
 		return board.getClickedTile(me);
 	}
 	
+	/**
+	 * Get the current KabasujiGuilderFrame.
+	 * @return KabasujiBuilderFrame.
+	 */
 	public KabasujiBuilderFrame getFrame(){
 		return kFrame;
 	}
