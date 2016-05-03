@@ -183,7 +183,6 @@ public class TestControllers extends TestMouse {
 		re = createPressed2(boardPanel, 140, 141);
 		sbc.mouseClicked(re);
 		//TileView c = boardPanel.getClickedTile(re);
-		//System.out.println(c);
 		sbc.mousePressed(re);
 		sbc.mousePressed(re);
 		re = createRightClick2(boardPanel, 140, 141);
@@ -191,7 +190,6 @@ public class TestControllers extends TestMouse {
 		
 		rbFrame = new KabasujiBuilderFrame();
 		boardPanel2 = new BoardPanel(rb);
-		System.out.println(rb.getLevel().getBoard().boardGrid.toString());
 		SpecifyBoardPropertiesView rproperties = new SpecifyBoardPropertiesView(rbFrame);
 		SpecifyBoardCtrl rsbc = new SpecifyBoardCtrl(rproperties, boardPanel2);
 		re = createPressed2(boardPanel2, 140, 141);
