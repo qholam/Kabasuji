@@ -57,7 +57,8 @@ public class PieceView extends JPanel {
 	int colorIndex = 0;
 	
 	/**
-	 * Properly update the displayed info on this {@link Piece}
+	 * Properly update the displayed info on this {@link Piece}.
+	 * @param g
 	 */
 	@Override 
 	public void paintComponent(Graphics g){
@@ -88,6 +89,10 @@ public class PieceView extends JPanel {
 	}
 
 	@Override
+	/**
+	 * Ensures repaint is only done once. This prevented flickering. 
+	 * TODO: Find a better way to do this.
+	 */
 	public void repaint(){
 		if(repaint != null && repaint){
 			super.repaint();
@@ -125,17 +130,26 @@ public class PieceView extends JPanel {
 	}
 	
 	/**
-	 * @return the piece
+	 * Get {@link Piece} represented by this view.
+	 * @return the piece represented by this view.
 	 */
 	public Piece getPiece() {
 		return piece;
 	}
 
+	/**
+	 * Set the {@link Piece} to be represented by this view.
+	 * @param p Given Piece.
+	 */
 	public void setPiece(Piece p){
 		piece = p;
 		//this.setRepaintValid();
 	}
 	
+	/**
+	 * Makes a border around the selected {@link Piece} in the {@link Bullpen}
+	 * @param makeBorderVisible boolean to decide whether to add border or not.
+	 */
 	public void toggleBorder(Boolean makeBorderVisible) {
 		if (makeBorderVisible) {
 			setBorder(BorderFactory.createLineBorder(Color.black));
