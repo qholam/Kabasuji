@@ -39,7 +39,7 @@ public class PieceView extends JPanel {
 		for(int i = 0; i < p.getMaxHeight(); i++){
 			for(int j = 0; j < p.getMaxWidth(); j++){
 				tilesView[j][i] = new TileView(g[j][i]);
-				//tilesView[j][i].setVisible(false);
+				tilesView[j][i].setVisible(false);
 				add(tilesView[j][i]);
 			}
 		}	

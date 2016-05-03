@@ -50,6 +50,9 @@ public class BuilderLevelTypeSelect extends JPanel
 			public void actionPerformed(ActionEvent ae) {
 				kFrame.levelType = LevelType.Puzzle;
 				kFrame.workingLevel = new BuilderPuzzleLevel(kFrame);
+				SpecifyBoardPropertiesView specifyBoard = new SpecifyBoardPropertiesView(kFrame);
+				specifyBoard.setBounds(0, 0, 1200, 800);
+				kFrame.getContentPane().add(specifyBoard, kFrame.SpecifyBoardProperties);
 				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.SpecifyBoardProperties);
 			}
 		});
@@ -62,7 +65,7 @@ public class BuilderLevelTypeSelect extends JPanel
 		button_1.setBounds(438, 489, 324, 87);
 		add(button_1);
 	
-		Button button_2 = new Button("Lightning");
+		Button button_2 = new Button("Lightning"); 
 		button_2.setForeground(Color.YELLOW);
 		button_2.setFont(new Font("Dialog", Font.PLAIN, 49));
 		button_2.setBackground(new Color(255, 165, 0));
@@ -70,6 +73,10 @@ public class BuilderLevelTypeSelect extends JPanel
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				kFrame.workingLevel = new BuilderLightningLevel(kFrame);
+				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.SpecifyBoardProperties);
+				SpecifyBoardPropertiesView specifyBoard = new SpecifyBoardPropertiesView(kFrame);
+				specifyBoard.setBounds(0, 0, 1200, 800);
+				kFrame.getContentPane().add(specifyBoard, kFrame.SpecifyBoardProperties);
 				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.SpecifyBoardProperties);
 			}
 		});

@@ -66,7 +66,6 @@ public class BoardPanel extends JPanel {
 	@Override
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		
 		for (int r = 0; r < board.getNumRows(); r++) {
 			for (int c = 0; c < board.getNumColumns(); c++) {
 				//no tile?

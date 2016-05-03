@@ -300,7 +300,7 @@ public class Piece  implements Serializable{
 					else if(t == null && o != null || t != null && o == null)
 						equals = false;
 					else if(!t.equals(o))
-						equals = false;
+						equals = false;	
 				}
 			}
 		}

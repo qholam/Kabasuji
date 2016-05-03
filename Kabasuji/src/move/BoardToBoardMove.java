@@ -93,7 +93,7 @@ public class BoardToBoardMove implements IMove {
 		}
 
 		return validMove;
-	}
+	} 
 
 	/**
 	 * Undo the most recent move.

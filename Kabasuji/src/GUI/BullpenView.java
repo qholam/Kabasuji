@@ -12,6 +12,7 @@ import javax.swing.ScrollPaneConstants;
 
 import controller.DragCtrl;
 import controller.HorizontalFlipCtrl;
+import controller.MouseMoveCtrl;
 import controller.PieceInBullpenCtrl;
 import controller.RotateClockwiseCtrl;
 import controller.RotateCounterClockwiseCtrl;
@@ -26,7 +27,7 @@ import javax.swing.JLabel;
 
 import java.awt.Color;
 import java.awt.Dimension;
-
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 
 public class BullpenView extends JPanel {
@@ -71,7 +72,7 @@ public class BullpenView extends JPanel {
 		scrollPanel = new JPanel();
 		
 		JScrollPane scrollPane = new JScrollPane(scrollPanel);
-		scrollPanel.setLayout(null);
+		scrollPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 		
 		scrollPane.setBounds(10, 10, 580, 240);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -129,16 +130,19 @@ public class BullpenView extends JPanel {
 		super.paintComponent(g);
 		
 		ArrayList<Piece> p = bullpen.getPieces();
-		for(int i = 0; i < pieces.size(); i++){
+		for(int i = 0; i < p.size(); i++){
 			pieces.get(i).setPiece(p.get(i));
-			if(bullpen.getQuantity(pieces.get(i).getPiece()) < 1){
-				pieces.get(i).setVisible(false);
-			}
-			else{
-				pieces.get(i).setVisible(true);
-			}
 		}
 	}
+	 
+	public void removePiece(PieceView p){
+		int index = pieces.indexOf(p);
+		pieces.remove(p);
+		scrollPanel.remove(p);
+		bullpen.getPieces().remove(index);
+		scrollPanel.setPreferredSize(new Dimension(200 * scrollPanel.getComponents().length, 0)); 
+	}
+	
 	
 	@Override
 	public void repaint(){
@@ -188,14 +192,15 @@ public class BullpenView extends JPanel {
 	
 	public PieceView getSelected(){
 		return selected;
-	}
+	} 
 	
 	public void addPiece(Piece p) {
 		bullpen.addPiece(p);
 		PieceView pv = new PieceView(p);
 		pv.addMouseListener(new PieceInBullpenCtrl(this, pv));
 		pv.addMouseListener(new DragCtrl(pv, level));
-		pv.setBounds(10 + bullpen.getNumPieces() * 200, 10, 6 * KabasujiFrame.tileWidth, 6 * KabasujiFrame.tileHeight);
+		pv.addMouseMotionListener(new MouseMoveCtrl(level));
+		pv.setBounds(10 + (bullpen.getNumPieces() - 1) * 200, 10, 6 * KabasujiFrame.tileWidth, 6 * KabasujiFrame.tileHeight);
 		pieces.add(pv);
 		scrollPanel.add(pv);
         scrollPanel.setPreferredSize(new Dimension(200 * scrollPanel.getComponents().length, 0)); 

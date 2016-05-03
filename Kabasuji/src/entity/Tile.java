@@ -32,7 +32,8 @@ public abstract class Tile implements Serializable{
 			//cast to Tile
 			other = (Tile) obj;
 			
-			equals = this.toString().equals(other.toString());
+			//same tile type and same row,col?
+			equals = this.toString().equals(other.toString()) && this.row == other.row && this.col == other.col && this.getColor() == other.getColor();
 		}
 		
 		return equals; 

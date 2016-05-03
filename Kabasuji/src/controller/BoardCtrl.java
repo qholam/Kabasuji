@@ -59,7 +59,7 @@ public class BoardCtrl implements MouseListener {
 		if (!container.isVisible()) {// nothing being dragged
 			// check if game is over, if so do nothing
 			if (levelPanel instanceof LevelPanel) {
-				if (((LevelPanel) levelPanel).getLevel().getStars() == 3)
+				if (((LevelPanel) levelPanel).getLevel().getStars() == 3) 
 					return;
 				l = ((LevelPanel) levelPanel).getLevel();
 			} else {
@@ -95,7 +95,7 @@ public class BoardCtrl implements MouseListener {
 						// it,
 						// be sure to set anchor and source
 						container.setDraggingPiece(removed);
-						container.setAnchortile(new TileView(removed.getpieceGrid()[col - removed.getColPos()][row - removed.getRowPos()])); 
+						container.setAnchortile(new TileView(removed.getpieceGrid()[col - removed.getColPos()][row - removed.getRowPos()]));  
 						container.setSource(boardPanel);
 						container.setVisible(true);
 					}
@@ -125,7 +125,7 @@ public class BoardCtrl implements MouseListener {
 				// add the piece and check if there was a problem doing so, if
 				// there is return
 				IMove move;
-				Level level;
+				Level level; 
 				JPanel source = container.getSource();
 
 				// get the level
@@ -133,21 +133,6 @@ public class BoardCtrl implements MouseListener {
 					level = ((LevelPanel) levelPanel).getLevel();
 				else
 					level = ((BuilderLevel) levelPanel).getLevel();
-
-				// check the source of the drag
-				if (source instanceof BullpenView)
-					move = new BullpenToBoardMove(boardPanel.getBoard(), level, container.getDraggingPiece().getPiece(),
-							bp, row, col);
-				else// otherwise source is the board
-					move = new BoardToBoardMove(boardPanel.getBoard(), level, container.getDraggingPiece().getPiece(),
-							row, col);
-
-				// was move successful?
-				// TODO: what to do when move is invalid?
-				if (!move.doMove()) {
-					//System.out.println("cant do move");
-					return;
-				}
 
 				// updating pieces quantity in bullpen
 				if (levelPanel instanceof LevelPanel) {
@@ -157,6 +142,28 @@ public class BoardCtrl implements MouseListener {
 					bp = ((BuilderLevel) levelPanel).getBullpenView().getBullpen();
 					bpview = ((BuilderLevel) levelPanel).getBullpenView();
 				}
+				
+				// check the source of the drag
+				if (source instanceof BullpenView)
+					move = new BullpenToBoardMove(boardPanel.getBoard(), level, container.getDraggingPiece().getPiece(),
+							bp, row, col);
+				else// otherwise source is the board
+					move = new BoardToBoardMove(boardPanel.getBoard(), level, container.getDraggingPiece().getPiece(),
+							row, col); 
+
+				// was move successful?
+				// TODO: what to do when move is invalid?
+				if (!move.doMove()) {
+					//System.out.println("cant do move");
+					return;
+				}
+				else{
+					//pushes move onto stack
+					if (levelPanel instanceof BuilderLevel){
+						((BuilderLevel) levelPanel).pushMove(move);
+					}
+				}
+
 				container.setVisible(false);
 			}
 		}

@@ -53,7 +53,7 @@ public class PuzzleLevel extends Level {
 		
 		//if the bullpen is empty in puzzle level, then all pieces have been placed.
 		if (numLeft == 0)
-			stars = Math.max(stars, 3);
+			stars = Math.max(stars, 3); 
 		else if(numLeft <= 6)
 			stars = Math.max(stars, 2);
 		else if(numLeft <= 12)

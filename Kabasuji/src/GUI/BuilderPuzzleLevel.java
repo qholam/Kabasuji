@@ -12,11 +12,14 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.Graphics;
+
 import javax.swing.SwingConstants;
 
 import controller.BoardCtrl;
@@ -29,6 +32,7 @@ import entity.Level;
 import entity.Piece;
 import entity.PieceTile;
 import entity.PuzzleLevel;
+import move.IMove;
 import serializers.Serializer;
 
 import javax.swing.JScrollPane;
@@ -48,7 +52,8 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 	/**
 	 * Create the panel.
 	 */
-	public BuilderPuzzleLevel(KabasujiBuilderFrame frame) {
+	public BuilderPuzzleLevel(KabasujiBuilderFrame frame) { 
+		super();
 		container = frame.getPieceContainer();
 		container.setVisible(false);
 		add(container);
@@ -186,11 +191,37 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		btnUndo.setBounds(25, 366, 89, 23);
 		btnUndo.addMouseMotionListener(new MouseMoveCtrl(this));
 		btnUndo.addMouseListener(new MouseMoveCtrl(this));
+		btnUndo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent me) {
+				//pop move and undo
+				IMove move = popMove();
+				//add to redo stack
+				pushRedo(move);
+				//do the undo
+				move.undo();
+				//repaint
+				boardPanel.revalidate();
+				bullpen.revalidate();
+				boardPanel.setRepaintValid();
+				bullpen.setRepaintValid();
+			}
+			
+			@Override
+			public void mouseReleased(MouseEvent me){
+				boardPanel.revalidate();
+				bullpen.revalidate();
+				boardPanel.setRepaintValid();
+				bullpen.setRepaintValid();
+			}
+		});
 		add(btnUndo);
 		
 		JButton button = new JButton("REDO");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		button.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent me) {
+				//TODO
 			}
 		});
 		button.setBounds(124, 366, 89, 23);

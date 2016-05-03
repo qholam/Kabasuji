@@ -50,7 +50,7 @@ public class BuilderLightningLevel extends BuilderLevel {
 	 */
 	public BuilderLightningLevel(KabasujiBuilderFrame frame) {
 		container = frame.getPieceContainer();
-		container.setVisible(false);
+		container.setVisible(false); 
 		add(container);
 		kFrame = frame;
 		
