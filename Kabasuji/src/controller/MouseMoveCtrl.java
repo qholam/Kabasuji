@@ -1,15 +1,11 @@
 package controller;
-
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-
 import javax.swing.JPanel;
-
 import GUI.BoardPanel;
 import GUI.BuilderLevel;
-import GUI.BullpenView;
 import GUI.LevelPanel;
 import GUI.PieceContainer;
 import entity.Bullpen;
@@ -21,6 +17,10 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
 	JPanel l;
 	PieceContainer container;
 	
+	/**
+	 * Handles the PieceView that is currently being moved.
+	 * @param l The JPanel that the mouse is being moved in.
+	 */
 	public MouseMoveCtrl(JPanel l){
 		this.l = l;
 		if(l instanceof LevelPanel)
@@ -71,37 +71,13 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
     			container.setLocation(point);
     	}
     }
-
-	@Override
-	public void mouseDragged(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	/**
 	 * When pressed anywhere but board, the dragging piece is returned to the
 	 * source.
 	 */
 	@Override
-	public void mousePressed(MouseEvent arg0) {
+	public void mousePressed(MouseEvent me) {
 		if(container.isVisible()){
 			if(l instanceof LevelPanel){
 				//if source is board it cannot be dropped anywhere else but the board
@@ -141,13 +117,33 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
 				((BuilderLevel) l).getBullpenView().getBullpen().addPiece(container.getDraggingPiece().getPiece());
 				((BuilderLevel) l).getBullpenView().revalidate();
 		    	((BuilderLevel) l).getBullpenView().setRepaintValid();
-		    	
 		    	container.setVisible(false); 
 			}
 		}
-		
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent arg0) {}
+	public void mouseDragged(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+	}
 }

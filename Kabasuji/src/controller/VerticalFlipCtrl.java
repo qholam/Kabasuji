@@ -1,5 +1,4 @@
 package controller;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -19,31 +18,12 @@ import view.PieceView;
 public class VerticalFlipCtrl implements ActionListener, MouseListener {
 	BullpenView bpview;
 
+	/**
+	 * Flips the selected piece vertically.
+	 * @param b The BullpenView for the bullpen in which the piece is contained. 
+	 */
 	public VerticalFlipCtrl(BullpenView bullpenView) {
 		bpview = bullpenView;
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -57,18 +37,31 @@ public class VerticalFlipCtrl implements ActionListener, MouseListener {
 
 		// get the piece
 		Piece p = pv.getPiece();
-
 		// rotate the seleced piece clockwise
 		p.verticalFlip();
-
 		// repaint the piece view
 		pv.setRepaintValid();
-
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		bpview.setRepaintValid();
 	}
-
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+	}
 }

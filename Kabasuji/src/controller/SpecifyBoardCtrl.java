@@ -1,5 +1,4 @@
 package controller;
-
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -7,8 +6,6 @@ import java.awt.event.MouseListener;
 import javax.swing.SwingUtilities;
 
 import GUI.BoardPanel;
-import GUI.KabasujiBuilderFrame;
-import GUI.KabasujiFrame;
 import GUI.SpecifyBoardPropertiesView;
 import entity.BoardTile;
 import entity.LevelType;
@@ -22,6 +19,11 @@ public class SpecifyBoardCtrl implements MouseListener {
 	SpecifyBoardPropertiesView sbpv;
 	BoardPanel boardPanel;
 
+	/**
+	 * Allows the user to set null tiles and release tiles in their builder boards based on what level type the create
+	 * @param s  The SpecifyBoardPropertiesView that is allowing the modifications to occur
+	 * @param b  The BoardPanel view for the board that is being modified.
+	 */
 	public SpecifyBoardCtrl(SpecifyBoardPropertiesView s, BoardPanel b) {
 		sbpv = s;
 		boardPanel = b;
@@ -32,22 +34,11 @@ public class SpecifyBoardCtrl implements MouseListener {
 		boardPanel.setRepaintValid();
 	}
 
-	@Override
-	public void mouseEntered(MouseEvent me) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void mouseExited(MouseEvent me) {
-		// TODO Auto-generated method stub
-
-	}
-
-
 	//Release tiles that can be added to the board
 	ReleaseTile greenRelease = new ReleaseTile(0, 0, new Number(1, Color.GREEN));
 	ReleaseTile redRelease = new ReleaseTile(0, 0, new Number(1, Color.RED));
 	ReleaseTile blueRelease = new ReleaseTile(0, 0, new Number(1, Color.BLUE));
+	
 	@Override
 	public void mousePressed(MouseEvent me) {
 		TileView t = sbpv.getClickedTile(me);
@@ -110,10 +101,18 @@ public class SpecifyBoardCtrl implements MouseListener {
 		//repaint board
 		boardPanel.setRepaintValid();
 	}
-
+	
 	@Override
-	public void mouseReleased(MouseEvent me) {
-		
+	public void mouseEntered(MouseEvent me) {
+		// TODO Auto-generated method stub
+	}
+	@Override
+	public void mouseExited(MouseEvent me) {
+		// TODO Auto-generated method stub
+	}
+	@Override
+	public void mouseReleased(MouseEvent me) {	
+		// TODO Auto-generated method stub
 	}
 
 }
