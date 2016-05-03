@@ -1,5 +1,6 @@
 package move;
 
+import GUI.BullpenView;
 import entity.Board;
 import entity.Bullpen;
 import entity.Level;
@@ -122,7 +123,7 @@ public class BullpenToBoardMove implements IMove {
 		Piece p = board.removePieceAt(row,col);
 		
 		//add back to bullpen
-		bullpen.addPiece(p);
+		bullpen.addPiece(p); 
 		
 		return true;
 	}

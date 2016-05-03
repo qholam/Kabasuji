@@ -139,7 +139,7 @@ public class BullpenView extends JPanel {
 			}
 		}
 	}
-	
+	 
 	public void removePiece(PieceView p){
 		scrollPanel.remove(p);
 		scrollPanel.setPreferredSize(new Dimension(200 * scrollPanel.getComponents().length, 0)); 

@@ -125,7 +125,7 @@ public class BoardCtrl implements MouseListener {
 				// add the piece and check if there was a problem doing so, if
 				// there is return
 				IMove move;
-				Level level;
+				Level level; 
 				JPanel source = container.getSource();
 
 				// get the level
@@ -134,6 +134,15 @@ public class BoardCtrl implements MouseListener {
 				else
 					level = ((BuilderLevel) levelPanel).getLevel();
 
+				// updating pieces quantity in bullpen
+				if (levelPanel instanceof LevelPanel) {
+					bp = ((LevelPanel) levelPanel).getBullpenView().getBullpen();
+					bpview = ((LevelPanel) levelPanel).getBullpenView();
+				} else {
+					bp = ((BuilderLevel) levelPanel).getBullpenView().getBullpen();
+					bpview = ((BuilderLevel) levelPanel).getBullpenView();
+				}
+				
 				// check the source of the drag
 				if (source instanceof BullpenView)
 					move = new BullpenToBoardMove(boardPanel.getBoard(), level, container.getDraggingPiece().getPiece(),
@@ -155,14 +164,6 @@ public class BoardCtrl implements MouseListener {
 					}
 				}
 
-				// updating pieces quantity in bullpen
-				if (levelPanel instanceof LevelPanel) {
-					bp = ((LevelPanel) levelPanel).getBullpenView().getBullpen();
-					bpview = ((LevelPanel) levelPanel).getBullpenView();
-				} else {
-					bp = ((BuilderLevel) levelPanel).getBullpenView().getBullpen();
-					bpview = ((BuilderLevel) levelPanel).getBullpenView();
-				}
 				container.setVisible(false);
 			}
 		}

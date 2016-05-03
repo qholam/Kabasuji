@@ -190,6 +190,7 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 			public void actionPerformed(ActionEvent arg0) {
 				//pop move and undo
 				popMove().undo();
+				kFrame.repaint();
 			}
 		});
 		add(btnUndo);
