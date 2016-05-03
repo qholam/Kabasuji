@@ -108,7 +108,6 @@ public class BuilderLightningLevel extends BuilderLevel {
 			public void mousePressed(MouseEvent e) {
 				container.setDraggingPiece(null);
 				container.setVisible(false);
-				System.out.println("Working");
 			}
 		});
 		btnNewButton_1.setBounds(650, 600, 100, 100);

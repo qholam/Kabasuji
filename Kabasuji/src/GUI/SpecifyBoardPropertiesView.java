@@ -111,10 +111,9 @@ public class SpecifyBoardPropertiesView extends JPanel {
 			public void actionPerformed(ActionEvent ae) {				
 				kFrame.setWorkingBoard(board.getBoard());
 				kFrame.setWorkingBoard(board.getBoard());
-				///System.out.println("Level Type: " + kFrame.workingBoard.getLevel().getLevelType());
 				kFrame.workingLevel.setBoard(kFrame.workingBoard);
 				LevelType lt = kFrame.workingLevel.getLevel().getLevelType();
-				//System.out.println(lt);
+
 				if (lt.equals(LevelType.Lightning)) {
 					kFrame.workingLevel=new BuilderLightningLevel(kFrame);
 					kFrame.workingLevel.setBounds(0, 0, 1200, 800);
@@ -212,7 +211,6 @@ public class SpecifyBoardPropertiesView extends JPanel {
 	 * Update the board with given Width and Height.
 	 */
 	public void updateBoard() {
-		//System.out.println(board.getTileViews()[0][1].getTile().toString());
 		updateWidth();
 		updateHeight();
 		txtEnterWidthmax.setText("" + width);

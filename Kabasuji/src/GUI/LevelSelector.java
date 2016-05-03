@@ -190,7 +190,7 @@ public class LevelSelector extends JPanel {
 		
 		//Labels that hold the highest star achieved for each level
 		int stars = kFrame.getStars(LevelType.Puzzle, 1);
-		System.out.println(stars);
+
 		lblPuzzleStars1 = new JLabel();
 		lblPuzzleStars1.setBounds(120, 260, 61, 16);
 		lblPuzzleStars1.setIcon(new ImageIcon(getClass().getResource("pictures/" + stars + "star.png")));

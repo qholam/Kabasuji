@@ -112,7 +112,6 @@ public class BuilderReleaseLevel extends BuilderLevel {
 			public void mousePressed(MouseEvent e) {
 				container.setDraggingPiece(null);
 				container.setVisible(false);
-				//System.out.println("Working");
 			}
 		});
 		

@@ -173,7 +173,6 @@ public class BoardPanel extends JPanel {
 		//get the component that was clicked on
 		Component c = boardTilePanel.getComponentAt(me.getPoint());
 		
-		//System.out.println(boardTilePanel.getComponent(5));
 		if(c instanceof TileView){
 			t = (TileView) c;
 		}
