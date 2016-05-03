@@ -119,10 +119,10 @@ public class BullpenToBoardMove implements IMove {
 	@Override
 	public boolean undo() {
 		//remove the piece from the board
-		board.removePiece(this.pieceBeingDragged);
+		Piece p = board.removePieceAt(row,col);
 		
 		//add back to bullpen
-		bullpen.changeQuantity(this.pieceBeingDragged, 1);
+		bullpen.addPiece(p);
 		
 		return true;
 	}

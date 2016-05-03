@@ -48,7 +48,7 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 	/**
 	 * Create the panel.
 	 */
-	public BuilderPuzzleLevel(KabasujiBuilderFrame frame) {
+	public BuilderPuzzleLevel(KabasujiBuilderFrame frame) { 
 		container = frame.getPieceContainer();
 		container.setVisible(false);
 		add(container);
@@ -186,6 +186,12 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		btnUndo.setBounds(25, 366, 89, 23);
 		btnUndo.addMouseMotionListener(new MouseMoveCtrl(this));
 		btnUndo.addMouseListener(new MouseMoveCtrl(this));
+		btnUndo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//pop move and undo
+				popMove().undo();
+			}
+		});
 		add(btnUndo);
 		
 		JButton button = new JButton("REDO");

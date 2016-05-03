@@ -135,6 +135,8 @@ public class Board implements Serializable {
 		// remove the piece
 		removePiece(p);
 
+		pieces.remove(p);
+		
 		return p;
 	}
 
@@ -147,7 +149,7 @@ public class Board implements Serializable {
 		// ensures the given piece is actually on the board
 		if (!pieces.contains(p))
 			return;
-
+ 
 		// get the piece tiles of the given piece and remove them(in this case
 		// the board tiles are just set to be uncovered) **this may need
 		// changing

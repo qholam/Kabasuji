@@ -59,7 +59,7 @@ public class BoardCtrl implements MouseListener {
 		if (!container.isVisible()) {// nothing being dragged
 			// check if game is over, if so do nothing
 			if (levelPanel instanceof LevelPanel) {
-				if (((LevelPanel) levelPanel).getLevel().getStars() == 3)
+				if (((LevelPanel) levelPanel).getLevel().getStars() == 3) 
 					return;
 				l = ((LevelPanel) levelPanel).getLevel();
 			} else {
@@ -140,13 +140,19 @@ public class BoardCtrl implements MouseListener {
 							bp, row, col);
 				else// otherwise source is the board
 					move = new BoardToBoardMove(boardPanel.getBoard(), level, container.getDraggingPiece().getPiece(),
-							row, col);
+							row, col); 
 
 				// was move successful?
 				// TODO: what to do when move is invalid?
 				if (!move.doMove()) {
 					//System.out.println("cant do move");
 					return;
+				}
+				else{
+					//pushes move onto stack
+					if (levelPanel instanceof BuilderLevel){
+						((BuilderLevel) levelPanel).pushMove(move);
+					}
 				}
 
 				// updating pieces quantity in bullpen
