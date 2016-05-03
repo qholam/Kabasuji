@@ -74,26 +74,9 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		boardPanel.getBoard().setLevel(level);
 		boardPanel.setBounds(25, 400, 600, 300);
 		boardPanel.addMouseListener(new BoardCtrl(boardPanel, this));
-		boardPanel.addMouseListener(new MouseAdapter() {
-                private Color background;
-
-                @Override
-                public void mousePressed(MouseEvent e) {
-                    System.out.println("clicked");
-                }         
-		});
 		boardPanel.addMouseMotionListener(new MouseMoveCtrl(this));
 		boardPanel.addMouseListener(new MouseMoveCtrl(this));
 		add(boardPanel);
-		
-		this.addMouseListener(new MouseAdapter() {
-            private Color background;
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            	System.out.println(e.getX() + " " + e.getY());
-                System.out.println("level panel clicked");
-            }});
 		
 		Bullpen b = new Bullpen();
 		bullpen = new BullpenView(b, this);

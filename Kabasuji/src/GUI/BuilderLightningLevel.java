@@ -10,6 +10,8 @@ import java.awt.Container;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -28,6 +30,7 @@ import entity.LightningLevel;
 import entity.Piece;
 import entity.PieceTile;
 import entity.PuzzleLevel;
+import move.IMove;
 import serializers.Serializer;
 
 import javax.swing.JScrollPane;
@@ -94,8 +97,11 @@ public class BuilderLightningLevel extends BuilderLevel {
 		add(bullpen);
 		
 		JButton btnNewButton_1 = new JButton("TRASH");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				container.setDraggingPiece(null);
+				container.setVisible(false);
+				System.out.println("Working");
 			}
 		});
 		btnNewButton_1.setBounds(650, 600, 100, 100);
@@ -166,6 +172,30 @@ public class BuilderLightningLevel extends BuilderLevel {
 		btnUndo.setBounds(25, 366, 89, 23);
 		btnUndo.addMouseMotionListener(new MouseMoveCtrl(this));
 		btnUndo.addMouseListener(new MouseMoveCtrl(this));
+		btnUndo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent me) {
+				//pop move and undo
+				IMove move = popMove();
+				//add to redo stack
+				pushRedo(move);
+				//do the undo
+				move.undo();
+				//repaint
+				boardPanel.revalidate();
+				bullpen.revalidate();
+				boardPanel.setRepaintValid();
+				bullpen.setRepaintValid();
+			}
+			
+			@Override
+			public void mouseReleased(MouseEvent me){
+				boardPanel.revalidate();
+				bullpen.revalidate();
+				boardPanel.setRepaintValid();
+				bullpen.setRepaintValid();
+			}
+		});
 		add(btnUndo);
 		
 		JButton button = new JButton("REDO");
