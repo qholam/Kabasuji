@@ -103,8 +103,18 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		
 		//button which will take user to the view to edit the level
 		Button nextButton = new Button("Next");
+		final SpecifyBoardPropertiesView temp = this;
 		nextButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
+				boardContainer.remove(board);
+				boardContainer.revalidate();
+				boardContainer.repaint();
+				board = new BoardPanel(new Board(kFrame.workingLevel.getLevel(), height, width));
+				board.addMouseListener(new SpecifyBoardCtrl(temp, board));
+				kFrame.setWorkingBoard(board.getBoard());
+				boardContainer.add(board);
+				boardContainer.revalidate();
+				boardContainer.repaint();
 				kFrame.setWorkingBoard(board.getBoard());
 				///System.out.println("Level Type: " + kFrame.workingBoard.getLevel().getLevelType());
 				kFrame.workingLevel.setBoard(kFrame.workingBoard);
