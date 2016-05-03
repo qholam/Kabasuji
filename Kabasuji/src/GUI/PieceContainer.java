@@ -24,6 +24,10 @@ public class PieceContainer extends JPanel{
 	//source of the drag
 	JPanel source;
 	
+	/**
+	 * Constructor to create the Piece Container which will
+	 * hold pieces being dragged.
+	 */
 	public PieceContainer() {
 		super();
 		
@@ -37,14 +41,26 @@ public class PieceContainer extends JPanel{
 		setOpaque(false);
 	}
 	
+	/**
+	 * Set the source of the drag.
+	 * @param source JPanel in which this piece was dragged from.
+	 */
 	public void setSource(JPanel source){
 		this.source = source;
 	}
 	
+	/**
+	 * Get the source.
+	 * @return The source from which the dragged piece was dragged from.
+	 */
 	public JPanel getSource(){
 		return source;
 	}
 	
+	/**
+	 * Set the dragging piece.
+	 * @param p Piece now being dragged.
+	 */
 	public void setDraggingPiece(Piece p){
 		draggedPiece.setPiece(p);
 	}
