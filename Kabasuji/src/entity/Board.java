@@ -9,7 +9,7 @@ import view.TileView;
 public class Board implements Serializable {
 
 	// All pieces on board
-	ArrayList<Piece> pieces;
+	public ArrayList<Piece> pieces;
 	// The level to which this board belongs
 	Level level;
 	// The grid of tiles that makes up this board

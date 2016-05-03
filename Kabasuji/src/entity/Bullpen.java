@@ -8,7 +8,7 @@ public class Bullpen implements Serializable {
 	//the current selected piece inside the bullpen, null if nothing is selected
 	Piece selectedPiece;
 	//Array list to hold all the piece on the bullpen
-	ArrayList<Piece> pieces;
+	public ArrayList<Piece> pieces;
 	//Hashmap to keep track of the quantity of each piece left
 	HashMap<Piece, Integer> piecesInfo;
 	
