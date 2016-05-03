@@ -117,7 +117,7 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
 				
 				//added it back to the bullpen by updating pieces quantity
 				Bullpen bp = ((LevelPanel) l).getBullpenView().getBullpen();
-				((LevelPanel) l).getBullpenView().addPiece(container.getDraggingPiece().getPiece());
+				((LevelPanel) l).getBullpenView().getBullpen().addPiece(container.getDraggingPiece().getPiece());
 				((LevelPanel) l).getBullpenView().revalidate();
 		    	((LevelPanel) l).getBullpenView().setRepaintValid();
 		    	
@@ -138,7 +138,7 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
 				
 				//added it back to the bullpen by updating pieces quantity
 				Bullpen bp = ((BuilderLevel) l).getBullpenView().getBullpen();
-				((BuilderLevel) l).getBullpenView().addPiece(container.getDraggingPiece().getPiece());
+				((BuilderLevel) l).getBullpenView().getBullpen().addPiece(container.getDraggingPiece().getPiece());
 				((BuilderLevel) l).getBullpenView().revalidate();
 		    	((BuilderLevel) l).getBullpenView().setRepaintValid();
 		    	

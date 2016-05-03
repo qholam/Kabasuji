@@ -132,15 +132,19 @@ public class BullpenView extends JPanel {
 		
 		ArrayList<Piece> p = bullpen.getPieces();
 		for(int i = 0; i < p.size(); i++){
+			try{
 				pieces.get(i).setPiece(p.get(i));
+			}catch(IndexOutOfBoundsException e){
+				//if the bullpen has extra pieces, then add it to the view
+				this.addPiece(p.get(i));
+			}				
 		}
 	}
 	 
 	public void removePiece(PieceView p){
-		int index = pieces.indexOf(p);
 		pieces.remove(p);
 		scrollPanel.remove(p);
-		bullpen.getPieces().remove(index);
+		bullpen.getPieces().remove(p.getPiece());
 		scrollPanel.setPreferredSize(new Dimension(200 * scrollPanel.getComponents().length, 0)); 
 	}
 	
@@ -196,7 +200,6 @@ public class BullpenView extends JPanel {
 	} 
 	
 	public void addPiece(Piece p) {
-		bullpen.addPiece(p);
 		PieceView pv = new PieceView(p);
 		pv.addMouseListener(new PieceInBullpenCtrl(this, pv));
 		pv.addMouseListener(new DragCtrl(pv, level));
