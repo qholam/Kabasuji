@@ -95,4 +95,5 @@ public abstract class Tile implements Serializable{
 		
 		return c;
 	}
+
 }

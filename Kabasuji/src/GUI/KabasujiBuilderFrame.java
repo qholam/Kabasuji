@@ -14,6 +14,7 @@ import entity.LightningLevel;
 import entity.Piece;
 import entity.PieceTile;
 import entity.PuzzleLevel;
+import entity.ReleaseLevel;
 
 import java.awt.CardLayout;
 
@@ -25,7 +26,9 @@ public class KabasujiBuilderFrame extends JFrame {
 	final String SpecifyBoardProperties = "SpecifyBoardProperties";
 	final String BuilderPuzzleLevel = "BuilderPuzzleLevel";
 	final String BuilderLightningLevel = "BuilderLightningLevel";
+	final String BuilderReleaseLevel = "BuilderReleaseLevel";
 	public LevelType levelType;
+
 
 
 	private JPanel contentPane;
@@ -107,6 +110,8 @@ public class KabasujiBuilderFrame extends JFrame {
 		}
 		if (b.getLevel() instanceof PuzzleLevel){
 			workingLevel = (BuilderPuzzleLevel) workingLevel;
+		} else{
+			workingLevel = (BuilderReleaseLevel) workingLevel;
 		}
 		*/
 		workingLevel.setBoard(b);

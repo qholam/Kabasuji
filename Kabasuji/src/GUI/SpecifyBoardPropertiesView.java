@@ -125,7 +125,11 @@ public class SpecifyBoardPropertiesView extends JPanel {
 					kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.BuilderPuzzleLevel);
 				}
 				else {
-					kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.BuilderPuzzleLevel); //CHANGE THIS TO RELEASE
+					kFrame.workingLevel=new BuilderReleaseLevel(kFrame);
+					kFrame.workingLevel.setBounds(0, 0, 1200, 800);
+					kFrame.workingLevel.setBoard(kFrame.workingBoard);
+					kFrame.getContentPane().add(kFrame.workingLevel, kFrame.BuilderReleaseLevel);
+					kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.BuilderReleaseLevel);
 				}
 			}
 		});

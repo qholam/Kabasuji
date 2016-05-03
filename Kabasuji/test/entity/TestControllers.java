@@ -1,6 +1,7 @@
 package entity;
 
 import java.awt.AWTException;
+import java.awt.Component;
 import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
@@ -11,14 +12,17 @@ import javax.swing.AbstractButton;
 import javax.swing.JButton;
 
 import GUI.BoardPanel;
+import GUI.BuilderPuzzleLevel;
 import GUI.BullpenView;
 import GUI.KabasujiBuilderFrame;
 import GUI.KabasujiFrame;
 import GUI.LevelPanel;
 import GUI.MainMenuPanel;
+import GUI.PieceContainer;
 import GUI.SpecifyBoardPropertiesView;
 import controller.BoardCtrl;
 import controller.DragCtrl;
+import controller.EditorPanelCtrl;
 import controller.HorizontalFlipCtrl;
 import controller.LoadLevelCtrl;
 import controller.MouseMoveCtrl;
@@ -35,7 +39,7 @@ public class TestControllers extends TestMouse {
 	
 	KabasujiGame game;
 	KabasujiFrame kFrame;
-	KabasujiBuilderFrame bFrame;
+	KabasujiBuilderFrame bFrame, rbFrame;
 	Piece piece, p, piece2;
 	PieceView pv;
 	PieceTile[] pieceTiles = new PieceTile[6];
@@ -43,12 +47,13 @@ public class TestControllers extends TestMouse {
 	BullpenView bpv;
 	PieceInBullpenCtrl bpc;
 	ArrayList<Piece> bpArray;
-	Board board;
-	BoardPanel boardPanel;
+	Board board, rb;
+	BoardPanel boardPanel, boardPanel2;
 	BoardCtrl bc;
 	MouseEvent pr, re;
 	PuzzleLevel pl;
-	LevelPanel lp;
+	ReleaseLevel rl;
+	LevelPanel lp, rlp, blp;
 
 	
 	public void setUp(){
@@ -63,9 +68,14 @@ public class TestControllers extends TestMouse {
 	bp2 = new Bullpen();
 	bp2.addPiece(piece, 1);
 	board = new Board(pl, 10, 10);
+	rb = new Board(rl, 10, 10);
 	boardPanel = new BoardPanel(board);
+	boardPanel2 = new BoardPanel(rb);
+	rl = new ReleaseLevel(board, bp2, true, 1, 1);
+	rb.setLevel(rl);
 	pl = new PuzzleLevel(5, board, bp2, true, 1, 1);
 	kFrame = new KabasujiFrame();
+	rlp = new LevelPanel(kFrame, rl);
 	lp = new LevelPanel(kFrame, pl);
 	}
 
@@ -164,20 +174,33 @@ public class TestControllers extends TestMouse {
 		p = bc.getBoardView().getBoard().getPieceAt(0, 0);
 		//assertEquals(lp.getPieceContainer().getDraggingPiece(), pv);
 	}
-	
+
 	public void testSpecifyBoardCtrl(){
 		bFrame = new KabasujiBuilderFrame();
-		KabasujiBuilderFrame bFrame2 = new KabasujiBuilderFrame();
 		boardPanel = new BoardPanel(bFrame.getBoard());
 		SpecifyBoardPropertiesView properties = new SpecifyBoardPropertiesView(bFrame);
 		SpecifyBoardCtrl sbc = new SpecifyBoardCtrl(properties, boardPanel);
-		re = createPressed2(boardPanel, 0, 0);
-		bFrame2 = properties.getFrame();
+		re = createPressed2(boardPanel, 140, 141);
 		sbc.mouseClicked(re);
+		//TileView c = boardPanel.getClickedTile(re);
+		//System.out.println(c);
+		sbc.mousePressed(re);
+		sbc.mousePressed(re);
+		re = createRightClick2(boardPanel, 140, 141);
+		sbc.mousePressed(re);
+		
+		rbFrame = new KabasujiBuilderFrame();
+		boardPanel2 = new BoardPanel(rb);
+		System.out.println(rb.getLevel().getBoard().boardGrid.toString());
+		SpecifyBoardPropertiesView rproperties = new SpecifyBoardPropertiesView(rbFrame);
+		SpecifyBoardCtrl rsbc = new SpecifyBoardCtrl(rproperties, boardPanel2);
+		re = createPressed2(boardPanel2, 140, 141);
+		sbc.mousePressed(re);
+		sbc.mousePressed(re);
+		re = createRightClick2(boardPanel2, 140, 141);
 		sbc.mousePressed(re);
 	}
 
-	
 	public void testLoadLevelCtrl(){
 		LoadLevelCtrl LLC = new LoadLevelCtrl(LevelType.Puzzle, kFrame, 1);
 		LoadLevelCtrl LLC2 = new LoadLevelCtrl(LevelType.Puzzle, kFrame, 6);
@@ -193,6 +216,41 @@ public class TestControllers extends TestMouse {
 		LLC4.actionPerformed(MMP.button);
 		LLC5.actionPerformed(MMP.button);
 		LLC6.actionPerformed(MMP.button);
+	}
+	
+	public void testBoardCtrl(){
+		bpArray = new ArrayList<Piece>();
+		bpArray.add(piece);
+		bp = new Bullpen(bpArray);
+		bpv = new BullpenView(bp, lp);
+		BoardCtrl BC = new BoardCtrl(boardPanel, lp);
+		//lp.getPieceContainer().setVisible(false);
+		PieceContainer PC = new PieceContainer();
+		PC.setDraggingPiece(piece);
+		PC.setSource(lp);
+		pr = createRightClick(boardPanel, 74, 44);
+		BC.mousePressed(pr);
+		BC.mouseReleased(pr);
+	}
+	public void testEditorPanelCtrl(){
+		bFrame = new KabasujiBuilderFrame();
+		BuilderPuzzleLevel BPL = new BuilderPuzzleLevel(bFrame);
+		EditorPanelCtrl EPC = new EditorPanelCtrl(pv, BPL);
+		bp = new Bullpen();
+		bpv = new BullpenView(bp, BPL);
+		pr = createClicked2(BPL, 29, 50);
+		EPC.mousePressed(pr);
+		assertEquals(EPC.getBullpenView().getBullpen().getPieces().size(), 1);
+	}
+	
+	public void testPieceInBullpenCtrl(){
+		bp = new Bullpen();
+		bp.addPiece(piece);
+		bpv = new BullpenView(bp, lp);
+		PieceInBullpenCtrl PBC = new PieceInBullpenCtrl(bpv, pv);
+		pr = createRightClick2(bpv, 18, 132);
+		PBC.mousePressed(pr);
+		PBC.mouseReleased(pr);
 	}
 	
 }

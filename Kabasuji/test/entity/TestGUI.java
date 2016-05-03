@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import GUI.BuilderLightningLevel;
+import GUI.BuilderReleaseLevel;
 import GUI.BullpenView;
 import GUI.KabasujiBuilderFrame;
 import GUI.KabasujiFrame;
@@ -139,4 +140,5 @@ public class TestGUI extends TestCase
 		Component c = bll.getComponentAt(655, 605);
 		assertTrue(c instanceof JButton);
 	}
+
 }

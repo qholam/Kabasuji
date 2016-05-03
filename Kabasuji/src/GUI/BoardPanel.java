@@ -16,6 +16,7 @@ import view.TileView;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -45,15 +46,18 @@ public class BoardPanel extends JPanel {
 		
 		boardTilePanel = new JPanel();
 		boardTilePanel.setOpaque(false);
-		add(boardTilePanel);
 		boardTilePanel.setLayout(new GridLayout(b.getNumRows(), b.getNumColumns(), 0, 0));
 		boardTilePanel.setBounds(10, 10, b.getNumColumns() * KabasujiFrame.tileWidth, b.getNumRows() * KabasujiFrame.tileHeight);
+		add(boardTilePanel);
 		//panel.setBounds(10, 10, 28*b.getNumColumns(), 28*b.getNumRows());
 		
 		for (int r = 0; r < b.getNumRows(); r++) {
 			for (int c = 0; c < b.getNumColumns(); c++) {
 				tileViews[c][r] = new TileView(b.getGrid()[c][r]);
+				tileViews[c][r].setSize(getPreferredSize());
+				tileViews[c][r].setLocation(KabasujiFrame.tileWidth * c, KabasujiFrame.tileHeight * r);
 				boardTilePanel.add(tileViews[c][r]);
+				boardTilePanel.validate();
 			}
 		}
 		setOpaque(true);
@@ -142,16 +146,8 @@ public class BoardPanel extends JPanel {
 		TileView t = null;
 		//get the component that was clicked on
 		Component c = boardTilePanel.getComponentAt(me.getPoint());
-		/**
-		System.out.println(boardTilePanel.getComponent(5));
-		System.out.println(boardTilePanel.contains(me.getPoint()));
-		System.out.println(boardTilePanel.getComponentAt(me.getPoint()));
-		System.out.println(me.getSource());
-		System.out.println(me.getX() + " " + me.getY() + "dalsjdlas " + me.getPoint());
-		System.out.println(me.getModifiers());
-		System.out.println(me.isPopupTrigger());
-		System.out.println(me.getClickCount());
-		**/
+		
+		//System.out.println(boardTilePanel.getComponent(5));
 		if(c instanceof TileView){
 			t = (TileView) c;
 		}

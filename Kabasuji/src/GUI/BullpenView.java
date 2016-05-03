@@ -94,7 +94,8 @@ public class BullpenView extends JPanel {
 			//pieceContainer.add(pieces.get(i));
             //scrollPanel.add(pieceContainer); 
 			scrollPanel.add(pieces.get(i));
-            scrollPanel.setPreferredSize(new Dimension(200 * scrollPanel.getComponents().length, 0));  
+            scrollPanel.setPreferredSize(new Dimension(200 * scrollPanel.getComponents().length, 0)); 
+            scrollPanel.validate();
 		}
 
 		JPanel panel = new JPanel();
