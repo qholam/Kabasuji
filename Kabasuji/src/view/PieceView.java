@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
+import javax.swing.BorderFactory;
 
 import GUI.KabasujiFrame;
 import entity.Piece;
@@ -30,6 +31,7 @@ public class PieceView extends JPanel {
 	
 	public PieceView(Piece p) {
 		super();
+		toggleBorder(false);
 		
 		piece = p;
 		Tile[][] g = p.getpieceGrid();  
@@ -132,5 +134,14 @@ public class PieceView extends JPanel {
 	public void setPiece(Piece p){
 		piece = p;
 		//this.setRepaintValid();
+	}
+	
+	public void toggleBorder(Boolean makeBorderVisible) {
+		if (makeBorderVisible) {
+			setBorder(BorderFactory.createLineBorder(Color.black));
+		}
+		else {
+			setBorder(null);
+		}
 	}
 }
