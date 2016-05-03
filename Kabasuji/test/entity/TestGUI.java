@@ -2,11 +2,14 @@ package entity;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.text.JTextComponent;
 
+import GUI.BoardPanel;
 import GUI.BuilderLightningLevel;
 import GUI.BuilderReleaseLevel;
 import GUI.BullpenView;
@@ -23,7 +26,7 @@ import view.PieceView;
  * @author LilyAnne
  *
  */
-public class TestGUI extends TestCase 
+public class TestGUI extends TestCase
 {
 	Bullpen pen;
 	Piece piece1;
@@ -31,6 +34,7 @@ public class TestGUI extends TestCase
 	Piece piece3;
 	BullpenView b;
 	PieceView pv, pv1, vcw, vccw, vv, vh;
+
 	
 	
 	KabasujiFrame frame;
@@ -41,6 +45,7 @@ public class TestGUI extends TestCase
 	SpecifyBoardPropertiesView sbpv;
 	LevelSelector ls;
 	BuilderLightningLevel bll;
+	BoardPanel bp;
 
 	public void setUp()
 	{
@@ -76,8 +81,11 @@ public class TestGUI extends TestCase
 		b = new BullpenView(pen, lp);
 		frame = new KabasujiFrame();
 		bFrame = new KabasujiBuilderFrame();
+		
+		
+		bFrame.levelType = LevelType.Puzzle;
+		board = new Board(l, 12, 12);
 		l = new Level(board, pen, true, 1, 0);
-		board = new Board(l, 10, 10);
 		
 		
 	}
@@ -114,9 +122,19 @@ public class TestGUI extends TestCase
 	
 	public void testSpecifyBoardPropertiesView()
 	{
+
 		sbpv = new SpecifyBoardPropertiesView(bFrame);
 		Component c1 = sbpv.getComponentAt(237, 236);
 		assertTrue(c1 instanceof JTextField);
+		
+		Component c2 = sbpv.getComponentAt(237, 274);
+		assertTrue(c2 instanceof JTextField);
+		((JTextField) c1).setText("6");
+		((JTextField) c2).setText("6");
+		
+		//sbpv.updateBoard();
+		
+		
 	}
 	
 	public void testLevelSelector()

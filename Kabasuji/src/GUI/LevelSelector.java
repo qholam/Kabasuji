@@ -126,18 +126,7 @@ public class LevelSelector extends JPanel {
 		JButton lightningLevel1 = new JButton("1");
 		lightningLevel1.setBounds(120, 528, 60, 50);
 		lightningLevel1.setForeground(new Color(255, 165, 0));
-		lightningLevel1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ae) {
-				Bullpen bp = new Bullpen();
-				for (int i = 0; i < 10; i++) {
-					bp.addPiece(kFrame.pieces[i]);
-				}
-				Level l = new LightningLevel(20, new Board(null, 6, 6),bp, true, 1, 0);
-				LevelPanel puzzle1 = new LevelPanel(kFrame, l);
-				kFrame.addToContentPane((JPanel)puzzle1, kFrame.Puzzle1);
-				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.Puzzle1);
-			}
-		}); 
+		lightningLevel1.addActionListener(new LoadLevelCtrl(LevelType.Release, kFrame, 1));
 		add(lightningLevel1);
 
 		JButton lightningLevel2 = new JButton("2");
@@ -149,19 +138,19 @@ public class LevelSelector extends JPanel {
 		JButton lightningLevel3 = new JButton("3");
 		lightningLevel3.setBounds(360, 528, 60, 50);
 		lightningLevel3.setForeground(new Color(255, 165, 0));
-		lightningLevel3.addActionListener(new LoadLevelCtrl(LevelType.Release, kFrame, 3));
+		lightningLevel3.addActionListener(new LoadLevelCtrl(LevelType.Lightning, kFrame, 3));
 		add(lightningLevel3);
 
 		JButton lightningLevel4 = new JButton("4");
 		lightningLevel4.setBounds(480, 528, 60, 50);
 		lightningLevel4.setForeground(new Color(255, 165, 0));
-		lightningLevel4.addActionListener(new LoadLevelCtrl(LevelType.Release, kFrame, 4));
+		lightningLevel4.addActionListener(new LoadLevelCtrl(LevelType.Lightning, kFrame, 4));
 		add(lightningLevel4);
 
 		JButton lightningLevel5 = new JButton("5");
 		lightningLevel5.setBounds(600, 528, 60, 50);
 		lightningLevel5.setForeground(new Color(255, 165, 0));
-		lightningLevel5.addActionListener(new LoadLevelCtrl(LevelType.Release, kFrame, 5));
+		lightningLevel5.addActionListener(new LoadLevelCtrl(LevelType.Lightning, kFrame, 5));
 		add(lightningLevel5);
 
 		JLabel puzzleLabel = new JLabel("Puzzle");

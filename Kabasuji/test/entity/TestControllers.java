@@ -187,7 +187,7 @@ public class TestControllers extends TestMouse {
 		sbc.mousePressed(re);
 		sbc.mousePressed(re);
 		re = createRightClick2(boardPanel, 140, 141);
-		sbc.mousePressed(re);
+		//sbc.mousePressed(re);
 		
 		rbFrame = new KabasujiBuilderFrame();
 		boardPanel2 = new BoardPanel(rb);
@@ -198,7 +198,7 @@ public class TestControllers extends TestMouse {
 		sbc.mousePressed(re);
 		sbc.mousePressed(re);
 		re = createRightClick2(boardPanel2, 140, 141);
-		sbc.mousePressed(re);
+		//sbc.mousePressed(re);
 	}
 
 	public void testLoadLevelCtrl(){
