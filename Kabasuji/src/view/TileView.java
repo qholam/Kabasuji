@@ -19,7 +19,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 /**
  * @author Quoc HoLam
- * View for Tiles
+ * View for Tiles.
  */
 
 public class TileView extends JPanel{
@@ -37,8 +37,8 @@ public class TileView extends JPanel{
 	Boolean repaint = true;
 
 	/**
-	 * Constructor for TileView
-	 * @param t Given {@link Tile} that this view will represent
+	 * Constructor for TileView.
+	 * @param t Given {@link Tile} that this view will represent.
 	 */
 	public TileView(Tile t){
 		super();
@@ -51,7 +51,7 @@ public class TileView extends JPanel{
 	} 
 	
 	/**
-	 * Properly update the displayed info on this {@link Tile}
+	 * Properly update the displayed info on this {@link Tile}.
 	 */
 	@Override
 	public void paintComponent(Graphics g){
@@ -97,19 +97,9 @@ public class TileView extends JPanel{
 			repaint = false;
 		}
 	}
-	
-	/**
-	 * this is needed to prevent flickering when dragging inside the board.
-	 * TODO: find another way to prevent this flickering
-	 */
-	/**
-	public void setRepaintInvalid(){
-		repaint = false;
-	}*/
  
 	/**
 	 * this is needed to prevent flickering when dragging inside the board.
-	 * TODO: find another way to prevent this flickering
 	 */
 	public void setRepaintValid(){
 		repaint = true;
@@ -117,17 +107,18 @@ public class TileView extends JPanel{
 	}
 	
 	/**
-	 * @return the tile
+	 * Gets the tile represented by this tile view.
+	 * @return the tile.
 	 */
 	public Tile getTile() {
 		return tile;
 	}
 
 	/**
-	 * @param tile the tile to set
+	 * Sets the tile we want this tileView to represent.
+	 * @param tile the tile to set.
 	 */
 	public void setTile(Tile tile) {
 		this.tile = tile;
-		//this.repaint();
 	}
 }
