@@ -8,18 +8,12 @@ import GUI.BullpenView;
 import entity.Piece;
 import view.PieceView;
 
-/**
- * Controller to handle the event that a piece is selected and asked to be
- * flipped vertically in the bullpen
- * 
- * @author Quoc HoLam
- *
- */
 public class VerticalFlipCtrl implements ActionListener, MouseListener {
 	BullpenView bpview;
 
 	/**
-	 * Flips the selected piece vertically.
+	 * Constructor for VerticalFlipCtrl, which will handle vertical flips
+	 * for pieces in the bullpen.
 	 * @param b The BullpenView for the bullpen in which the piece is contained. 
 	 */
 	public VerticalFlipCtrl(BullpenView bullpenView) {
@@ -27,6 +21,10 @@ public class VerticalFlipCtrl implements ActionListener, MouseListener {
 	}
 
 	@Override
+	/**
+	 * On mouse press, the selected piece is flipped vertically.
+	 * @param e MouseEvent.
+	 */
 	public void mousePressed(MouseEvent e) {
 		// get the current selected pieceview in the bullpen
 		PieceView pv = bpview.getSelected();
@@ -44,6 +42,10 @@ public class VerticalFlipCtrl implements ActionListener, MouseListener {
 	}
 
 	@Override
+	/**
+	 * On mouse release, {@link BullpenView} is repainted.
+	 * @param e MouseEvent.
+	 */
 	public void mouseReleased(MouseEvent e) {
 		bpview.setRepaintValid();
 	}

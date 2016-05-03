@@ -20,7 +20,7 @@ public class SpecifyBoardCtrl implements MouseListener {
 	BoardPanel boardPanel;
 
 	/**
-	 * Allows the user to set null tiles and release tiles in their builder boards based on what level type the create
+	 * Constructor for SpecifyBoardCtrl that allows the user to set null tiles and release tiles in their builder boards based on what level type the create
 	 * @param s  The SpecifyBoardPropertiesView that is allowing the modifications to occur
 	 * @param b  The BoardPanel view for the board that is being modified.
 	 */

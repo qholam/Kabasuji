@@ -13,7 +13,8 @@ public class RotateClockwiseCtrl implements ActionListener, MouseListener {
 	BullpenView bpview;
 
 	/**
-	 * Rotates the selected piece clockwise.
+	 * Constructor for RotateClockwiseCtrl, which will handle clockwise rotations
+	 * for pieces in the bullpen.
 	 * @param b The BullpenView for the bullpen in which the piece is contained. 
 	 */
 	public RotateClockwiseCtrl(BullpenView b) {
@@ -21,6 +22,10 @@ public class RotateClockwiseCtrl implements ActionListener, MouseListener {
 	}
 
 	@Override
+	/**
+	 * On mouse press, the selected piece is rotated clockwise.
+	 * @param e MouseEvent.
+	 */
 	public void mousePressed(MouseEvent e) {
 		// get the current selected pieceview in the bullpen
 		PieceView pv = bpview.getSelected();
@@ -37,6 +42,10 @@ public class RotateClockwiseCtrl implements ActionListener, MouseListener {
 	}
 
 	@Override
+	/**
+	 * On mouse release, {@link BullpenView} is repainted.
+	 * @param e MouseEvent.
+	 */
 	public void mouseReleased(MouseEvent e) {
 		bpview.setRepaintValid();
 	}

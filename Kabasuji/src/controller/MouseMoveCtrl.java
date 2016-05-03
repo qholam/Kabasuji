@@ -18,7 +18,7 @@ public class MouseMoveCtrl implements MouseMotionListener, MouseListener{
 	PieceContainer container;
 	
 	/**
-	 * Handles the PieceView that is currently being moved.
+	 * Constructor for MouseMoveCtrl that handles the PieceView that is currently being moved.
 	 * @param l The JPanel that the mouse is being moved in.
 	 */
 	public MouseMoveCtrl(JPanel l){

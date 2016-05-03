@@ -17,7 +17,7 @@ public class PieceInBullpenCtrl implements MouseListener, MouseMotionListener{
 	PieceView pv;
 
 	/**
-	 * Handles when a mouse event occurs in the specified bullpen.
+	 * Constructor for PieceInBullpenCtrl that handles when a mouse event occurs in the specified bullpen.
 	 * @param b The BullpenView for the bullpen in which the piece is contained.
 	 * @param p The PieceView for the piece that is being selected.
 	 */

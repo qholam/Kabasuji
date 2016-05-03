@@ -11,8 +11,10 @@ import view.PieceView;
 public class RotateCounterClockwiseCtrl implements ActionListener, MouseListener{
 	BullpenView bpview;
 	
+	
 	/**
-	 * Rotates the selected piece counterclockwise.
+	 * Constructor for RotateCounterClockwiseCtrl, which will handle counterclockwise rotations
+	 * for pieces in the bullpen.
 	 * @param b The BullpenView for the bullpen in which the piece is contained. 
 	 */
 	public RotateCounterClockwiseCtrl(BullpenView bullpenView) {
@@ -20,6 +22,10 @@ public class RotateCounterClockwiseCtrl implements ActionListener, MouseListener
 	}
 
 	@Override
+	/**
+	 * On mouse press, the selected piece is rotated counterclockwise.
+	 * @param e MouseEvent.
+	 */
 	public void mousePressed(MouseEvent e) {
 		//get the current selected pieceview in the bullpen
 		//System.out.println(e.getX() + " " + e.getY());
@@ -39,6 +45,10 @@ public class RotateCounterClockwiseCtrl implements ActionListener, MouseListener
 	}
 
 	@Override
+	/**
+	 * On mouse release, {@link BullpenView} is repainted.
+	 * @param e MouseEvent.
+	 */
 	public void mouseReleased(MouseEvent e) {
 		bpview.setRepaintValid();
 	}
