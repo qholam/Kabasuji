@@ -19,6 +19,11 @@ import view.PieceView;
 public class HorizontalFlipCtrl implements ActionListener, MouseListener {
 	BullpenView bpview;
 
+	/**
+	 * Constructor for the HorizontalFlipCtrl, which will handle horizontal flips 
+	 * for pieces in the bullpen.
+	 * @param bullpenView Bullpen to handle.
+	 */
 	public HorizontalFlipCtrl(BullpenView bullpenView) {
 		bpview = bullpenView;
 	}
@@ -47,6 +52,10 @@ public class HorizontalFlipCtrl implements ActionListener, MouseListener {
 	}
 
 	@Override
+	/**
+	 * On mouse press, the selected piece is flipped horizontally.
+	 * @param e MouseEvent.
+	 */
 	public void mousePressed(MouseEvent e) {
 		// get the current selected pieceview in the bullpen
 		//System.out.println(e.getX() + " " + e.getY());
@@ -68,6 +77,10 @@ public class HorizontalFlipCtrl implements ActionListener, MouseListener {
 	}
 
 	@Override
+	/**
+	 * On mouse release, {@link BullpenView} is repainted.
+	 * @param e MouseEvent.
+	 */
 	public void mouseReleased(MouseEvent e) {
 		bpview.setRepaintValid();
 	}

@@ -21,6 +21,12 @@ public class LoadLevelCtrl implements ActionListener{
 	LevelType levelType;
 	KabasujiFrame kFrame;
 
+	/**
+	 * Constructor for LoadLevelCtrl, which will handle the loading of levels.
+	 * @param type The level type to load.
+	 * @param frame The given kabasuji frame which holds all the panels.
+	 * @param num The level number to load.
+	 */
 	public LoadLevelCtrl(LevelType type, KabasujiFrame frame, int num) {
 		kFrame = frame;
 		levelType = type;
@@ -30,6 +36,7 @@ public class LoadLevelCtrl implements ActionListener{
 	/**
 	 * Loads level. 
 	 * TODO: make this more dynamic. This assumes that the most number of levels of each type is 5.
+	 * @param ae ActionEvent.
 	 */
 	public void actionPerformed(ActionEvent ae) {	
 		LevelPanel levelPanel = null;

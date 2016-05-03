@@ -25,6 +25,12 @@ public class EditorPanelCtrl implements MouseListener, MouseMotionListener {
 	// EditorPanel ep;
 	PieceContainer container;
 
+	/**
+	 * Constructor to create a EditorPanelCrl, which will handle all mouse events 
+	 * for pieces within the {@link EditorPanel}.
+	 * @param pv The piece to handle.
+	 * @param l The level panel.
+	 */
 	public EditorPanelCtrl(PieceView pv, JPanel l) {
 		this.pv = pv;
 		this.l = l;
@@ -51,6 +57,11 @@ public class EditorPanelCtrl implements MouseListener, MouseMotionListener {
 	}
 
 	@Override
+	/**
+	 * On mouse press, the piece that is pressed on is added to the bullpen
+	 * if the played is in the builder application.
+	 * @param e MouseEvent.
+	 */
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println("GOT CLICK");

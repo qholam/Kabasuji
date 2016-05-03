@@ -49,6 +49,10 @@ public class BoardCtrl implements MouseListener {
 	}
 
 	@Override
+	/**
+	 * On a mouse press, a piece is either picked up or dropped on to the board.
+	 * @param me MouseEvent.
+	 */
 	public void mousePressed(MouseEvent me) {
 		// this determines the amount to change the quantity of the pice by
 		int pieceQty = 1;
@@ -171,6 +175,10 @@ public class BoardCtrl implements MouseListener {
 	}
 
 	@Override
+	/**
+	 * On mouse release, the board and bullpen are repainted.
+	 * @param me MouseEvent. 
+	 */
 	public void mouseReleased(MouseEvent me) {
 		//System.out.println(me.getX() + " " + me.getY());
 		if (levelPanel instanceof LevelPanel) {

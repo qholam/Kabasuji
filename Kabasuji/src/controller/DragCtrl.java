@@ -28,18 +28,7 @@ import view.TileView;
  *
  */
 public class DragCtrl implements MouseListener, MouseMotionListener {
-	/**
-	 * Handles the event when a piece is being dragged. For some reason if these
-	 * mouse adapters are added any where but this class, it will not work. As
-	 * of now this method assumes that the given JPanel is a PieceView. There
-	 * are currently graphical issues when dragging a piece over another piece
-	 * in the bullpen.
-	 * 
-	 * @param panel
-	 *            Given panel to handle a drag event for
-	 * @param l
-	 *            The given LevelPanel for which the drag will take place in
-	 */
+	
 	// view of the tile that was clicked on and its represented tile
 	TileView tv;
 	Tile t;
@@ -56,6 +45,18 @@ public class DragCtrl implements MouseListener, MouseMotionListener {
 	BullpenView bullpen;
 	PieceContainer container;
 
+	/**
+	 * Handles the event when a piece is being dragged. For some reason if these
+	 * mouse adapters are added any where but this class, it will not work. As
+	 * of now this method assumes that the given JPanel is a PieceView. There
+	 * are currently graphical issues when dragging a piece over another piece
+	 * in the bullpen.
+	 * 
+	 * @param panel
+	 *            Given panel to handle a drag event for.
+	 * @param l
+	 *            The given LevelPanel for which the drag will take place in.
+	 */
 	public DragCtrl(PieceView panel, JPanel l) {
 		this.l = l;
 		pv = panel;
@@ -91,6 +92,11 @@ public class DragCtrl implements MouseListener, MouseMotionListener {
 	}
 
 	@Override
+	/**
+	 * On mouse press, a piece will be picked up from the bullpen. If a piece is already
+	 * currently being dragged, then mouse press will not do anything. 
+	 * @param me MouseEvent.
+	 */
 	public void mousePressed(MouseEvent me) {
 		// checks that it is a left mouse press,if not do nothing
 		if (SwingUtilities.isRightMouseButton(me))
@@ -181,6 +187,10 @@ public class DragCtrl implements MouseListener, MouseMotionListener {
 	}
 
 	@Override
+	/**
+	 * On mouse release, the bullpen and container are repainted.
+	 * @param e MouseEvent
+	 */
 	public void mouseReleased(MouseEvent e) {
 		if (l instanceof LevelPanel) {
 			// get the bullpenview
