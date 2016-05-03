@@ -12,6 +12,7 @@ import javax.swing.ScrollPaneConstants;
 
 import controller.DragCtrl;
 import controller.HorizontalFlipCtrl;
+import controller.MouseMoveCtrl;
 import controller.PieceInBullpenCtrl;
 import controller.RotateClockwiseCtrl;
 import controller.RotateCounterClockwiseCtrl;
@@ -131,17 +132,13 @@ public class BullpenView extends JPanel {
 		ArrayList<Piece> p = bullpen.getPieces();
 		for(int i = 0; i < p.size(); i++){
 			pieces.get(i).setPiece(p.get(i));
-			if(bullpen.getQuantity(pieces.get(i).getPiece()) < 1){
-				//pieces.get(i).setVisible(false);
-			}
-			else{
-				pieces.get(i).setVisible(true);
-			}
 		}
 	}
 	 
 	public void removePiece(PieceView p){
+		pieces.remove(p);
 		scrollPanel.remove(p);
+		bullpen.getPieces().remove(p.getPiece());
 		scrollPanel.setPreferredSize(new Dimension(200 * scrollPanel.getComponents().length, 0)); 
 	}
 	
@@ -201,6 +198,7 @@ public class BullpenView extends JPanel {
 		PieceView pv = new PieceView(p);
 		pv.addMouseListener(new PieceInBullpenCtrl(this, pv));
 		pv.addMouseListener(new DragCtrl(pv, level));
+		pv.addMouseMotionListener(new MouseMoveCtrl(level));
 		pv.setBounds(10 + (bullpen.getNumPieces() - 1) * 200, 10, 6 * KabasujiFrame.tileWidth, 6 * KabasujiFrame.tileHeight);
 		pieces.add(pv);
 		scrollPanel.add(pv);

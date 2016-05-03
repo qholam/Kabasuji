@@ -104,10 +104,11 @@ public class Bullpen implements Serializable {
 	 * Decrease quantity of given Piece(if it is in the Bullpen) by one.
 	 * @param p Given piece to update quanitity for
 	 */
+	/**
 	public void changeQuantity(Piece p, int dx){
 		if(piecesInfo.containsKey(p))
 			piecesInfo.put(p, piecesInfo.get(p) + dx);
-	}
+	}*/
 
 	/**
 	 * Checks the number of pieces left.

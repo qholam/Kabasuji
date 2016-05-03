@@ -154,9 +154,7 @@ public class DragCtrl implements MouseListener, MouseMotionListener {
 
 					// update quantity of piece
 					Bullpen bp = bullpen.getBullpen();
-					bullpen.getPieceViews().remove(pv);
 					bullpen.removePiece(pv);
-					bp.getPieces().remove(p);
 				}
 			} else {// another piece is currently being dragged, release it
 					// first
@@ -164,15 +162,18 @@ public class DragCtrl implements MouseListener, MouseMotionListener {
 				Piece dragged = container.getDraggingPiece().getPiece();
 				Bullpen bp;
 				// added it back to the bullpen by updating pieces quantity
+				/*
 				if (l instanceof LevelPanel) {
 					bp = ((LevelPanel) l).getBullpenView().getBullpen();
-					bp.changeQuantity(dragged, 1);
+					//bp.changeQuantity(dragged, 1);
 					((LevelPanel) l).getBullpenView().repaint();
 				} else {
 					bp = ((BuilderLevel) l).getBullpenView().getBullpen();
-					bp.changeQuantity(dragged, 1);
+					//bp.changeQuantity(dragged, 1);
 					((BuilderLevel) l).getBullpenView().repaint();
 				}
+				*/
+				bullpen.addPiece(container.getDraggingPiece().getPiece());
 				container.setVisible(false);
 			}
 		}

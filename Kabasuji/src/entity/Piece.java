@@ -301,6 +301,8 @@ public class Piece  implements Serializable{
 						equals = false;
 					else if(!t.equals(o))
 						equals = false;
+					//else if(!t.getColor().equals(o.getColor()));
+					//	equals = false;
 				}
 			}
 		}
