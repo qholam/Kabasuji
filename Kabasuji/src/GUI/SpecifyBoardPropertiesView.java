@@ -198,7 +198,7 @@ public class SpecifyBoardPropertiesView extends JPanel {
 		return true;
 	}
 	
-	void updateBoard() {
+	public void updateBoard() {
 		System.out.println(board.getTileViews()[0][1].getTile().toString());
 		updateWidth();
 		updateHeight();
