@@ -168,7 +168,8 @@ public class DragCtrl implements MouseListener, MouseMotionListener {
 					bp = ((BuilderLevel) l).getBullpenView().getBullpen();
 				}
 
-				bp.addPiece(container.getDraggingPiece().getPiece());
+				//if(container.getDraggingPiece().getPiece() != null)
+					//bp.addPiece(container.getDraggingPiece().getPiece());
 				container.setVisible(false);
 			}
 		}
