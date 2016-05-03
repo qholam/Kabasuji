@@ -264,6 +264,7 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		JButton button_3 = new JButton("RESET");
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				boardPanel.clearBoard();
 			}
 		});
 		button_3.setBounds(650, 111, 100, 75);
