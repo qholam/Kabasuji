@@ -26,7 +26,7 @@ import javax.swing.JLabel;
 
 import java.awt.Color;
 import java.awt.Dimension;
-
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 
 public class BullpenView extends JPanel {
@@ -71,7 +71,7 @@ public class BullpenView extends JPanel {
 		scrollPanel = new JPanel();
 		
 		JScrollPane scrollPane = new JScrollPane(scrollPanel);
-		scrollPanel.setLayout(null);
+		scrollPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 		
 		scrollPane.setBounds(10, 10, 580, 240);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -201,7 +201,7 @@ public class BullpenView extends JPanel {
 		PieceView pv = new PieceView(p);
 		pv.addMouseListener(new PieceInBullpenCtrl(this, pv));
 		pv.addMouseListener(new DragCtrl(pv, level));
-		pv.setBounds(10 + bullpen.getNumPieces() * 200, 10, 6 * KabasujiFrame.tileWidth, 6 * KabasujiFrame.tileHeight);
+		pv.setBounds(10 + (bullpen.getNumPieces() - 1) * 200, 10, 6 * KabasujiFrame.tileWidth, 6 * KabasujiFrame.tileHeight);
 		pieces.add(pv);
 		scrollPanel.add(pv);
         scrollPanel.setPreferredSize(new Dimension(200 * scrollPanel.getComponents().length, 0)); 
