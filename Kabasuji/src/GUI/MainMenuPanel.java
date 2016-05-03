@@ -28,7 +28,8 @@ public class MainMenuPanel extends JPanel
 	public ActionEvent button; 
 
 	/**
-	 * Create the panel.
+	 * Create the panel for a Main Menu.
+	 * @param frame The given {@link KabasujiFrame}.
 	 */
 	public MainMenuPanel(KabasujiFrame frame) 
 	{

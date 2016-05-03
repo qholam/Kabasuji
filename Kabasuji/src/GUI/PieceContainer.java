@@ -65,15 +65,27 @@ public class PieceContainer extends JPanel{
 		draggedPiece.setPiece(p);
 	}
 	
+	/**
+	 * Get the piece being dragged.
+	 * @return The piece currently being dragged.
+	 */
 	public PieceView getDraggingPiece(){
 		return draggedPiece;
 	}
 	
+	/**
+	 * Set the anchor tile for which the mouse will be hovering over during the duration of the drag.
+	 * @param t TileView to be hovered over. 
+	 */
 	public void setAnchortile(TileView t){
 		anchorTile = t; 
 		//System.out.println("Point: " + ((PieceTile)t.getTile()).getPieceGridRow() + " " + ((PieceTile)t.getTile()).getPieceGridCol());
 	}
 	
+	/**
+	 * Get the tile that the mouse is hovering over during a drag.
+	 * @return The anchor tile.
+	 */
 	public TileView getAnchorTile(){
 		return anchorTile;
 	}
