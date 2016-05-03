@@ -15,7 +15,7 @@ public class NoTile extends BoardTile{
 	}
 	
 	/**
-	 * String representation of the type of the tile
+	 * String representation of the type of the tile.
 	 * @return String tile type
 	 */
 	@Override

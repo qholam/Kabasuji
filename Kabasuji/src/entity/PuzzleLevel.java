@@ -11,7 +11,7 @@ public class PuzzleLevel extends Level {
 	private int movesRemaining;
 	
 	/**
-	 * constructor for a LightningLevel
+	 * constructor for a LightningLevel.
 	 * @param movesRemaining The number of moves remaining for the player.
 	 * @param board The board on which the level is played on.
 	 * @param bullpen Bullpen where the piece tiles will come from.
@@ -26,7 +26,7 @@ public class PuzzleLevel extends Level {
 	
 	/**
 	 * Checks whether or not the level has been won. Also updates the stars accordingly.
-	 * @return boolean determining if the level has been won
+	 * @return boolean determining if the level has been won.
 	 */
 	public boolean hasWon(){
 		int numLeft =  board.getNumUncovered();
@@ -47,7 +47,9 @@ public class PuzzleLevel extends Level {
 		return false;
 		
 	}
-	
+	/**
+	 * Updates the number of stars earned by the Player.
+	 */
 	public void updateStars(){
 		int numLeft =  board.getNumUncovered();
 		
@@ -63,7 +65,7 @@ public class PuzzleLevel extends Level {
 	
 	/** 
 	 * Checks if move has been made.
-	 * @return boolean determining if the move was made
+	 * @return boolean determining if the move was made.
 	 */
 	public boolean doMove(IMove move){
 		boolean valid = false;
@@ -76,14 +78,15 @@ public class PuzzleLevel extends Level {
 	
 	/**
 	 * Checks the number of move remaining available. 
-	 * @return movesRemaining
+	 * @return movesRemaining number of remaining moves the player can make.
 	 */
 	public int getMovesRemaining(){
 		return this.movesRemaining;
 	}
 	
 	/**
-	 * Will be useful when naming save level .txt files
+	 * Will be useful when naming save level .txt files.
+	 * @return String Puzzle level + number.
 	 */
 	@Override
 	public String toString(){
@@ -91,7 +94,8 @@ public class PuzzleLevel extends Level {
 	}
 	
 	/**
-	 * Returns the type of the level
+	 * Returns the type of the level.
+	 * @return LevelType the type of level being played.
 	 */
 	@Override
 	public LevelType getLevelType(){

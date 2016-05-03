@@ -3,6 +3,11 @@ package entity;
 import java.awt.Color;
 import java.io.Serializable;
 
+/**
+ * Numbers for releaseTiles.
+ * Can be between 1 - 6.
+ */
+
 public class Number implements Serializable{
 	//number of the tile and its color
 	int number;
@@ -13,8 +18,8 @@ public class Number implements Serializable{
 	private final int minNumber = 1;
 	/**
 	 * 
-	 * @param n number 
-	 * @throws Exception 
+	 * @param n number. 
+	 * @throws Exception. 
 	 */
 	public Number(int n, Color c){
 		//makes sure that the 

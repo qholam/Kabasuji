@@ -13,7 +13,7 @@ public class ReleaseTile extends BoardTile{
 	 * Constructor to create ReleaseTile with given specifications. 
 	 * @param row Row position of tile on board.
 	 * @param col Column position of tile on board.
-	 * @param Number Number to associate with this tile.
+	 * @param n Number to associate with this tile.
 	 */
 	public ReleaseTile(int row, int col, Number n) {
 		super(row, col);
@@ -21,14 +21,17 @@ public class ReleaseTile extends BoardTile{
 		num = n;
 	}
 
+	/**
+	 * @return String representing releaseTile.
+	 */
 	@Override
 	public String toString() {
 		return TileType.releaseTile;
 	}
 	
 	/**
-	 * sets the next release tile
-	 * @return the next release tile
+	 * sets the next release tile.
+	 * @return the next release tile.
 	 */
 	public ReleaseTile getNext(){
 		//if(this.num.getNum() >= 6){
@@ -39,8 +42,8 @@ public class ReleaseTile extends BoardTile{
 	}
 	
 	/**
-	 * sets the next release tile
-	 * @return the next release tile
+	 * sets the next release tile.
+	 * @return the next release tile.
 	 */
 	public ReleaseTile getPrevious(){
 		Number number = new Number(this.num.getNum() - 1, this.num.getColor());
@@ -54,7 +57,10 @@ public class ReleaseTile extends BoardTile{
 	public Number getNumber(){
 		return this.num;
 	}
-	
+	/**
+	 * Gets the Color of the release tile.
+	 * @return Color the color of this tile.
+	 */
 	public Color getColor(){
 		return super.getColor();
 	}
