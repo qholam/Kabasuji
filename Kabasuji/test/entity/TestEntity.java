@@ -22,6 +22,9 @@ public class TestEntity extends TestCase {
 	ArrayList<PieceTile> pieceTileArray;
 	ArrayList<Piece> BullpenArray;
 	
+	KabasujiGame game;
+	KabasujiBuilder builder;
+	
 	public void setUp() throws Exception{
 		tileType = new TileType();
 		number = new Number(2, Color.red);
@@ -64,6 +67,8 @@ public class TestEntity extends TestCase {
 		pieces3.addTile(new PieceTile(), 2, 4);
 		pieces3.addTile(new PieceTile(), 2, 5);	
 		
+		game = new KabasujiGame();
+		builder = new KabasujiBuilder();
 	}
 	
 	/**

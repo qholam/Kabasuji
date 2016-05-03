@@ -22,6 +22,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.GridLayout;
 
+/**
+ * The view for a {@link Board}
+ * 
+ *
+ */
 public class BoardPanel extends JPanel {
 	//Board that this panel represents
 	Board board;
@@ -30,10 +35,13 @@ public class BoardPanel extends JPanel {
 	
 	JPanel boardTilePanel;
 	
+	//determines whether a board can repaint, this prevented some flickering
+	//TODO: find a better way to do this
 	Boolean repaint = true;
 	
 	/**
-	 * Create the panel.
+	 * Create the panel for the board.
+	 * @param b Board that this panel will represent. 
 	 */
 	public BoardPanel(Board b) { 
 		board = b;
@@ -64,6 +72,11 @@ public class BoardPanel extends JPanel {
 	}
 	
 	@Override
+	/**
+	 * Repaints the board based on no tiles, pieces tiles, or release tiles being
+	 * placed on a {@link Board}.
+	 * @param g
+	 */
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		for (int r = 0; r < board.getNumRows(); r++) {
@@ -91,10 +104,18 @@ public class BoardPanel extends JPanel {
 		
 	}
 	
+	/**
+	 * Returns the reprented board.
+	 * @return The board represented by this panel.
+	 */
 	public Board getBoard(){
 		return board;
 	}
 	
+	/**
+	 * Get the all the {@link TileView} on the board panel.
+	 * @return TileViews on the board. 
+	 */
 	public TileView[][] getTileViews(){
 		return tileViews;
 	}
@@ -121,7 +142,8 @@ public class BoardPanel extends JPanel {
 	
 	/**
 	 * this is needed to prevent flickering when dragging inside the board.
-	 * TODO: find another way to prevent this flickering
+	 * This will repaint the board once.
+	 * TODO: find another way to prevent this flickering.
 	 */
 	public void setRepaintValid(){
 		repaint = true;
@@ -134,12 +156,16 @@ public class BoardPanel extends JPanel {
 		}
 	}
 	
+	/**
+	 * Get the panel that holds all the {@link TileView}'s.
+	 * @return JPanel that holds all the Tile Views.
+	 */
 	public JPanel getBoardTilePanel(){
 		return boardTilePanel;
 	}
 	
 	/**
-	 * Get the tile view at the specified mouse event
+	 * Get the tile view at the specified mouse event.
 	 * @param me
 	 */
 	public TileView getClickedTile(MouseEvent me){
@@ -156,6 +182,9 @@ public class BoardPanel extends JPanel {
 		return t;
 	}
 	
+	/**
+	 * Removes all pieces from the {@link Board}
+	 */
 	public void clearBoard(){
 		int temp = board.pieces.size();
 		

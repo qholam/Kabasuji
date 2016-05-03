@@ -38,7 +38,11 @@ import serializers.Serializer;
 
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
-
+/**
+ * Panel to construct Puzzle Levels in Level Builder.
+ * @author Richard
+ *
+ */
 public class BuilderPuzzleLevel extends BuilderLevel {
 	KabasujiBuilderFrame kFrame;
 	
@@ -54,7 +58,8 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 	int numMovesAllowed;
 	
 	/**
-	 * Create the panel.
+	 * Constructor to create the BuilderPuzzleLevel.
+	 * @param frame
 	 */
 	public BuilderPuzzleLevel(KabasujiBuilderFrame frame) { 
 		super();
@@ -104,6 +109,7 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		}
 		add(bullpen);
 		
+		//Trash button.
 		JButton btnNewButton_1 = new JButton("TRASH");
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
@@ -173,7 +179,6 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		panel_1.add(editorPanel);
 		scrollPane.addMouseMotionListener(new MouseMoveCtrl(this));
 		scrollPane.addMouseListener(new MouseMoveCtrl(this));
-		//Nick added
 		for(int i = 0; i < editorPanel.getPieces().length; i++){
 			editorPanel.getPieceViews()[i].addMouseListener(new EditorPanelCtrl(editorPanel.getPieceViews()[i], this));
 		}
@@ -284,6 +289,10 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		this.addMouseListener(new MouseMoveCtrl(this));
 	}
 	
+	/**
+	 * Set the current board.
+	 * @param Board.
+	 */
 	public void setBoard(Board b) {
 		remove(boardPanel);
 		boardPanel = new BoardPanel(b);
@@ -295,18 +304,30 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		boardPanel.repaint();
 	}
 	
+	/**
+	 * @return PieceContainer.
+	 */
 	public PieceContainer getPieceContainer(){
 		return container;
 	}
 	
+	/**
+	 * @return BullPenView.
+	 */
 	public BullpenView getBullpenView(){
 		return bullpen;
 	}
 	
+	/**
+	 * @return BoardPanel.
+	 */
 	public BoardPanel getBoardPanel(){
 		return boardPanel;
 	}
 	
+	/**
+	 * @return Level.
+	 */
 	public Level getLevel() {
 		return level;
 	}

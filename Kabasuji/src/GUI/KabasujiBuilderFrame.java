@@ -18,6 +18,12 @@ import entity.ReleaseLevel;
 
 import java.awt.CardLayout;
 
+/**
+ * A JFrame class used to contain all of the information for the builder
+ * application.
+ * @author Richard Hayes
+ *
+ */
 public class KabasujiBuilderFrame extends JFrame {
 	final String SplashScreen = "BuilderSplashScreen";
 	final String BuilderMainMenu = "BuilderMainMenu";
@@ -94,30 +100,36 @@ public class KabasujiBuilderFrame extends JFrame {
 		splash.displaySplashScreen();
 	}
 	
+	/**
+	 * Gets the cardLayout used in this frame.
+	 * @return The cardLayout used in this frame.
+	 */
 	public CardLayout getCardLayout() {
 		return (CardLayout)contentPane.getLayout();
 	}
 	
+	/**
+	 * Gets the content pane used in this frame.
+	 * @return The content pane used in this frame.
+	 */
 	public JPanel getContentPane() {
 		return contentPane;
 	}
 	
+	/**
+	 * Sets the board that the builder is currently working with.
+	 * @param b The board we want to work with.
+	 */
 	public void setWorkingBoard(Board b) {
 		workingBoard = b;
-		/**
-		if (b.getLevel() instanceof LightningLevel){
-			workingLevel = (BuilderLightningLevel) workingLevel;
-		}
-		if (b.getLevel() instanceof PuzzleLevel){
-			workingLevel = (BuilderPuzzleLevel) workingLevel;
-		} else{
-			workingLevel = (BuilderReleaseLevel) workingLevel;
-		}
-		*/
 		workingLevel.setBoard(b);
 		workingLevel.repaint(); 
 	}
 
+	/**
+	 * Gets the container that is used to move pieces in the builder.
+	 * @return The container used to move pieces in the builder.
+	 */
 	public PieceContainer getPieceContainer(){
 		return container;
 	}
@@ -426,6 +438,10 @@ public class KabasujiBuilderFrame extends JFrame {
 		return p;
 	}
 
+	/**
+	 * Returns the board that the builder is currently working with.
+	 * @return The board that the builder is currently working with.
+	 */
 	public Board getBoard() {
 		// TODO Auto-generated method stub
 		return this.workingBoard;

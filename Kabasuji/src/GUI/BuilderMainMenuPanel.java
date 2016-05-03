@@ -18,14 +18,20 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+/**
+ * Main Menu Panel for Kabasuji Builder.
+ * @author LilyAnne
+ *
+ */
 public class BuilderMainMenuPanel extends JPanel
 {
 
 	KabasujiBuilderFrame kFrame;
 
-	/**
-	 * Create the frame.
-	 */
+/**
+ * Constructor for BuilderMainMenuPanel.
+ * @param frame Builder Frame.
+ */
 	public BuilderMainMenuPanel(KabasujiBuilderFrame frame) 
 	{
 		kFrame = frame;
@@ -40,7 +46,6 @@ public class BuilderMainMenuPanel extends JPanel
 		panel.setBounds(0, 0, 1200, 167);
 		add(panel);
 		
-		
 		JLabel lblKabasuji = new JLabel("Kabasuji Level Builder");
 		lblKabasuji.setBounds(117, 7, 640, 68);
 		panel.add(lblKabasuji);
@@ -48,6 +53,7 @@ public class BuilderMainMenuPanel extends JPanel
 		lblKabasuji.setForeground(new Color(255, 255, 51));
 		lblKabasuji.setFont(new Font("Elephant", Font.PLAIN, 55));
 		
+		//Button to go to building a level.
 		Button button_4 = new Button("Build a Level");
 		button_4.setForeground(Color.YELLOW);
 		button_4.setFont(new Font("Dialog", Font.PLAIN, 34));
@@ -60,6 +66,7 @@ public class BuilderMainMenuPanel extends JPanel
 		});
 		add(button_4);
 		
+		//Button to go to saved levels.
 		Button button_6 = new Button("Saved Levels");
 		button_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

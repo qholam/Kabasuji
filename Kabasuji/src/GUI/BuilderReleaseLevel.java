@@ -40,6 +40,12 @@ import serializers.Serializer;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
+/**
+ * Panel to create Release Levels.
+ * @author LilyAnne
+ * @author Richard
+ *
+ */
 public class BuilderReleaseLevel extends BuilderLevel {
 	KabasujiBuilderFrame kFrame;
 	
@@ -52,7 +58,8 @@ public class BuilderReleaseLevel extends BuilderLevel {
 	ReleaseLevel level;
 	
 	/**
-	 * Create the panel.
+	 * Constructor for BuilderReleaseLevel.
+	 * @param frame.
 	 */
 	public BuilderReleaseLevel(KabasujiBuilderFrame frame) { 
 		super();
@@ -105,7 +112,7 @@ public class BuilderReleaseLevel extends BuilderLevel {
 			public void mousePressed(MouseEvent e) {
 				container.setDraggingPiece(null);
 				container.setVisible(false);
-				System.out.println("Working");
+				//System.out.println("Working");
 			}
 		});
 		
@@ -246,6 +253,9 @@ public class BuilderReleaseLevel extends BuilderLevel {
 		this.addMouseListener(new MouseMoveCtrl(this));
 	}
 	
+	/**
+	 * Set the current Board.
+	 */
 	public void setBoard(Board b) {
 		remove(boardPanel);
 		boardPanel = new BoardPanel(b);
@@ -257,18 +267,30 @@ public class BuilderReleaseLevel extends BuilderLevel {
 		boardPanel.repaint();
 	}
 	
+	/**
+	 * @return PieceContainer.
+	 */
 	public PieceContainer getPieceContainer(){
 		return container;
 	}
 	
+	/**
+	 * @return BullPenView.
+	 */
 	public BullpenView getBullpenView(){
 		return bullpen;
 	}
 	
+	/**
+	 * @return BoardPanel.
+	 */
 	public BoardPanel getBoardPanel(){
 		return boardPanel;
 	}
 	
+	/**
+	 * @return Level.
+	 */
 	public Level getLevel() {
 		return level;
 	}

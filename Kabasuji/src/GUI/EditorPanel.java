@@ -40,7 +40,10 @@ public class EditorPanel extends JPanel {
 		}
 	}
 	
-	//Nick added methods
+	/**
+	 * Gets all the pieces in the editor panel.
+	 * @return A list of the pieces in this editor panel.
+	 */
 	public Piece[] getPieces(){
 		for(int i=0; i<pieces.length;i++){
 			actualPieces[i]=pieces[i].getPiece();
@@ -48,6 +51,10 @@ public class EditorPanel extends JPanel {
 		return actualPieces;
 	}
 	
+	/**
+	 * Get all the pieceView representations of the pieces in this editor panel.
+	 * @return A list of all of the pieceViews in this editor panel.
+	 */
 	public PieceView[]  getPieceViews(){
 		return pieces;
 	}
