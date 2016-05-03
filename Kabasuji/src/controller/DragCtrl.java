@@ -32,15 +32,12 @@ public class DragCtrl implements MouseListener, MouseMotionListener {
 	// view of the tile that was clicked on and its represented tile
 	TileView tv;
 	Tile t;
-
 	// used to keep track of the mouse position
 	Point point;
-
 	// the level panel and piece view that are passed
 	JPanel l;
 	PieceView pv;
 	Piece p;
-
 	// get the bullpenview and container
 	BullpenView bullpen;
 	PieceContainer container;
@@ -62,35 +59,7 @@ public class DragCtrl implements MouseListener, MouseMotionListener {
 		pv = panel;
 		p = pv.getPiece();
 	}
-
-	public void mouseClicked(MouseEvent me) {
-
-	}
-
-	@Override
-	public void mouseDragged(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseMoved(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
+	
 	@Override
 	/**
 	 * On mouse press, a piece will be picked up from the bullpen. If a piece is already
@@ -204,5 +173,25 @@ public class DragCtrl implements MouseListener, MouseMotionListener {
 			container = ((BuilderLevel) l).getPieceContainer();
 		}
 		container.repaint();
+	}
+	
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+	}
+	@Override
+	public void mouseDragged(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+	}
+	@Override
+	public void mouseMoved(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+	}
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+	}
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
 	}
 }

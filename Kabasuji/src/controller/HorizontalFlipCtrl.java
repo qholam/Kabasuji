@@ -29,29 +29,6 @@ public class HorizontalFlipCtrl implements ActionListener, MouseListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	/**
 	 * On mouse press, the selected piece is flipped horizontally.
 	 * @param e MouseEvent.
@@ -67,13 +44,10 @@ public class HorizontalFlipCtrl implements ActionListener, MouseListener {
 
 		// get the piece
 		Piece p = pv.getPiece();
-
 		// rotate the seleced piece clockwise
 		p.horizontalFlip();
-
 		// repaint the piece view
 		pv.setRepaintValid();
-
 	}
 
 	@Override
@@ -83,5 +57,21 @@ public class HorizontalFlipCtrl implements ActionListener, MouseListener {
 	 */
 	public void mouseReleased(MouseEvent e) {
 		bpview.setRepaintValid();
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
 	}
 }

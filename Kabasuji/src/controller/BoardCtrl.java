@@ -9,13 +9,10 @@ import javax.swing.JPanel;
 import GUI.BoardPanel;
 import GUI.BuilderLevel;
 import GUI.BullpenView;
-import GUI.KabasujiFrame;
 import GUI.LevelPanel;
 import GUI.PieceContainer;
-import entity.BoardTile;
 import entity.Bullpen;
 import entity.Level;
-import entity.NoTile;
 import entity.Piece;
 import entity.PieceTile;
 import entity.PuzzleLevel;
@@ -167,12 +164,10 @@ public class BoardCtrl implements MouseListener {
 						((BuilderLevel) levelPanel).pushMove(move);
 					}
 				}
-
 				container.setVisible(false);
+				}
 			}
 		}
-
-	}
 
 	@Override
 	/**
@@ -201,23 +196,6 @@ public class BoardCtrl implements MouseListener {
 		else
 			((BuilderLevel) levelPanel).updateLevel();
 	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
 	
 	/**
 	 * Gets the current BoardView.
@@ -225,5 +203,17 @@ public class BoardCtrl implements MouseListener {
 	 */
 	public BoardPanel getBoardView(){
 		return this.boardPanel;
+	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
 	}
 }
