@@ -72,6 +72,7 @@ public class BuilderLevelTypeSelect extends JPanel
 		button_2.setBounds(438, 396, 324, 87);
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
+				kFrame.levelType = LevelType.Lightning;
 				kFrame.workingLevel = new BuilderLightningLevel(kFrame);
 				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.SpecifyBoardProperties);
 				SpecifyBoardPropertiesView specifyBoard = new SpecifyBoardPropertiesView(kFrame);

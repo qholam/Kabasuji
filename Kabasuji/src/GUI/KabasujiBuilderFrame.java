@@ -101,12 +101,14 @@ public class KabasujiBuilderFrame extends JFrame {
 	
 	public void setWorkingBoard(Board b) {
 		workingBoard = b;
+		/**
 		if (b.getLevel() instanceof LightningLevel){
 			workingLevel = (BuilderLightningLevel) workingLevel;
 		}
 		if (b.getLevel() instanceof PuzzleLevel){
 			workingLevel = (BuilderPuzzleLevel) workingLevel;
 		}
+		*/
 		workingLevel.setBoard(b);
 		workingLevel.repaint(); 
 	}
