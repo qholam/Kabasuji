@@ -104,7 +104,8 @@ public class Level implements Serializable{
 			return ((ReleaseLevel) this).getLevelType();
 		} if (this instanceof PuzzleLevel){
 			return ((PuzzleLevel) this).getLevelType();
-		} else 
-		return ((ReleaseLevel) this).getLevelType();
+		} if (this instanceof ReleaseLevel){
+			return ((ReleaseLevel) this).getLevelType();
+		} else return null;
 	}
 }
