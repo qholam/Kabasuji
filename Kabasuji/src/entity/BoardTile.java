@@ -28,7 +28,7 @@ public class BoardTile extends Tile{
 	@Override
 	/**
 	 * Provides info on the type of the tile.
-	 * @return String type of the tile
+	 * @return String type of the tile.
 	 */
 	public String toString() {
 		return TileType.boardTile;
@@ -50,17 +50,24 @@ public class BoardTile extends Tile{
 	
 	/**
 	 * Checks if boardtile is covered.
-	 * @return boolean true if covered
+	 * @return boolean true if covered.
 	 */
 	public boolean isCovered(){
 		return this.isCovered;
 	}
 	
+	/** Getter for the color of this piece.
+	 * @return The color of the piece.
+	 */
 	@Override
 	public Color getColor(){
 		return c;
 	}
 	
+	/** Sets the color for this board tile.
+	 * 
+	 * @param col The color we want to set this tile to.
+	 */
 	public void setColor(Color col){
 		c = col;
 	}
