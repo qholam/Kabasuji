@@ -231,6 +231,9 @@ public class TestControllers extends TestMouse {
 		pr = createRightClick(boardPanel, 74, 44);
 		BC.mousePressed(pr);
 		BC.mouseReleased(pr);
+		pr = createClicked(boardPanel, 74, 44);
+		BC.mousePressed(pr);
+		BC.mouseReleased(pr);
 	}
 	public void testEditorPanelCtrl(){
 		bFrame = new KabasujiBuilderFrame();
