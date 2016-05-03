@@ -131,9 +131,10 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 				String s = (String) JOptionPane.showInputDialog(null, "Please choose a level ID to overwrite:", "Save",
 						JOptionPane.PLAIN_MESSAGE, null, options, "1");
 				if (s != null) {
-					ArrayList<Piece> temp = board.pieces;
+					//clear board and add pieces back to bullpen
+					ArrayList<Piece> temp = boardPanel.getBoard().pieces;
 					for(int i = 0; i<temp.size(); i++){
-						bullpen.addPiece(temp.get(i));
+						bullpen.getBullpen().addPiece(temp.get(i));
 					}
 					boardPanel.clearBoard();
 					int id = Integer.parseInt(s);

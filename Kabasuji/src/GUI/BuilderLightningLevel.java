@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -122,6 +123,13 @@ public class BuilderLightningLevel extends BuilderLevel {
 				String s = (String) JOptionPane.showInputDialog(null, "Please choose a level ID to overwrite:", "Save",
 						JOptionPane.PLAIN_MESSAGE, null, options, "1");
 				if (s != null) {
+					//clear board and add pieces back to bullpen
+					ArrayList<Piece> temp = boardPanel.getBoard().pieces;
+					for(int i = 0; i<temp.size(); i++){
+						bullpen.getBullpen().addPiece(temp.get(i));
+					}
+					boardPanel.clearBoard();
+					
 					int id = Integer.parseInt(s);
 					level = new LightningLevel(level.getTimeRemaining(), boardPanel.getBoard(), bullpen.getBullpen(),
 							level.isUnlocked(), id, 0);
