@@ -38,6 +38,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
+/**
+ * View for a lightning level within the Builder.
+ * 
+ *
+ */
 public class BuilderLightningLevel extends BuilderLevel {
 	KabasujiBuilderFrame kFrame;
 	
@@ -50,7 +55,8 @@ public class BuilderLightningLevel extends BuilderLevel {
 	LightningLevel level;
 	
 	/**
-	 * Create the panel.
+	 * Create the panel fo the Lightning Level in the Builder.
+	 * @param frame
 	 */
 	public BuilderLightningLevel(KabasujiBuilderFrame frame) {
 		container = frame.getPieceContainer();
@@ -277,6 +283,10 @@ public class BuilderLightningLevel extends BuilderLevel {
 		this.addMouseListener(new MouseMoveCtrl(this));
 	}
 	
+	/**
+	 * Set the board for this level.
+	 * @param b Given {@link Board} given board to set. 
+	 */
 	void setBoard(Board b) {
 		remove(boardPanel);
 		boardPanel = new BoardPanel(b);
@@ -288,18 +298,34 @@ public class BuilderLightningLevel extends BuilderLevel {
 		boardPanel.repaint();
 	}
 	
+	/**
+	 * get the container that holds currently dragged pieces.
+	 * @return The container which holds pieces being dragged within this level.
+	 */
 	public PieceContainer getPieceContainer(){
 		return container;
 	}
 	
+	/**
+	 * Get the view for the {@link Bullpen} of this {@link Level}.
+	 * @return The {@link BullpenView}.
+	 */
 	public BullpenView getBullpenView(){
 		return bullpen;
 	}
 	
+	/**
+	 * Get the view for the {@link Board} in this {@link Level}.
+	 * @return The {@link BoardPanel} for the board.
+	 */
 	public BoardPanel getBoardPanel(){
 		return boardPanel;
 	}
 	
+	/**
+	 * Get the {@link Level} that is represented by this view.
+	 * @return The represented {@link Level}
+	 */
 	public Level getLevel() {
 		return level;
 	}

@@ -14,7 +14,7 @@ public abstract class BuilderLevel extends JPanel {
 	Stack<IMove> redo;
 	
 	/**
-	 * Create the panel.
+	 * Create the panel. Holds the stacks for undo and redo.
 	 */
 	public BuilderLevel() {
 		moves = new Stack<IMove>();
@@ -25,18 +25,34 @@ public abstract class BuilderLevel extends JPanel {
 		
 	}
 	
+	/**
+	 * Get the {@link IMove} that is on the top of the undo stack.
+	 * @return The most recently done move.
+	 */
 	public IMove popMove(){
 		return moves.pop();
 	}
 	
+	/**
+	 * Add an {@link IMove} onto the redo stack.
+	 * @param move
+	 */
 	public void pushMove(IMove move){
 		moves.push(move);
 	}
 	
+	/**
+	 * Get the {@link IMove} that is on the top of the redo stack.
+	 * @return The most recently undone move.
+	 */
 	public IMove popRedo(){
 		return redo.pop();
 	}
 	
+	/**
+	 * Add an {@link IMove} onto the redo stack.
+	 * @param move
+	 */
 	public void pushRedo(IMove move){
 		redo.push(move);
 	}
@@ -47,6 +63,10 @@ public abstract class BuilderLevel extends JPanel {
 
 	public abstract BoardPanel getBoardPanel();
 
+	/**
+	 * Get the level that this view represents.
+	 * @return The represented Level.
+	 */
 	public Level getLevel() {
 		// TODO Auto-generated method stub
 		return null;

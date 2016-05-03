@@ -15,12 +15,19 @@ import entity.LevelType;
 
 import javax.swing.JLabel;
 
+/**
+ * The view to select the level type to create in the Builder.
+ *
+ */
 public class BuilderLevelTypeSelect extends JPanel
 {
 	private JPanel contentPane;
 	KabasujiBuilderFrame kFrame;
 	
-	
+	/**
+	 * Create the panel.
+	 * @param frame
+	 */
 	public BuilderLevelTypeSelect(KabasujiBuilderFrame frame) 
 	{
 		kFrame = frame;
