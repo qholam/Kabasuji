@@ -31,12 +31,7 @@ public class Board implements Serializable {
 	 *            The number of columns of tiles this board should have
 	 */
 	public Board(Level level, int numRows, int numColumns) {
-		if (level instanceof ReleaseLevel){
-			//boardGrid = (ReleaseTile[][]) boardGrid;
-			boardGrid = new ReleaseTile[numColumns][numRows];
-		} else {
-			boardGrid = new BoardTile[numColumns][numRows];
-		}
+		boardGrid = new BoardTile[numColumns][numRows];
 		pieces = new ArrayList<Piece>();
 		this.level = level;
 		this.numRows = numRows;
