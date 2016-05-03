@@ -141,7 +141,7 @@ public class Board implements Serializable {
 		// remove the piece
 		removePiece(p);
 
-		pieces.remove(p);
+		
 		
 		return p;
 	}
@@ -168,6 +168,8 @@ public class Board implements Serializable {
 			boardGrid[col][row].uncover();
 			boardGrid[col][row].setColor(Color.LIGHT_GRAY);
 		}
+		
+		pieces.remove(p);
 	}
 
 	/**

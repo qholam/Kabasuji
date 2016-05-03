@@ -157,8 +157,10 @@ public class BoardPanel extends JPanel {
 	}
 	
 	public void clearBoard(){
-		for(int i=0; i<board.pieces.size(); i++){
-			board.pieces.remove(i);
+		int temp = board.pieces.size();
+		
+		for(int i= temp - 1; i >= 0; i--){
+			board.removePiece(board.pieces.get(i));
 		}
 		setRepaintValid();
 	}
