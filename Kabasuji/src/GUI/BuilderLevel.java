@@ -11,12 +11,14 @@ import view.TileView;
 
 public abstract class BuilderLevel extends JPanel {
 	Stack<IMove> moves;
+	Stack<IMove> redo;
 	
 	/**
 	 * Create the panel.
 	 */
 	public BuilderLevel() {
 		moves = new Stack<IMove>();
+		redo = new Stack<IMove>();
 	}
 	
 	void setBoard(Board b) {
@@ -29,6 +31,14 @@ public abstract class BuilderLevel extends JPanel {
 	
 	public void pushMove(IMove move){
 		moves.push(move);
+	}
+	
+	public IMove popRedo(){
+		return redo.pop();
+	}
+	
+	public void pushRedo(IMove move){
+		redo.push(move);
 	}
 
 	public abstract BullpenView getBullpenView();

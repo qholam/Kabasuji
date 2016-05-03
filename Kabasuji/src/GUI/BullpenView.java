@@ -136,9 +136,10 @@ public class BullpenView extends JPanel {
 	}
 	 
 	public void removePiece(PieceView p){
+		int index = pieces.indexOf(p);
 		pieces.remove(p);
 		scrollPanel.remove(p);
-		bullpen.getPieces().remove(p.getPiece());
+		bullpen.getPieces().remove(index);
 		scrollPanel.setPreferredSize(new Dimension(200 * scrollPanel.getComponents().length, 0)); 
 	}
 	
