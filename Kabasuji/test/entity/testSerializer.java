@@ -5,7 +5,9 @@ import serializers.Deserializer;
 import serializers.Serializer;
 
 public class testSerializer extends TestCase {
-/**
+	
+	/**
+
 	Serializer s;
 	Deserializer ds;
 	public void testSerializer(){
@@ -46,10 +48,12 @@ public class testSerializer extends TestCase {
 		pl = ds.deserialzePuzzleLevel(1);
 		ll = ds.deserialzeLightningLevel(1);
 		
-		//assertTrue(rl != null);
-		//assertTrue(pl != null);
-		//assertTrue(ll != null);
+		assertTrue(rl != null);
+		assertTrue(pl != null);
+		assertTrue(ll != null);
 	}
+	
 	**/
+
 }
 
