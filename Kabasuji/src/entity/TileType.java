@@ -4,6 +4,7 @@
 package entity;
 
 /**
+ * Holds all of the types of Tiles.
  * @author Quoc HoLam
  *
  */

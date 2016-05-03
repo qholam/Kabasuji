@@ -39,7 +39,7 @@ public class Piece  implements Serializable{
 	} 	
 	
 	/**
-	 * clonse the given piece
+	 * Clones the given piece.
 	 * @param p
 	 */
 	public Piece(Piece p){
@@ -63,7 +63,7 @@ public class Piece  implements Serializable{
 	/**
 	 * Construct to create a piece, that allows for specification of piece shape.
 	 * @param arr 2-D boolean array to specify the desired shape of the piece.
-	 * @throws Exception Throws exception if the dimensions of the 2d boolean array doesnt not match that of the piece's.
+	 * @throws Exception Throws exception if the dimensions of the 2d boolean array doesn't not match that of the piece's.
 	 */
 	public Piece(boolean[][] arr) throws Exception{
 		//make sure the given 2d array has the same dimensions as a piece
@@ -317,14 +317,14 @@ public class Piece  implements Serializable{
 	}
 	
 	/**
-	 * @return the maxWidth
+	 * @return the maxWidth.
 	 */
 	public int getMaxWidth() {
 		return this.maxWidth;
 	}
 
 	/**
-	 * @return the maxHeight
+	 * @return the maxHeight.
 	 */
 	public int getMaxHeight() {
 		return this.maxHeight;
@@ -338,23 +338,29 @@ public class Piece  implements Serializable{
 		this.colPos = n;
 	}
 	
+	/**
+	 * @return the colPos.
+	 */
 	public int getColPos(){
 		return colPos;
 	}
 	
+	/**
+	 * @return the rowPos.
+	 */
 	public int getRowPos(){
 		return rowPos;
 	}
 	
 	/**
-	 * @return the pieceGrid
+	 * @return the pieceGrid.
 	 */
 	public PieceTile[][] getpieceGrid() {
 		return this.pieceGrid;
 	}
 	
 	/**
-	 * @return The PieceTiles on the grid
+	 * @return The PieceTiles on the grid.
 	 */
 	public ArrayList<PieceTile> getPieceTiles(){
 		pieceTiles = new ArrayList<PieceTile>();

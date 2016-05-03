@@ -39,18 +39,32 @@ public class PieceTile extends Tile {
 		c = PieceTileColor.boardPieceColors[PieceTileColor.index % PieceTileColor.boardPieceColors.length];
 	}
 
+	/**
+	 * Set the current row in the PieceGrid.
+	 * @param r int to set row.
+	 */
 	public void setPieceGridRow(int r){
 		rowInPieceContainer = r;
 	}
 	
+	/**
+	 * Set the current column in the PieceGrid.
+	 * @param c int to set col.
+	 */
 	public void setPieceGridCol(int c){
 		colInPieceContainer = c;
 	}
-	
+	/**
+	 * Return current row in PieceGrid.
+	 * @return int current row in PieceGrid.
+	 */
 	public int getPieceGridRow(){
 		return rowInPieceContainer;
 	}
-	
+	/**
+	 * Return current column in PieceGrid.
+	 * @return int current column in PieceGrid.
+	 */
 	public int getPieceGridCol(){
 		return colInPieceContainer;
 	}
@@ -64,11 +78,19 @@ public class PieceTile extends Tile {
 		return TileType.pieceTile;
 	}
 	
+	/**
+	 * return Color of PieceTile.
+	 * @return Color current color of PieceTile.
+	 */
 	@Override
 	public Color getColor(){
 		return c;
 	}
 	
+	/**
+	 * Set PieceTile color.
+	 * @param col new color for PieceTile.
+	 */
 	public void setColor(Color col){
 		c = col;
 	}

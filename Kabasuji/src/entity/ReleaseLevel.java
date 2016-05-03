@@ -15,7 +15,7 @@ public class ReleaseLevel extends Level {
 	int numMoves;
 
 	/**
-	 * constructor for creating a Releaselevel
+	 * constructor for creating a Releaselevel.
 	 * 
 	 * @param board
 	 * @param bullpen
@@ -29,8 +29,8 @@ public class ReleaseLevel extends Level {
 	}
 
 	/**
-	 * 
-	 * @return boolean determining if the level has been won
+	 * checks to see if the level has been won.
+	 * @return boolean determining if the level has been won.
 	 */
 	public boolean hasWon() {
 		/**
@@ -100,7 +100,7 @@ public class ReleaseLevel extends Level {
 	}
 
 	/**
-	 * 
+	 * Do a move on this Release Level.
 	 * @return boolean determining if the move was made.
 	 */
 	public boolean doMove(IMove move) {
@@ -114,7 +114,7 @@ public class ReleaseLevel extends Level {
 	/**
 	 * get the number of moves.
 	 * 
-	 * @return int The number of moves
+	 * @return int The number of moves.
 	 */
 	public int getNumMoves() {
 		return numMoves;
@@ -124,14 +124,15 @@ public class ReleaseLevel extends Level {
 	 * Changes the number of moves according to the give int.
 	 * 
 	 * @param dm
-	 *            Number of moves to add/subtract
+	 *            Number of moves to add/subtract.
 	 */
 	public void changeNumMoves(int dm) {
 		this.numMoves = this.numMoves + dm;
 	}
 
 	/**
-	 * Will be useful when naming save level .txt files
+	 * Will be useful when naming save level .txt files.
+	 * @return String string representing level type and number.
 	 */
 	@Override
 	public String toString() {
@@ -139,7 +140,8 @@ public class ReleaseLevel extends Level {
 	}
 
 	/**
-	 * Returns the type of the level
+	 * Returns the type of the level.
+	 * @return LevelType returns type of level.
 	 */
 	@Override
 	public LevelType getLevelType() {

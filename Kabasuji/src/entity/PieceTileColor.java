@@ -1,7 +1,10 @@
 package entity;
 
 import java.awt.Color;
-
+/**
+ * Holds all of the possible tile colors.
+ *
+ */
 public class PieceTileColor {
 	//Colors of pieces can be
 	static Color[] boardPieceColors = {Color.ORANGE, Color.GREEN, Color.RED, Color.BLUE, Color.MAGENTA, Color.YELLOW, Color.PINK,Color.BLACK, Color.CYAN};
