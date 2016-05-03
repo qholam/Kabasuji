@@ -51,9 +51,6 @@ public class BuilderReleaseLevel extends BuilderLevel {
 	
 	ReleaseLevel level;
 	
-	//number of moves allowed
-	int numMovesAllowed;
-	
 	/**
 	 * Create the panel.
 	 */
@@ -63,9 +60,7 @@ public class BuilderReleaseLevel extends BuilderLevel {
 		container.setVisible(false);
 		add(container);
 		kFrame = frame;
-		numMovesAllowed = 0;
 		
-		int numMoves = 10;
 		level = new ReleaseLevel(kFrame.workingBoard, new Bullpen(), false, 1, 0);
 		
 		setBackground(Color.GRAY);
