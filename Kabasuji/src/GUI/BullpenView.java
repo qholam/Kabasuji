@@ -149,6 +149,14 @@ public class BullpenView extends JPanel {
 	}
 	
 	
+	public void removeAll(){
+		int length = pieces.size();
+		
+		for(int i = length - 1; i >= 0; i--){
+			this.removePiece(pieces.get(i));
+		}
+	}
+	
 	@Override
 	public void repaint(){
 		if(repaint != null && repaint){

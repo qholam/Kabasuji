@@ -38,8 +38,12 @@ public class PieceInBullpenCtrl implements MouseListener, MouseMotionListener{
 					return;
 				}
 				else{
+					//unselect a piecce if one is selected
+					if(bv.getSelected() != null)
+						bv.getSelected().toggleBorder(false);
+					//select piece
 					bv.setSelected(pv);
-					
+					pv.toggleBorder(true);
 				}
 			}
 		}

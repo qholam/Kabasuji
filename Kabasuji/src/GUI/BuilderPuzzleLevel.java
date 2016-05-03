@@ -265,6 +265,7 @@ public class BuilderPuzzleLevel extends BuilderLevel {
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boardPanel.clearBoard();
+				bullpen.removeAll();
 			}
 		});
 		button_3.setBounds(650, 111, 100, 75);
