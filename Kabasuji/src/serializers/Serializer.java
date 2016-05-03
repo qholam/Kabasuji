@@ -15,29 +15,11 @@ import entity.PuzzleLevel;
  *
  */
 public class Serializer {
-		//testing saving of the first level
-		public static void main(String[] args){
-			Bullpen b = new Bullpen();
-			for(int i = 0; i < 6; i++){
-				Piece p = new Piece(); 
-				p.addTile(new PieceTile(), 0, 2); 
-				p.addTile(new PieceTile(), 1, 2); 
-				p.addTile(new PieceTile(), 2, 2);
-				p.addTile(new PieceTile(), 3, 2); 
-				p.addTile(new PieceTile(), 4, 2);
-				p.addTile(new PieceTile(), 5, 2);
-				p.addTile(new PieceTile(), 5-i, 1);
-				p.addTile(new PieceTile(), 5-i, 3); 
-				b.addPiece(p);
-			} 
-			PuzzleLevel puz = new PuzzleLevel(20, null, null, true, 1, 0);
-			Board board = new Board(puz, 10, 10);
-			puz = new PuzzleLevel(50, board, b, true, 1, 0);
-			new Serializer().serializeLevel(puz);
-			
-		}
 		
-	
+		/**
+		 * Saves a {@link Level} to text file.
+		 * @param l Level to be saved.
+		 */
 		public void serializeLevel(Level l){ 
 		   try{  
 			FileOutputStream fout = new FileOutputStream("src/savedLevels/" + l.toString());
