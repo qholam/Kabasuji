@@ -95,7 +95,7 @@ public class TestGUI extends TestCase
 	
 	public void testBuilderLevelSelector()
 	{
-		blc = new BuilderLevelSelector(frame);
+		blc = new BuilderLevelSelector(bFrame);
 		Component c = blc.getComponentAt(330, 201);
 		assertTrue(c instanceof JButton);
 	}
