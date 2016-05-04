@@ -93,7 +93,7 @@ public class LoadBuilderLevelCrl implements ActionListener {
 		}
 
 		// display the level
-		if (levelPanel != null) {
+		if (kFrame.workingLevel != null) {
 			SpecifyBoardPropertiesView specifyBoard = new SpecifyBoardPropertiesView(kFrame);
 			specifyBoard.setBounds(0, 0, 1200, 800);
 			kFrame.getContentPane().add(specifyBoard, kFrame.SpecifyBoardProperties);
