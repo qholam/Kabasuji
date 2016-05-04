@@ -212,18 +212,6 @@ public class BuilderReleaseLevel extends BuilderLevel {
 		});
 		add(btnUndo);
 		
-		JButton button = new JButton("REDO");
-		button.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent me) {
-				//TODO
-			}
-		});
-		button.setBounds(124, 366, 89, 23);
-		button.addMouseMotionListener(new MouseMoveCtrl(this));
-		button.addMouseListener(new MouseMoveCtrl(this));
-		add(button);
-		
 		JButton button_3 = new JButton("RESET");
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

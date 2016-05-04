@@ -15,7 +15,6 @@ import entity.PuzzleLevel;
  *
  */
 public class Serializer {
-		
 		/**
 		 * Saves a {@link Level} to text file.
 		 * @param l Level to be saved.

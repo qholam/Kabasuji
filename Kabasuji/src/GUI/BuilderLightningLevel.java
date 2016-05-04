@@ -215,16 +215,6 @@ public class BuilderLightningLevel extends BuilderLevel {
 		});
 		add(btnUndo);
 		
-		JButton button = new JButton("REDO");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		button.setBounds(124, 366, 89, 23);
-		button.addMouseMotionListener(new MouseMoveCtrl(this));
-		button.addMouseListener(new MouseMoveCtrl(this));
-		add(button);
-		
 		final JTextField textField = new JTextField("Enter Time", 30);
 		textField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
