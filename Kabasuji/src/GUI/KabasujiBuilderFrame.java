@@ -33,11 +33,12 @@ public class KabasujiBuilderFrame extends JFrame {
 	final String BuilderPuzzleLevel = "BuilderPuzzleLevel";
 	final String BuilderLightningLevel = "BuilderLightningLevel";
 	final String BuilderReleaseLevel = "BuilderReleaseLevel";
+	final String LevelSelect = "LevelSelect";
 	public LevelType levelType;
 
 
 
-	private JPanel contentPane;
+	JPanel contentPane;
 	
 	Board workingBoard;
 	public BuilderLevel workingLevel;
