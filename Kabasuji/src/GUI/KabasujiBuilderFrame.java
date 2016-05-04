@@ -134,7 +134,7 @@ public class KabasujiBuilderFrame extends JFrame {
 	public PieceContainer getPieceContainer(){
 		return container;
 	}
-	
+
 	/** Initializes all 35 Kabasuji Pieces from hardcoded int arrays.*/
 	void initPieces() {
 		/** Create all 35 Kabasuji Hexominos */ 

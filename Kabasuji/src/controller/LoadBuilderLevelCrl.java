@@ -64,7 +64,7 @@ public class LoadBuilderLevelCrl implements ActionListener {
 			level = new Deserializer().deserialzeLightningLevel(levelNum);
 			if (level != null) {
 				kFrame.workingLevel = new BuilderLightningLevel(kFrame);
-				// ((BuilderLightningLevel)levelPanel).level
+				((BuilderLightningLevel) kFrame.workingLevel).setBullpen(level.getBullpen());
 			}
 
 			break;
@@ -76,6 +76,7 @@ public class LoadBuilderLevelCrl implements ActionListener {
 			level = new Deserializer().deserialzeReleaseLevel(levelNum);
 			if (level != null) {
 				kFrame.workingLevel = new BuilderReleaseLevel(kFrame);
+				((BuilderReleaseLevel) kFrame.workingLevel).setBullpen(level.getBullpen());
 			}
 			break;
 		case Puzzle:
@@ -86,6 +87,7 @@ public class LoadBuilderLevelCrl implements ActionListener {
 			level = new Deserializer().deserialzePuzzleLevel(levelNum);
 			if (level != null) {
 				kFrame.workingLevel = new BuilderPuzzleLevel(kFrame);
+				((BuilderPuzzleLevel) kFrame.workingLevel).setBullpen(level.getBullpen());
 			}
 			break;
 		default:

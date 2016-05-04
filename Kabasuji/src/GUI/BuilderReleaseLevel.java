@@ -279,6 +279,39 @@ public class BuilderReleaseLevel extends BuilderLevel {
 	}
 	
 	/**
+	 * Set the bullpen.
+	 * @param bullpen Bullpen to set.
+	 */
+	public void setBullpen(Bullpen b){
+		remove(bullpen);
+		bullpen = new BullpenView(b, (JPanel) this);
+		// add controllers to handle dragging
+		for (int i = 0; i < bullpen.getBullpen().getPieces().size(); i++) {
+			// add controllers to handle dragging a piece over other pieces
+			bullpen.getPieceViews().get(i).addMouseMotionListener(new MouseMoveCtrl(this));
+			bullpen.getPieceViews().get(i).addMouseListener(new MouseMoveCtrl(this));
+
+			// controller to handle the dragging
+			bullpen.getPieceViews().get(i).addMouseListener(new DragCtrl(bullpen.getPieceViews().get(i), this));
+			// new DragCtrl().handleDrag(bullpen.getPieceViews().get(i), this);
+		}
+		// add controllers to handle dragging a piece over the components within
+		// the bullpen, this makes the drag smoother
+		for (Component c : bullpen.getComponents()) {
+			// some components have components inside
+			for (Component cc : ((Container) c).getComponents()) {
+				cc.addMouseMotionListener(new MouseMoveCtrl(this));
+				cc.addMouseListener(new MouseMoveCtrl(this));
+			}
+			c.addMouseMotionListener(new MouseMoveCtrl(this));
+			c.addMouseListener(new MouseMoveCtrl(this));
+		}
+		add(bullpen);
+		bullpen.revalidate();
+		bullpen.setRepaintValid();
+	}
+	
+	/**
 	 * @return BullPenView.
 	 */
 	public BullpenView getBullpenView(){
