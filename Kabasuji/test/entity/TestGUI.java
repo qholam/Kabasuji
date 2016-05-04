@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 
 import GUI.BoardPanel;
+import GUI.BuilderLevelSelector;
 import GUI.BuilderLightningLevel;
 import GUI.BuilderReleaseLevel;
 import GUI.BullpenView;
@@ -46,6 +47,7 @@ public class TestGUI extends TestCase
 	LevelSelector ls;
 	BuilderLightningLevel bll;
 	BoardPanel bp;
+	BuilderLevelSelector blc;
 
 	public void setUp()
 	{
@@ -88,6 +90,14 @@ public class TestGUI extends TestCase
 		l = new Level(board, pen, true, 1, 0);
 		
 		
+		
+	}
+	
+	public void testBuilderLevelSelector()
+	{
+		blc = new BuilderLevelSelector(frame);
+		Component c = blc.getComponentAt(330, 201);
+		assertTrue(c instanceof JButton);
 	}
 	
 	public void testBoard()
