@@ -69,7 +69,11 @@ public class BuilderMainMenuPanel extends JPanel
 		//Button to go to saved levels.
 		Button button_6 = new Button("Saved Levels");
 		button_6.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent me) {
+				BuilderLevelSelector levelSelect = new BuilderLevelSelector(kFrame);
+				levelSelect.setBounds(0, 0, 800, 800);
+				kFrame.contentPane.add(levelSelect, kFrame.LevelSelect);
+				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.LevelSelect);
 			}
 		});
 		button_6.setForeground(Color.YELLOW);
