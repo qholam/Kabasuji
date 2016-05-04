@@ -21,7 +21,7 @@ public abstract class BuilderLevel extends JPanel {
 		redo = new Stack<IMove>();
 	}
 	
-	void setBoard(Board b) {
+	public void setBoard(Board b) {
 		
 	}
 	

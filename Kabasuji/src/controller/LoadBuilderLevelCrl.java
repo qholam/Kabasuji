@@ -57,35 +57,35 @@ public class LoadBuilderLevelCrl implements ActionListener {
 		// determine level type to load
 		switch (levelType) {
 		case Lightning:
-			//set working level to correct type
+			// set working level to correct type
 			kFrame.levelType = LevelType.Lightning;
-			
+
 			// load lightning level
 			level = new Deserializer().deserialzeLightningLevel(levelNum);
 			if (level != null) {
-				kFrame.workingLevel  = new BuilderLightningLevel(kFrame);
+				kFrame.workingLevel = new BuilderLightningLevel(kFrame);
 				// ((BuilderLightningLevel)levelPanel).level
 			}
 
 			break;
 		case Release:
-			//set working level to correct type
+			// set working level to correct type
 			kFrame.levelType = LevelType.Release;
-			
+
 			// load release level
 			level = new Deserializer().deserialzeReleaseLevel(levelNum);
-			if (level != null){
-				kFrame.workingLevel  = new BuilderReleaseLevel(kFrame);
+			if (level != null) {
+				kFrame.workingLevel = new BuilderReleaseLevel(kFrame);
 			}
 			break;
 		case Puzzle:
-			//set working level to correct type
+			// set working level to correct type
 			kFrame.levelType = LevelType.Puzzle;
 
 			// load puzzle level
 			level = new Deserializer().deserialzePuzzleLevel(levelNum);
-			if (level != null){
-				kFrame.workingLevel  = new BuilderPuzzleLevel(kFrame);
+			if (level != null) {
+				kFrame.workingLevel = new BuilderPuzzleLevel(kFrame);
 			}
 			break;
 		default:
@@ -94,10 +94,27 @@ public class LoadBuilderLevelCrl implements ActionListener {
 
 		// display the level
 		if (kFrame.workingLevel != null) {
+			kFrame.setWorkingBoard(level.getBoard());
+			kFrame.workingLevel.setBoard(level.getBoard());
 			SpecifyBoardPropertiesView specifyBoard = new SpecifyBoardPropertiesView(kFrame);
 			specifyBoard.setBounds(0, 0, 1200, 800);
-			kFrame.getContentPane().add(specifyBoard, kFrame.SpecifyBoardProperties);
-			kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.SpecifyBoardProperties);
+			switch (levelType) {
+			case Lightning:
+				kFrame.getContentPane().add(kFrame.workingLevel, kFrame.BuilderLightningLevel);
+				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.BuilderLightningLevel);
+				break;
+			case Puzzle:
+				kFrame.getContentPane().add(kFrame.workingLevel, kFrame.BuilderPuzzleLevel);
+				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.BuilderPuzzleLevel);
+				break;
+			case Release:
+				kFrame.getContentPane().add(kFrame.workingLevel, kFrame.BuilderReleaseLevel);
+				kFrame.getCardLayout().show(kFrame.getContentPane(), kFrame.BuilderReleaseLevel);
+				break;
+			default:
+				break;
+			}
+
 		}
 	}
 }
