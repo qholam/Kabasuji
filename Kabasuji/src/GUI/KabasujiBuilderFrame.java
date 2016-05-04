@@ -29,7 +29,7 @@ public class KabasujiBuilderFrame extends JFrame {
 	final String BuilderMainMenu = "BuilderMainMenu";
 	final String Puzzle1 = "Puzzle1";
 	final String BuilderLevelTypeSelect = "BuilderLevelTypeSelect";
-	final String SpecifyBoardProperties = "SpecifyBoardProperties";
+	public final String SpecifyBoardProperties = "SpecifyBoardProperties";
 	final String BuilderPuzzleLevel = "BuilderPuzzleLevel";
 	final String BuilderLightningLevel = "BuilderLightningLevel";
 	final String BuilderReleaseLevel = "BuilderReleaseLevel";
@@ -40,7 +40,7 @@ public class KabasujiBuilderFrame extends JFrame {
 	private JPanel contentPane;
 	
 	Board workingBoard;
-	BuilderLevel workingLevel;
+	public BuilderLevel workingLevel;
 	PieceContainer container;
 	
 	Piece[] pieces = new Piece[35];
