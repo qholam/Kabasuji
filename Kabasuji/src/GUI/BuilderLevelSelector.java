@@ -108,55 +108,55 @@ public class BuilderLevelSelector extends JPanel {
 		JButton releaseLevel2 = new JButton("2");
 		releaseLevel2.setBounds(449, 364, 60, 50);
 		releaseLevel2.setForeground(new Color(255, 165, 0));
-		//releaseLevel2.addActionListener(new LoadLevelCtrl(LevelType.Release, kFrame, 2));
+		releaseLevel2.addActionListener(new LoadBuilderLevelCrl(LevelType.Release, kFrame, 2));
 		add(releaseLevel2);
 
 		JButton releaseLevel3 = new JButton("3");
 		releaseLevel3.setBounds(570, 364, 60, 50);
 		releaseLevel3.setForeground(new Color(255, 165, 0));
-		//releaseLevel3.addActionListener(new LoadLevelCtrl(LevelType.Release, kFrame, 3));
+		releaseLevel3.addActionListener(new LoadBuilderLevelCrl(LevelType.Release, kFrame, 3));
 		add(releaseLevel3);
 
 		JButton releaseLevel4 = new JButton("4");
 		releaseLevel4.setBounds(689, 364, 60, 50);
 		releaseLevel4.setForeground(new Color(255, 165, 0));
-		//releaseLevel4.addActionListener(new LoadLevelCtrl(LevelType.Release, kFrame, 4));
+		releaseLevel4.addActionListener(new LoadBuilderLevelCrl(LevelType.Release, kFrame, 4));
 		add(releaseLevel4);
 
 		JButton releaseLevel5 = new JButton("5");
 		releaseLevel5.setBounds(809, 364, 60, 50);
 		releaseLevel5.setForeground(new Color(255, 165, 0));
-	//	releaseLevel5.addActionListener(new LoadLevelCtrl(LevelType.Release, kFrame, 5));
+		releaseLevel5.addActionListener(new LoadBuilderLevelCrl(LevelType.Release, kFrame, 5));
 		add(releaseLevel5);
 
 		JButton lightningLevel1 = new JButton("1");
 		lightningLevel1.setBounds(329, 528, 60, 50);
 		lightningLevel1.setForeground(new Color(255, 165, 0));
-		//lightningLevel1.addActionListener(new LoadLevelCtrl(LevelType.Lightning, kFrame, 1));
+		lightningLevel1.addActionListener(new LoadBuilderLevelCrl(LevelType.Lightning, kFrame, 1));
 		add(lightningLevel1);
 
 		JButton lightningLevel2 = new JButton("2");
 		lightningLevel2.setBounds(449, 528, 60, 50);
 		lightningLevel2.setForeground(new Color(255, 165, 0));
-		//lightningLevel2.addActionListener(new LoadLevelCtrl(LevelType.Lightning, kFrame, 2));
+		lightningLevel2.addActionListener(new LoadBuilderLevelCrl(LevelType.Lightning, kFrame, 2));
 		add(lightningLevel2);
 
 		JButton lightningLevel3 = new JButton("3");
 		lightningLevel3.setBounds(570, 528, 60, 50);
 		lightningLevel3.setForeground(new Color(255, 165, 0));
-		//lightningLevel3.addActionListener(new LoadLevelCtrl(LevelType.Lightning, kFrame, 3));
+		lightningLevel3.addActionListener(new LoadBuilderLevelCrl(LevelType.Lightning, kFrame, 3));
 		add(lightningLevel3);
 
 		JButton lightningLevel4 = new JButton("4");
 		lightningLevel4.setBounds(689, 528, 60, 50);
 		lightningLevel4.setForeground(new Color(255, 165, 0));
-		//lightningLevel4.addActionListener(new LoadLevelCtrl(LevelType.Lightning, kFrame, 4));
+		lightningLevel4.addActionListener(new LoadBuilderLevelCrl(LevelType.Lightning, kFrame, 4));
 		add(lightningLevel4);
 
 		JButton lightningLevel5 = new JButton("5");
 		lightningLevel5.setBounds(809, 528, 60, 50);
 		lightningLevel5.setForeground(new Color(255, 165, 0));
-		//lightningLevel5.addActionListener(new LoadLevelCtrl(LevelType.Lightning, kFrame, 5));
+		lightningLevel5.addActionListener(new LoadBuilderLevelCrl(LevelType.Lightning, kFrame, 5));
 		add(lightningLevel5);
 
 		JLabel puzzleLabel = new JLabel("Puzzle");
